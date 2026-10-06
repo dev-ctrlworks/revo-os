@@ -1,6 +1,6 @@
 import { collections } from "./mock-data";
 import { getAllMemories } from "./memory-store";
-import type { AIAnswer, Memory } from "./types";
+import type { Memory } from "./types";
 
 export interface SearchOptions {
   query: string;
@@ -183,22 +183,3 @@ export function groupMemoriesByDate(all: Memory[]) {
     memories: mems,
   }));
 }
-
-export function makeFakeAIAnswer(query: string): AIAnswer {
-  let sources = searchMemories({ query });
-  if (sources.length === 0 && researchQueryRegex.test(query)) {
-    sources = [...getAllMemories()]
-      .sort((a, b) => +new Date(b.createdAt) - +new Date(a.createdAt))
-      .slice(0, 4);
-  }
-  const answer = generateAnswer(query, sources);
-  return {
-    id: crypto.randomUUID(),
-    query,
-    answer,
-    sources,
-    createdAt: new Date().toISOString(),
-  };
-}
-
-const researchQueryRegex = /research|working on|been up to|focusing on|recently/i;

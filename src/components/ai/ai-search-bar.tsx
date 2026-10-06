@@ -4,8 +4,18 @@ import { useRef, useState } from "react";
 import { Loader2, ArrowRight, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { AIAnswer } from "@/lib/types";
-import { searchMemories } from "@/lib/ai";
+import { generateAnswer, searchMemories } from "@/lib/ai";
 import { exampleQueries } from "@/lib/mock-data";
+
+function makeFallbackAnswer(query: string, sources: ReturnType<typeof searchMemories>): AIAnswer {
+  return {
+    id: crypto.randomUUID(),
+    query,
+    answer: generateAnswer(query, sources),
+    sources,
+    createdAt: new Date().toISOString(),
+  };
+}
 
 export function AISearchBar({
   onAnswer,
@@ -33,26 +43,37 @@ export function AISearchBar({
     onLoadingChange?.(finalQuery);
     const sources = searchMemories({ query: finalQuery });
 
-    const madeAnswer = await new Promise<AIAnswer>((resolve) => {
-      setTimeout(() => {
-        const text =
-          sources.length > 0
-            ? `Based on your memories, here's what I've connected. I found **${sources.length} related items** — the most relevant are ${sources
-                .slice(0, 3)
-                .map((s) => `"${s.title}"`)
-                .join(", ")}. You saved these across ${
-                sources[0]?.collection ? `your "${sources[0].collection}" collection` : "your library"
-              }, and they all point toward the same through-line. I can summarize each one, dig into the details, or find related memories if you want to explore further — just ask.`
-            : `I couldn't find anything in your memories matching "${finalQuery}". Try rephrasing, or browse the Timeline tab to see everything you've captured.`;
-        resolve({
-          id: crypto.randomUUID(),
+    let madeAnswer: AIAnswer;
+    try {
+      const res = await fetch("/api/ask", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
           query: finalQuery,
-          answer: text,
-          sources,
-          createdAt: new Date().toISOString(),
-        });
-      }, 1100 + Math.random() * 600);
-    });
+          sources: sources.map(({ title, content, collection, createdAt, source, tags }) => ({
+            title,
+            content,
+            collection,
+            createdAt,
+            source,
+            tags,
+          })),
+        }),
+      });
+      const data = await res.json();
+      madeAnswer =
+        data && !data.fallback && typeof data.answer === "string"
+          ? {
+              id: crypto.randomUUID(),
+              query: finalQuery,
+              answer: data.answer,
+              sources,
+              createdAt: new Date().toISOString(),
+            }
+          : makeFallbackAnswer(finalQuery, sources);
+    } catch {
+      madeAnswer = makeFallbackAnswer(finalQuery, sources);
+    }
 
     setLoading(false);
     onAnswer?.(madeAnswer);
