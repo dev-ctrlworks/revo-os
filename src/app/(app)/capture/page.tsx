@@ -108,7 +108,7 @@ export default function CapturePage() {
   }
 
   const triggerClass =
-    "group-data-[variant=default]/tabs-list:data-active:bg-gradient-to-br group-data-[variant=default]/tabs-list:data-active:from-indigo-500 group-data-[variant=default]/tabs-list:data-active:to-violet-500 group-data-[variant=default]/tabs-list:data-active:text-white group-data-[variant=default]/tabs-list:data-active:shadow-[0_2px_10px_-2px_rgba(99,102,241,0.45)] flex min-w-0 items-center justify-center gap-1.5 rounded-lg px-1.5 text-[11px] whitespace-nowrap sm:px-4 sm:text-[13px]";
+    "group-data-[variant=default]/tabs-list:data-active:bg-gradient-to-br group-data-[variant=default]/tabs-list:data-active:from-indigo-500 group-data-[variant=default]/tabs-list:data-active:to-violet-500 group-data-[variant=default]/tabs-list:data-active:text-white group-data-[variant=default]/tabs-list:data-active:shadow-[0_2px_10px_-2px_rgba(99,102,241,0.45)] flex min-w-0 shrink-0 items-center justify-center gap-1.5 rounded-lg px-2.5 text-[11px] whitespace-nowrap sm:px-4 sm:text-[13px]";
 
   return (
     <div className="mx-auto max-w-3xl space-y-8">
@@ -138,7 +138,7 @@ export default function CapturePage() {
 
       <Card className="border-border/50 p-1.5 sm:p-2">
         <Tabs value={tab} onValueChange={(v) => setTab(v as CaptureTab)}>
-          <TabsList className="grid w-full grid-cols-5 items-stretch gap-0.5 rounded-xl sm:flex sm:w-auto sm:gap-0.5">
+          <TabsList className="flex w-full items-stretch gap-0.5 overflow-x-auto rounded-xl sm:w-auto sm:gap-0.5">
             {tabs.map((t) => (
               <TabsTrigger key={t.value} value={t.value} className={triggerClass}>
                 <t.icon className="size-4 shrink-0" />

@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -6,6 +7,13 @@ const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
 });
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#10113d" },
+  ],
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://revoos.ctrlworks.co"),
@@ -16,6 +24,11 @@ export const metadata: Metadata = {
   description:
     "Revo OS quietly captures your screenshots, notes, links, and documents, then answers questions about your life in plain language. No folders. No filing. Just memory.",
   applicationName: "Revo OS",
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
   keywords: [
     "AI memory",
     "second brain",
@@ -69,6 +82,8 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
+  const analyticsToken = process.env.NEXT_PUBLIC_CF_WEB_ANALYTICS_TOKEN;
+
   return (
     <html
       lang="en"
@@ -77,6 +92,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         {children}
+        {analyticsToken && (
+          <Script
+            id="cf-web-analytics"
+            strategy="afterInteractive"
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon={JSON.stringify({ token: analyticsToken })}
+          />
+        )}
       </body>
     </html>
   );
