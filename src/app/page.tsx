@@ -65,8 +65,46 @@ const waitlistPerks = [
 ];
 
 export default function LandingPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        name: "Revo OS",
+        url: "https://revoos.ctrlworks.co",
+        description:
+          "Revo OS is the AI memory layer for your digital life. It captures screenshots, notes, links, and documents, then answers questions about them in plain language.",
+        inLanguage: "en",
+        potentialAction: {
+          "@type": "SearchAction",
+          target: "https://revoos.ctrlworks.co/search?q={query}",
+          "query-input": "required name=query",
+        },
+      },
+      {
+        "@type": "SoftwareApplication",
+        name: "Revo OS",
+        url: "https://revoos.ctrlworks.co",
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Web",
+        description:
+          "An AI memory layer that captures screenshots, notes, links, and documents, then answers questions about your life in plain language, local-first.",
+      },
+      {
+        "@type": "Organization",
+        name: "Revo OS",
+        url: "https://revoos.ctrlworks.co",
+        email: "hello@ctrlworks.co",
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen overflow-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="pointer-events-none fixed inset-0 -z-10">
         <div className="absolute inset-x-0 top-0 h-[560px] bg-gradient-to-b from-indigo-500/[0.06] via-transparent to-transparent" />
         <div className="absolute -top-32 left-1/2 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-violet-500/[0.08] blur-3xl" />
