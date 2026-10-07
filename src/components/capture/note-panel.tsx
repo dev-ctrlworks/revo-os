@@ -17,7 +17,13 @@ export function NotePanel({ onToast }: { onToast: (message: string) => void }) {
     const title = noteTitle.trim();
     const body = noteBody.trim();
     if (!title || !body) return;
-    addMemory({ type: "note", title, content: body, source: "note" });
+    const memory = addMemory({ type: "note", title, content: body, source: "note" });
+    if (!memory) {
+      onToast(
+        "Couldn't save — demo storage is full. Clear captured memories in Settings."
+      );
+      return;
+    }
     onToast("Note saved and indexed");
     setNoteTitle("");
     setNoteBody("");

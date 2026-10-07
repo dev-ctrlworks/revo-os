@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight, Check, Loader2, X } from "lucide-react";
+import { AlertCircle, ArrowUpRight, Check, Loader2, X } from "lucide-react";
 import type { UploadedFile } from "@/lib/capture-shared";
 import { cn } from "@/lib/utils";
 
@@ -13,6 +13,7 @@ export function UploadedItem({
   onRemove: () => void;
 }) {
   const indexed = file.status === "indexed";
+  const failed = file.status === "failed";
   return (
     <div className="flex items-center gap-3 rounded-xl border border-border/60 bg-card/60 px-3.5 py-2.5 text-xs shadow-sm shadow-black/[0.02]">
       <span
@@ -20,18 +21,27 @@ export function UploadedItem({
           "flex size-6 shrink-0 items-center justify-center rounded-md",
           indexed
             ? "bg-emerald-500/10 text-emerald-500"
-            : "bg-indigo-500/10 text-indigo-400"
+            : failed
+              ? "bg-red-500/10 text-red-500"
+              : "bg-indigo-500/10 text-indigo-400"
         )}
       >
         {indexed ? (
           <Check className="size-3.5" strokeWidth={2.5} />
+        ) : failed ? (
+          <AlertCircle className="size-3.5" />
         ) : (
           <Loader2 className="size-3.5 animate-spin" />
         )}
       </span>
       <span className="min-w-0 flex-1">
         <span className="block truncate font-medium">{file.name}</span>
-        {indexed && file.summary ? (
+        {failed ? (
+          <span className="mt-0.5 block text-[10px] leading-snug text-red-500/80">
+            Not saved — demo storage is full. Clear captured memories in
+            Settings first.
+          </span>
+        ) : indexed && file.summary ? (
           <>
             <span className="block text-[10px] text-muted-foreground">
               {file.sizeLabel} · indexed

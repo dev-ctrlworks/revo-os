@@ -23,6 +23,7 @@ import {
   type UploadedFile,
 } from "@/lib/capture-shared";
 import { Card } from "@/components/ui/card";
+import { StorageWarningBanner } from "@/components/capture/storage-warning-banner";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PastePanel } from "@/components/capture/paste-panel";
 import { UploadPanel } from "@/components/capture/upload-panel";
@@ -85,18 +86,22 @@ export default function CapturePage() {
             f.uid === entry.uid
               ? {
                   ...f,
-                  status: "indexed" as const,
-                  memoryId: memory.id,
-                  summary: memory.summary,
+                  status: memory
+                    ? ("indexed" as const)
+                    : ("failed" as const),
+                  memoryId: memory?.id,
+                  summary: memory?.summary,
                 }
               : f
           )
         );
         if (i === 0)
           showToast(
-            entries.length > 1
-              ? `Indexed ${entries.length} files`
-              : `Indexed “${memory.title}”`
+            memory
+              ? entries.length > 1
+                ? `Indexed ${entries.length} files`
+                : `Indexed “${memory.title}”`
+              : "Couldn't save — demo storage is full. Clear captured memories in Settings."
           );
       }, 600 + i * 220);
     });
@@ -128,6 +133,8 @@ export default function CapturePage() {
           Everything stays on your device
         </span>
       </div>
+
+      <StorageWarningBanner />
 
       <Card className="border-border/50 p-1.5 sm:p-2">
         <Tabs value={tab} onValueChange={(v) => setTab(v as CaptureTab)}>

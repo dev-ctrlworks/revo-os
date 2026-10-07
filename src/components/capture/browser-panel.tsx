@@ -32,7 +32,7 @@ export function BrowserPanel({ onToast }: { onToast: (message: string) => void }
   }
 
   function clip() {
-    addMemory({
+    const memory = addMemory({
       type: "link",
       title: page.title,
       content: page.excerpt,
@@ -42,6 +42,12 @@ export function BrowserPanel({ onToast }: { onToast: (message: string) => void }
       collection: page.collection,
       highlight: page.excerpt.slice(0, 140),
     });
+    if (!memory) {
+      onToast(
+        "Couldn't save — demo storage is full. Clear captured memories in Settings."
+      );
+      return;
+    }
     setJustClipped(true);
     onToast(`Clipped “${page.title}”`);
   }

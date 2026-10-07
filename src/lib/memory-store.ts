@@ -12,6 +12,65 @@ const EDITS_KEY = "revoos.memory-edits.v1";
 const COLLECTION_META_KEY = "revoos.collection-meta.v1";
 const DELETED_KEY = "revoos.deleted-memories.v1";
 
+export const STORAGE_FULL_MESSAGE =
+  "Demo storage is full. Clear captured memories in Settings to keep capturing.";
+const STORAGE_LIMIT_BYTES = 5_000_000;
+
+let storageWarning: string | null = null;
+
+function writeLocal(key: string, value: string): boolean {
+  if (typeof window === "undefined") return false;
+  try {
+    window.localStorage.setItem(key, value);
+    if (storageWarning) storageWarning = null;
+    return true;
+  } catch {
+    storageWarning = STORAGE_FULL_MESSAGE;
+    return false;
+  }
+}
+
+function removeLocal(key: string): void {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.removeItem(key);
+  } catch {
+    storageWarning = STORAGE_FULL_MESSAGE;
+  }
+}
+
+function bytesOf(value: string | null): number {
+  if (!value) return 0;
+  try {
+    return new Blob([value]).size;
+  } catch {
+    return value.length;
+  }
+}
+
+export function getStorageError(): string | null {
+  return storageWarning;
+}
+
+export function clearStorageError(): void {
+  if (storageWarning) {
+    storageWarning = null;
+    notify();
+  }
+}
+
+export function getStorageUsageBytes(): number {
+  if (typeof window === "undefined") return 0;
+  return bytesOf(window.localStorage.getItem(STORAGE_KEY)) +
+    bytesOf(window.localStorage.getItem(EDITS_KEY)) +
+    bytesOf(window.localStorage.getItem(COLLECTION_META_KEY)) +
+    bytesOf(window.localStorage.getItem(DELETED_KEY));
+}
+
+export function getStorageLimitBytes(): number {
+  return STORAGE_LIMIT_BYTES;
+}
+
 function safeParse(raw: string | null): Memory[] {
   if (!raw) return [];
   try {
@@ -73,9 +132,7 @@ export function getAllMemories(): Memory[] {
 export function updateMemory(id: string, patch: Partial<Memory>): void {
   const edits = getEdits();
   edits[id] = { ...edits[id], ...patch };
-  if (typeof window !== "undefined") {
-    window.localStorage.setItem(EDITS_KEY, JSON.stringify(edits));
-  }
+  writeLocal(EDITS_KEY, JSON.stringify(edits));
   notify();
 }
 
@@ -96,13 +153,9 @@ export function renameCollection(oldName: string, newName: string): void {
   if (meta[oldName]) {
     meta[newName] = { ...(meta[newName] ?? {}), ...meta[oldName] };
     delete meta[oldName];
-    if (typeof window !== "undefined") {
-      window.localStorage.setItem(COLLECTION_META_KEY, JSON.stringify(meta));
-    }
+    writeLocal(COLLECTION_META_KEY, JSON.stringify(meta));
   }
-  if (typeof window !== "undefined") {
-    window.localStorage.setItem(EDITS_KEY, JSON.stringify(edits));
-  }
+  writeLocal(EDITS_KEY, JSON.stringify(edits));
   notify();
 }
 
@@ -117,9 +170,7 @@ export function updateCollectionMeta(
 ): void {
   const meta = getCollectionMetaOverrides();
   meta[name] = { ...(meta[name] ?? {}), ...patch };
-  if (typeof window !== "undefined") {
-    window.localStorage.setItem(COLLECTION_META_KEY, JSON.stringify(meta));
-  }
+  writeLocal(COLLECTION_META_KEY, JSON.stringify(meta));
   notify();
 }
 
@@ -131,9 +182,7 @@ export function createCollection(
   if (!trimmed) return;
   const current = getCollectionMetaOverrides();
   current[trimmed] = { ...(current[trimmed] ?? {}), ...meta };
-  if (typeof window !== "undefined") {
-    window.localStorage.setItem(COLLECTION_META_KEY, JSON.stringify(current));
-  }
+  writeLocal(COLLECTION_META_KEY, JSON.stringify(current));
   notify();
 }
 
@@ -142,9 +191,7 @@ export function deleteCollection(name: string): void {
   const meta = getCollectionMetaOverrides();
   if (meta[name]) {
     delete meta[name];
-    if (typeof window !== "undefined") {
-      window.localStorage.setItem(COLLECTION_META_KEY, JSON.stringify(meta));
-    }
+    writeLocal(COLLECTION_META_KEY, JSON.stringify(meta));
   }
   const edits = getEdits();
   for (const m of getAllMemories()) {
@@ -152,9 +199,7 @@ export function deleteCollection(name: string): void {
       edits[m.id] = { ...(edits[m.id] ?? {}), collection: "New captures" };
     }
   }
-  if (typeof window !== "undefined") {
-    window.localStorage.setItem(EDITS_KEY, JSON.stringify(edits));
-  }
+  writeLocal(EDITS_KEY, JSON.stringify(edits));
   notify();
 }
 
@@ -192,7 +237,7 @@ export function addMemory(input: {
   keyPoints?: string[];
   favorite?: boolean;
   previewUrl?: string;
-}): Memory {
+}): Memory | null {
   const memory: Memory = {
     id: `cap-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
     type: input.type,
@@ -211,36 +256,30 @@ export function addMemory(input: {
     previewUrl: input.previewUrl,
   };
   const next = [memory, ...getCapturedMemories()];
-  if (typeof window !== "undefined") {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
-  }
+  const ok = writeLocal(STORAGE_KEY, JSON.stringify(next));
   notify();
-  return memory;
+  return ok ? memory : null;
 }
 
 export function removeMemory(id: string): void {
   const next = getCapturedMemories().filter((m) => m.id !== id);
   const deleted = getDeletedIds();
   deleted.add(id);
-  if (typeof window !== "undefined") {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
-    window.localStorage.setItem(DELETED_KEY, JSON.stringify(Array.from(deleted)));
-    const edits = getEdits();
-    delete edits[id];
-    window.localStorage.setItem(EDITS_KEY, JSON.stringify(edits));
-  }
+  writeLocal(STORAGE_KEY, JSON.stringify(next));
+  writeLocal(DELETED_KEY, JSON.stringify(Array.from(deleted)));
+  const edits = getEdits();
+  delete edits[id];
+  writeLocal(EDITS_KEY, JSON.stringify(edits));
   notify();
 }
 
 export function clearCapturedMemories(): void {
-  if (typeof window !== "undefined") {
-    window.localStorage.removeItem(STORAGE_KEY);
-    const edits = getEdits();
-    Object.keys(edits).forEach((id) => {
-      if (id.startsWith("cap-")) delete edits[id];
-    });
-    window.localStorage.setItem(EDITS_KEY, JSON.stringify(edits));
-  }
+  removeLocal(STORAGE_KEY);
+  const edits = getEdits();
+  Object.keys(edits).forEach((id) => {
+    if (id.startsWith("cap-")) delete edits[id];
+  });
+  writeLocal(EDITS_KEY, JSON.stringify(edits));
   notify();
 }
 

@@ -6,7 +6,7 @@ export interface UploadedFile {
   uid: string;
   name: string;
   sizeLabel: string;
-  status: "indexing" | "indexed";
+  status: "indexing" | "indexed" | "failed";
   memoryId?: string;
   summary?: string;
   file?: File;

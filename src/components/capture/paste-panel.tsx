@@ -17,40 +17,53 @@ export function PastePanel({
   onToast: (message: string) => void;
 }) {
   const handleClipboard = useCallback(async () => {
+    const saved = (input: Parameters<typeof addMemory>[0], ok: string, bad: string) =>
+      addMemory(input)
+        ? onToast(ok)
+        : onToast(bad);
     try {
       const text = (await navigator.clipboard.readText()).trim();
       if (!text) throw new Error("empty");
       const looksLikeUrl = /^https?:\/\//i.test(text);
       if (looksLikeUrl) {
         const site = inferSite(text);
-        addMemory({
-          type: "link",
-          title: site.title,
-          content: site.excerpt,
-          source: text,
-          domain: site.domain,
-          tags: site.tags,
-          collection: site.collection,
-        });
-        onToast("Link captured from clipboard");
+        saved(
+          {
+            type: "link",
+            title: site.title,
+            content: site.excerpt,
+            source: text,
+            domain: site.domain,
+            tags: site.tags,
+            collection: site.collection,
+          },
+          "Link captured from clipboard",
+          "Couldn't save — demo storage is full. Clear captured memories in Settings."
+        );
       } else {
-        addMemory({
-          type: "note",
-          title: `Pasted text — ${text.replace(/\s+/g, " ").slice(0, 40)}…`,
-          content: text,
-          source: "clipboard",
-        });
-        onToast("Text captured from clipboard");
+        saved(
+          {
+            type: "note",
+            title: `Pasted text — ${text.replace(/\s+/g, " ").slice(0, 40)}…`,
+            content: text,
+            source: "clipboard",
+          },
+          "Text captured from clipboard",
+          "Couldn't save — demo storage is full. Clear captured memories in Settings."
+        );
       }
     } catch {
-      addMemory({
-        type: "screenshot",
-        title: "Screenshot captured from clipboard",
-        content:
-          "Image captured from the system clipboard. In the full product, OCR + vision indexing make the contents searchable.",
-        source: "clipboard",
-      });
-      onToast("Screenshot captured and indexed");
+      saved(
+        {
+          type: "screenshot",
+          title: "Screenshot captured from clipboard",
+          content:
+            "Image captured from the system clipboard. In the full product, OCR + vision indexing make the contents searchable.",
+          source: "clipboard",
+        },
+        "Screenshot captured and indexed",
+        "Couldn't save — demo storage is full. Clear captured memories in Settings."
+      );
     }
   }, [onToast]);
 

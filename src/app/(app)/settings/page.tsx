@@ -2,7 +2,18 @@
 
 import { useState } from "react";
 import { Settings, Trash2 } from "lucide-react";
-import { clearCapturedMemories } from "@/lib/memory-store";
+import {
+  clearCapturedMemories,
+  getStorageUsageBytes,
+  getStorageLimitBytes,
+} from "@/lib/memory-store";
+import { StorageWarningBanner } from "@/components/capture/storage-warning-banner";
+
+function formatBytesUsage(bytes: number): string {
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(0)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
 import { useMemoryStore } from "@/lib/use-memory-store";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -77,6 +88,8 @@ export default function SettingsPage() {
         </TabsList>
 
         <TabsContent value="memory">
+          <div className="space-y-6">
+          <StorageWarningBanner />
           <Card className="divide-y divide-border/40 border-border/50 p-6">
             <SettingRow
               title="Automatic capture from screenshots"
@@ -136,7 +149,32 @@ export default function SettingsPage() {
                 </Button>
               </div>
             </div>
+            <div className="flex items-center justify-between gap-3 py-4">
+              <div className="w-full sm:w-auto">
+                <Label>Demo storage</Label>
+                <p className="mt-0.5 text-[13px] text-muted-foreground">
+                  {formatBytesUsage(getStorageUsageBytes())} of{" "}
+                  {formatBytesUsage(getStorageLimitBytes())} used — memories
+                  stay in this browser.
+                </p>
+              </div>
+              <div className="h-2 w-24 shrink-0 overflow-hidden rounded-full bg-muted sm:w-32">
+                <div
+                  className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-cyan-400 transition-all"
+                  style={{
+                    width: `${Math.min(
+                      100,
+                      Math.max(
+                        3,
+                        (getStorageUsageBytes() / getStorageLimitBytes()) * 100
+                      )
+                    )}%`,
+                  }}
+                />
+              </div>
+            </div>
           </Card>
+          </div>
         </TabsContent>
 
         <TabsContent value="integrations">

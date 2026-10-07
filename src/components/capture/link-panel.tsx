@@ -23,7 +23,7 @@ export function LinkPanel({ onToast }: { onToast: (message: string) => void }) {
     const url = linkUrl.trim();
     if (!url) return;
     const site = inferSite(url);
-    addMemory({
+    const memory = addMemory({
       type: "link",
       title: site.title,
       content: linkNote.trim() || site.excerpt,
@@ -32,6 +32,12 @@ export function LinkPanel({ onToast }: { onToast: (message: string) => void }) {
       tags: site.tags,
       collection: site.collection,
     });
+    if (!memory) {
+      onToast(
+        "Couldn't save — demo storage is full. Clear captured memories in Settings."
+      );
+      return;
+    }
     onToast("Link saved to your library");
     setLinkUrl("");
     setLinkNote("");
