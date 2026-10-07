@@ -34,8 +34,12 @@ export default function DashboardPage() {
   return (
     <div className="space-y-10">
       <section className="pt-4 sm:pt-8">
-        <p className="mb-2 text-xs font-medium uppercase tracking-widest text-indigo-500">
+        <p className="mb-2 flex items-center gap-1.5 text-xs font-medium uppercase tracking-widest text-indigo-500">
+          <Sparkles className="size-3.5 text-indigo-500" />
           Revo OS memory
+          <span className="ml-1 inline-flex items-center gap-1 rounded-full border border-amber-500/30 bg-amber-500/10 px-2 py-0.5 text-[10px] font-medium normal-case tracking-normal text-amber-600 dark:text-amber-400">
+            Demo persona
+          </span>
         </p>
         <h1 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
           What do you <span className="animate-gradient-x bg-gradient-to-r from-indigo-500 via-sky-400 to-cyan-400 bg-clip-text text-transparent">remember?</span>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Copy, Settings, Trash2 } from "lucide-react";
+import { Settings, Trash2 } from "lucide-react";
 import { clearCapturedMemories } from "@/lib/memory-store";
 import { useMemoryStore } from "@/lib/use-memory-store";
 import { Button } from "@/components/ui/button";
@@ -38,18 +38,11 @@ function SettingRow({
 }
 
 export default function SettingsPage() {
-  const [copied, setCopied] = useState(false);
   const [confirming, setConfirming] = useState(false);
   const memories = useMemoryStore();
   const capturedCount = memories.filter((m) =>
     m.id.startsWith("cap-")
   ).length;
-
-  function copyApiKey() {
-    navigator.clipboard.writeText("revo_sk_live_demo123456789");
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  }
 
   function requestClear() {
     if (!confirming) {
@@ -113,25 +106,10 @@ export default function SettingsPage() {
               <div className="w-full sm:w-auto">
                 <Label>Semantic search index</Label>
                 <Input
-                  value="Embeddings · 2,481 vectors · pgvector-ready"
+                  value="Demo prototype — local keyword index is active"
                   readOnly
                   className="mt-1.5 h-9 w-full max-w-sm text-xs"
                 />
-              </div>
-              <div className="hidden sm:block">
-                <Button
-                  variant="secondary"
-                  size="sm"
-                  className="rounded-lg"
-                  onClick={copyApiKey}
-                >
-                  {copied ? (
-                    <Check className="mr-1.5 size-3.5 text-emerald-500" />
-                  ) : (
-                    <Copy className="mr-1.5 size-3.5" />
-                  )}
-                  Copy index key
-                </Button>
               </div>
             </div>
             <div className="flex items-center justify-between gap-3 py-4">
@@ -163,12 +141,12 @@ export default function SettingsPage() {
 
         <TabsContent value="integrations">
           <Card className="divide-y divide-border/40 border-border/50 p-6">
-            {[
-              { name: "OpenAI", desc: "Used for AI answers", connected: true },
-              { name: "Supabase / Postgres", desc: "Postgres + pgvector storage", connected: true },
-              { name: "Google Drive", desc: "Import documents", connected: false },
-              { name: "iMessages", desc: "Capture conversations", connected: false },
-            ].map((integration) => (
+{[
+                { name: "OpenAI", desc: "Used for AI answers", connected: true },
+                { name: "Supabase / Postgres", desc: "Waitlist + feedback storage", connected: true },
+                { name: "Google Drive", desc: "Import documents", connected: false },
+                { name: "iMessages", desc: "Capture conversations", connected: false },
+              ].map((integration) => (
               <div
                 key={integration.name}
                 className="flex items-center justify-between gap-3 py-4"

@@ -21,6 +21,9 @@ import { SearchDemo } from "@/components/landing/search-demo";
 import { ProductShowcase } from "@/components/landing/product-showcase";
 import { Privacy } from "@/components/landing/privacy";
 import { WaitlistForm } from "@/components/waitlist/waitlist-form";
+import { WaitlistCount } from "@/components/waitlist/waitlist-count";
+import { FeedbackButton } from "@/components/feedback/feedback-button";
+import { memories } from "@/lib/mock-data";
 
 const steps = [
   {
@@ -138,8 +141,8 @@ export default function LandingPage() {
 
           <div className="mt-16 flex flex-wrap items-center justify-center gap-x-10 gap-y-5">
             {[
-              { value: "2,400+", label: "memories indexed" },
-              { value: "<2s", label: "average answer" },
+              { value: `${memories.length.toLocaleString()}`, label: "memories in the demo" },
+              { value: "5", label: "capture methods" },
               { value: "100%", label: "your data, local-first" },
             ].map((stat) => (
               <div key={stat.label}>
@@ -275,13 +278,17 @@ export default function LandingPage() {
             <WaitlistForm />
             <div className="mx-auto mt-10 flex max-w-md items-center justify-center gap-6">
               <div>
-                <p className="text-2xl font-semibold tracking-tight">2,400+</p>
-                <p className="text-xs text-muted-foreground">already on the list</p>
+                <p className="text-2xl font-semibold tracking-tight">
+                  <WaitlistCount />
+                </p>
+                <p className="text-xs text-muted-foreground">on the list</p>
               </div>
               <span className="h-8 w-px bg-border" />
               <div>
-                <p className="text-2xl font-semibold tracking-tight">&lt;2s</p>
-                <p className="text-xs text-muted-foreground">average answer time</p>
+                <p className="text-2xl font-semibold tracking-tight">
+                  {memories.length.toLocaleString()}
+                </p>
+                <p className="text-xs text-muted-foreground">demo memories indexed</p>
               </div>
             </div>
           </div>
@@ -342,13 +349,15 @@ export default function LandingPage() {
           <BrainCircuit className="size-3.5 text-indigo-500" />
           <span className="font-medium text-foreground">Revo OS</span>
         </div>
-        <p>A working prototype. Your memories, pre-loaded.</p>
+        <p>A working prototype. Memories pre-loaded from a demo persona — your own captures stay in your browser.</p>
         <div className="flex items-center gap-4">
           <a href="#waitlist" className="transition-colors hover:text-foreground">Waitlist</a>
           <Link href="/dashboard" className="transition-colors hover:text-foreground">Open the app</Link>
           <Link href="/timeline" className="transition-colors hover:text-foreground">Timeline</Link>
         </div>
       </footer>
+
+      <FeedbackButton />
     </div>
   );
 }

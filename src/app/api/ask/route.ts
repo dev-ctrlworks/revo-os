@@ -1,13 +1,10 @@
 import type { Memory } from "@/lib/types";
+import { isRateLimitedRequest } from "@/lib/rate-limit";
 
 const OPENAI_URL = "https://api.openai.com/v1/chat/completions";
 const MAX_CONTENT_CHARS = 600;
 const MAX_SOURCES = 6;
 const MAX_QUERY_CHARS = 500;
-
-const RATE_WINDOW_MS = 60_000;
-const MAX_REQUESTS_PER_WINDOW = 10;
-const requests = new Map<string, number[]>();
 
 type AskSource = Pick<
   Memory,
@@ -32,24 +29,8 @@ function toSourceText(source: AskSource, index: number): string {
   }`;
 }
 
-function isRateLimited(ip: string): boolean {
-  const now = Date.now();
-  const recent = (requests.get(ip) ?? []).filter(
-    (t) => now - t < RATE_WINDOW_MS
-  );
-  if (recent.length >= MAX_REQUESTS_PER_WINDOW) {
-    requests.set(ip, recent);
-    return true;
-  }
-  recent.push(now);
-  requests.set(ip, recent);
-  return false;
-}
-
 export async function POST(request: Request) {
-  const ip =
-    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
-  if (isRateLimited(ip)) {
+  if (isRateLimitedRequest(request)) {
     return Response.json({ fallback: true }, { status: 429 });
   }
 

@@ -2,6 +2,7 @@ import React from "react";
 import { AppShell } from "@/components/layout/app-shell";
 import { DashboardHeader } from "@/components/layout/dashboard-header";
 import { PaletteProvider } from "@/components/command/command-palette";
+import { FeedbackButton } from "@/components/feedback/feedback-button";
 
 export default function AppLayout({ children }: LayoutProps<"/">) {
   return (
@@ -12,6 +13,7 @@ export default function AppLayout({ children }: LayoutProps<"/">) {
           {children}
         </div>
       </AppShell>
+      <FeedbackButton />
     </PaletteProvider>
   );
 }

@@ -11,7 +11,7 @@ export function WaitlistForm() {
   const [error, setError] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "done">("idle");
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
     if (!valid) {
@@ -20,7 +20,23 @@ export function WaitlistForm() {
     }
     setError("");
     setStatus("submitting");
-    window.setTimeout(() => setStatus("done"), 900);
+    try {
+      const res = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim() }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        setError(data?.error ?? "Something went wrong. Please try again.");
+        setStatus("idle");
+        return;
+      }
+      setStatus("done");
+    } catch {
+      setError("Something went wrong. Please try again.");
+      setStatus("idle");
+    }
   }
 
   if (status === "done") {
