@@ -16,5 +16,12 @@
       "binding": "WORKER_SELF_REFERENCE",
       "service": "revoos"
     }
+  ],
+  "routes": [
+    {
+      "pattern": "revoos.ctrlworks.co",
+      "zone_name": "ctrlworks.co",
+      "custom_domain": true
+    }
   ]
 }
