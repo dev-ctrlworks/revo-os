@@ -55,7 +55,7 @@ export default function DashboardPage() {
       </section>
 
       {answer && (
-        <section className="animate-fade-up max-w-3xl">
+        <section className="animate-fade-up mx-auto w-full max-w-4xl">
           <AIAnswerView answer={answer} />
         </section>
       )}
