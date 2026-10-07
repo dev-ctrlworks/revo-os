@@ -31,7 +31,7 @@ export function MemoryCard({
 
   return (
     <Link href={`/memory/${memory.id}`} className="group block h-full">
-      <Card className="flex h-full flex-col gap-0 overflow-hidden border-border/50 bg-card/60 p-0 transition-all duration-300 hover:-translate-y-1 hover:border-border hover:bg-card hover:shadow-xl hover:shadow-black/5">
+      <Card className="flex h-full flex-col gap-0 overflow-hidden border-border/60 p-0 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-indigo-500/40 hover:shadow-lg hover:shadow-indigo-500/5">
         <div className={cn("h-1 bg-gradient-to-r", top)} />
         <div className="flex flex-1 flex-col p-5">
           <div className="mb-2 flex items-center justify-between gap-2">
@@ -123,7 +123,7 @@ export function EmptyState({
 }) {
   return (
     <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-border/70 px-6 py-16 text-center">
-      <div className="mb-4 flex size-14 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500/10 to-cyan-500/10 text-muted-foreground">
+      <div className="mb-4 flex size-14 items-center justify-center rounded-2xl icon-chip text-muted-foreground">
         <MemoryTypeIcon type="document" size="md" />
       </div>
       <h3 className="text-base font-semibold">{title}</h3>

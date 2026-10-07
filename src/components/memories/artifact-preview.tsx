@@ -53,7 +53,7 @@ export function EmailPreview({ memory }: { memory: Memory }) {
 
       <div className="px-5 py-6 sm:px-6 sm:py-7">
         <div className="flex items-start gap-3">
-          <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-cyan-400 text-sm font-semibold text-white">
+          <span className="flex size-10 shrink-0 items-center justify-center rounded-full brand-gradient text-sm font-semibold text-white">
             {initialOf(from)}
           </span>
           <div className="min-w-0 flex-1">

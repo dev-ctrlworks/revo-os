@@ -74,7 +74,7 @@ export default function CollectionDetailPage() {
             {meta.emoji}
           </span>
           <div className="min-w-0 flex-1">
-            <h1 className="text-xl font-semibold tracking-tight sm:text-2xl">
+            <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
               {name}
             </h1>
             {meta.description && (
@@ -132,7 +132,7 @@ export default function CollectionDetailPage() {
 
       {items.length === 0 ? (
         <div className="rounded-2xl border border-dashed border-border/70 px-6 py-16 text-center">
-          <div className="mx-auto mb-4 flex size-12 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500/10 to-cyan-500/10 text-muted-foreground">
+          <div className="mx-auto mb-4 flex size-12 items-center justify-center rounded-2xl icon-chip text-muted-foreground">
             <FolderOpen className="size-5" />
           </div>
           <p className="text-sm font-medium">No memories in this collection yet</p>

@@ -29,7 +29,7 @@ export function MemoryPreview() {
   return (
     <div className="relative mx-auto mt-16 w-full max-w-4xl">
       <div className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center">
-        <div className="h-[420px] w-[720px] rounded-full bg-gradient-to-br from-indigo-500/20 via-sky-500/10 to-cyan-400/20 blur-3xl" />
+        <div className="h-[420px] w-[720px] rounded-full bg-gradient-to-br from-indigo-500/15 via-violet-500/10 to-purple-500/15 blur-2xl" />
       </div>
 
       <div className="animate-fade-up relative overflow-hidden rounded-2xl border border-border/70 bg-card/80 shadow-2xl shadow-indigo-500/10 backdrop-blur-xl">
@@ -49,7 +49,7 @@ export function MemoryPreview() {
         <div className="grid md:grid-cols-[220px_1fr]">
           <aside className="hidden border-r border-border/60 p-4 md:block">
             <div className="mb-6 flex items-center gap-2">
-              <span className="flex size-7 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 via-sky-500 to-cyan-400 shadow-md shadow-indigo-500/25">
+              <span className="flex size-7 items-center justify-center rounded-lg brand-gradient shadow-md shadow-indigo-500/25">
                 <Network className="size-3.5 text-white" />
               </span>
               <span className="text-sm font-semibold tracking-tight">Revo OS</span>

@@ -61,9 +61,9 @@ export function CaptureSources() {
           key={label}
           className="group relative overflow-hidden border-border/50 p-5 transition-all hover:-translate-y-1 hover:border-indigo-500/30 hover:shadow-lg hover:shadow-indigo-500/5"
         >
-          <div className="absolute right-0 top-0 h-20 w-20 rounded-bl-full bg-gradient-to-br from-indigo-500/[0.06] to-cyan-400/[0.06] transition-opacity group-hover:opacity-100" />
+          <div className="absolute right-0 top-0 h-20 w-20 rounded-bl-full bg-gradient-to-br from-indigo-500/[0.06] to-purple-500/[0.06] transition-opacity group-hover:opacity-100" />
           <div className="relative">
-            <span className="mb-3 inline-flex size-9 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500/15 to-cyan-400/15">
+            <span className="mb-3 inline-flex size-9 items-center justify-center rounded-lg icon-chip">
               <Icon className="size-4 text-indigo-500" />
             </span>
             <p className="font-medium tracking-tight">{label}</p>

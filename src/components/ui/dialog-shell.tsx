@@ -35,7 +35,7 @@ export function DialogShell({
       )}
     >
       <DialogHeader className="shrink-0 flex-row items-center gap-3 border-b border-border/40 px-5 py-3 sm:px-6 sm:py-4">
-        <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500/15 to-cyan-400/15">
+        <span className="flex size-9 shrink-0 items-center justify-center rounded-lg icon-chip">
           <Icon className="size-4.5 text-indigo-500" />
         </span>
         <div className="min-w-0 flex-1 space-y-1">

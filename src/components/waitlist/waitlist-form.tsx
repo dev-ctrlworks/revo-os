@@ -43,8 +43,8 @@ export function WaitlistForm() {
     return (
       <div className="animate-fade-up mx-auto mt-10 max-w-md">
         <div className="relative mx-auto mb-6 flex size-16 items-center justify-center">
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-500/20 via-sky-500/10 to-cyan-400/20 blur-xl" />
-          <div className="relative flex size-12 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 via-sky-500 to-cyan-400 shadow-xl shadow-indigo-500/25">
+          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-500/20 via-violet-500/10 to-purple-500/20 blur-xl" />
+          <div className="relative flex size-12 items-center justify-center rounded-full brand-gradient shadow-xl shadow-indigo-500/25">
             <span className="absolute inset-0 rounded-full ring-1 ring-white/20 ring-inset" />
             <Check className="size-6 text-white" />
           </div>

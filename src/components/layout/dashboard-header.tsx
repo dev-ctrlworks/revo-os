@@ -14,7 +14,7 @@ export function DashboardHeader() {
 
   return (
     <header className="sticky top-0 z-20 flex h-14 items-center justify-between gap-4 border-b border-border/40 bg-card/60 px-4 backdrop-blur-2xl sm:px-6">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-500/50 to-transparent" />
       <div className="flex items-center gap-3 lg:hidden">
         <span className="text-gradient text-sm font-semibold tracking-tight">Revo OS</span>
       </div>
@@ -40,7 +40,7 @@ export function DashboardHeader() {
           Capture
         </Button>
         <Avatar className="size-8">
-          <AvatarFallback className="bg-gradient-to-br from-indigo-500 to-cyan-400 text-[10px] font-semibold text-white">
+          <AvatarFallback className="brand-gradient text-[10px] font-semibold text-white">
             BR
           </AvatarFallback>
         </Avatar>

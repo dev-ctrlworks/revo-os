@@ -43,14 +43,14 @@ export function CaptureDropZone({
     >
       <div
         className={cn(
-          "pointer-events-none absolute left-1/2 top-0 h-52 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-indigo-500/15 to-cyan-400/10 blur-3xl transition-opacity duration-300",
+          "pointer-events-none absolute left-1/2 top-0 h-52 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-indigo-500/15 to-purple-500/10 blur-3xl transition-opacity duration-300",
           dragging ? "opacity-100" : "opacity-0 group-hover/drop:opacity-70"
         )}
       />
       <div className="relative flex flex-col items-center">
         <div
           className={cn(
-            "mb-5 flex size-16 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500/15 to-cyan-400/15 ring-1 ring-inset ring-indigo-500/10 transition-transform duration-300",
+            "mb-5 flex size-16 items-center justify-center rounded-2xl icon-chip ring-1 ring-inset ring-indigo-500/10 transition-transform duration-300",
             dragging && "scale-105"
           )}
         >

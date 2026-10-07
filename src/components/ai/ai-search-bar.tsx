@@ -84,7 +84,7 @@ export function AISearchBar({
     <div className={cn("w-full", big && "mx-auto max-w-2xl")}>
       <div className={cn("relative group", big && "group")}>
         {big && (
-          <div className="pointer-events-none absolute -inset-1 rounded-2xl bg-gradient-to-r from-indigo-500/20 via-sky-400/20 to-cyan-400/20 opacity-0 blur-xl transition-opacity group-focus-within:opacity-100" />
+          <div className="pointer-events-none absolute -inset-1 rounded-2xl bg-gradient-to-r from-indigo-500/20 via-violet-400/20 to-purple-500/20 opacity-0 blur-xl transition-opacity group-focus-within:opacity-100" />
         )}
         <form
           onSubmit={(e) => {

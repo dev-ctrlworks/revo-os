@@ -68,8 +68,8 @@ export default function SettingsPage() {
   return (
     <div className="mx-auto max-w-3xl space-y-8">
       <div>
-        <h1 className="flex items-center gap-2.5 text-2xl font-semibold tracking-tight sm:text-3xl">
-          <span className="flex size-8 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500/15 to-cyan-400/15">
+        <h1 className="flex items-center gap-2.5 text-3xl font-semibold tracking-tight sm:text-4xl">
+          <span className="flex size-9 items-center justify-center rounded-lg icon-chip">
             <Settings className="size-4 text-indigo-500" />
           </span>
           <span className="text-gradient">Settings</span>
@@ -160,7 +160,7 @@ export default function SettingsPage() {
               </div>
               <div className="h-2 w-24 shrink-0 overflow-hidden rounded-full bg-muted sm:w-32">
                 <div
-                  className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-cyan-400 transition-all"
+                  className="h-full rounded-full brand-gradient transition-all"
                   style={{
                     width: `${Math.min(
                       100,

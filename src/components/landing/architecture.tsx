@@ -48,7 +48,7 @@ export function Architecture() {
                 layer.tone === "memory" &&
                   "border-indigo-500/40 bg-gradient-to-b from-indigo-500/[0.07] to-card shadow-indigo-500/10",
                 layer.tone === "ai" &&
-                  "border-transparent bg-gradient-to-br from-indigo-500 via-sky-500 to-cyan-400 text-white shadow-xl shadow-indigo-500/25"
+                  "border-transparent brand-gradient text-white shadow-xl shadow-indigo-500/25"
               )}
             >
               <span
@@ -56,7 +56,7 @@ export function Architecture() {
                   "mx-auto mb-3 flex size-10 items-center justify-center rounded-xl",
                   layer.tone === "ai"
                     ? "bg-white/15 ring-1 ring-white/30"
-                    : "bg-gradient-to-br from-indigo-500/15 to-cyan-400/15"
+                    : "icon-chip"
                 )}
               >
                 <layer.icon

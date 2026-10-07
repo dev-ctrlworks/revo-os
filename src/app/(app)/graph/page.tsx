@@ -8,8 +8,8 @@ export default function GraphPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="flex items-center gap-2.5 text-2xl font-semibold tracking-tight sm:text-3xl">
-          <span className="flex size-8 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500/15 to-cyan-400/15">
+        <h1 className="flex items-center gap-2.5 text-3xl font-semibold tracking-tight sm:text-4xl">
+          <span className="flex size-9 items-center justify-center rounded-lg icon-chip">
             <Network className="size-4 text-indigo-500" />
           </span>
           <span className="text-gradient">Memory Graph</span>

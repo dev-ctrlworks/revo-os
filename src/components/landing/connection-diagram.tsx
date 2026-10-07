@@ -43,8 +43,8 @@ const saved = [
 export function ConnectionDiagram() {
   return (
     <div className="relative overflow-hidden rounded-2xl border border-border/50 bg-gradient-to-b from-muted/40 to-background p-6 shadow-lg shadow-black/5 sm:p-8">
-      <div className="pointer-events-none absolute -left-20 top-1/2 size-64 -translate-y-1/2 rounded-full bg-indigo-500/10 blur-3xl" />
-      <div className="pointer-events-none absolute -right-20 top-1/2 size-64 -translate-y-1/2 rounded-full bg-cyan-400/10 blur-3xl" />
+      <div className="pointer-events-none absolute -left-20 top-1/2 size-64 -translate-y-1/2 rounded-full bg-indigo-500/10 blur-2xl" />
+      <div className="pointer-events-none absolute -right-20 top-1/2 size-64 -translate-y-1/2 rounded-full bg-violet-500/10 blur-2xl" />
 
       <div className="relative grid items-center gap-8 md:grid-cols-[1fr_auto_1fr]">
         <div className="space-y-3">
@@ -78,8 +78,8 @@ export function ConnectionDiagram() {
         <div className="flex items-center justify-center gap-2">
           <ArrowLeft className="hidden size-4 text-indigo-500/50 animate-pulse md:block" />
           <div className="relative">
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-indigo-500/25 to-cyan-400/25 blur-lg" />
-            <div className="relative flex size-24 flex-col items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 via-sky-500 to-cyan-400 shadow-xl shadow-indigo-500/30">
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-indigo-500/25 to-purple-500/25 blur-lg" />
+            <div className="relative flex size-24 flex-col items-center justify-center rounded-2xl brand-gradient shadow-xl shadow-indigo-500/30">
               <span className="absolute inset-0 rounded-2xl ring-1 ring-white/25 ring-inset" />
               <BrainCircuit className="size-7 text-white" />
               <span className="mt-1.5 text-[10px] font-semibold text-white/90">Memory</span>

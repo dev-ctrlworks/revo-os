@@ -77,7 +77,7 @@ const sourceHint: Record<MemoryType, { placeholder: string; helper: string }> = 
 };
 
 const saveButtonClass =
-  "rounded-lg bg-gradient-to-r from-indigo-500 to-cyan-400 text-white shadow-sm shadow-indigo-500/25 hover:from-indigo-400 hover:to-cyan-300";
+  "rounded-lg brand-gradient text-white shadow-sm shadow-indigo-500/25";
 
 export function MemoryEditDialog({
   memory,

@@ -23,7 +23,7 @@ export function Privacy() {
           <Lock className="size-3" />
           Your data stays yours
         </div>
-        <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
+        <h2 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
           You decide what Revo OS sees.
         </h2>
         <p className="mt-4 leading-relaxed text-muted-foreground">
@@ -45,7 +45,7 @@ export function Privacy() {
 
       <div className="relative">
         <div className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center">
-          <div className="size-72 rounded-full bg-gradient-to-br from-indigo-500/15 to-cyan-400/15 blur-3xl" />
+          <div className="size-72 rounded-full bg-gradient-to-br from-indigo-500/15 to-purple-500/15 blur-2xl" />
         </div>
 
         <div className="animate-fade-up rounded-2xl border border-border/60 bg-card/80 p-5 shadow-2xl shadow-indigo-500/10 backdrop-blur">

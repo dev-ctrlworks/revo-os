@@ -108,7 +108,7 @@ export default function CapturePage() {
   }
 
   const triggerClass =
-    "group-data-[variant=default]/tabs-list:data-active:bg-gradient-to-br group-data-[variant=default]/tabs-list:data-active:from-indigo-500 group-data-[variant=default]/tabs-list:data-active:to-cyan-400 group-data-[variant=default]/tabs-list:data-active:text-white group-data-[variant=default]/tabs-list:data-active:shadow-[0_2px_10px_-2px_rgba(99,102,241,0.45)] flex min-w-0 items-center justify-center gap-1.5 rounded-lg px-1.5 text-[11px] whitespace-nowrap sm:px-4 sm:text-[13px]";
+    "group-data-[variant=default]/tabs-list:data-active:bg-gradient-to-br group-data-[variant=default]/tabs-list:data-active:from-indigo-500 group-data-[variant=default]/tabs-list:data-active:to-violet-500 group-data-[variant=default]/tabs-list:data-active:text-white group-data-[variant=default]/tabs-list:data-active:shadow-[0_2px_10px_-2px_rgba(99,102,241,0.45)] flex min-w-0 items-center justify-center gap-1.5 rounded-lg px-1.5 text-[11px] whitespace-nowrap sm:px-4 sm:text-[13px]";
 
   return (
     <div className="mx-auto max-w-3xl space-y-8">
@@ -118,8 +118,8 @@ export default function CapturePage() {
             <Sparkles className="size-3.5 text-indigo-500" />
             Revo OS capture
           </p>
-          <h1 className="flex items-center gap-2.5 text-2xl font-semibold tracking-tight sm:text-3xl">
-            <span className="flex size-8 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500/15 to-cyan-400/15">
+          <h1 className="flex items-center gap-2.5 text-3xl font-semibold tracking-tight sm:text-4xl">
+            <span className="flex size-9 items-center justify-center rounded-lg icon-chip">
               <Plus className="size-4 text-indigo-500" />
             </span>
             <span className="text-gradient">Capture</span>

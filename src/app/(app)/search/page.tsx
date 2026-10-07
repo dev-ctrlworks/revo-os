@@ -21,8 +21,8 @@ export default function SearchPage() {
     <div className="space-y-8">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="flex items-center gap-2.5 text-2xl font-semibold tracking-tight sm:text-3xl">
-            <span className="flex size-8 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500/15 to-cyan-400/15">
+          <h1 className="flex items-center gap-2.5 text-3xl font-semibold tracking-tight sm:text-4xl">
+            <span className="flex size-9 items-center justify-center rounded-lg icon-chip">
               <Search className="size-4 text-indigo-500" />
             </span>
             Search your <span className="text-gradient">mind</span>
@@ -93,7 +93,7 @@ function EmptySearchHistory() {
   return (
     <Card className="flex flex-col items-center justify-center border-dashed border-border/70 py-16 text-center">
       <div className="relative mb-5">
-        <div className="flex size-14 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500/15 to-cyan-400/15">
+        <div className="flex size-14 items-center justify-center rounded-2xl icon-chip">
           <Clock className="size-6 text-indigo-500" />
         </div>
       </div>

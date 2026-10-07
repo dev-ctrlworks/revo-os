@@ -39,7 +39,7 @@ const navItems = [
 function Logo({ collapsed = false }: { collapsed?: boolean }) {
   return (
     <Link href="/" className="flex items-center gap-2.5 select-none" aria-label="Revo OS home">
-      <span className="relative flex size-8 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 via-sky-500 to-cyan-400 shadow-lg shadow-indigo-500/25">
+      <span className="relative flex size-8 shrink-0 items-center justify-center rounded-xl brand-gradient shadow-lg shadow-indigo-500/25">
         <span className="absolute inset-0 rounded-xl ring-1 ring-white/20 ring-inset" />
         <BrainCircuit className="size-4 text-white" />
       </span>
@@ -77,7 +77,7 @@ function NavLinks({
                 className={cn(
                   "flex size-10 items-center justify-center rounded-xl transition-all",
                   active
-                    ? "bg-gradient-to-br from-indigo-500 to-sky-500 text-white shadow-lg shadow-indigo-500/25"
+                    ? "brand-gradient text-white shadow-lg shadow-indigo-500/25"
                     : "text-muted-foreground hover:bg-accent hover:text-foreground"
                 )}
               >
@@ -95,7 +95,7 @@ function NavLinks({
             className={cn(
               "flex items-center gap-3 rounded-xl px-3 py-2 transition-all",
               active
-                ? "bg-gradient-to-br from-indigo-500 to-sky-500 text-white shadow-lg shadow-indigo-500/25"
+                ? "brand-gradient text-white shadow-lg shadow-indigo-500/25"
                 : "text-muted-foreground hover:bg-accent hover:text-foreground"
             )}
           >
@@ -149,7 +149,7 @@ export function AppSidebar() {
         <SheetContent side="left" className="w-70 p-0">
           <SheetHeader className="h-14 items-start justify-center border-b border-border/40 px-4">
             <SheetTitle className="flex w-auto items-center gap-2.5">
-              <span className="relative flex size-8 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 via-sky-500 to-cyan-400 shadow-lg shadow-indigo-500/25">
+              <span className="relative flex size-8 items-center justify-center rounded-xl brand-gradient shadow-lg shadow-indigo-500/25">
                 <span className="absolute inset-0 rounded-xl ring-1 ring-white/20 ring-inset" />
                 <BrainCircuit className="size-4 text-white" />
               </span>

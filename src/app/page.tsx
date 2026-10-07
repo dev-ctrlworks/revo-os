@@ -68,14 +68,13 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen overflow-hidden">
       <div className="pointer-events-none fixed inset-0 -z-10">
-        <div className="absolute inset-x-0 top-0 h-[700px] bg-gradient-to-b from-indigo-500/[0.07] via-transparent to-transparent" />
-        <div className="absolute -top-40 left-1/2 h-[480px] w-[800px] -translate-x-1/2 rounded-full bg-indigo-500/10 blur-3xl" />
-        <div className="absolute right-0 top-1/4 h-[320px] w-[420px] rounded-full bg-cyan-400/10 blur-3xl" />
+        <div className="absolute inset-x-0 top-0 h-[560px] bg-gradient-to-b from-indigo-500/[0.06] via-transparent to-transparent" />
+        <div className="absolute -top-32 left-1/2 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-violet-500/[0.08] blur-3xl" />
       </div>
 
       <header className="container mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
         <Link href="/" className="flex items-center gap-2.5">
-          <span className="relative flex size-8 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 via-sky-500 to-cyan-400 shadow-lg shadow-indigo-500/25">
+          <span className="relative flex size-8 items-center justify-center rounded-xl brand-gradient shadow-lg shadow-indigo-500/25">
             <span className="absolute inset-0 rounded-xl ring-1 ring-white/20 ring-inset" />
             <BrainCircuit className="size-4 text-white" />
           </span>
@@ -97,7 +96,7 @@ export default function LandingPage() {
       </header>
 
       <main>
-        <section className="container mx-auto max-w-6xl px-5 pb-24 pt-16 text-center sm:pt-24">
+        <section className="container mx-auto max-w-6xl px-5 pb-24 pt-20 text-center sm:pt-28">
           <Badge
             variant="secondary"
             className="mb-6 gap-1.5 rounded-full border-indigo-500/20 bg-indigo-500/5 px-3 py-1 text-[11px] font-medium text-indigo-600 dark:text-indigo-400"
@@ -107,7 +106,7 @@ export default function LandingPage() {
           </Badge>
           <h1 className="animate-fade-up mx-auto max-w-3xl text-balance text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
             Your digital life,{" "}
-            <span className="animate-gradient-x bg-gradient-to-r from-indigo-500 via-sky-400 to-cyan-400 bg-clip-text text-transparent">
+            <span className="animate-gradient-x bg-gradient-to-r from-indigo-500 via-violet-400 to-purple-500 bg-clip-text text-transparent">
               with a memory.
             </span>
           </h1>
@@ -153,9 +152,9 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section id="capture" className="container mx-auto max-w-6xl px-5 py-20">
-          <div className="mx-auto mb-14 max-w-2xl text-center">
-            <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
+        <section id="capture" className="container mx-auto max-w-6xl px-5 py-24 sm:py-28">
+          <div className="mx-auto mb-16 max-w-2xl text-center">
+            <h2 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
               One memory. Every source.
             </h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">
@@ -167,9 +166,9 @@ export default function LandingPage() {
           <CaptureSources />
         </section>
 
-        <section id="architecture" className="container mx-auto max-w-6xl px-5 py-20">
-          <div className="mx-auto mb-14 max-w-2xl text-center">
-            <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
+        <section id="architecture" className="container mx-auto max-w-6xl px-5 py-24 sm:py-28">
+          <div className="mx-auto mb-16 max-w-2xl text-center">
+            <h2 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
               From anywhere you browse, into one memory.
             </h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">
@@ -180,11 +179,11 @@ export default function LandingPage() {
           <Architecture />
         </section>
 
-        <section id="how" className="container mx-auto max-w-6xl px-5 py-20">
-          <div className="mx-auto mb-14 max-w-2xl text-center">
-            <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
+        <section id="how" className="container mx-auto max-w-6xl px-5 py-24 sm:py-28">
+          <div className="mx-auto mb-16 max-w-2xl text-center">
+            <h2 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
               Capture. Understand.{" "}
-              <span className="bg-gradient-to-r from-indigo-500 via-sky-400 to-cyan-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-indigo-500 via-violet-400 to-purple-500 bg-clip-text text-transparent">
                 Ask.
               </span>
             </h2>
@@ -197,7 +196,7 @@ export default function LandingPage() {
               <div key={step.title} className="relative">
                 <Card className="h-full border-border/50 p-7 transition-all hover:-translate-y-1 hover:border-indigo-500/30 hover:shadow-lg hover:shadow-indigo-500/5">
                   <div className="flex items-center justify-between">
-                    <span className="flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500/15 to-cyan-400/15">
+                    <span className="flex size-11 items-center justify-center rounded-xl icon-chip">
                       <step.icon className="size-5 text-indigo-500" />
                     </span>
                     <span className="text-xs font-semibold text-muted-foreground/50">
@@ -215,7 +214,7 @@ export default function LandingPage() {
           </div>
 
           <div className="mx-auto mt-20 max-w-2xl text-center">
-            <h3 className="text-balance text-2xl font-semibold tracking-tight sm:text-3xl">
+            <h3 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
               It connects what you browse to what you keep.
             </h3>
             <p className="mt-3 leading-relaxed text-muted-foreground">
@@ -228,9 +227,9 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section id="ask" className="container mx-auto max-w-6xl px-5 py-20">
+        <section id="ask" className="container mx-auto max-w-6xl px-5 py-24 sm:py-28">
           <div className="mx-auto mb-10 max-w-2xl text-center">
-            <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
+            <h2 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
               Ask anything. Get answers, not links.
             </h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">
@@ -242,9 +241,9 @@ export default function LandingPage() {
           <SearchDemo />
         </section>
 
-        <section id="product" className="container mx-auto max-w-6xl px-5 py-20">
+        <section id="product" className="container mx-auto max-w-6xl px-5 py-24 sm:py-28">
           <div className="mx-auto mb-4 max-w-2xl text-center">
-            <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
+            <h2 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
               Everything lands in place, as it happens.
             </h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">
@@ -255,11 +254,11 @@ export default function LandingPage() {
           <ProductShowcase />
         </section>
 
-        <section id="privacy" className="container mx-auto max-w-6xl px-5 py-20">
+        <section id="privacy" className="container mx-auto max-w-6xl px-5 py-24 sm:py-28">
           <Privacy />
         </section>
 
-        <section id="waitlist" className="container mx-auto max-w-6xl px-5 py-20">
+        <section id="waitlist" className="container mx-auto max-w-6xl px-5 py-24 sm:py-28">
           <div className="mx-auto max-w-2xl text-center">
             <Badge
               variant="secondary"
@@ -268,7 +267,7 @@ export default function LandingPage() {
               <Sparkles className="size-3" />
               Private preview · forming now
             </Badge>
-            <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
+            <h2 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
               Be first in line for a brain that remembers.
             </h2>
             <p className="mx-auto mt-4 max-w-xl leading-relaxed text-muted-foreground">
@@ -299,7 +298,7 @@ export default function LandingPage() {
                 key={title}
                 className="relative overflow-hidden border-border/50 p-6 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-indigo-500/5"
               >
-                <div className="mb-4 flex size-10 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500/15 to-cyan-400/15">
+                <div className="mb-4 flex size-10 items-center justify-center rounded-xl icon-chip">
                   <Icon className="size-5 text-indigo-500" />
                 </div>
                 <h3 className="font-semibold tracking-tight">{title}</h3>
@@ -309,12 +308,12 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="container mx-auto max-w-6xl px-5 pb-24 pt-20">
-          <div className="rounded-3xl bg-gradient-to-br from-indigo-500 via-sky-500 to-cyan-400 p-px shadow-xl shadow-indigo-500/20">
+        <section className="container mx-auto max-w-6xl px-5 pb-28 pt-24">
+          <div className="rounded-3xl brand-gradient p-px shadow-xl shadow-indigo-500/20">
             <div className="rounded-[calc(1.5rem-1px)] bg-card/95 px-6 py-20 text-center backdrop-blur sm:px-16">
               <div className="relative mx-auto mb-6 flex size-12 items-center justify-center">
-                <span className="absolute inset-0 rounded-2xl bg-gradient-to-br from-indigo-500 via-sky-500 to-cyan-400 opacity-20 blur-lg" />
-                <span className="relative flex size-12 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 via-sky-500 to-cyan-400 shadow-lg shadow-indigo-500/25">
+                <span className="absolute inset-0 rounded-2xl brand-gradient opacity-20 blur-lg" />
+                <span className="relative flex size-12 items-center justify-center rounded-2xl brand-gradient shadow-lg shadow-indigo-500/25">
                   <span className="absolute inset-0 rounded-2xl ring-1 ring-white/25 ring-inset" />
                   <BrainCircuit className="size-5 text-white" />
                 </span>

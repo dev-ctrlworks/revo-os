@@ -128,7 +128,7 @@ export function BrowserPanel({ onToast }: { onToast: (message: string) => void }
           {phase === "loaded" && (
             <div className="p-5">
               <div className="flex items-start gap-3">
-                <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500/15 to-cyan-400/15 text-sm font-bold text-indigo-500 ring-1 ring-inset ring-indigo-500/10">
+                <span className="flex size-9 shrink-0 items-center justify-center rounded-xl icon-chip text-sm font-bold text-indigo-500 ring-1 ring-inset ring-indigo-500/10">
                   {page.hostname.charAt(0).toUpperCase()}
                 </span>
                 <div className="min-w-0 flex-1">

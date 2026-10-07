@@ -42,7 +42,7 @@ export default function DashboardPage() {
           </span>
         </p>
         <h1 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
-          What do you <span className="animate-gradient-x bg-gradient-to-r from-indigo-500 via-sky-400 to-cyan-400 bg-clip-text text-transparent">remember?</span>
+          What do you <span className="animate-gradient-x bg-gradient-to-r from-indigo-500 via-violet-400 to-purple-500 bg-clip-text text-transparent">remember?</span>
         </h1>
         <p className="mt-3 max-w-xl text-sm text-muted-foreground sm:text-base">
           Ask in plain language. Revo OS searches {memories.length} memories and
@@ -83,7 +83,7 @@ export default function DashboardPage() {
             },
           ].map((stat) => (
             <Card key={stat.label} className="border-border/50 p-5">
-              <div className="mb-2 flex size-8 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500/15 to-cyan-400/15">
+              <div className="mb-2 flex size-8 items-center justify-center rounded-lg icon-chip">
                 <stat.icon className="size-4 text-indigo-500" />
               </div>
               <p className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">

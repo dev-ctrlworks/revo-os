@@ -164,7 +164,7 @@ function SectionHeading({
           className={cn(
             "flex size-7 shrink-0 items-center justify-center rounded-lg",
             accent
-              ? "bg-gradient-to-br from-indigo-500/15 to-cyan-400/15 text-indigo-500"
+              ? "icon-chip text-indigo-500"
               : "bg-muted"
           )}
         >
@@ -544,7 +544,7 @@ function NoticedCard({
     connections.push(`Captured from ${memory.source}.`);
 
   return (
-    <Card className="overflow-hidden border-indigo-500/20 bg-gradient-to-br from-indigo-500/[0.08] to-cyan-400/[0.04]">
+    <Card className="overflow-hidden border-indigo-500/20 bg-gradient-to-br from-indigo-500/[0.08] to-purple-500/[0.04]">
       <div className="px-5 pt-5">
         <p className="flex items-center gap-2 text-xs font-semibold text-indigo-500">
           <span className="inline-flex size-6 items-center justify-center rounded-lg bg-indigo-500/10">
@@ -922,7 +922,7 @@ export default function MemoryDetailPage() {
                   </span>
                 )}
               </div>
-              <h1 className="mt-3.5 max-w-3xl text-2xl font-semibold leading-tight tracking-tight sm:text-3xl">
+              <h1 className="mt-3.5 max-w-3xl text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
                 {memory.title}
               </h1>
               <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-muted-foreground">
@@ -1150,7 +1150,7 @@ export default function MemoryDetailPage() {
             <div className="min-w-0 space-y-6">
               {summary && (
                 <Card className="overflow-hidden border-indigo-500/20">
-                  <div className="bg-gradient-to-br from-indigo-500/[0.08] to-cyan-400/[0.04] p-5 sm:p-6">
+                  <div className="bg-gradient-to-br from-indigo-500/[0.08] to-purple-500/[0.04] p-5 sm:p-6">
                     <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-indigo-500">
                       <span className="inline-flex size-6 items-center justify-center rounded-lg bg-indigo-500/10">
                         <Sparkles className="size-3.5" />
