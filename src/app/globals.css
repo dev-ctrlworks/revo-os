@@ -152,6 +152,22 @@
     stroke-dasharray: 3 3;
     animation: pathFlow 1.4s linear infinite;
   }
+  .animate-track {
+    animation: trackTravel 7s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+  }
+  .animate-tape {
+    animation: tapeScroll 26s linear infinite;
+  }
+  .animate-beam-dash {
+    background-image: repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 6px,
+      rgba(255, 255, 255, 0.5) 6px,
+      rgba(255, 255, 255, 0.5) 9px
+    );
+    animation: beamStrip 2.2s linear infinite;
+  }
   .text-gradient {
     background-image: linear-gradient(90deg, #7c5cff, #5c9bff 50%, #38bdf8);
     -webkit-background-clip: text;
@@ -357,6 +373,30 @@
   }
   to {
     stroke-dashoffset: -24;
+  }
+}
+
+@keyframes trackTravel {
+  from {
+    left: -3%;
+  }
+  to {
+    left: 103%;
+  }
+}
+
+@keyframes tapeScroll {
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes beamStrip {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: 9px;
   }
 }
 
