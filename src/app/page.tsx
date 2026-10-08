@@ -212,7 +212,7 @@ export default function LandingPage() {
               lead="Revo OS captures and connects what you already leave behind — notes, screenshots, links, documents, and browsing — then makes it queryable as one memory."
             />
             <p className="hidden text-right text-sm text-muted-foreground lg:block">
-              Eight sources in the pipeline — every one opt-in, every one connected.
+              Six sources, one memory — every one opt-in, every one connected.
             </p>
           </div>
           <Reveal className="mt-10" y={32}>
