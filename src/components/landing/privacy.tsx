@@ -1,4 +1,4 @@
-import { Lock, ShieldCheck, ToggleLeft, Check } from "lucide-react";
+import { Lock, ShieldCheck, ToggleLeft, Check, HardDrive, RotateCcw, Filter } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const accessRows = [
@@ -8,18 +8,23 @@ const accessRows = [
   { label: "Emails", detail: "Off until you turn it on", on: false },
 ];
 
+const guarantees = [
+  { icon: HardDrive, title: "Local-first", text: "Only what you choose ever leaves your device." },
+  { icon: Filter, title: "Opt-in per source", text: "Nothing is captured until you allow it." },
+  { icon: RotateCcw, title: "Revocable anytime", text: "Turn any source off; capture stops immediately." },
+];
+
 const planks = [
-  "Opt in per source — nothing is captured until you allow it.",
   "Every app asks before accessing anything, and explains why.",
-  "Revoke any source at any time; capture stops immediately.",
-  "Processing is local-first — only what you choose ever leaves your device.",
+  "You explicitly choose what it can access — browsing, bookmarks, files.",
+  "Answers are grounded only in what you allowed in.",
 ];
 
 export function Privacy() {
   return (
-    <div className="grid items-center gap-12 lg:grid-cols-2">
+    <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.1fr]">
       <div>
-        <div className="mb-4 flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-3 py-1 text-[11px] font-medium text-emerald-600 dark:text-emerald-400">
+        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-3 py-1 text-[11px] font-medium text-emerald-600 dark:text-emerald-400">
           <Lock className="size-3" />
           Your data stays yours
         </div>
@@ -27,10 +32,10 @@ export function Privacy() {
           You decide what Revo OS sees.
         </h2>
         <p className="mt-4 leading-relaxed text-muted-foreground">
-          Revo OS is a memory system, not a surveillance tool. You explicitly
-          choose what it can access — browsing, bookmarks, files — and it works
-          only within what you grant.
+          A memory system, not a surveillance tool. Revo OS works only within
+          what you grant — per source, per app, revoked anytime.
         </p>
+
         <ul className="mt-7 space-y-3.5">
           {planks.map((plank) => (
             <li key={plank} className="flex items-start gap-3 text-sm">
@@ -41,22 +46,32 @@ export function Privacy() {
             </li>
           ))}
         </ul>
+
+        <div className="mt-8 grid gap-3 sm:grid-cols-3">
+          {guarantees.map(({ icon: Icon, title, text }) => (
+            <div key={title} className="rounded-xl border border-border/60 bg-card/50 p-3.5">
+              <Icon className="size-4 text-emerald-500" />
+              <p className="mt-2 text-[13px] font-medium">{title}</p>
+              <p className="mt-1 text-[11px] leading-snug text-muted-foreground">{text}</p>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="relative">
-        <div className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center">
-          <div className="size-72 rounded-full bg-gradient-to-br from-aurora-2/20 to-aurora-3/15 blur-2xl" />
-        </div>
+        <span className="absolute -right-3 -top-3 z-10 flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-card/90 px-3 py-1 text-[11px] font-medium text-emerald-600 shadow-lg backdrop-blur dark:text-emerald-400">
+          <ShieldCheck className="size-3.5" />
+          Requesting permission
+        </span>
 
-        <div className="animate-fade-up rounded-2xl border border-border/60 bg-card/80 p-5 shadow-[0_32px_90px_-32px_color-mix(in_oklab,var(--aurora-2)_60%,transparent)] ring-glow backdrop-blur">
+        <div className="relative overflow-hidden rounded-2xl border border-border/60 bg-card/80 p-5 shadow-[0_32px_90px_-32px_color-mix(in_oklab,var(--aurora-2)_60%,transparent)] ring-glow backdrop-blur">
           <div className="mb-4 flex items-center justify-between border-b border-border/60 pb-4">
             <div>
               <p className="text-sm font-semibold tracking-tight">Access permissions</p>
               <p className="text-[11px] text-muted-foreground">Revo OS · Browser Extension</p>
             </div>
-            <span className="flex items-center gap-1 rounded-full bg-emerald-500/10 px-2.5 py-1 text-[10px] font-medium text-emerald-600 dark:text-emerald-400">
-              <ShieldCheck className="size-3" />
-              Requesting permission
+            <span className="rounded-full bg-emerald-500/10 px-2.5 py-1 text-[10px] font-medium text-emerald-600 dark:text-emerald-400">
+              Your call
             </span>
           </div>
 
@@ -77,7 +92,7 @@ export function Privacy() {
                   aria-checked={row.on}
                   className={cn(
                     "relative inline-flex h-5 w-9 shrink-0 items-center rounded-full transition-colors",
-                    row.on ? "bg-aurora-2 shadow-[0_0_16px_-2px_color-mix(in_oklab,var(--aurora-2)_70%,transparent)]" : "bg-muted border border-border"
+                    row.on ? "bg-aurora-2 shadow-[0_0_16px_-2px_color-mix(in_oklab,var(--aurora-2)_70%,transparent)]" : "border border-border bg-muted"
                   )}
                 >
                   <span

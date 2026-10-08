@@ -7,7 +7,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     <div className="relative min-h-screen overflow-hidden">
       <AuroraBackground />
       <AppSidebar />
-      <main className="lg:pl-16">{children}</main>
+      <main className="lg:pl-64">{children}</main>
     </div>
   );
 }

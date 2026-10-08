@@ -23,12 +23,14 @@ export function AISearchBar({
   autoFocus = false,
   initialQuery,
   big = false,
+  suggestions,
 }: {
   onAnswer?: (answer: AIAnswer) => void;
   onLoadingChange?: (query: string | null) => void;
   autoFocus?: boolean;
   initialQuery?: string;
   big?: boolean;
+  suggestions?: { label: string; query: string }[];
 }) {
   const [query, setQuery] = useState(initialQuery ?? "");
   const [loading, setLoading] = useState(false);
@@ -132,7 +134,7 @@ export function AISearchBar({
         </form>
       </div>
 
-      {big && (
+      {big && !suggestions && (
         <div className="mt-3 flex flex-wrap items-center gap-2">
           <span className="text-xs text-muted-foreground">Try:</span>
           {exampleQueries.slice(0, 4).map((q) => (
@@ -147,6 +149,26 @@ export function AISearchBar({
               className="rounded-full border border-border/60 bg-card/50 px-2.5 py-1 text-xs text-muted-foreground transition-colors hover:border-aurora-2/40 hover:text-foreground disabled:opacity-50"
             >
               {q}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {big && suggestions && (
+        <div className="mt-3.5 grid gap-2 sm:grid-cols-2">
+          {suggestions.map((s) => (
+            <button
+              key={s.query}
+              type="button"
+              onClick={() => {
+                setQuery(s.query);
+                runSearch(s.query);
+              }}
+              disabled={loading}
+              className="group flex items-center justify-between gap-2 rounded-xl border border-border/60 bg-card/50 px-3.5 py-3 text-left text-[13px] text-muted-foreground transition-all hover:border-aurora-2/40 hover:bg-card hover:text-foreground disabled:opacity-50"
+            >
+              <span className="line-clamp-2 leading-snug">{s.label}</span>
+              <ArrowRight className="size-3.5 shrink-0 text-aurora-2 transition-transform group-hover:translate-x-0.5" />
             </button>
           ))}
         </div>

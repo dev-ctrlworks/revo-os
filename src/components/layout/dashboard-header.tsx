@@ -16,12 +16,13 @@ export function DashboardHeader() {
   return (
     <header className="sticky top-0 z-20 flex h-14 items-center justify-between gap-4 border-b border-border/70 glass px-4 sm:px-6">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-aurora-2/70 to-transparent" />
-      <div className="flex items-center gap-3 lg:hidden">
-        <span className="aurora-text text-sm font-display font-semibold tracking-tight">Revo OS</span>
-      </div>
-
-      <div className="ml-10 hidden w-full max-w-md lg:block lg:ml-0">
-        <CommandPaletteTrigger />
+      <div className="flex w-full items-center gap-3 lg:ml-0 lg:w-auto lg:min-w-0">
+        <span className="aurora-text shrink-0 text-sm font-display font-semibold tracking-tight lg:hidden">
+          Revo OS
+        </span>
+        <div className="w-full lg:w-72">
+          <CommandPaletteTrigger />
+        </div>
       </div>
 
       <div className="flex items-center gap-2 sm:gap-3">

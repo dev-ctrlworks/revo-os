@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, BrainCircuit, FileText, Monitor, Search, StickyNote } from "lucide-react";
+import { FileText, Monitor, Search, StickyNote, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const browsing = [
@@ -6,10 +6,11 @@ const browsing = [
     label: "“Tamron 24-70mm f/2.8 review”",
     detail: "Web search · yesterday",
     matched: true,
+    link: "1",
   },
   {
     label: "“Summit rent trends 2026”",
-    detail: "Web … · Wednesday",
+    detail: "Web search · Wednesday",
     matched: false,
   },
   {
@@ -25,6 +26,7 @@ const saved = [
     label: "Camera decision criteria",
     detail: "Note · within budget & shortlist",
     matched: true,
+    link: "1",
   },
   {
     icon: FileText,
@@ -42,92 +44,88 @@ const saved = [
 
 export function ConnectionDiagram() {
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-border/50 bg-gradient-to-b from-muted/40 to-background p-6 shadow-lg shadow-black/5 sm:p-8">
-      <div className="pointer-events-none absolute -left-20 top-1/2 size-64 -translate-y-1/2 rounded-full bg-aurora-2/15 blur-2xl" />
-      <div className="pointer-events-none absolute -right-20 top-1/2 size-64 -translate-y-1/2 rounded-full bg-aurora-3/15 blur-2xl" />
+    <div className="relative overflow-hidden rounded-3xl border border-border/50 bg-gradient-to-b from-muted/40 to-background p-6 sm:p-10">
+      <div className="pointer-events-none absolute -left-24 top-0 size-72 rounded-full bg-aurora-2/15 blur-3xl" />
+      <div className="pointer-events-none absolute -right-24 bottom-0 size-72 rounded-full bg-aurora-3/15 blur-3xl" />
 
-      <div className="relative grid items-center gap-8 md:grid-cols-[1fr_auto_1fr]">
+      <div className="relative mx-auto -mt-12 mb-8 flex w-max max-w-full items-center gap-2 rounded-full border border-aurora-2/30 bg-card/90 px-4 py-1.5 text-xs font-medium shadow-[0_16px_40px_-16px_color-mix(in_oklab,var(--aurora-2)_60%,transparent)] backdrop-blur sm:-mt-16">
+        <Sparkles className="size-3.5 text-aurora-2" />
+        Revo OS found a thread
+        <span className="text-muted-foreground/60">·</span>
+        Tamron lens research
+      </div>
+
+      <div className="relative grid items-center gap-8 md:grid-cols-2 md:gap-12">
         <div className="space-y-3">
-          <p className="mb-3 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
-            While you browse
+          <p className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+            While you browsed
           </p>
           {browsing.map((item) => (
-            <div
-              key={item.label}
-              className={cn(
-                "flex items-start gap-2.5 rounded-xl border border-border/60 bg-card/70 p-3 backdrop-blur",
-                item.matched && "border-aurora-2/50 ring-1 ring-aurora-2/20"
-              )}
-            >
-              <span
-                className={cn(
-                  "mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-md",
-                  item.matched ? "bg-aurora-2/15 text-aurora-2" : "bg-muted text-muted-foreground"
-                )}
-              >
-                <Search className="size-3.5" />
-              </span>
-              <div className="min-w-0">
-                <p className="line-clamp-1 text-[13px] font-medium">{item.label}</p>
-                <p className="text-[11px] text-muted-foreground">{item.detail}</p>
-              </div>
-            </div>
+            <Row key={item.label} item={item} rightAligned={false} />
           ))}
         </div>
 
-        <div className="flex items-center justify-center gap-2">
-          <ArrowLeft className="hidden size-4 text-aurora-2/60 animate-pulse md:block" />
-          <div className="relative">
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-aurora-2/30 to-aurora-3/25 blur-lg" />
-            <div className="relative flex size-24 flex-col items-center justify-center rounded-2xl brand-gradient shadow-[0_20px_50px_-20px_color-mix(in_oklab,var(--aurora-2)_70%,transparent)]">
-              <span className="absolute inset-0 rounded-2xl ring-1 ring-white/25 ring-inset" />
-              <BrainCircuit className="size-7 text-white" />
-              <span className="mt-1.5 text-[10px] font-semibold text-white/90">Memory</span>
-            </div>
-          </div>
-          <ArrowRight className="hidden size-4 text-aurora-2/60 animate-pulse md:block" />
-        </div>
-
         <div className="space-y-3">
-          <p className="mb-3 text-right text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
-            It connects to what you saved
+          <p className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground md:text-right">
+            It connected to what you kept
           </p>
-          {saved.map(({ icon: Icon, label, detail, matched }) => (
-            <div
-              key={label}
-              className={cn(
-                "flex items-start gap-2.5 rounded-xl border border-border/60 bg-card/70 p-3 backdrop-blur md:flex-row-reverse md:text-right",
-                matched && "border-aurora-2/50 ring-1 ring-aurora-2/20"
-              )}
-            >
-              <span
-                className={cn(
-                  "mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-md",
-                  matched ? "bg-aurora-2/15 text-aurora-2" : "bg-muted text-muted-foreground"
-                )}
-              >
-                <Icon className="size-3.5" />
-              </span>
-              <div className="min-w-0">
-                <p className="line-clamp-1 text-[13px] font-medium">{label}</p>
-                <p className="text-[11px] text-muted-foreground">{detail}</p>
-              </div>
-            </div>
+          {saved.map(({ icon: Icon, ...rest }) => (
+            <Row key={rest.label} item={rest} icon={Icon} rightAligned />
           ))}
         </div>
       </div>
 
-      <p className="mt-8 text-center text-[13px] text-muted-foreground">
-        AI found the thread: your{" "}
-        <span className="font-medium text-aurora-2">
-          Tamron lens research
-        </span>{" "}
-        links to your{" "}
-        <span className="font-medium text-aurora-2">
-          camera decision note
-        </span>{" "}
-        — two fragments, one through-line.
-      </p>
+      <div className="relative mt-8 flex flex-wrap items-center justify-center gap-2">
+        {["camera-decision.md", "tamron review", "budget screenshot"].map((chip) => (
+          <span
+            key={chip}
+            className="rounded-full border border-border/60 bg-card/70 px-3 py-1 text-xs text-muted-foreground"
+          >
+            {chip}
+          </span>
+        ))}
+        <span className="rounded-full border border-aurora-2/30 bg-aurora-2/10 px-3 py-1 text-xs font-medium text-aurora-2">
+          One through-line
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function Row({
+  item,
+  icon: Icon = Search,
+  rightAligned,
+}: {
+  item: { label: string; detail: string; matched: boolean; link?: string };
+  icon?: React.ComponentType<{ className?: string }>;
+  rightAligned: boolean;
+}) {
+  return (
+    <div
+      className={cn(
+        "flex items-start gap-2.5 rounded-xl border bg-card/70 p-3 backdrop-blur transition-colors",
+        item.matched ? "border-aurora-2/50 ring-1 ring-aurora-2/20" : "border-border/60",
+        rightAligned && "md:flex-row-reverse md:text-right"
+      )}
+    >
+      <span
+        className={cn(
+          "relative mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-md",
+          item.matched ? "bg-aurora-2/15 text-aurora-2" : "bg-muted text-muted-foreground"
+        )}
+      >
+        <Icon className="size-3.5" />
+        {item.matched && item.link && (
+          <span className="absolute -right-1.5 -top-1.5 flex size-4 items-center justify-center rounded-full bg-aurora-2 text-[9px] font-semibold text-white">
+            {item.link}
+          </span>
+        )}
+      </span>
+      <div className="min-w-0">
+        <p className="line-clamp-1 text-[13px] font-medium">{item.label}</p>
+        <p className="text-[11px] text-muted-foreground">{item.detail}</p>
+      </div>
     </div>
   );
 }

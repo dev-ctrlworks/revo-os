@@ -1,145 +1,90 @@
-import { Search, CalendarDays, FolderOpen, Network, BookOpenText } from "lucide-react";
+import { BookOpenText, Search, Sparkles } from "lucide-react";
 import { memories } from "@/lib/mock-data";
 import { MemoryTypeIcon } from "@/components/memories/memory-type-icon";
-import type { MemoryType } from "@/lib/types";
-
-const typeLabels: Record<MemoryType, string> = {
-  screenshot: "Screenshot",
-  note: "Note",
-  document: "Document",
-  link: "Link",
-  image: "Image",
-  discussion: "Conversation",
-  email: "Email",
-  archive: "Archive",
-};
 
 const sourceIds = ["m1", "m3", "m4", "m5"];
 const sources = sourceIds
   .map((id) => memories.find((m) => m.id === id))
   .filter((m) => m !== undefined);
 
-const floatingChips = [
-  { id: "m6", position: "-left-6 top-24 -rotate-6", delay: "0s" },
-  { id: "m11", position: "-right-8 top-8 rotate-3", delay: "1.2s" },
-  { id: "m13", position: "-left-4 bottom-24 rotate-2", delay: "2s" },
-];
-
 export function MemoryPreview() {
   return (
-    <div className="relative mx-auto mt-16 w-full max-w-4xl">
+    <div className="relative mx-auto mt-16 w-full max-w-xl">
       <div className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center">
-        <div className="h-[420px] w-[720px] rounded-full bg-gradient-to-br from-aurora-2/20 via-aurora-2/[0.12] to-aurora-3/20 blur-2xl" />
+        <div className="h-80 w-80 rounded-full bg-gradient-to-br from-aurora-2/25 via-aurora-2/[0.12] to-aurora-3/25 blur-2xl" />
       </div>
 
-      <div className="animate-fade-up relative overflow-hidden rounded-2xl border border-border/70 bg-card/80 shadow-[0_48px_120px_-40px_color-mix(in_oklab,var(--aurora-2)_65%,transparent)] ring-glow backdrop-blur-xl">
-        <div className="flex items-center gap-3 border-b border-border/60 bg-muted/30 px-4 py-2.5">
-          <div className="flex gap-1.5">
-            <span className="size-2.5 rounded-full bg-red-400/80" />
-            <span className="size-2.5 rounded-full bg-amber-400/80" />
-            <span className="size-2.5 rounded-full bg-emerald-400/80" />
-          </div>
-          <div className="mx-auto flex items-center gap-1.5 rounded-md bg-background/70 px-3 py-1 text-[11px] text-muted-foreground ring-1 ring-border/50">
-            <span className="size-1.5 rounded-full bg-emerald-400" />
-            revo.app/search
-          </div>
-          <span className="hidden text-[10px] text-muted-foreground sm:block">prototype</span>
+      <div className="space-y-4">
+        <div className="animate-fade-up flex items-center gap-2.5 rounded-2xl border border-border/70 bg-card/80 px-4 py-3 shadow-[0_24px_70px_-28px_color-mix(in_oklab,var(--aurora-2)_60%,transparent)] ring-glow backdrop-blur-xl">
+          <Search className="size-4 shrink-0 text-aurora-2" />
+          <p className="truncate text-sm text-foreground/90">
+            What cameras have I been considering?
+          </p>
+          <span className="ml-auto inline-block h-4 w-[2px] animate-pulse rounded-full bg-aurora-2" />
+          <span className="hidden shrink-0 items-center gap-1 rounded-lg bg-aurora-2 px-2.5 py-1 text-[11px] font-medium text-white sm:inline-flex">
+            Ask
+            <span className="text-white/60">↵</span>
+          </span>
         </div>
 
-        <div className="grid md:grid-cols-[220px_1fr]">
-          <aside className="hidden border-r border-border/60 p-4 md:block">
-            <div className="mb-6 flex items-center gap-2">
-              <span className="flex size-7 items-center justify-center rounded-lg brand-gradient shadow-[0_10px_24px_-8px_color-mix(in_oklab,var(--aurora-2)_60%,transparent)]">
-                <Network className="size-3.5 text-white" />
-              </span>
-              <span className="text-sm font-semibold tracking-tight">Revo OS</span>
-            </div>
-            <nav className="space-y-1 text-sm">
-              <a className="flex items-center gap-2.5 rounded-lg bg-aurora-2/15 px-2.5 py-2 text-aurora-2">
-                <Search className="size-4" />
-                Ask
-              </a>
-              <a className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-muted-foreground transition-colors hover:bg-muted/50 hover:text-foreground">
-                <CalendarDays className="size-4" />
-                Timeline
-              </a>
-              <a className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-muted-foreground transition-colors hover:bg-muted/50 hover:text-foreground">
-                <FolderOpen className="size-4" />
-                Collections
-              </a>
-            </nav>
-          </aside>
-
-          <div className="p-4 sm:p-6">
-            <div className="flex items-center gap-2 rounded-xl border border-border/60 bg-background/60 px-3.5 py-2.5 text-sm text-muted-foreground">
-              <Search className="size-4 text-aurora-2" />
-              What cameras have I been considering?
-              <span className="ml-auto size-1.5 animate-pulse rounded-full bg-aurora-2" />
-            </div>
-
-            <div className="mt-4 rounded-xl border border-aurora-2/25 bg-gradient-to-br from-aurora-2/[0.09] via-card to-card/70 p-5 shadow-[0_24px_80px_-32px_color-mix(in_oklab,var(--aurora-2)_60%,transparent)]">
-              <div className="mb-1.5 flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
-                <BookOpenText className="size-3.5 text-aurora-2" />
-                AI summary
-                <span className="text-muted-foreground/60">•</span>
-                <span>just now</span>
-              </div>
-              <p className="text-sm leading-relaxed text-foreground/90">
-                You have <strong className="font-semibold text-aurora-2">3 cameras</strong>{" "}
-                on your shortlist: the <strong className="font-semibold">Sony A7 IV</strong>,{" "}
-                <strong className="font-semibold">Nikon Z6 III</strong>, and{" "}
-                <strong className="font-semibold">Fujifilm X-T5</strong> — all within your{" "}
-                <strong className="font-semibold text-aurora-2">$2,800 budget</strong>.
-                Based on your decision criteria, the A7 IV fits best: full-frame, 4K60, IBIS, and
-                refurb deals are acceptable.
-              </p>
-            </div>
-
-            <div className="mt-4 flex items-center gap-2 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
-              <span className="flex size-5 items-center justify-center rounded-full bg-aurora-2/15 text-[10px] font-semibold text-aurora-2">
-                {sources.length}
-              </span>
-              Source memories
-            </div>
-            <div className="mt-2 grid gap-2 sm:grid-cols-2">
-              {sources.map((memory) => (
-                <div
-                  key={memory.id}
-                  className="flex items-center gap-2.5 rounded-xl border border-border/60 bg-card/50 p-2.5 transition-all duration-300 hover:border-aurora-2/40 hover:bg-card"
-                >
-                  <MemoryTypeIcon type={memory.type} />
-                  <div className="min-w-0">
-                    <p className="line-clamp-1 text-[13px] font-medium">{memory.title}</p>
-                    <p className="text-[11px] text-muted-foreground">
-                      {typeLabels[memory.type]} · {memory.collection}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
+        <div className="animate-fade-up delay-100 relative overflow-hidden rounded-2xl border border-aurora-2/25 bg-gradient-to-br from-aurora-2/[0.10] via-card to-card/70 p-5 shadow-[0_32px_100px_-32px_color-mix(in_oklab,var(--aurora-2)_65%,transparent)]">
+          <div className="mb-2.5 flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+            <BookOpenText className="size-3.5 text-aurora-2" />
+            Memory recall
+            <span className="text-muted-foreground/60">•</span>
+            <span>grounded in {sources.length} sources</span>
           </div>
+          <p className="text-sm leading-relaxed text-foreground/90">
+            You have <strong className="font-semibold text-aurora-2">3 cameras</strong> on your
+            shortlist: the <strong className="font-semibold">Sony A7 IV</strong>,{" "}
+            <strong className="font-semibold">Nikon Z6 III</strong>, and{" "}
+            <strong className="font-semibold">Fujifilm X-T5</strong> — all within your{" "}
+            <strong className="font-semibold text-aurora-2">$2,800 budget</strong>. Based on your
+            decision criteria, the A7 IV fits best.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-1.5">
+            {sources.map((memory) => (
+              <span
+                key={memory.id}
+                className="inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-card/70 px-2.5 py-1 text-[11px] text-muted-foreground"
+              >
+                <MemoryTypeIcon type={memory.type} size="sm" className="size-auto" />
+                <span className="line-clamp-1">{memory.title}</span>
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="animate-fade-up delay-150 flex items-center justify-center gap-2 text-[11px] text-muted-foreground">
+          <span className="flex size-5 items-center justify-center rounded-full bg-aurora-2/15 text-[10px] font-semibold text-aurora-2">
+            4
+          </span>
+          sources matched from 38 memories
+          <span className="size-1 rounded-full bg-aurora-2/40" />
+          <span className="inline-flex items-center gap-1">
+            <Sparkles className="size-3 text-aurora-2" />
+            local-first
+          </span>
         </div>
       </div>
 
-      {floatingChips.map((chip) => {
-        const memory = memories.find((m) => m.id === chip.id);
-        if (!memory) return null;
-        return (
-          <div
-            key={chip.id}
-            className={`animate-float absolute ${chip.position} hidden w-44 rounded-xl border border-border/60 bg-card/90 p-3 shadow-xl shadow-black/5 backdrop-blur-lg lg:block`}
-            style={{ animationDelay: chip.delay }}
-          >
-            <div className="mb-1.5 flex items-center gap-1.5">
-              <MemoryTypeIcon type={memory.type} />
-              <p className="line-clamp-1 text-[11px] font-semibold">{memory.title}</p>
-            </div>
-            <p className="line-clamp-2 text-[10px] leading-relaxed text-muted-foreground">
-              {memory.highlight ?? memory.content}
-            </p>
-          </div>
-        );
-      })}
+      <div className="animate-float absolute -right-6 -top-10 hidden w-44 rounded-xl border border-border/60 bg-card/90 p-3 shadow-xl shadow-black/5 backdrop-blur-lg lg:block" style={{ animationDelay: "0.4s" }}>
+        <p className="mb-1 text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
+          Just captured
+        </p>
+        <p className="line-clamp-2 text-[11px] leading-relaxed text-foreground/85">
+          tamron-24-70-review.jpg indexed
+        </p>
+      </div>
+
+      <div className="animate-float absolute -bottom-8 -right-10 hidden w-48 rounded-xl border border-aurora-2/30 bg-card/90 p-3 shadow-xl shadow-black/5 backdrop-blur-lg lg:block" style={{ animationDelay: "1.6s" }}>
+        <p className="mb-1 text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
+          Thread linked
+        </p>
+        <p className="line-clamp-2 text-[11px] leading-relaxed text-foreground/85">
+          “camera decision” ↔ “Tamron lens research”
+        </p>
+      </div>
     </div>
   );
 }
