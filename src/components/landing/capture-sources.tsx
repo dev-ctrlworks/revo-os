@@ -105,9 +105,8 @@ function BentoCell({
 
   return (
     <Card
-      className={`group relative flex flex-col justify-between overflow-hidden border-border/60 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-aurora-2/40 hover:shadow-[0_24px_64px_-28px_color-mix(in_oklab,var(--aurora-2)_60%,transparent)] ${className}`}
+      className={`group relative flex flex-col justify-between overflow-hidden border-border/60 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-aurora-2/40 hover:shadow-sm ${className}`}
     >
-      <div className="absolute right-0 top-0 h-24 w-24 rounded-bl-full bg-gradient-to-br from-aurora-2/[0.12] to-aurora-3/[0.06] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
       <div className="relative h-full">
         <span className="mb-3 inline-flex size-9 items-center justify-center rounded-lg icon-chip">
           <Icon className={`size-4 ${chip}`} />

@@ -44,11 +44,8 @@ const saved = [
 
 export function ConnectionDiagram() {
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-border/50 bg-gradient-to-b from-muted/40 to-background p-6 sm:p-10">
-      <div className="pointer-events-none absolute -left-24 top-0 size-72 rounded-full bg-aurora-2/15 blur-3xl" />
-      <div className="pointer-events-none absolute -right-24 bottom-0 size-72 rounded-full bg-aurora-3/15 blur-3xl" />
-
-      <div className="relative mx-auto -mt-12 mb-8 flex w-max max-w-full items-center gap-2 rounded-full border border-aurora-2/30 bg-card/90 px-4 py-1.5 text-xs font-medium shadow-[0_16px_40px_-16px_color-mix(in_oklab,var(--aurora-2)_60%,transparent)] backdrop-blur sm:-mt-16">
+    <div className="relative overflow-hidden rounded-3xl border border-border/70 bg-card/40 p-6 shadow-sm sm:p-10">
+      <div className="relative mx-auto -mt-12 mb-8 flex w-max max-w-full items-center gap-2 rounded-full border border-aurora-2/30 bg-card px-4 py-1.5 text-xs font-medium shadow-sm sm:-mt-16">
         <Sparkles className="size-3.5 text-aurora-2" />
         Revo OS found a thread
         <span className="text-muted-foreground/60">·</span>

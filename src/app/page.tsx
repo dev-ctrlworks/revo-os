@@ -12,7 +12,6 @@ import {
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { AuroraBackground } from "@/components/motion/aurora-background";
 import { CountUp } from "@/components/motion/count-up";
 import { Reveal } from "@/components/motion/reveal";
 import { Stagger, StaggerItem } from "@/components/motion/stagger";
@@ -95,9 +94,7 @@ export default function LandingPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <AuroraBackground />
-
-      <header className="sticky top-0 z-40 border-b border-border/70 glass">
+      <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-xl">
         <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-5">
           <Link href="/" className="flex items-center gap-2.5">
             <span className="relative flex size-8 items-center justify-center rounded-xl brand-gradient shadow-[0_8px_24px_-6px_color-mix(in_oklab,var(--aurora-2)_70%,transparent)]">
@@ -124,7 +121,11 @@ export default function LandingPage() {
       </header>
 
       <main>
-        <section className="container mx-auto max-w-7xl px-5 pb-20 pt-16 sm:pt-24">
+        <section className="container relative mx-auto max-w-7xl overflow-hidden px-5 pb-20 pt-16 sm:pt-24">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-x-0 -top-24 -z-10 h-[440px] bg-[radial-gradient(60%_50%_at_50%_0%,color-mix(in_oklab,var(--aurora-2)_14%,transparent),transparent)]"
+          />
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-8">
             <div>
               <Badge
@@ -263,7 +264,7 @@ export default function LandingPage() {
               title="Ask anything. Get answers, not links."
               lead="This search runs against the prototype's actual memory layer — pick a prompt and watch it reason over real memories."
             />
-            <div className="rounded-2xl border border-border/60 bg-card/50 p-5 shadow-lg shadow-black/5 backdrop-blur sm:p-6">
+            <div className="rounded-2xl border border-border/70 bg-card/50 p-5 shadow-sm sm:p-6">
               <SearchDemo />
               <ul className="mt-6 space-y-2.5 border-t border-border/60 pt-5">
                 {askCapabilities.map(({ icon: Icon, text }) => (
@@ -309,13 +310,8 @@ export default function LandingPage() {
             </div>
 
             <Reveal>
-              <div className="relative overflow-hidden rounded-3xl border border-border/60 bg-card/70 p-1 shadow-[0_32px_90px_-32px_color-mix(in_oklab,var(--aurora-2)_55%,transparent)] backdrop-blur ring-glow">
-                <div
-                  aria-hidden
-                  className="aurora-orb -right-16 -top-20 size-56 opacity-30"
-                  style={{ "--color": "var(--aurora-2)" } as React.CSSProperties}
-                />
-                <div className="relative rounded-[calc(1.5rem-1px)] bg-background/40 p-7 sm:p-9">
+              <div className="rounded-3xl border border-border/70 bg-card/50 p-1 shadow-[0_16px_48px_-28px_color-mix(in_oklab,var(--aurora-2)_30%,transparent)]">
+                <div className="p-7 sm:p-9">
                   <Badge variant="secondary" className="mb-4 gap-1.5 rounded-full border-aurora-2/30 bg-aurora-2/10 text-[11px] font-medium text-aurora-2">
                     <Sparkles className="size-3" />
                     Join the preview
@@ -344,20 +340,12 @@ export default function LandingPage() {
 
         <section className="container mx-auto max-w-7xl px-5 pb-28 pt-16">
           <Reveal>
-            <div className="relative rounded-3xl brand-gradient p-px shadow-[0_32px_90px_-30px_color-mix(in_oklab,var(--aurora-2)_70%,transparent)]">
-              <div
-                aria-hidden
-                className="aurora-orb -top-24 left-1/4 size-72 opacity-40"
-                style={{ "--color": "var(--aurora-3)" } as React.CSSProperties}
-              />
-              <div className="relative flex flex-col items-center justify-between gap-10 rounded-[calc(1.5rem-1px)] bg-card/90 px-6 py-16 text-center backdrop-blur-xl sm:px-16 lg:flex-row lg:text-left">
+            <div className="relative rounded-3xl border border-border/70 bg-card/50 p-px shadow-[0_16px_48px_-24px_color-mix(in_oklab,var(--aurora-2)_35%,transparent)]">
+              <div className="relative flex flex-col items-center justify-between gap-10 rounded-[calc(1.5rem-1px)] px-6 py-16 sm:px-16 lg:flex-row lg:text-left">
                 <div className="flex items-start gap-5">
-                  <div className="relative flex size-12 shrink-0 items-center justify-center">
-                    <span className="absolute inset-0 rounded-2xl brand-gradient opacity-30 blur-lg" />
-                    <span className="relative flex size-12 items-center justify-center rounded-2xl brand-gradient shadow-[0_12px_32px_-12px_color-mix(in_oklab,var(--aurora-2)_65%,transparent)]">
-                      <span className="absolute inset-0 rounded-2xl ring-1 ring-white/25 ring-inset" />
-                      <BrainCircuit className="size-5 text-white" />
-                    </span>
+                  <div className="relative flex size-12 shrink-0 items-center justify-center rounded-2xl brand-gradient shadow-[0_10px_24px_-10px_color-mix(in_oklab,var(--aurora-2)_50%,transparent)]">
+                    <span className="absolute inset-0 rounded-2xl ring-1 ring-white/20 ring-inset" />
+                    <BrainCircuit className="size-5 text-white" />
                   </div>
                   <div>
                     <h2 className="font-display text-balance text-3xl font-semibold tracking-tight sm:text-4xl">

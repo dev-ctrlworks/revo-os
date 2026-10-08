@@ -10,12 +10,8 @@ const sources = sourceIds
 export function MemoryPreview() {
   return (
     <div className="relative mx-auto mt-16 w-full max-w-xl">
-      <div className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center">
-        <div className="h-80 w-80 rounded-full bg-gradient-to-br from-aurora-2/25 via-aurora-2/[0.12] to-aurora-3/25 blur-2xl" />
-      </div>
-
       <div className="space-y-4">
-        <div className="animate-fade-up flex items-center gap-2.5 rounded-2xl border border-border/70 bg-card/80 px-4 py-3 shadow-[0_24px_70px_-28px_color-mix(in_oklab,var(--aurora-2)_60%,transparent)] ring-glow backdrop-blur-xl">
+        <div className="animate-fade-up flex items-center gap-2.5 rounded-2xl border border-border/70 bg-card px-4 py-3 shadow-sm">
           <Search className="size-4 shrink-0 text-aurora-2" />
           <p className="truncate text-sm text-foreground/90">
             What cameras have I been considering?
@@ -27,7 +23,8 @@ export function MemoryPreview() {
           </span>
         </div>
 
-        <div className="animate-fade-up delay-100 relative overflow-hidden rounded-2xl border border-aurora-2/25 bg-gradient-to-br from-aurora-2/[0.10] via-card to-card/70 p-5 shadow-[0_32px_100px_-32px_color-mix(in_oklab,var(--aurora-2)_65%,transparent)]">
+        <div className="animate-fade-up delay-100 relative overflow-hidden rounded-2xl border border-aurora-2/20 bg-card p-5 shadow-sm">
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-aurora-2/50 to-transparent" />
           <div className="mb-2.5 flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
             <BookOpenText className="size-3.5 text-aurora-2" />
             Memory recall

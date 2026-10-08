@@ -51,7 +51,7 @@ export function ProductShowcase() {
               className={cn(
                 "group relative flex items-start gap-3 rounded-xl border p-3.5 text-left transition-all duration-300",
                 selected
-                  ? "border-aurora-2/40 bg-aurora-2/[0.08] shadow-[0_16px_40px_-24px_color-mix(in_oklab,var(--aurora-2)_70%,transparent)]"
+                  ? "border-aurora-2/40 bg-aurora-2/[0.06]"
                   : "border-transparent hover:border-border/60 hover:bg-muted/30"
               )}
             >
@@ -77,7 +77,7 @@ export function ProductShowcase() {
         })}
       </div>
 
-      <div className="relative overflow-hidden rounded-2xl border border-border/60 bg-gradient-to-b from-muted/30 to-background shadow-lg shadow-black/5">
+      <div className="relative overflow-hidden rounded-2xl border border-border/70 bg-card/50 shadow-sm">
         <div className="flex items-center gap-2 border-b border-border/60 bg-card/60 px-4 py-2.5">
           <div className="flex gap-1.5">
             <span className="size-2.5 rounded-full bg-red-400/70" />

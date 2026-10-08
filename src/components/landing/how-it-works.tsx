@@ -68,7 +68,7 @@ export function HowItWorks() {
             </div>
 
             <div className="pl-12 lg:pl-0">
-              <div className="rounded-2xl border border-border/60 bg-card/50 p-5 shadow-lg shadow-black/5 backdrop-blur sm:p-6">
+              <div className="rounded-2xl border border-border/70 bg-card p-5 shadow-sm sm:p-6">
                 {visualFor(step.number)}
               </div>
             </div>
