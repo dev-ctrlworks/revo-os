@@ -1,11 +1,8 @@
 import {
   ArrowRight,
   BrainCircuit,
-  BookOpenText,
   Gift,
   Infinity,
-  MessageCircleQuestion,
-  ShieldCheck,
   Sparkles,
   Zap,
 } from "lucide-react";
@@ -22,7 +19,7 @@ import { CaptureSources } from "@/components/landing/capture-sources";
 import { HowItWorks } from "@/components/landing/how-it-works";
 import { ConnectionDiagram } from "@/components/landing/connection-diagram";
 import { ProductShowcase } from "@/components/landing/product-showcase";
-import { SearchDemo } from "@/components/landing/search-demo";
+import { UseCases } from "@/components/landing/use-cases";
 import { Privacy } from "@/components/landing/privacy";
 import { WaitlistForm } from "@/components/waitlist/waitlist-form";
 import { WaitlistCount } from "@/components/waitlist/waitlist-count";
@@ -45,12 +42,6 @@ const perks = [
     title: "Shape the product",
     text: "Your feedback goes straight into our roadmap. Early members set the direction.",
   },
-];
-
-const askCapabilities = [
-  { icon: MessageCircleQuestion, text: "Plain-language questions, no query language" },
-  { icon: BookOpenText, text: "Answers grounded in your sources — every claim cited" },
-  { icon: ShieldCheck, text: "Runs against the prototype's actual memory layer" },
 ];
 
 export default function LandingPage() {
@@ -262,26 +253,15 @@ export default function LandingPage() {
         </section>
 
         <section id="ask" className="container mx-auto max-w-7xl px-5 py-20 sm:py-24">
-          <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.2fr]">
-            <SectionHeader
-              kicker="Try it live"
-              title="Ask anything. Get answers, not links."
-              lead="This search runs against the prototype's actual memory layer — pick a prompt and watch it reason over real memories."
-            />
-            <div className="rounded-2xl border border-border/50 bg-card/55 p-5 shadow-[0_10px_30px_-20px_rgba(30,27,46,0.25)] backdrop-blur-xl sm:p-6">
-              <SearchDemo />
-              <ul className="mt-6 space-y-2.5 border-t border-border/50 pt-5">
-                {askCapabilities.map(({ icon: Icon, text }) => (
-                  <li key={text} className="flex items-center gap-2.5 text-[13px] text-muted-foreground">
-                    <span className="flex size-6 items-center justify-center rounded-md icon-chip">
-                      <Icon className="size-3.5 text-aurora-2" />
-                    </span>
-                    {text}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <SectionHeader
+            kicker="Use cases"
+            align="center"
+            title="Ask across your whole life."
+            lead="One memory layer answers questions across everything you save — shopping, travel, work, home, learning, and more."
+          />
+          <Reveal className="mt-12" y={32}>
+            <UseCases />
+          </Reveal>
         </section>
 
         <section id="privacy" className="container mx-auto max-w-7xl px-5 py-20 sm:py-24">
