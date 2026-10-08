@@ -158,7 +158,13 @@ function Cluster() {
     <svg viewBox="0 0 220 130" className="w-full">
       <g stroke="currentColor" strokeWidth="1" className="text-aurora-2/40">
         {edges.map((e) => (
-          <line key={`${e.x1}-${e.y1}`} x1={e.x1} y1={e.y1} x2={e.x2} y2={e.y2} />
+          <line
+            key={`${e.x2}-${e.y2}`}
+            x1={e.x1}
+            y1={e.y1}
+            x2={e.x2}
+            y2={e.y2}
+          />
         ))}
       </g>
       {nodes.map((n) => (
