@@ -1,24 +1,34 @@
 import type { CSSProperties } from "react";
-import { Check, LinkIcon, Monitor, Search, Sparkles, Zap } from "lucide-react";
+import {
+  Check,
+  LinkIcon,
+  Monitor,
+  Newspaper,
+  Search,
+  Sparkles,
+  StickyNote,
+  type LucideIcon,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
-import { memories } from "@/lib/mock-data";
-import { MemoryTypeIcon } from "@/components/memories/memory-type-icon";
 
-const sourceIds = ["m1", "m3", "m4", "m5"];
-const sources = sourceIds
-  .map((id) => memories.find((m) => m.id === id))
-  .filter((m) => m !== undefined);
+const nodes: { label: string; icon: LucideIcon; cls: string; tone: string; chip: string }[] = [
+  { label: "Screenshot", icon: Monitor, cls: "left-[5%] top-[14%]", tone: "text-cyan-500", chip: "border-cyan-400/25 bg-cyan-400/10" },
+  { label: "Note", icon: StickyNote, cls: "left-[5%] top-[70%]", tone: "text-violet-500", chip: "border-violet-400/25 bg-violet-400/10" },
+  { label: "Link", icon: LinkIcon, cls: "right-[5%] top-[22%]", tone: "text-sky-500", chip: "border-sky-400/25 bg-sky-400/10" },
+  { label: "Page", icon: Newspaper, cls: "right-[5%] top-[72%]", tone: "text-rose-500", chip: "border-rose-400/25 bg-rose-400/10" },
+];
+
+const links: { d: string; tone: string; mid: [number, number] }[] = [
+  { d: "M 20 19 C 32 22, 38 42, 50 50", tone: "text-cyan-500", mid: [31, 29] },
+  { d: "M 20 75 C 32 74, 38 58, 50 50", tone: "text-violet-500", mid: [31, 66] },
+  { d: "M 80 27 C 68 26, 62 42, 50 50", tone: "text-sky-500", mid: [69, 29] },
+  { d: "M 80 77 C 68 76, 62 58, 50 50", tone: "text-rose-500", mid: [69, 66] },
+];
 
 const ranked = [
-  {
-    name: "Sony A7 IV",
-    match: 92,
-    price: "$2,499",
-    note: "full-frame · IBIS · class-leading AF",
-    winner: true,
-  },
-  { name: "Nikon Z6 III", match: 71, price: "$2,499", note: "strong hybrid video", winner: false },
-  { name: "Fujifilm X-T5", match: 64, price: "$1,699", note: "stills-first compromise", winner: false },
+  { name: "Sony A7 IV", match: 92 },
+  { name: "Nikon Z6 III", match: 71 },
+  { name: "Fujifilm X-T5", match: 64 },
 ];
 
 export function MemoryPreview() {
@@ -26,191 +36,114 @@ export function MemoryPreview() {
     <div className="relative mx-auto mt-16 w-full max-w-xl">
       <div className="absolute -inset-8 -z-10 bg-gradient-to-br from-aurora-1/25 via-aurora-2/10 to-aurora-4/20 blur-3xl" />
       <div
-        className="aurora-orb left-[-12%] top-[-16%] -z-10 size-60 opacity-50"
+        className="aurora-orb left-[-10%] top-[30%] -z-10 size-56 opacity-50"
         style={{ "--color": "var(--aurora-2)" } as CSSProperties}
-      />
-      <div
-        className="aurora-orb right-[-12%] bottom-[-18%] -z-10 size-64 opacity-40"
-        style={{ "--color": "var(--aurora-3)", animationDelay: "3.2s" } as CSSProperties}
       />
 
       <div className="relative overflow-hidden rounded-[26px] border border-border/50 bg-card/75 shadow-[0_32px_80px_-40px_rgba(30,27,46,0.45)] backdrop-blur-2xl">
         <div className="absolute inset-x-0 top-0 h-px animate-gradient-x bg-gradient-to-r from-aurora-1 via-aurora-3 to-aurora-1" />
 
-        <div className="flex h-12 items-center justify-between border-b border-border/40 px-4">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1.5">
-              <span className="size-2.5 rounded-full bg-rose-400/80" />
-              <span className="size-2.5 rounded-full bg-amber-400/80" />
-              <span className="size-2.5 rounded-full bg-emerald-400/80" />
+        <div className="relative h-60 overflow-hidden sm:h-72">
+          <svg
+            aria-hidden
+            fill="none"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+            className="absolute inset-0 hidden h-full w-full sm:block"
+          >
+            <circle
+              cx="50"
+              cy="50"
+              r="34"
+              stroke="currentColor"
+              strokeOpacity="0.4"
+              vectorEffect="non-scaling-stroke"
+              className="animate-path-flow text-aurora-2"
+            />
+            {links.map((link) => (
+              <path
+                key={link.d}
+                d={link.d}
+                stroke="currentColor"
+                strokeOpacity="0.5"
+                vectorEffect="non-scaling-stroke"
+                className={cn("animate-path-flow", link.tone)}
+              />
+            ))}
+            {links.map((link) => (
+              <circle
+                key={`${link.mid[0]}-${link.mid[1]}`}
+                cx={link.mid[0]}
+                cy={link.mid[1]}
+                r="1.4"
+                className={cn("animate-pulse fill-current", link.tone)}
+              />
+            ))}
+          </svg>
+
+          {nodes.map((node) => (
+            <span
+              key={node.label}
+              className={cn(
+                "absolute hidden items-center gap-1.5 rounded-full border bg-card/90 px-2.5 py-1.5 text-[10px] font-medium text-foreground/80 shadow-md shadow-black/5 backdrop-blur-xl sm:flex",
+                node.cls,
+                node.chip
+              )}
+            >
+              <node.icon className={cn("size-3.5", node.tone)} />
+              {node.label}
+            </span>
+          ))}
+
+          <div className="absolute left-1/2 top-1/2 w-[186px] -translate-x-1/2 -translate-y-1/2 sm:w-[210px]">
+            <div
+              className="aurora-orb absolute -inset-12 -z-10 size-auto opacity-60"
+              style={{ "--color": "var(--aurora-2)" } as CSSProperties}
+            />
+            <div className="relative rounded-[22px] border border-aurora-2/40 bg-card/90 p-4 text-center shadow-[0_24px_60px_-28px_color-mix(in_oklab,var(--aurora-2)_80%,transparent)] backdrop-blur-2xl">
+              <span className="mb-1.5 flex items-center justify-center gap-1 text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
+                <Search className="size-3 text-aurora-2" />
+                Revo OS · memory
+              </span>
+              <p className="truncate text-[11px] font-medium text-foreground/85">
+                Which camera should I buy?
+              </p>
+              <div className="animate-dash mx-auto my-2.5 h-px w-16" />
+              <p className="text-gradient text-base font-semibold">Sony A7 IV</p>
+              <span className="mt-1.5 inline-flex items-center gap-1 rounded-full border border-aurora-2/25 bg-aurora-2/10 px-2 py-0.5 text-[10px] font-semibold text-aurora-2">
+                <span className="size-1 animate-pulse rounded-full bg-aurora-2" />
+                92% fit
+              </span>
             </div>
-            <span className="hidden items-center gap-1.5 text-[11px] font-medium text-muted-foreground sm:flex">
-              <span className="grid size-4 place-items-center rounded brand-gradient text-[8px] font-bold text-white">
-                R
-              </span>
-              Revo OS
-            </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-2 py-0.5 text-[10px] font-medium text-emerald-500">
-              <span className="relative flex size-1.5">
-                <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-70" />
-                <span className="relative inline-flex size-1.5 rounded-full bg-emerald-400" />
-              </span>
-              synced
-            </span>
           </div>
-          <span className="hidden items-center gap-1 rounded-md border border-border/50 bg-card/60 px-1.5 py-0.5 text-[10px] text-muted-foreground sm:inline-flex">
-            <span className="font-semibold">⌘</span>K
-          </span>
         </div>
 
-        <div className="p-4 sm:p-5">
-          <div className="flex items-center gap-2.5 overflow-hidden rounded-2xl border border-border/50 bg-card/60 py-1.5 pl-3 pr-1.5 shadow-sm backdrop-blur-xl">
-            <span className="grid size-6 shrink-0 place-items-center rounded-lg icon-chip">
-              <Search className="size-3.5 text-aurora-2" />
-            </span>
-            <p className="truncate text-sm text-foreground/90">Which camera should I buy?</p>
-            <span className="inline-block h-4 w-[2px] shrink-0 animate-pulse rounded-full bg-aurora-2" />
-            <span className="relative ml-auto inline-flex shrink-0 items-center gap-1 overflow-hidden rounded-full bg-gradient-to-r from-aurora-1 to-aurora-3 px-3 py-1.5 text-[11px] font-semibold text-white shadow-[0_6px_18px_-8px_color-mix(in_oklab,var(--aurora-2)_70%,transparent)]">
-              <span className="animate-shimmer absolute inset-0" />
-              Ask
-              <span className="text-white/70">↵</span>
-            </span>
-          </div>
-
-          <div className="mb-3 mt-4 flex items-center gap-2 text-[11px] text-muted-foreground">
-            <span className="flex items-center gap-1.5 font-medium text-aurora-2">
-              <Sparkles className="size-3" />
-              Ranked answer
-            </span>
-            <span className="size-1 rounded-full bg-aurora-2/40" />
-            <span>searched 38 memories</span>
-            <span className="size-1 rounded-full bg-aurora-2/40" />
-            <span className="inline-flex items-center gap-1">
-              <span className="size-1.5 animate-pulse rounded-full bg-aurora-2" />
-              0.9s
-            </span>
-          </div>
-
-          <div className="space-y-1.5">
+        <div className="border-t border-border/40 p-3.5 sm:px-5 sm:py-4">
+          <div className="flex flex-wrap items-center gap-1.5">
             {ranked.map((camera, i) => (
-              <div
+              <span
                 key={camera.name}
                 className={cn(
-                  "animate-fade-up rounded-xl border px-3 py-2.5 backdrop-blur-xl",
-                  camera.winner
-                    ? "border-aurora-2/40 bg-gradient-to-r from-aurora-2/15 via-aurora-2/5 to-aurora-3/15 shadow-[0_16px_40px_-24px_color-mix(in_oklab,var(--aurora-2)_90%,transparent)]"
-                    : "border-border/50 bg-card/60",
-                  i > 0 && `delay-${i * 100}`
+                  "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-semibold",
+                  i === 0
+                    ? "animate-gradient-x border-transparent bg-[length:200%_200%] bg-gradient-to-r from-aurora-1 to-aurora-3 text-white shadow-[0_8px_20px_-10px_color-mix(in_oklab,var(--aurora-2)_80%,transparent)]"
+                    : "border-border/50 bg-card/60 text-muted-foreground"
                 )}
               >
-                <div className="flex items-center gap-2.5">
-                  <span
-                    className={cn(
-                      "grid size-6 shrink-0 place-items-center rounded-lg text-[11px] font-bold",
-                      camera.winner
-                        ? "brand-gradient text-white shadow-[0_4px_12px_-4px_color-mix(in_oklab,var(--aurora-2)_80%,transparent)]"
-                        : "icon-chip text-muted-foreground"
-                    )}
-                  >
-                    {camera.winner ? <Check className="size-3.5" /> : i + 1}
-                  </span>
-                  <span className="min-w-0 flex-1">
-                    <span className="block truncate text-xs font-medium">{camera.name}</span>
-                    <span className="block truncate text-[10px] text-muted-foreground">
-                      {camera.note}
-                    </span>
-                  </span>
-                  <span
-                    className={cn(
-                      "text-[11px] font-semibold tabular-nums",
-                      camera.winner ? "text-aurora-2" : "text-muted-foreground"
-                    )}
-                  >
-                    {camera.match}%
-                  </span>
-                  <span className="hidden text-[11px] font-semibold text-muted-foreground sm:block">
-                    {camera.price}
-                  </span>
-                  {camera.winner && (
-                    <span className="animate-gradient-x rounded-full bg-gradient-to-r from-aurora-1 to-aurora-3 bg-[length:200%_200%] px-2 py-0.5 text-[9px] font-bold text-white">
-                      BEST
-                    </span>
-                  )}
-                </div>
-                <div className="ml-9 mt-2 h-1.5 overflow-hidden rounded-full bg-muted-foreground/15">
-                  <div
-                    className="animate-bar-grow h-full rounded-full bg-gradient-to-r from-aurora-1 via-aurora-2 to-aurora-3"
-                    style={{ width: `${camera.match}%`, animationDelay: `${0.15 + i * 0.12}s` }}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-4 flex items-center gap-1.5 rounded-lg border border-dashed border-border/50 bg-card/50 px-2.5 py-1.5 text-[11px] text-muted-foreground">
-            <LinkIcon className="size-3 shrink-0 text-aurora-2" />
-            <span className="truncate">
-              Thread linked: “camera decision” ↔ “lens research”
-            </span>
-          </div>
-
-          <div className="mt-4">
-            <div className="animate-dash mb-2 h-px" />
-            <div className="flex flex-wrap items-center gap-1.5">
-              {sources.map((memory) => (
-                <span
-                  key={memory.id}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-border/50 bg-card/60 px-2.5 py-1 text-[11px] text-muted-foreground backdrop-blur-xl transition-colors hover:border-aurora-2/40 hover:text-foreground"
-                >
-                  <MemoryTypeIcon type={memory.type} size="sm" className="size-auto" />
-                  <span className="line-clamp-1">{memory.title}</span>
-                </span>
-              ))}
-              <span className="ml-auto inline-flex items-center gap-1 text-[10px] text-muted-foreground">
-                <Sparkles className="size-3 text-aurora-2" />
-                local-first
+                {i === 0 && <Check className="size-3" />}
+                {camera.name}
+                <span className="tabular-nums opacity-80">{camera.match}%</span>
               </span>
-            </div>
+            ))}
+            <span className="ml-auto inline-flex items-center gap-1 text-[10px] text-muted-foreground">
+              <Sparkles className="size-3 text-aurora-2" />
+              local-first
+            </span>
           </div>
+          <p className="mt-2.5 text-[10px] text-muted-foreground">
+            38 memories searched · 4 sources, one answer — every source open
+          </p>
         </div>
-      </div>
-
-      <div
-        className="animate-float absolute -right-5 -top-10 hidden w-44 overflow-hidden rounded-2xl border border-border/50 bg-card/80 p-3 shadow-xl shadow-black/10 backdrop-blur-xl lg:block"
-        style={{ animationDelay: "0.6s" }}
-      >
-        <div className="flex items-center gap-2.5">
-          <span className="grid size-8 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-emerald-400 to-cyan-400 text-white shadow-[0_6px_14px_-6px_rgba(52,211,153,0.6)]">
-            <Monitor className="size-4" />
-          </span>
-          <span className="min-w-0">
-            <span className="mb-0.5 flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
-              <span className="size-1.5 rounded-full bg-emerald-400" />
-              Just captured
-            </span>
-            <span className="block truncate text-[11px] leading-snug text-foreground/85">
-              tamron-24-70-review.jpg indexed
-            </span>
-          </span>
-        </div>
-      </div>
-
-      <div
-        className="animate-float absolute -left-6 bottom-[-14px] hidden w-36 items-center gap-2.5 overflow-hidden rounded-2xl border border-border/50 bg-card/80 p-3 shadow-xl shadow-black/10 backdrop-blur-xl lg:flex"
-        style={{ animationDelay: "2.4s" }}
-      >
-        <span className="grid size-8 shrink-0 place-items-center rounded-xl icon-chip">
-          <Zap className="size-4 text-aurora-2" />
-        </span>
-        <span className="min-w-0">
-          <span className="mb-0.5 block text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
-            Indexed
-          </span>
-          <span className="block text-[11px] font-semibold text-foreground/85">
-            38 memory
-            <span className="ml-1.5 inline-block size-1.5 animate-pulse rounded-full bg-aurora-2" />
-          </span>
-        </span>
       </div>
     </div>
   );
