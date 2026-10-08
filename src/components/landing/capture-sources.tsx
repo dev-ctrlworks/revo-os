@@ -1,128 +1,150 @@
 import {
-  ArrowRight,
   Bookmark,
+  Check,
   FileText,
+  Keyboard,
   LinkIcon,
-  MessageCircleQuestion,
   Monitor,
+  MousePointerClick,
+  PlugZap,
   Search,
+  Sparkles,
   StickyNote,
+  Upload,
   type LucideIcon,
 } from "lucide-react";
 
-const tape: {
+const sources: {
   icon: LucideIcon;
-  kind: string;
-  title: string;
-  time: string;
-  chip: string;
+  name: string;
   tone: string;
+  chipBg: string;
+  desc: string;
+  example: { line: string; foot: string };
+  route: { icon: LucideIcon; label: string };
 }[] = [
-  { icon: Monitor, kind: "Screenshot", title: "budget_shot_0412.png", time: "now", chip: "bg-cyan-400/10", tone: "text-cyan-500" },
-  { icon: LinkIcon, kind: "Link", title: "shopmuse · 50mm f/1.4 G-Master ending soon", time: "1m", chip: "bg-sky-400/10", tone: "text-sky-500" },
-  { icon: StickyNote, kind: "Note", title: "budget for camera + lens", time: "3m", chip: "bg-violet-400/10", tone: "text-violet-500" },
-  { icon: FileText, kind: "Document", title: "lens-comparison.pdf — 12 pages indexed", time: "6m", chip: "bg-rose-400/10", tone: "text-rose-500" },
-  { icon: Search, kind: "Web", title: "“Sony A7 IV used price” saved", time: "11m", chip: "bg-emerald-400/10", tone: "text-emerald-500" },
-  { icon: Bookmark, kind: "Bookmark", title: "DPReview · Sony A7 IV review", time: "14m", chip: "bg-amber-400/10", tone: "text-amber-500" },
-  { icon: Monitor, kind: "Screenshot", title: "price_watch_A7IV.png", time: "19m", chip: "bg-cyan-400/10", tone: "text-cyan-500" },
-  { icon: StickyNote, kind: "Note", title: "ask: which camera should I buy?", time: "1h", chip: "bg-violet-400/10", tone: "text-violet-500" },
-  { icon: Search, kind: "Web", title: "JFK → NRT flights saved", time: "1h", chip: "bg-emerald-400/10", tone: "text-emerald-500" },
-];
-
-const legend = [
-  { icon: StickyNote, label: "Notes", tone: "text-violet-500" },
-  { icon: Monitor, label: "Screenshots", tone: "text-cyan-500" },
-  { icon: LinkIcon, label: "Links & pages", tone: "text-sky-500" },
-  { icon: FileText, label: "Documents", tone: "text-rose-500" },
-  { icon: Search, label: "Web activity", tone: "text-emerald-500" },
-  { icon: Bookmark, label: "Bookmarks", tone: "text-amber-500" },
+  {
+    icon: StickyNote,
+    name: "Notes",
+    tone: "text-violet-500",
+    chipBg: "bg-violet-400/10",
+    desc: "Type or paste thoughts anywhere. Revo OS links each note to the people, projects, and dates it mentions — then finds it later.",
+    example: { line: "lens comparison — check 24-70mm f/2.8 vs 24-105 if budget allows", foot: "linked to camera · budget · lens" },
+    route: { icon: Keyboard, label: "⌘K · quick note" },
+  },
+  {
+    icon: Monitor,
+    name: "Screenshots",
+    tone: "text-cyan-500",
+    chipBg: "bg-cyan-400/10",
+    desc: "Grab anything on screen from desktop or mobile. Text inside every image is read and made searchable immediately.",
+    example: { line: "budget_shot_0412.png", foot: "OCR · 312 words extracted" },
+    route: { icon: Sparkles, label: "Automatic" },
+  },
+  {
+    icon: LinkIcon,
+    name: "Links & pages",
+    tone: "text-sky-500",
+    chipBg: "bg-sky-400/10",
+    desc: "Save a tab or drop a link. The full page content is embedded locally, so you can ask about articles you never re-read.",
+    example: { line: "DPReview · Sony A7 IV review", foot: "full text embedded · quotable" },
+    route: { icon: PlugZap, label: "Browser extension" },
+  },
+  {
+    icon: FileText,
+    name: "Documents",
+    tone: "text-rose-500",
+    chipBg: "bg-rose-400/10",
+    desc: "Drop in résumés, leases, and plans. Text and layout stay queryable — no filing needed.",
+    example: { line: "lens-comparison.pdf", foot: "12 pages · structure indexed" },
+    route: { icon: Upload, label: "Drag & drop" },
+  },
+  {
+    icon: Search,
+    name: "Web activity",
+    tone: "text-emerald-500",
+    chipBg: "bg-emerald-400/10",
+    desc: "Opt in to let Revo OS summarize the pages you visit and connect them to what you've saved.",
+    example: { line: "“Sony A7 IV used price”", foot: "3 visits · summarized" },
+    route: { icon: MousePointerClick, label: "Browser opt-in" },
+  },
+  {
+    icon: Bookmark,
+    name: "Bookmarks",
+    tone: "text-amber-500",
+    chipBg: "bg-amber-400/10",
+    desc: "Everything you keep for later gets re-indexed, so it's findable the moment you need it.",
+    example: { line: "DPReview · A7 IV review ★", foot: "resurfaced in answers" },
+    route: { icon: Bookmark, label: "Kept for later" },
+  },
 ];
 
 export function CaptureSources() {
   return (
-    <div className="mx-auto max-w-3xl">
-      <div className="relative overflow-hidden rounded-3xl border border-border/50 bg-card/55 shadow-[0_10px_30px_-24px_rgba(30,27,46,0.3)] backdrop-blur-xl">
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-aurora-2/0 via-aurora-2/50 to-aurora-3/0" />
-
-        <div className="flex items-center justify-between gap-3 border-b border-border/40 px-4 py-3 sm:px-5">
-          <div className="flex items-center gap-2.5">
-            <span className="relative flex size-2">
-              <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-70" />
-              <span className="relative inline-flex size-2 rounded-full bg-emerald-400" />
-            </span>
-            <p className="font-display text-sm font-semibold tracking-tight">Live capture</p>
-            <span className="hidden rounded-full border border-border/50 bg-card/60 px-2 py-0.5 text-[10px] font-medium text-muted-foreground sm:inline-flex">
-              auto-ingesting, quietly
-            </span>
-          </div>
-          <span className="rounded-full border border-aurora-2/30 bg-aurora-2/10 px-2.5 py-1 text-[10px] font-semibold text-aurora-2">
-            6 sources · all opt-in
-          </span>
-        </div>
-
-        <div className="relative h-56 overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_14%,black_86%,transparent)]">
-          <div className="animate-tape absolute inset-0">
-            <TapeRows />
-            <TapeRows />
-          </div>
-        </div>
-
-        <div className="border-t border-border/40 px-4 py-3 sm:px-5">
-          <div className="flex items-center gap-2 rounded-xl border border-border/50 bg-card/60 px-3 py-2.5 shadow-sm backdrop-blur-xl">
-            <MessageCircleQuestion className="size-4 shrink-0 text-aurora-2" />
-            <span className="truncate text-xs text-muted-foreground">
-              One memory — ask anything, grounded in what you keep
-            </span>
-            <span className="ml-auto grid size-6 shrink-0 place-items-center rounded-lg brand-gradient">
-              <ArrowRight className="size-3.5 text-white" />
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div className="mt-5 flex flex-wrap items-center justify-center gap-1.5">
-        {legend.map((item) => {
-          const Icon = item.icon;
+    <div>
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {sources.map((source) => {
+          const Icon = source.icon;
+          const RouteIcon = source.route.icon;
           return (
-            <span
-              key={item.label}
-              className="inline-flex items-center gap-1.5 rounded-full border border-border/50 bg-card/60 px-2.5 py-1 text-[11px] font-medium text-foreground/75 backdrop-blur-xl"
+            <div
+              key={source.name}
+              className="group relative flex flex-col overflow-hidden rounded-2xl border border-border/50 bg-card/55 p-5 shadow-[0_10px_30px_-24px_rgba(30,27,46,0.3)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-aurora-2/40 hover:bg-card/70 hover:shadow-[0_18px_44px_-28px_color-mix(in_oklab,var(--aurora-2)_45%,transparent)]"
             >
-              <Icon className={item.tone ? `size-3 ${item.tone}` : "size-3"} />
-              {item.label}
-            </span>
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-aurora-2/0 via-aurora-2/40 to-aurora-3/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex items-center gap-2.5">
+                  <span className={`grid size-9 shrink-0 place-items-center rounded-xl ${source.chipBg}`}>
+                    <Icon className={`size-4 ${source.tone}`} />
+                  </span>
+                  <h3 className="font-display text-base font-semibold tracking-tight">
+                    {source.name}
+                  </h3>
+                </div>
+                <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-emerald-400/25 bg-emerald-400/10 px-2 py-0.5 text-[9px] font-semibold text-emerald-500">
+                  <span className="relative flex size-1.5">
+                    <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-70" />
+                    <span className="relative inline-flex size-1.5 rounded-full bg-emerald-400" />
+                  </span>
+                  on · opt-in
+                </span>
+              </div>
+
+              <p className="mt-3 text-[13px] leading-relaxed text-muted-foreground">{source.desc}</p>
+
+              <div className="mt-4 rounded-xl border border-border/50 bg-card/60 px-3 py-2.5 backdrop-blur-xl transition-colors group-hover:border-aurora-2/25">
+                <div className="flex items-center gap-2">
+                  <span className={`grid size-6 shrink-0 place-items-center rounded-lg ${source.chipBg}`}>
+                    <Icon className={`size-3 ${source.tone}`} />
+                  </span>
+                  <span className="min-w-0 truncate text-xs font-medium">{source.example.line}</span>
+                </div>
+                <div className="mt-1.5 flex items-center gap-1.5 pl-8 text-[10px] text-muted-foreground">
+                  <Check className="size-3 shrink-0 text-aurora-2" />
+                  <span className="truncate">{source.example.foot}</span>
+                </div>
+              </div>
+
+              <div className="mt-auto flex items-center justify-between gap-2 pt-4 text-[10px] text-muted-foreground">
+                <span className="inline-flex items-center gap-1.5">
+                  <RouteIcon className="size-3" />
+                  {source.route.label}
+                </span>
+                <span className="inline-flex items-center gap-1 text-aurora-2">
+                  <Search className="size-3" />
+                  findable later
+                </span>
+              </div>
+            </div>
           );
         })}
       </div>
-    </div>
-  );
-}
 
-function TapeRows() {
-  return (
-    <div className="flex flex-col">
-      {tape.map((item) => {
-        const Icon = item.icon;
-        return (
-          <div
-            key={`${item.kind}-${item.title}`}
-            className="flex h-12 items-center gap-2.5 border-b border-border/15 px-4 sm:px-5"
-          >
-            <span className={`grid size-7 shrink-0 place-items-center rounded-lg ${item.chip}`}>
-              <Icon className={`size-3.5 ${item.tone}`} />
-            </span>
-            <span className="w-[74px] shrink-0 text-[9px] font-semibold uppercase tracking-wider text-muted-foreground">
-              {item.kind}
-            </span>
-            <span className="min-w-0 flex-1 truncate text-xs text-foreground/80">
-              {item.title}
-            </span>
-            <span className="w-9 shrink-0 text-right text-[10px] tabular-nums text-muted-foreground">
-              {item.time}
-            </span>
-          </div>
-        );
-      })}
+      <div className="relative mx-auto mt-5 max-w-2xl overflow-hidden rounded-full border border-aurora-2/20 bg-gradient-to-r from-aurora-2/5 via-aurora-2/10 to-aurora-3/5 px-6 py-2.5 text-center text-xs text-foreground/70">
+        <Sparkles className="mr-1.5 inline size-3.5 text-aurora-2" />
+        All six feed one memory — instant, always-on, and fully private
+      </div>
     </div>
   );
 }
