@@ -21,7 +21,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { Switch } from "@/components/ui/switch";
-import { ThemeToggle } from "@/components/theme/theme-toggle";
 import {
   Tabs,
   TabsContent,
@@ -216,15 +215,6 @@ export default function SettingsPage() {
 
         <TabsContent value="appearance">
           <Card className="divide-y divide-border/40 border-border/60 p-6">
-            <div className="flex items-center justify-between gap-3 py-4">
-              <div>
-                <p className="text-sm font-medium">Theme</p>
-                <p className="mt-0.5 text-[13px] text-muted-foreground">
-                  Choose between the dark aurora look and the light theme.
-                </p>
-              </div>
-              <ThemeToggle />
-            </div>
             <SettingRow
               title="Reduced motion"
               description="Turn off entrance animations and parallax effects."

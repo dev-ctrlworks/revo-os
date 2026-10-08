@@ -15,7 +15,6 @@ import { Badge } from "@/components/ui/badge";
 import { CountUp } from "@/components/motion/count-up";
 import { Reveal } from "@/components/motion/reveal";
 import { Stagger, StaggerItem } from "@/components/motion/stagger";
-import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { SectionHeader } from "@/components/landing/section-header";
 import { AuroraBackground } from "@/components/motion/aurora-background";
 import { MemoryPreview } from "@/components/landing/memory-preview";
@@ -113,7 +112,6 @@ export default function LandingPage() {
               <a href="#privacy" className="transition-colors hover:text-foreground">Privacy</a>
               <a href="#waitlist" className="transition-colors hover:text-foreground">Waitlist</a>
             </nav>
-            <ThemeToggle />
             <Button
               size="sm"
               className="rounded-full bg-gradient-to-r from-[color-mix(in_oklab,var(--aurora-1)_92%,black)] to-aurora-3 px-5 shadow-[0_8px_20px_-8px_color-mix(in_oklab,var(--aurora-2)_70%,transparent)]"

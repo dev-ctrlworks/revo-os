@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Inter, Space_Grotesk } from "next/font/google";
-import { ThemeProvider } from "@/components/theme/theme-provider";
 import "./globals.css";
 
 const inter = Inter({
@@ -15,10 +14,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f4f3fb" },
-    { media: "(prefers-color-scheme: dark)", color: "#1a1830" },
-  ],
+  themeColor: "#f4f3fb",
 };
 
 export const metadata: Metadata = {
@@ -94,18 +90,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       className={`${inter.variable} ${spaceGrotesk.variable} h-full antialiased`}
-      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col" suppressHydrationWarning>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem={false}
-          disableTransitionOnChange
-          storageKey="revoos-theme"
-        >
-          {children}
-        </ThemeProvider>
+      <body className="min-h-full flex flex-col">
+        {children}
         {analyticsToken && (
           <Script
             id="cf-web-analytics"

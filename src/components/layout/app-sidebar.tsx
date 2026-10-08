@@ -23,7 +23,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { useMemoryStore } from "@/lib/use-memory-store";
 
 const groups = [
@@ -137,9 +136,8 @@ export function AppSidebar() {
           <Logo />
         </div>
         <NavBody />
-        <div className="flex items-center justify-between border-t border-border/50 px-3 py-2.5">
+        <div className="flex items-center justify-center border-t border-border/50 px-3 py-2.5">
           <span className="text-[10px] text-muted-foreground">revo.app</span>
-          <ThemeToggle />
         </div>
       </aside>
 
@@ -163,9 +161,8 @@ export function AppSidebar() {
             </SheetTitle>
           </SheetHeader>
           <NavBody onNavigate={() => setOpen(false)} />
-          <div className="flex items-center justify-between border-t border-border/50 px-4 py-2.5">
+          <div className="flex items-center justify-center border-t border-border/50 px-4 py-2.5">
             <span className="text-[10px] text-muted-foreground">revo.app</span>
-            <ThemeToggle />
           </div>
         </SheetContent>
       </Sheet>

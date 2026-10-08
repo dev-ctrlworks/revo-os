@@ -4,7 +4,6 @@ import { CommandPaletteTrigger } from "@/components/command/command-palette-trig
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { Plus } from "lucide-react";
 import Link from "next/link";
 import { useMemoryStore } from "@/lib/use-memory-store";
@@ -41,7 +40,6 @@ export function DashboardHeader() {
           <Plus className="mr-1.5 size-3.5" />
           Capture
         </Button>
-        <ThemeToggle />
         <Avatar className="size-8">
           <AvatarFallback className="brand-gradient text-[10px] font-semibold text-white">
             BR
