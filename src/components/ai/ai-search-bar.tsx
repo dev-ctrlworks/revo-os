@@ -117,7 +117,7 @@ export function AISearchBar({
               disabled={!query.trim()}
               aria-label="Search memories"
               className={cn(
-                "flex shrink-0 items-center justify-center gap-1 rounded-full bg-gradient-to-r from-aurora-1 to-aurora-3 text-white shadow-[0_8px_20px_-8px_color-mix(in_oklab,var(--aurora-2)_70%,transparent)] transition-all hover:brightness-105 disabled:bg-muted disabled:text-muted-foreground disabled:shadow-none",
+                "flex shrink-0 items-center justify-center gap-1 rounded-full bg-gradient-to-r from-aurora-1 to-aurora-3 text-white shadow-[0_8px_20px_-8px_color-mix(in_oklab,var(--aurora-2)_70%,transparent)] transition-all hover:brightness-105 disabled:opacity-60",
                 big ? "h-9 px-4 text-xs font-semibold" : "size-8"
               )}
             >
