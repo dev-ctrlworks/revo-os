@@ -1,6 +1,5 @@
 import {
   Bookmark,
-  Check,
   FileText,
   Keyboard,
   LinkIcon,
@@ -60,11 +59,6 @@ export function CaptureSources() {
                   {source.route.label}
                 </p>
               </div>
-
-              <span className="ml-auto inline-flex shrink-0 items-center gap-1 rounded-full border border-emerald-400/25 bg-emerald-400/10 px-2 py-0.5 text-[9px] font-semibold text-emerald-500">
-                <Check className="size-2.5" />
-                memorized
-              </span>
             </div>
           );
         })}
