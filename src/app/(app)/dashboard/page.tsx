@@ -74,7 +74,7 @@ export default function DashboardPage() {
   return (
     <div className="mx-auto w-full max-w-6xl space-y-10 px-4 py-6 sm:px-6 sm:py-8">
       <section>
-        <p className="mb-2 flex items-center gap-1.5 text-xs font-medium uppercase tracking-widest text-aurora-2">
+        <p className="mb-2 inline-flex items-center gap-1.5 rounded-full border border-white/70 bg-white/55 px-3 py-1 text-xs font-bold uppercase tracking-widest text-aurora-2 shadow-sm backdrop-blur-xl">
           <Sparkles className="size-3.5 text-aurora-2" />
           {greeting()} ·{" "}
           {new Date().toLocaleDateString("en-US", {
@@ -85,8 +85,8 @@ export default function DashboardPage() {
         </p>
         <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div>
-            <h1 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
-              What do you <span className="aurora-text">remember?</span>
+            <h1 className="text-balance text-3xl font-bold tracking-tight sm:text-4xl">
+              What do you <span className="text-gradient">remember?</span>
             </h1>
             <p className="mt-2 text-sm text-muted-foreground">
               Ask in plain language. Revo OS searches{" "}
@@ -121,7 +121,7 @@ export default function DashboardPage() {
               {answer.sources.map((s) => (
                 <span
                   key={s.id}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-card/60 px-2.5 py-1 text-[11px] text-muted-foreground"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-white/60 bg-white/55 px-2.5 py-1 text-[11px] text-muted-foreground backdrop-blur-xl"
                 >
                   {s.title}
                 </span>
@@ -162,7 +162,7 @@ export default function DashboardPage() {
               hint: "questions this session",
             },
           ].map((stat) => (
-            <Card key={stat.label} className="border-border/50 p-5">
+            <Card key={stat.label} className="border-white/70 bg-white/55 p-5 shadow-[0_10px_30px_-22px_rgba(30,27,46,0.3)] backdrop-blur-xl">
               <div className="mb-2 flex size-8 items-center justify-center rounded-lg icon-chip">
                 <stat.icon className="size-4 text-aurora-2" />
               </div>
@@ -186,7 +186,7 @@ export default function DashboardPage() {
           </div>
 
           {isEmpty ? (
-            <Card className="border-dashed border-border/60 p-10 text-center">
+            <Card className="border-dashed border-white/70 bg-white/40 p-10 text-center backdrop-blur-xl">
               <span className="mx-auto mb-4 flex size-12 items-center justify-center rounded-2xl icon-chip">
                 <Inbox className="size-6 text-aurora-2" />
               </span>
@@ -205,7 +205,7 @@ export default function DashboardPage() {
                   <p className="mb-2 text-[11px] font-medium uppercase tracking-widest text-muted-foreground/70">
                     {bucket.label} · {bucket.items.length}
                   </p>
-                  <div className="overflow-hidden rounded-xl border border-border/50">
+                  <div className="overflow-hidden rounded-2xl border border-white/70 bg-white/40 backdrop-blur-xl">
                     {bucket.items.map((memory, i) => (
                       <FeedRow
                         key={memory.id}
@@ -244,8 +244,8 @@ function FeedRow({ memory, last }: { memory: Memory; last: boolean }) {
   return (
     <a
       href={`/memory/${memory.id}`}
-      className={`flex items-center gap-3 bg-card/40 px-4 py-3 transition-colors hover:bg-card/80 ${
-        !last ? "border-b border-border/40" : ""
+      className={`flex items-center gap-3 bg-transparent px-4 py-3 transition-colors hover:bg-white/50 ${
+        !last ? "border-b border-white/50" : ""
       }`}
     >
       <MemoryTypeIcon type={memory.type} />

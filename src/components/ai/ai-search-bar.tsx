@@ -94,10 +94,10 @@ export function AISearchBar({
             runSearch();
           }}
           className={cn(
-            "relative flex items-center gap-2 border bg-background/80 backdrop-blur-xl transition-all",
+            "relative flex items-center gap-2 border bg-white/60 backdrop-blur-xl transition-all",
             big
-              ? "rounded-2xl border-border/60 px-4 h-14 shadow-sm group-focus-within:border-aurora-2/40 group-focus-within:shadow-lg group-focus-within:shadow-[0_12px_32px_-12px_color-mix(in_oklab,var(--aurora-2)_40%,transparent)]"
-              : "rounded-xl border-border/50 px-3 h-11 shadow-sm group-focus-within:border-aurora-2/40"
+              ? "rounded-2xl border-white/70 px-4 h-14 shadow-[0_10px_30px_-22px_rgba(30,27,46,0.35)] group-focus-within:border-aurora-2/40 group-focus-within:shadow-[0_16px_40px_-20px_color-mix(in_oklab,var(--aurora-2)_45%,transparent)]"
+              : "rounded-xl border-white/60 px-3 h-11 shadow-sm group-focus-within:border-aurora-2/40"
           )}
         >
           <Sparkles className={cn("shrink-0 text-aurora-2", big ? "size-5" : "size-4")} />
@@ -117,8 +117,8 @@ export function AISearchBar({
               disabled={!query.trim()}
               aria-label="Search memories"
               className={cn(
-                "flex shrink-0 items-center justify-center gap-1 rounded-lg bg-aurora-2 text-white transition-all hover:bg-aurora-2 disabled:bg-muted disabled:text-muted-foreground",
-                big ? "h-9 px-3 text-xs font-medium" : "size-8"
+                "flex shrink-0 items-center justify-center gap-1 rounded-full bg-gradient-to-r from-aurora-1 to-aurora-3 text-white shadow-[0_8px_20px_-8px_color-mix(in_oklab,var(--aurora-2)_70%,transparent)] transition-all hover:brightness-105 disabled:bg-muted disabled:text-muted-foreground disabled:shadow-none",
+                big ? "h-9 px-4 text-xs font-semibold" : "size-8"
               )}
             >
               {big ? (
@@ -146,7 +146,7 @@ export function AISearchBar({
                 runSearch(q);
               }}
               disabled={loading}
-              className="rounded-full border border-border/60 bg-card/50 px-2.5 py-1 text-xs text-muted-foreground transition-colors hover:border-aurora-2/40 hover:text-foreground disabled:opacity-50"
+              className="rounded-full border border-white/60 bg-white/50 px-2.5 py-1 text-xs text-muted-foreground backdrop-blur-xl transition-colors hover:border-aurora-2/40 hover:text-foreground disabled:opacity-50"
             >
               {q}
             </button>
@@ -165,7 +165,7 @@ export function AISearchBar({
                 runSearch(s.query);
               }}
               disabled={loading}
-              className="group flex items-center justify-between gap-2 rounded-xl border border-border/60 bg-card/50 px-3.5 py-3 text-left text-[13px] text-muted-foreground transition-all hover:border-aurora-2/40 hover:bg-card hover:text-foreground disabled:opacity-50"
+              className="group flex items-center justify-between gap-2 rounded-xl border border-white/70 bg-white/55 px-3.5 py-3 text-left text-[13px] text-muted-foreground shadow-[0_8px_24px_-22px_rgba(30,27,46,0.4)] backdrop-blur-xl transition-all hover:border-aurora-2/40 hover:bg-white/70 hover:text-foreground disabled:opacity-50"
             >
               <span className="line-clamp-2 leading-snug">{s.label}</span>
               <ArrowRight className="size-3.5 shrink-0 text-aurora-2 transition-transform group-hover:translate-x-0.5" />

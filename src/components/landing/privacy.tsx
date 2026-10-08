@@ -49,7 +49,7 @@ export function Privacy() {
 
         <div className="mt-8 grid gap-3 sm:grid-cols-3">
           {guarantees.map(({ icon: Icon, title, text }) => (
-            <div key={title} className="rounded-xl border border-border/60 bg-card/50 p-3.5">
+            <div key={title} className="rounded-xl border border-white/70 bg-white/55 p-3.5 shadow-[0_10px_30px_-24px_rgba(30,27,46,0.3)] backdrop-blur-xl">
               <Icon className="size-4 text-emerald-500" />
               <p className="mt-2 text-[13px] font-medium">{title}</p>
               <p className="mt-1 text-[11px] leading-snug text-muted-foreground">{text}</p>
@@ -59,11 +59,11 @@ export function Privacy() {
       </div>
 
       <div className="relative">
-        <span className="absolute -right-3 -top-3 z-10 flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-card/90 px-3 py-1 text-[11px] font-medium text-emerald-600 shadow-sm backdrop-blur dark:text-emerald-400">
+        <span className="absolute -right-3 -top-3 z-10 flex items-center gap-1.5 rounded-full border border-white/70 bg-white/75 px-3 py-1 text-[11px] font-semibold text-emerald-600 shadow-sm backdrop-blur-xl dark:text-emerald-400">
           <ShieldCheck className="size-3.5" />
           Requesting permission
         </span>
-          <div className="relative overflow-hidden rounded-2xl border border-border/70 bg-card/80 p-5 shadow-sm">
+          <div className="relative overflow-hidden rounded-2xl border border-white/70 bg-white/60 p-5 shadow-[0_20px_50px_-30px_rgba(30,27,46,0.3)] backdrop-blur-xl">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-aurora-2/40 to-transparent" />
           <div className="mb-4 flex items-center justify-between border-b border-border/60 pb-4">
             <div>
@@ -79,7 +79,7 @@ export function Privacy() {
             {accessRows.map((row) => (
               <div
                 key={row.label}
-                className="flex items-center justify-between gap-3 rounded-xl border border-border/50 bg-muted/30 px-3.5 py-3"
+                className="flex items-center justify-between gap-3 rounded-xl border border-white/60 bg-white/55 px-3.5 py-3 backdrop-blur-xl"
               >
                 <div className="min-w-0">
                   <p className={cn("text-[13px] font-medium", !row.on && "text-muted-foreground")}>

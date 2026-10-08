@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Direction I — Ore (warm modern AI)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#FAFAF7] text-[#1F1E1B] antialiased">
+  <!-- NAV -->
+  <header class="sticky top-0 z-40 border-b border-[#E7E4DC] bg-[#FAFAF7]/85 backdrop-blur-xl">
+    <div class="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-5">
+      <div class="flex items-center gap-2.5">
+        <span class="grid size-7 place-items-center rounded-lg border border-[#E7E4DC] bg-white text-[12px] font-bold text-[#D97852] shadow-sm">R</span>
+        <span class="text-[15px] font-semibold tracking-tight">Revo</span>
+      </div>
+      <nav class="hidden items-center gap-8 text-sm text-[#6B685F] md:flex">
+        <a class="transition-colors hover:text-[#1F1E1B]" href="#">Product</a>
+        <a class="transition-colors hover:text-[#1F1E1B]" href="#">System</a>
+        <a class="transition-colors hover:text-[#1F1E1B]" href="#">Privacy</a>
+      </nav>
+      <a class="rounded-lg bg-[#D97852] px-4 py-2 text-sm font-medium text-white shadow-[0_8px_20px_-10px_rgba(217,120,82,0.8)] transition-opacity hover:opacity-95" href="#">Open the app</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-16 px-5 py-24 lg:grid-cols-[1fr_1.05fr]">
+    <div>
+      <p class="mb-6 inline-flex items-center gap-2 text-sm text-[#D97852]">Small polaroid
+        <span class="ml-1 rounded-full border border-[#D97852]/30 bg-white px-3 py-1 text-xs font-medium text-[#D97852]">working prototype</span>
+      </p>
+      <h1 class="text-6xl font-semibold leading-[1.02] tracking-tight sm:text-7xl">
+        A warm place
+        for everything
+        you keep.
+      </h1>
+      <p class="mt-7 max-w-md text-lg leading-relaxed text-[#6B685F]">
+        Screenshots, notes, links — tucked into one quiet memory you can ask
+        anything. It holds what you'd forget.
+      </p>
+      <div class="mt-10 flex items-center gap-3">
+        <a class="rounded-lg bg-[#1F1E1B] px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-[#3A382F]" href="#">Try the working app</a>
+        <a class="rounded-lg border border-[#D8D5CC] px-6 py-3 text-sm font-medium text-[#1F1E1B] transition-colors hover:border-[#1F1E1B]" href="#">See how it works</a>
+      </div>
+      <p class="mt-6 text-sm text-[#A29E93]">no signup · memories stay on your machine</p>
+    </div>
+
+    <!-- warm conversational card -->
+    <div class="rounded-2xl border border-[#ECEAE2] bg-white p-7 shadow-[0_28px_70px_-50px_rgba(31,30,27,0.35)]">
+      <div class="flex items-center justify-between pb-5">
+        <div class="flex items-center gap-2">
+          <span class="size-2 rounded-full bg-[#D97852]"></span>
+          <span class="text-sm font-medium">Ask your memory</span>
+        </div>
+        <span class="text-[11px] uppercase tracking-[0.18em] text-[#A29E93]">revo</span>
+      </div>
+      <div class="rounded-lg border border-[#ECEAE2] bg-[#FAF9F5] px-4 py-3 text-[15px] text-[#A29E93]">
+        “which cameras fit my budget?”
+      </div>
+      <div class="mt-4 rounded-lg bg-[#F6F3EC] p-5">
+        <p class="text-[15px] leading-relaxed">
+          From your saved notes, <span class="font-semibold">three cameras</span> fit within
+          your budget. The one you'll like most is the
+          <span class="font-semibold text-[#D97852]">Sony A7 IV</span>.
+        </p>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span class="rounded-md border border-[#E7E4DC] bg-white px-2.5 py-1 text-xs text-[#6B685F]">camera-decision.md</span>
+          <span class="rounded-md border border-[#E7E4DC] bg-white px-2.5 py-1 text-xs text-[#6B685F]">tamron-24-70 review</span>
+          <span class="rounded-md border border-[#D97852]/40 bg-[#D97852]/5 px-2.5 py-1 text-xs font-medium text-[#D97852]">3 sources cited</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="mx-auto w-full max-w-6xl px-5">
+    <div class="grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-[#E7E4DC] bg-[#E7E4DC] sm:grid-cols-3">
+      <div class="bg-[#F7F5EF] p-7"><p class="text-4xl font-semibold tracking-tight">38</p><p class="mt-1 text-sm text-[#6B685F]">memories in the demo</p></div>
+      <div class="bg-[#F7F5EF] p-7"><p class="text-4xl font-semibold tracking-tight">5</p><p class="mt-1 text-sm text-[#6B685F]">ways to capture</p></div>
+      <div class="bg-[#F7F5EF] p-7"><p class="text-4xl font-semibold tracking-tight text-[#D97852]">100%</p><p class="mt-1 text-sm text-[#6B685F]">local-first by default</p></div>
+    </div>
+  </section>
+
+  <!-- SOURCES -->
+  <section class="mx-auto w-full max-w-6xl px-5 py-24">
+    <div class="mb-12 max-w-2xl">
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#D97852]">The system</p>
+      <h2 class="text-4xl font-semibold tracking-tight sm:text-5xl">Every kind of thing you keep.</h2>
+      <p class="mt-3 leading-relaxed text-[#6B685F]">All of it becomes one searchable memory — no folders, no filing.</p>
+    </div>
+    <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="rounded-xl border border-[#E7E4DC] bg-white p-6 transition-shadow hover:shadow-md"><p class="mb-1.5 font-medium">Notes</p><p class="text-sm leading-relaxed text-[#6B685F]">ideas as you type, indexed on the spot.</p></div>
+      <div class="rounded-xl border border-[#E7E4DC] bg-white p-6 transition-shadow hover:shadow-md"><p class="mb-1.5 font-medium">Screenshots</p><p class="text-sm leading-relaxed text-[#6B685F]">every capture, searchable by content.</p></div>
+      <div class="rounded-xl border border-[#E7E4DC] bg-white p-6 transition-shadow hover:shadow-md"><p class="mb-1.5 font-medium">Links &amp; saves</p><p class="text-sm leading-relaxed text-[#6B685F]">pages kept, summarized and connected.</p></div>
+      <div class="rounded-xl border border-[#E7E4DC] bg-white p-6 transition-shadow hover:shadow-md"><p class="mb-1.5 font-medium">Documents</p><p class="text-sm leading-relaxed text-[#6B685F]">full text, ready to ask about.</p></div>
+      <div class="rounded-xl border border-[#E7E4DC] bg-white p-6 transition-shadow hover:shadow-md"><p class="mb-1.5 font-medium">Browsing</p><p class="text-sm leading-relaxed text-[#6B685F]">lookups only when you allow them.</p></div>
+      <div class="rounded-xl border border-[#D97852]/30 bg-[#F6F3EC] p-6"><p class="mb-1.5 font-medium">One memory</p><p class="text-sm leading-relaxed text-[#6B685F]">everything connected, quietly.</p></div>
+    </div>
+  </section>
+
+  <!-- APP PEEK -->
+  <section class="mx-auto w-full max-w-6xl px-5 pb-24">
+    <div class="mb-12 max-w-2xl">
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#D97852]">The app</p>
+      <h2 class="text-4xl font-semibold tracking-tight sm:text-5xl">Calm, without clutter.</h2>
+    </div>
+    <div class="overflow-hidden rounded-2xl border border-[#E7E4DC] bg-white shadow-[0_28px_70px_-50px_rgba(31,30,27,0.3)]">
+      <div class="flex">
+        <aside class="hidden w-56 flex-col border-r border-[#F0EEE7] p-5 sm:flex">
+          <p class="mb-6 flex items-center gap-2 text-[15px] font-semibold tracking-tight"><span class="grid size-7 place-items-center rounded-lg border border-[#E7E4DC] bg-white text-[12px] text-[#D97852]">R</span>Revo</p>
+          <nav class="space-y-0.5 text-sm text-[#6B685F]">
+            <a class="block rounded-lg bg-[#F6F3EC] px-3 py-2 font-medium text-[#1F1E1B]" href="#">Home</a>
+            <a class="block rounded-lg px-3 py-2 transition-colors hover:bg-[#F6F3EC]" href="#">Ask</a>
+            <a class="block rounded-lg px-3 py-2 transition-colors hover:bg-[#F6F3EC]" href="#">Timeline</a>
+            <a class="block rounded-lg px-3 py-2 transition-colors hover:bg-[#F6F3EC]" href="#">Collections</a>
+          </nav>
+          <p class="mt-auto rounded-lg bg-[#F7F5EF] px-3 py-2.5 text-xs text-[#A29E93]">38 memories · local</p>
+        </aside>
+        <div class="flex-1 p-7">
+          <div class="mb-7 flex items-end justify-between">
+            <div><p class="text-xs font-medium text-[#D97852]">/home</p><h3 class="mt-1 text-3xl font-semibold tracking-tight">Good afternoon</h3></div>
+            <div class="flex gap-2">
+              <span class="rounded-lg border border-[#ECEAE2] bg-[#FAF9F5] px-4 py-2 text-sm text-[#A29E93]">what do you remember?</span>
+              <span class="rounded-lg bg-[#D97852] px-4 py-2 text-sm font-medium text-white">+ Capture</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <div class="rounded-lg bg-[#F9F8F3] p-4"><p class="text-xs text-[#A29E93]">Today</p><p class="mt-0.5 text-2xl font-semibold">3</p></div>
+            <div class="rounded-lg bg-[#F9F8F3] p-4"><p class="text-xs text-[#A29E93]">Streak</p><p class="mt-0.5 text-2xl font-semibold">12</p></div>
+            <div class="rounded-lg bg-[#F9F8F3] p-4"><p class="text-xs text-[#A29E93]">Memories</p><p class="mt-0.5 text-2xl font-semibold">38</p></div>
+            <div class="rounded-lg bg-[#F6F3EC] p-4"><p class="text-xs text-[#A29E93]">Asked</p><p class="mt-0.5 text-2xl font-semibold text-[#D97852]">4</p></div>
+          </div>
+          <div class="mt-4 divide-y divide-[#F0EEE7] rounded-lg border border-[#F0EEE7]">
+            <div class="flex items-center justify-between px-4 py-3.5"><div><p class="text-[15px]">lens-comparison.md</p><p class="text-xs text-[#A29E93]">note · camera decision</p></div><span class="text-xs text-[#A29E93]">2h</span></div>
+            <div class="flex items-center justify-between px-4 py-3.5"><div><p class="text-[15px]">flight-deal.png</p><p class="text-xs text-[#A29E93]">screenshot · flagged</p></div><span class="text-xs text-[#A29E93]">4h</span></div>
+            <div class="flex items-center justify-between px-4 py-3.5"><div><p class="text-[15px]">tamron-24-70 review</p><p class="text-xs text-[#A29E93]">link · saved</p></div><span class="text-xs text-[#A29E93]">yesterday</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="mx-auto w-full max-w-6xl px-5 pb-24">
+    <div class="rounded-2xl bg-[#F6F3EC] px-10 py-16 text-center">
+      <h2 class="text-5xl font-semibold tracking-tight">A memory, for a calmer mind.</h2>
+      <p class="mx-auto mt-4 max-w-md text-[#6B685F]">The prototype is live and pre-loaded with memories — try it, no signup.</p>
+      <a class="mt-9 inline-block rounded-lg bg-[#D97852] px-8 py-3 text-sm font-medium text-white shadow-[0_10px_24px_-12px_rgba(217,120,82,0.9)] transition-opacity hover:opacity-95" href="#">Try the app →</a>
+    </div>
+  </section>
+
+  <footer class="mx-auto flex max-w-6xl items-center justify-between border-t border-[#E7E4DC] px-5 py-8 text-sm text-[#A29E93]">
+    <span>Revo</span>
+    <span>prototype · memories stay local</span>
+    <span>© 2026</span>
+  </footer>
+</body>
+</html>

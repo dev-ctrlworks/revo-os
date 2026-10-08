@@ -68,7 +68,7 @@ export function HowItWorks() {
             </div>
 
             <div className="pl-12 lg:pl-0">
-              <div className="rounded-2xl border border-border/70 bg-card p-5 shadow-sm sm:p-6">
+              <div className="rounded-2xl border border-white/70 bg-white/55 p-5 shadow-[0_10px_30px_-24px_rgba(30,27,46,0.3)] backdrop-blur-xl sm:p-6">
                 {visualFor(step.number)}
               </div>
             </div>
@@ -100,7 +100,7 @@ function visualFor(number: string) {
           ].map(({ icon: Icon, label }) => (
             <span
               key={label}
-              className="inline-flex items-center gap-1.5 rounded-xl border border-border/60 bg-background/60 px-3 py-2 text-xs font-medium"
+              className="inline-flex items-center gap-1.5 rounded-xl border border-white/60 bg-white/55 px-3 py-2 text-xs font-medium backdrop-blur-xl"
             >
               <Icon className="size-3.5 text-aurora-2" />
               {label}
@@ -108,7 +108,7 @@ function visualFor(number: string) {
           ))}
           <span className="text-aurora-2/60">→</span>
         </div>
-        <div className="flex items-center gap-2 rounded-xl border border-aurora-2/25 bg-gradient-to-br from-aurora-2/[0.09] to-card px-3 py-2.5 text-xs text-muted-foreground">
+        <div className="flex items-center gap-2 rounded-xl border border-aurora-2/20 bg-gradient-to-br from-aurora-2/10 to-white/50 px-3 py-2.5 text-xs text-muted-foreground backdrop-blur-xl">
           <span className="size-1.5 rounded-full bg-aurora-2" />
           Screenshot_2026-04-12.png captured and embedded
         </div>
@@ -120,12 +120,12 @@ function visualFor(number: string) {
   }
   return (
     <div className="space-y-3">
-      <div className="flex items-center gap-2 rounded-xl border border-border/60 bg-background/60 px-3.5 py-2.5 text-sm text-muted-foreground">
+      <div className="flex items-center gap-2 rounded-xl border border-white/60 bg-white/55 px-3.5 py-2.5 text-sm text-muted-foreground backdrop-blur-xl">
         <Sparkles className="size-4 text-aurora-2" />
         Which cameras fit my budget?
         <span className="ml-auto size-1.5 animate-pulse rounded-full bg-aurora-2" />
       </div>
-      <div className="rounded-xl border border-aurora-2/25 bg-gradient-to-br from-aurora-2/[0.09] via-card to-card/70 p-4 text-sm leading-relaxed">
+      <div className="rounded-xl border border-aurora-2/20 bg-gradient-to-br from-aurora-2/10 via-white/50 to-aurora-3/10 p-4 text-sm leading-relaxed backdrop-blur-xl">
         <span className="font-semibold text-aurora-2">3 cameras</span> on your shortlist
         within <span className="font-semibold">$2,800</span> — the{" "}
         <span className="font-semibold">Sony A7 IV</span> fits best.
@@ -133,7 +133,7 @@ function visualFor(number: string) {
           {["camera-decision.md", "tamron review", "budget screenshot"].map((s) => (
             <span
               key={s}
-              className="rounded-full border border-border/60 bg-card/70 px-2 py-0.5 text-[10px] text-muted-foreground"
+              className="rounded-full border border-white/60 bg-white/60 px-2 py-0.5 text-[10px] text-muted-foreground"
             >
               {s}
             </span>

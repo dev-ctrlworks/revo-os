@@ -51,8 +51,8 @@ export function ProductShowcase() {
               className={cn(
                 "group relative flex items-start gap-3 rounded-xl border p-3.5 text-left transition-all duration-300",
                 selected
-                  ? "border-aurora-2/40 bg-aurora-2/[0.06]"
-                  : "border-transparent hover:border-border/60 hover:bg-muted/30"
+                  ? "border-aurora-2/30 bg-gradient-to-r from-aurora-2/12 to-aurora-3/12"
+                  : "border-transparent hover:border-white/60 hover:bg-white/50"
               )}
             >
               <span
@@ -77,14 +77,14 @@ export function ProductShowcase() {
         })}
       </div>
 
-      <div className="relative overflow-hidden rounded-2xl border border-border/70 bg-card/50 shadow-sm">
-        <div className="flex items-center gap-2 border-b border-border/60 bg-card/60 px-4 py-2.5">
+      <div className="relative overflow-hidden rounded-2xl border border-white/70 bg-white/55 shadow-[0_20px_50px_-30px_rgba(124,92,255,0.35)] backdrop-blur-xl">
+        <div className="flex items-center gap-2 border-b border-white/60 bg-white/55 px-4 py-2.5 backdrop-blur-xl">
           <div className="flex gap-1.5">
             <span className="size-2.5 rounded-full bg-red-400/70" />
             <span className="size-2.5 rounded-full bg-amber-400/70" />
             <span className="size-2.5 rounded-full bg-emerald-400/70" />
           </div>
-          <p className="mx-auto flex items-center gap-1.5 rounded-md bg-background/70 px-3 py-0.5 text-[11px] text-muted-foreground ring-1 ring-border/50">
+          <p className="mx-auto flex items-center gap-1.5 rounded-md bg-white/65 px-3 py-0.5 text-[11px] text-muted-foreground ring-1 ring-white/70 backdrop-blur-xl">
             {activePane.icon && <activePane.icon className="size-3 text-aurora-2" />}
             {activePane.name}
           </p>
@@ -228,7 +228,7 @@ function TimelinePreview() {
           <p className="mb-1.5 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
             {date}
           </p>
-          <div className="flex items-center gap-3 rounded-xl border border-border/60 bg-card/60 p-3">
+          <div className="flex items-center gap-3 rounded-xl border border-white/60 bg-white/60 p-3 backdrop-blur-xl">
             <MemoryTypeIcon type={memory.type} />
             <div className="min-w-0">
               <p className="line-clamp-1 text-[13px] font-medium">{memory.title}</p>
@@ -250,7 +250,7 @@ function CollectionsPreview() {
       {featured.map((c) => (
         <div
           key={c.id}
-          className="relative overflow-hidden rounded-xl border border-border/60 bg-card/60 p-4"
+          className="relative overflow-hidden rounded-xl border border-white/70 bg-white/60 p-4 backdrop-blur-xl"
         >
           <div
             className={cn(
@@ -278,11 +278,11 @@ function AISearchPreview() {
 
   return (
     <div className="mx-auto max-w-lg space-y-3">
-      <div className="flex items-center gap-2 rounded-xl border border-border/60 bg-card/70 px-3.5 py-2.5 text-sm">
+      <div className="flex items-center gap-2 rounded-xl border border-white/60 bg-white/60 px-3.5 py-2.5 text-sm backdrop-blur-xl">
         <Search className="size-4 text-aurora-2" />
         <span className="text-muted-foreground">What have I been researching lately?</span>
       </div>
-      <div className="rounded-xl border border-aurora-2/25 bg-gradient-to-br from-aurora-2/[0.09] via-card to-card/70 p-4">
+      <div className="rounded-xl border border-aurora-2/20 bg-gradient-to-br from-aurora-2/10 via-white/50 to-aurora-3/10 p-4 backdrop-blur-xl">
         <div className="mb-1.5 flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
           <BookOpenText className="size-3.5 text-aurora-2" />
           AI summary
@@ -300,7 +300,7 @@ function AISearchPreview() {
         {sources.map((memory) => (
           <span
             key={memory.id}
-            className="inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-card/60 px-2.5 py-1 text-[11px] text-muted-foreground"
+            className="inline-flex items-center gap-1.5 rounded-full border border-white/60 bg-white/60 px-2.5 py-1 text-[11px] text-muted-foreground backdrop-blur-xl"
           >
             <MemoryTypeIcon type={memory.type} size="sm" className="size-auto" />
             <span className="line-clamp-1">{memory.title}</span>

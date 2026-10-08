@@ -17,6 +17,7 @@ import { Reveal } from "@/components/motion/reveal";
 import { Stagger, StaggerItem } from "@/components/motion/stagger";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { SectionHeader } from "@/components/landing/section-header";
+import { AuroraBackground } from "@/components/motion/aurora-background";
 import { MemoryPreview } from "@/components/landing/memory-preview";
 import { CaptureSources } from "@/components/landing/capture-sources";
 import { HowItWorks } from "@/components/landing/how-it-works";
@@ -94,17 +95,18 @@ export default function LandingPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-xl">
-        <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-5">
+      <AuroraBackground />
+      <header className="sticky top-0 z-40 px-4 pt-4 sm:px-5">
+        <div className="mx-auto flex h-14 w-full max-w-7xl items-center justify-between rounded-full border border-white/70 bg-background/65 px-5 shadow-[0_8px_30px_-14px_color-mix(in_oklab,var(--aurora-2)_35%,transparent)] backdrop-blur-xl">
           <Link href="/" className="flex items-center gap-2.5">
-            <span className="relative flex size-8 items-center justify-center rounded-xl brand-gradient shadow-[0_8px_24px_-6px_color-mix(in_oklab,var(--aurora-2)_70%,transparent)]">
+            <span className="relative flex size-7 items-center justify-center rounded-xl brand-gradient shadow-[0_6px_16px_-6px_color-mix(in_oklab,var(--aurora-2)_65%,transparent)]">
               <span className="absolute inset-0 rounded-xl ring-1 ring-white/25 ring-inset" />
               <BrainCircuit className="size-4 text-white" />
             </span>
             <span className="font-display text-base font-semibold tracking-tight">Revo OS</span>
           </Link>
           <div className="flex items-center gap-3">
-            <nav className="hidden items-center gap-7 text-sm text-muted-foreground lg:flex">
+            <nav className="hidden items-center gap-7 text-sm font-medium text-muted-foreground lg:flex">
               <a href="#capture" className="transition-colors hover:text-foreground">Capture</a>
               <a href="#how" className="transition-colors hover:text-foreground">How it works</a>
               <a href="#product" className="transition-colors hover:text-foreground">Product</a>
@@ -112,7 +114,12 @@ export default function LandingPage() {
               <a href="#waitlist" className="transition-colors hover:text-foreground">Waitlist</a>
             </nav>
             <ThemeToggle />
-            <Button size="sm" className="rounded-lg px-4" render={<Link href="/dashboard" />} nativeButton={false}>
+            <Button
+              size="sm"
+              className="rounded-full bg-gradient-to-r from-[color-mix(in_oklab,var(--aurora-1)_92%,black)] to-aurora-3 px-5 shadow-[0_8px_20px_-8px_color-mix(in_oklab,var(--aurora-2)_70%,transparent)]"
+              render={<Link href="/dashboard" />}
+              nativeButton={false}
+            >
               Try RevoOS
               <ArrowRight className="ml-1.5 size-3.5" />
             </Button>
@@ -121,25 +128,22 @@ export default function LandingPage() {
       </header>
 
       <main>
-        <section className="container relative mx-auto max-w-7xl overflow-hidden px-5 pb-20 pt-16 sm:pt-24">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-x-0 -top-24 -z-10 h-[440px] bg-[radial-gradient(60%_50%_at_50%_0%,color-mix(in_oklab,var(--aurora-2)_14%,transparent),transparent)]"
-          />
+        <section className="container relative mx-auto max-w-7xl px-5 pb-20 pt-16 sm:pt-20">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-8">
             <div>
               <Badge
                 variant="secondary"
-                className="mb-6 gap-1.5 rounded-full border-aurora-2/30 bg-aurora-2/10 px-3 py-1 text-[11px] font-medium text-aurora-2 ring-glow"
+                className="mb-6 gap-1.5 rounded-full border-white/70 bg-white/55 px-3 py-1 text-[11px] font-semibold text-aurora-2 shadow-sm backdrop-blur-xl"
               >
-                <span className="size-1.5 rounded-full bg-aurora-2" />
-                A personal AI memory system
-              </Badge>
-              <h1 className="animate-fade-up font-display text-balance text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
-                Your digital life,{" "}
-                <span className="aurora-text animate-gradient-x">
-                  with a memory.
+                <span className="relative flex size-1.5">
+                  <span className="absolute inline-flex size-full animate-ping rounded-full bg-aurora-2 opacity-60" />
+                  <span className="relative inline-flex size-1.5 rounded-full bg-aurora-2" />
                 </span>
+                Your memory layer — in working beta
+              </Badge>
+              <h1 className="animate-fade-up font-display text-balance text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
+                Your digital life,{" "}
+                <span className="text-gradient">with a memory.</span>
               </h1>
               <p className="animate-fade-up delay-75 mt-6 max-w-lg text-balance text-base leading-relaxed text-muted-foreground sm:text-lg">
                 Revo OS quietly captures your screenshots, notes, links, and
@@ -149,7 +153,7 @@ export default function LandingPage() {
               <div className="animate-fade-up delay-100 mt-9 flex flex-wrap items-center gap-3">
                 <Button
                   size="lg"
-                  className="rounded-xl px-7 text-base"
+                  className="rounded-full bg-gradient-to-r from-[color-mix(in_oklab,var(--aurora-1)_92%,black)] to-aurora-3 px-7 text-base shadow-[0_12px_28px_-10px_color-mix(in_oklab,var(--aurora-2)_70%,transparent)] transition-transform hover:scale-[1.02]"
                   render={<Link href="/dashboard" />}
                   nativeButton={false}
                 >
@@ -159,18 +163,17 @@ export default function LandingPage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="rounded-xl px-6 text-base"
+                  className="rounded-full border-white/70 bg-white/55 px-6 text-base shadow-sm backdrop-blur-xl"
                   render={<a href="#how" />}
                   nativeButton={false}
                 >
                   See how it works
                 </Button>
               </div>
-              <p className="animate-fade-up delay-150 mt-6 flex items-center gap-2 text-xs text-muted-foreground">
-                <span className="flex size-5 items-center justify-center rounded-md border border-border/60 bg-card/60 font-mono text-[10px]">
-                  ⌘K
-                </span>
-                Open the command palette inside the app
+              <p className="animate-fade-up delay-150 mt-8 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+                <span className="rounded-full border border-white/60 bg-white/45 px-2.5 py-1 font-medium backdrop-blur-xl">no signup</span>
+                <span className="rounded-full border border-white/60 bg-white/45 px-2.5 py-1 font-medium backdrop-blur-xl">local-first</span>
+                <span className="rounded-full border border-white/60 bg-white/45 px-2.5 py-1 font-medium backdrop-blur-xl">⌘K powers the app</span>
               </p>
             </div>
 
@@ -183,18 +186,21 @@ export default function LandingPage() {
 
           <Stagger
             delay={0.15}
-            className="mx-auto mt-20 grid max-w-3xl grid-cols-1 divide-y divide-border/60 rounded-2xl border border-border/60 bg-card/40 px-6 py-5 backdrop-blur sm:grid-cols-3 sm:divide-x sm:divide-y-0"
+            className="mx-auto mt-20 grid max-w-3xl grid-cols-1 gap-3 sm:grid-cols-3"
           >
             {[
               { value: memories.length, label: "memories in the demo" },
               { value: 5, label: "capture methods" },
               { value: 100, label: "your data, local-first", suffix: "%" },
-            ].map((stat, i) => (
-              <StaggerItem key={stat.label} className={i === 0 ? "py-3 pr-4 sm:py-0" : "py-3 sm:py-0 sm:px-6"}>
-                <p className="font-display text-2xl font-semibold tracking-tight">
+            ].map((stat) => (
+              <StaggerItem
+                key={stat.label}
+                className="rounded-2xl border border-white/70 bg-white/55 px-6 py-5 text-center shadow-[0_10px_30px_-20px_rgba(30,27,46,0.25)] backdrop-blur-xl"
+              >
+                <p className="font-display text-3xl font-bold tracking-tight">
                   <CountUp to={stat.value} suffix={stat.suffix} />
                 </p>
-                <p className="text-xs text-muted-foreground">{stat.label}</p>
+                <p className="mt-1 text-xs text-muted-foreground">{stat.label}</p>
               </StaggerItem>
             ))}
           </Stagger>
@@ -223,7 +229,7 @@ export default function LandingPage() {
             title={
               <>
                 Capture. Understand.{" "}
-                <span className="aurora-text">Ask.</span>
+                <span className="text-gradient">Ask.</span>
               </>
             }
             lead="From scattered inputs to grounded answers — in three quiet steps."
@@ -264,9 +270,9 @@ export default function LandingPage() {
               title="Ask anything. Get answers, not links."
               lead="This search runs against the prototype's actual memory layer — pick a prompt and watch it reason over real memories."
             />
-            <div className="rounded-2xl border border-border/70 bg-card/50 p-5 shadow-sm sm:p-6">
+            <div className="rounded-2xl border border-white/70 bg-white/55 p-5 shadow-[0_10px_30px_-20px_rgba(30,27,46,0.25)] backdrop-blur-xl sm:p-6">
               <SearchDemo />
-              <ul className="mt-6 space-y-2.5 border-t border-border/60 pt-5">
+              <ul className="mt-6 space-y-2.5 border-t border-border/50 pt-5">
                 {askCapabilities.map(({ icon: Icon, text }) => (
                   <li key={text} className="flex items-center gap-2.5 text-[13px] text-muted-foreground">
                     <span className="flex size-6 items-center justify-center rounded-md icon-chip">
@@ -310,9 +316,9 @@ export default function LandingPage() {
             </div>
 
             <Reveal>
-              <div className="rounded-3xl border border-border/70 bg-card/50 p-1 shadow-[0_16px_48px_-28px_color-mix(in_oklab,var(--aurora-2)_30%,transparent)]">
+              <div className="rounded-[28px] border border-white/70 bg-white/55 p-1 shadow-[0_24px_60px_-30px_rgba(124,92,255,0.35)] backdrop-blur-xl">
                 <div className="p-7 sm:p-9">
-                  <Badge variant="secondary" className="mb-4 gap-1.5 rounded-full border-aurora-2/30 bg-aurora-2/10 text-[11px] font-medium text-aurora-2">
+                  <Badge variant="secondary" className="mb-4 gap-1.5 rounded-full border-white/70 bg-white/65 px-3 py-1 text-[11px] font-semibold text-aurora-2 shadow-sm backdrop-blur-xl">
                     <Sparkles className="size-3" />
                     Join the preview
                   </Badge>
@@ -340,18 +346,18 @@ export default function LandingPage() {
 
         <section className="container mx-auto max-w-7xl px-5 pb-28 pt-16">
           <Reveal>
-            <div className="relative rounded-3xl border border-border/70 bg-card/50 p-px shadow-[0_16px_48px_-24px_color-mix(in_oklab,var(--aurora-2)_35%,transparent)]">
-              <div className="relative flex flex-col items-center justify-between gap-10 rounded-[calc(1.5rem-1px)] px-6 py-16 sm:px-16 lg:flex-row lg:text-left">
+            <div className="relative overflow-hidden rounded-[28px] bg-gradient-to-br from-[color-mix(in_oklab,var(--aurora-1)_90%,black)] via-[color-mix(in_oklab,var(--aurora-1)_72%,var(--aurora-3))] to-aurora-3 p-14 text-center shadow-[0_30px_80px_-40px_color-mix(in_oklab,var(--aurora-2)_70%,transparent)]">
+              <div className="pointer-events-none absolute -left-16 -top-16 size-64 rounded-full bg-white/15 blur-3xl" />
+              <div className="relative flex flex-col items-center justify-center gap-8 lg:flex-row lg:justify-between lg:text-left">
                 <div className="flex items-start gap-5">
-                  <div className="relative flex size-12 shrink-0 items-center justify-center rounded-2xl brand-gradient shadow-[0_10px_24px_-10px_color-mix(in_oklab,var(--aurora-2)_50%,transparent)]">
-                    <span className="absolute inset-0 rounded-2xl ring-1 ring-white/20 ring-inset" />
+                  <div className="relative flex size-12 shrink-0 items-center justify-center rounded-2xl bg-white/15 ring-1 ring-white/25 ring-inset backdrop-blur-xl">
                     <BrainCircuit className="size-5 text-white" />
                   </div>
                   <div>
-                    <h2 className="font-display text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
+                    <h2 className="font-display text-balance text-3xl font-bold tracking-tight text-white sm:text-4xl">
                       Remember everything. Find anything.
                     </h2>
-                    <p className="mt-3 max-w-xl text-muted-foreground">
+                    <p className="mt-3 max-w-xl text-white/80">
                       Try RevoOS now with a pre-populated, working prototype — no
                       signup, no setup.
                     </p>
@@ -359,11 +365,11 @@ export default function LandingPage() {
                 </div>
                 <Button
                   size="lg"
-                  className="shrink-0 rounded-xl px-8 text-base"
+                  className="shrink-0 rounded-full bg-white px-8 text-base font-bold text-aurora-2 shadow-xl transition-transform hover:scale-[1.03]"
                   render={<Link href="/dashboard" />}
                   nativeButton={false}
                 >
-                  Try RevoOS
+                  Open your memory
                   <ArrowRight className="ml-2 size-4" />
                 </Button>
               </div>
@@ -372,10 +378,12 @@ export default function LandingPage() {
         </section>
       </main>
 
-      <footer className="container mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-border/60 px-5 py-8 text-xs text-muted-foreground sm:flex-row">
+      <footer className="container mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-5 pb-10 text-xs text-muted-foreground sm:flex-row">
         <div className="flex items-center gap-2">
-          <BrainCircuit className="size-3.5 text-aurora-2" />
-          <span className="font-display font-medium text-foreground">Revo OS</span>
+          <span className="flex size-5 items-center justify-center rounded-lg brand-gradient">
+            <BrainCircuit className="size-3 text-white" />
+          </span>
+          <span className="font-display font-semibold text-foreground">Revo OS</span>
         </div>
         <p>A working prototype. Memories pre-loaded from a demo persona — your own captures stay in your browser.</p>
         <div className="flex items-center gap-4">

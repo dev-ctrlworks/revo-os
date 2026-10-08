@@ -24,7 +24,7 @@ export function SectionHeader({
       {kicker && (
         <p
           className={cn(
-            "mb-3 inline-flex items-center gap-2 rounded-full border border-aurora-2/25 bg-aurora-2/10 px-3 py-1 text-[11px] font-medium uppercase tracking-widest text-aurora-2",
+            "mb-3 inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/55 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-aurora-2 shadow-sm backdrop-blur-xl",
             align === "center" ? "justify-center" : ""
           )}
         >
