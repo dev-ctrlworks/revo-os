@@ -66,7 +66,7 @@ export function CaptureSources() {
         text="Kept for later — Revo OS makes later findable."
       />
 
-      <div className="relative mt-1 flex items-center gap-3 overflow-hidden rounded-2xl border border-white/70 bg-white/55 px-5 py-4 shadow-[0_10px_30px_-24px_rgba(30,27,46,0.3)] backdrop-blur-xl sm:col-span-2 lg:col-span-6">
+      <div className="relative mt-1 flex items-center gap-3 overflow-hidden rounded-2xl border border-border/50 bg-card/55 px-5 py-4 shadow-[0_10px_30px_-24px_rgba(30,27,46,0.3)] backdrop-blur-xl sm:col-span-2 lg:col-span-6">
         <span className="flex size-8 shrink-0 items-center justify-center rounded-lg icon-chip">
           <FolderDown className="size-4 text-aurora-2" />
         </span>
@@ -105,7 +105,7 @@ function BentoCell({
 
   return (
     <Card
-      className={`group relative flex flex-col justify-between overflow-hidden border-white/70 bg-white/55 p-5 shadow-[0_10px_30px_-24px_rgba(30,27,46,0.3)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-aurora-2/40 hover:bg-white/70 hover:shadow-[0_16px_40px_-24px_rgba(124,92,255,0.4)] ${className}`}
+      className={`group relative flex flex-col justify-between overflow-hidden border-border/50 bg-card/55 p-5 shadow-[0_10px_30px_-24px_rgba(30,27,46,0.3)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-aurora-2/40 hover:bg-card/70 hover:shadow-[0_16px_40px_-24px_rgba(124,92,255,0.4)] ${className}`}
     >
       <div className="relative h-full">
         <span className="mb-3 inline-flex size-9 items-center justify-center rounded-lg icon-chip">
@@ -122,7 +122,7 @@ function BentoCell({
 function NoteMock() {
   return (
     <div className="space-y-2">
-      <div className="rounded-xl border border-white/60 bg-white/55 p-3 text-[13px] leading-relaxed backdrop-blur-xl">
+      <div className="rounded-xl border border-border/50 bg-card/55 p-3 text-[13px] leading-relaxed backdrop-blur-xl">
         lens comparison — check{" "}
         <span className="rounded bg-aurora-2/15 px-1 font-semibold text-aurora-2">24-70mm f/2.8</span>{" "}
         vs 24-105 if budget allows
@@ -158,7 +158,7 @@ function LinkRow() {
       {["Tamron review", "Summit rents", "JFK→NRT fares"].map((label) => (
         <span
           key={label}
-          className="inline-flex items-center gap-1.5 rounded-full border border-white/60 bg-white/60 px-2.5 py-1 text-[11px] text-muted-foreground backdrop-blur-xl"
+          className="inline-flex items-center gap-1.5 rounded-full border border-border/50 bg-card/60 px-2.5 py-1 text-[11px] text-muted-foreground backdrop-blur-xl"
         >
           <span className="size-1 rounded-full bg-aurora-2" />
           {label}

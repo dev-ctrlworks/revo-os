@@ -97,7 +97,7 @@ export default function LandingPage() {
       />
       <AuroraBackground />
       <header className="sticky top-0 z-40 px-4 pt-4 sm:px-5">
-        <div className="mx-auto flex h-14 w-full max-w-7xl items-center justify-between rounded-full border border-white/70 bg-background/65 px-5 shadow-[0_8px_30px_-14px_color-mix(in_oklab,var(--aurora-2)_35%,transparent)] backdrop-blur-xl">
+        <div className="mx-auto flex h-14 w-full max-w-7xl items-center justify-between rounded-full border border-border/50 bg-background/65 px-5 shadow-[0_8px_30px_-14px_color-mix(in_oklab,var(--aurora-2)_35%,transparent)] backdrop-blur-xl">
           <Link href="/" className="flex items-center gap-2.5">
             <span className="relative flex size-7 items-center justify-center rounded-xl brand-gradient shadow-[0_6px_16px_-6px_color-mix(in_oklab,var(--aurora-2)_65%,transparent)]">
               <span className="absolute inset-0 rounded-xl ring-1 ring-white/25 ring-inset" />
@@ -133,7 +133,7 @@ export default function LandingPage() {
             <div>
               <Badge
                 variant="secondary"
-                className="mb-6 gap-1.5 rounded-full border-white/70 bg-white/55 px-3 py-1 text-[11px] font-semibold text-aurora-2 shadow-sm backdrop-blur-xl"
+                className="mb-6 gap-1.5 rounded-full border-border/50 bg-card/55 px-3 py-1 text-[11px] font-semibold text-aurora-2 shadow-sm backdrop-blur-xl"
               >
                 <span className="relative flex size-1.5">
                   <span className="absolute inline-flex size-full animate-ping rounded-full bg-aurora-2 opacity-60" />
@@ -163,7 +163,7 @@ export default function LandingPage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="rounded-full border-white/70 bg-white/55 px-6 text-base shadow-sm backdrop-blur-xl"
+                  className="rounded-full border-border/50 bg-card/55 px-6 text-base shadow-sm backdrop-blur-xl"
                   render={<a href="#how" />}
                   nativeButton={false}
                 >
@@ -171,9 +171,9 @@ export default function LandingPage() {
                 </Button>
               </div>
               <p className="animate-fade-up delay-150 mt-8 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-                <span className="rounded-full border border-white/60 bg-white/45 px-2.5 py-1 font-medium backdrop-blur-xl">no signup</span>
-                <span className="rounded-full border border-white/60 bg-white/45 px-2.5 py-1 font-medium backdrop-blur-xl">local-first</span>
-                <span className="rounded-full border border-white/60 bg-white/45 px-2.5 py-1 font-medium backdrop-blur-xl">⌘K powers the app</span>
+                <span className="rounded-full border border-border/50 bg-card/45 px-2.5 py-1 font-medium backdrop-blur-xl">no signup</span>
+                <span className="rounded-full border border-border/50 bg-card/45 px-2.5 py-1 font-medium backdrop-blur-xl">local-first</span>
+                <span className="rounded-full border border-border/50 bg-card/45 px-2.5 py-1 font-medium backdrop-blur-xl">⌘K powers the app</span>
               </p>
             </div>
 
@@ -195,7 +195,7 @@ export default function LandingPage() {
             ].map((stat) => (
               <StaggerItem
                 key={stat.label}
-                className="rounded-2xl border border-white/70 bg-white/55 px-6 py-5 text-center shadow-[0_10px_30px_-20px_rgba(30,27,46,0.25)] backdrop-blur-xl"
+                className="rounded-2xl border border-border/50 bg-card/55 px-6 py-5 text-center shadow-[0_10px_30px_-20px_rgba(30,27,46,0.25)] backdrop-blur-xl"
               >
                 <p className="font-display text-3xl font-bold tracking-tight">
                   <CountUp to={stat.value} suffix={stat.suffix} />
@@ -270,7 +270,7 @@ export default function LandingPage() {
               title="Ask anything. Get answers, not links."
               lead="This search runs against the prototype's actual memory layer — pick a prompt and watch it reason over real memories."
             />
-            <div className="rounded-2xl border border-white/70 bg-white/55 p-5 shadow-[0_10px_30px_-20px_rgba(30,27,46,0.25)] backdrop-blur-xl sm:p-6">
+            <div className="rounded-2xl border border-border/50 bg-card/55 p-5 shadow-[0_10px_30px_-20px_rgba(30,27,46,0.25)] backdrop-blur-xl sm:p-6">
               <SearchDemo />
               <ul className="mt-6 space-y-2.5 border-t border-border/50 pt-5">
                 {askCapabilities.map(({ icon: Icon, text }) => (
@@ -316,9 +316,9 @@ export default function LandingPage() {
             </div>
 
             <Reveal>
-              <div className="rounded-[28px] border border-white/70 bg-white/55 p-1 shadow-[0_24px_60px_-30px_rgba(124,92,255,0.35)] backdrop-blur-xl">
+              <div className="rounded-[28px] border border-border/50 bg-card/55 p-1 shadow-[0_24px_60px_-30px_rgba(124,92,255,0.35)] backdrop-blur-xl">
                 <div className="p-7 sm:p-9">
-                  <Badge variant="secondary" className="mb-4 gap-1.5 rounded-full border-white/70 bg-white/65 px-3 py-1 text-[11px] font-semibold text-aurora-2 shadow-sm backdrop-blur-xl">
+                  <Badge variant="secondary" className="mb-4 gap-1.5 rounded-full border-border/50 bg-card/65 px-3 py-1 text-[11px] font-semibold text-aurora-2 shadow-sm backdrop-blur-xl">
                     <Sparkles className="size-3" />
                     Join the preview
                   </Badge>

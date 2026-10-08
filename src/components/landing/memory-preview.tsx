@@ -11,7 +11,7 @@ export function MemoryPreview() {
   return (
     <div className="relative mx-auto mt-16 w-full max-w-xl">
       <div className="space-y-4">
-        <div className="animate-fade-up flex items-center gap-2.5 rounded-2xl border border-white/70 bg-white/55 px-4 py-3 shadow-[0_10px_30px_-22px_rgba(30,27,46,0.35)] backdrop-blur-xl">
+        <div className="animate-fade-up flex items-center gap-2.5 rounded-2xl border border-border/50 bg-card/55 px-4 py-3 shadow-[0_10px_30px_-22px_rgba(30,27,46,0.35)] backdrop-blur-xl">
           <Search className="size-4 shrink-0 text-aurora-2" />
           <p className="truncate text-sm text-foreground/90">
             What cameras have I been considering?
@@ -43,7 +43,7 @@ export function MemoryPreview() {
             {sources.map((memory) => (
               <span
                 key={memory.id}
-                className="inline-flex items-center gap-1.5 rounded-full border border-white/60 bg-white/60 px-2.5 py-1 text-[11px] text-muted-foreground backdrop-blur-xl"
+                className="inline-flex items-center gap-1.5 rounded-full border border-border/50 bg-card/60 px-2.5 py-1 text-[11px] text-muted-foreground backdrop-blur-xl"
               >
                 <MemoryTypeIcon type={memory.type} size="sm" className="size-auto" />
                 <span className="line-clamp-1">{memory.title}</span>
@@ -65,7 +65,7 @@ export function MemoryPreview() {
         </div>
       </div>
 
-      <div className="animate-float absolute -right-6 -top-10 hidden w-44 rounded-2xl border border-white/70 bg-white/70 p-3 shadow-lg shadow-black/5 backdrop-blur-xl lg:block" style={{ animationDelay: "0.4s" }}>
+      <div className="animate-float absolute -right-6 -top-10 hidden w-44 rounded-2xl border border-border/50 bg-card/70 p-3 shadow-lg shadow-black/5 backdrop-blur-xl lg:block" style={{ animationDelay: "0.4s" }}>
         <p className="mb-1 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
           Just captured
         </p>
@@ -74,7 +74,7 @@ export function MemoryPreview() {
         </p>
       </div>
 
-      <div className="animate-float absolute -bottom-8 -right-10 hidden w-48 rounded-2xl border border-aurora-2/25 bg-white/70 p-3 shadow-lg shadow-black/5 backdrop-blur-xl lg:block" style={{ animationDelay: "1.6s" }}>
+      <div className="animate-float absolute -bottom-8 -right-10 hidden w-48 rounded-2xl border border-aurora-2/25 bg-card/70 p-3 shadow-lg shadow-black/5 backdrop-blur-xl lg:block" style={{ animationDelay: "1.6s" }}>
         <p className="mb-1 text-[10px] font-semibold uppercase tracking-wide text-aurora-2">
           Thread linked
         </p>

@@ -32,7 +32,7 @@ export function AIAnswerView({
 }) {
   return (
     <div className="space-y-4">
-      <Card className="relative overflow-hidden border-aurora-2/20 bg-gradient-to-br from-aurora-2/10 via-white/60 to-aurora-3/10 p-5 shadow-[0_24px_60px_-32px_color-mix(in_oklab,var(--aurora-2)_50%,transparent)] backdrop-blur-xl">
+      <Card className="relative overflow-hidden border-aurora-2/20 bg-gradient-to-br from-aurora-2/10 via-card/60 to-aurora-3/10 p-5 shadow-[0_24px_60px_-32px_color-mix(in_oklab,var(--aurora-2)_50%,transparent)] backdrop-blur-xl">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-aurora-2/60 to-transparent" />
         <div className="mb-1.5 flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
           <BookOpenText className="size-3.5 text-aurora-2" />
@@ -72,7 +72,7 @@ export function AIAnswerView({
 function SourceChip({ memory }: { memory: Memory }) {
   return (
     <Link href={`/memory/${memory.id}`} className="group block">
-      <Card className="flex items-center gap-3 border-white/70 bg-white/55 p-3 backdrop-blur-xl transition-all hover:border-aurora-2/40 hover:bg-white/75 hover:shadow-[0_16px_40px_-24px_color-mix(in_oklab,var(--aurora-2)_45%,transparent)]">
+      <Card className="flex items-center gap-3 border-border/50 bg-card/55 p-3 backdrop-blur-xl transition-all hover:border-aurora-2/40 hover:bg-card/75 hover:shadow-[0_16px_40px_-24px_color-mix(in_oklab,var(--aurora-2)_45%,transparent)]">
         <MemoryTypeIcon type={memory.type} />
         <div className="min-w-0 flex-1">
           <p className="font-display line-clamp-1 text-[13px] font-medium">{memory.title}</p>

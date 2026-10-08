@@ -44,8 +44,8 @@ const saved = [
 
 export function ConnectionDiagram() {
   return (
-    <div className="relative overflow-hidden rounded-[28px] border border-white/70 bg-white/55 p-6 shadow-[0_24px_60px_-32px_rgba(124,92,255,0.3)] backdrop-blur-xl sm:p-10">
-      <div className="relative mx-auto -mt-12 mb-8 flex w-max max-w-full items-center gap-2 rounded-full border border-white/70 bg-white/65 px-4 py-1.5 text-xs font-medium shadow-sm backdrop-blur-xl sm:-mt-16">
+    <div className="relative overflow-hidden rounded-[28px] border border-border/50 bg-card/55 p-6 shadow-[0_24px_60px_-32px_rgba(124,92,255,0.3)] backdrop-blur-xl sm:p-10">
+      <div className="relative mx-auto -mt-12 mb-8 flex w-max max-w-full items-center gap-2 rounded-full border border-border/50 bg-card/65 px-4 py-1.5 text-xs font-medium shadow-sm backdrop-blur-xl sm:-mt-16">
         <Sparkles className="size-3.5 text-aurora-2" />
         Revo OS found a thread
         <span className="text-muted-foreground/60">·</span>
@@ -76,7 +76,7 @@ export function ConnectionDiagram() {
         {["camera-decision.md", "tamron review", "budget screenshot"].map((chip) => (
 <span
           key={chip}
-          className="rounded-full border border-white/60 bg-white/60 px-3 py-1 text-xs text-muted-foreground"
+          className="rounded-full border border-border/50 bg-card/60 px-3 py-1 text-xs text-muted-foreground"
         >
           {chip}
         </span>
@@ -101,8 +101,8 @@ function Row({
   return (
     <div
       className={cn(
-        "flex items-start gap-2.5 rounded-xl border bg-white/60 p-3 backdrop-blur-xl transition-colors",
-        item.matched ? "border-aurora-2/50 ring-1 ring-aurora-2/20" : "border-white/60",
+        "flex items-start gap-2.5 rounded-xl border bg-card/60 p-3 backdrop-blur-xl transition-colors",
+        item.matched ? "border-aurora-2/50 ring-1 ring-aurora-2/20" : "border-border/50",
         rightAligned && "md:flex-row-reverse md:text-right"
       )}
     >

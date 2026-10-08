@@ -31,7 +31,7 @@ export function MemoryCard({
 
   return (
     <Link href={`/memory/${memory.id}`} className="group block h-full">
-      <Card className="flex h-full flex-col gap-0 overflow-hidden border-white/70 bg-white/55 p-0 shadow-[0_10px_30px_-24px_rgba(30,27,46,0.3)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-aurora-2/40 hover:shadow-[0_24px_60px_-28px_color-mix(in_oklab,var(--aurora-2)_50%,transparent)]">
+      <Card className="flex h-full flex-col gap-0 overflow-hidden border-border/50 bg-card/55 p-0 shadow-[0_10px_30px_-24px_rgba(30,27,46,0.3)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-aurora-2/40 hover:shadow-[0_24px_60px_-28px_color-mix(in_oklab,var(--aurora-2)_50%,transparent)]">
         <div className={cn("h-1 bg-gradient-to-r shadow-[0_2px_12px_-2px_color-mix(in_oklab,var(--aurora-2)_55%,transparent)]", top)} />
         <div className="flex flex-1 flex-col p-5">
           <div className="mb-2 flex items-center justify-between gap-2">
@@ -68,7 +68,7 @@ export function MemoryCard({
             {memory.content}
           </p>
 
-          <div className="mt-3 flex items-center justify-between gap-2 border-t border-white/50 pt-3">
+          <div className="mt-3 flex items-center justify-between gap-2 border-t border-border/40 pt-3">
             <span className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
               <Calendar className="size-3" />
               {timeAgo(memory.createdAt)}

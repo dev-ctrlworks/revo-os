@@ -113,7 +113,7 @@ function NavBody({ onNavigate }: { onNavigate?: () => void }) {
         </div>
       ))}
 
-      <div className="mt-auto space-y-1 border-t border-white/60 pt-3">
+      <div className="mt-auto space-y-1 border-t border-border/50 pt-3">
         <div className="flex items-center gap-2.5 rounded-xl px-3 py-2 text-xs text-muted-foreground">
           <span className="relative flex size-1.5">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
@@ -132,12 +132,12 @@ export function AppSidebar() {
 
   return (
     <>
-      <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 shrink-0 flex-col border-r border-white/60 bg-card/60 backdrop-blur-xl lg:flex">
-        <div className="flex h-14 items-center border-b border-white/60 px-4">
+      <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 shrink-0 flex-col border-r border-border/50 bg-card/60 backdrop-blur-xl lg:flex">
+        <div className="flex h-14 items-center border-b border-border/50 px-4">
           <Logo />
         </div>
         <NavBody />
-        <div className="flex items-center justify-between border-t border-white/60 px-3 py-2.5">
+        <div className="flex items-center justify-between border-t border-border/50 px-3 py-2.5">
           <span className="text-[10px] text-muted-foreground">revo.app</span>
           <ThemeToggle />
         </div>
@@ -157,13 +157,13 @@ export function AppSidebar() {
           <Menu className="size-4" />
         </SheetTrigger>
         <SheetContent side="left" className="w-72 p-0">
-          <SheetHeader className="h-14 items-start justify-center border-b border-white/60 px-4">
+          <SheetHeader className="h-14 items-start justify-center border-b border-border/50 px-4">
             <SheetTitle className="flex w-auto items-center gap-2.5">
               <Logo />
             </SheetTitle>
           </SheetHeader>
           <NavBody onNavigate={() => setOpen(false)} />
-          <div className="flex items-center justify-between border-t border-white/60 px-4 py-2.5">
+          <div className="flex items-center justify-between border-t border-border/50 px-4 py-2.5">
             <span className="text-[10px] text-muted-foreground">revo.app</span>
             <ThemeToggle />
           </div>
