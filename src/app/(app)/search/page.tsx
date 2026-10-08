@@ -23,7 +23,7 @@ export default function SearchPage() {
         <div>
           <h1 className="flex items-center gap-2.5 text-3xl font-semibold tracking-tight sm:text-4xl">
             <span className="flex size-9 items-center justify-center rounded-lg icon-chip">
-              <Search className="size-4 text-indigo-500" />
+              <Search className="size-4 text-aurora-2" />
             </span>
             Search your <span className="text-gradient">mind</span>
           </h1>
@@ -53,8 +53,8 @@ export default function SearchPage() {
 
       {pendingQuery && (
         <div className="animate-fade-in flex items-center gap-2 text-sm text-muted-foreground">
-          <span className="flex size-5 items-center justify-center rounded-full bg-indigo-500/10">
-            <span className="size-2 animate-pulse rounded-full bg-indigo-500" />
+          <span className="flex size-5 items-center justify-center rounded-full bg-aurora-2/15">
+            <span className="size-2 animate-pulse rounded-full bg-aurora-2" />
           </span>
           Thinking about &ldquo;{pendingQuery}&rdquo;
           <span className="animate-pulse">…</span>
@@ -76,7 +76,7 @@ export default function SearchPage() {
             }
           >
             <div className="mb-2 flex items-center gap-2">
-              <span className="flex size-6 items-center justify-center rounded-md bg-indigo-500/10 text-[10px] font-bold text-indigo-500">
+              <span className="flex size-6 items-center justify-center rounded-md bg-aurora-2/15 text-[10px] font-bold text-aurora-2">
                 Q{answers.length - index}
               </span>
               <span className="text-sm font-medium">{answer.query}</span>
@@ -94,7 +94,7 @@ function EmptySearchHistory() {
     <Card className="flex flex-col items-center justify-center border-dashed border-border/70 py-16 text-center">
       <div className="relative mb-5">
         <div className="flex size-14 items-center justify-center rounded-2xl icon-chip">
-          <Clock className="size-6 text-indigo-500" />
+          <Clock className="size-6 text-aurora-2" />
         </div>
       </div>
       <h3 className="text-base font-semibold">Ask your memories anything</h3>

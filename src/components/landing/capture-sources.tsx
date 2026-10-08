@@ -59,12 +59,12 @@ export function CaptureSources() {
       {sources.map(({ icon: Icon, label, text }) => (
         <Card
           key={label}
-          className="group relative overflow-hidden border-border/50 p-5 transition-all hover:-translate-y-1 hover:border-indigo-500/30 hover:shadow-lg hover:shadow-indigo-500/5"
+          className="group relative overflow-hidden border-border/60 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-aurora-2/40 hover:shadow-[0_24px_64px_-28px_color-mix(in_oklab,var(--aurora-2)_60%,transparent)]"
         >
-          <div className="absolute right-0 top-0 h-20 w-20 rounded-bl-full bg-gradient-to-br from-indigo-500/[0.06] to-purple-500/[0.06] transition-opacity group-hover:opacity-100" />
+          <div className="absolute right-0 top-0 h-20 w-20 rounded-bl-full bg-gradient-to-br from-aurora-2/[0.12] to-aurora-3/[0.08] transition-opacity group-hover:opacity-100" />
           <div className="relative">
             <span className="mb-3 inline-flex size-9 items-center justify-center rounded-lg icon-chip">
-              <Icon className="size-4 text-indigo-500" />
+              <Icon className="size-4 text-aurora-2" />
             </span>
             <p className="font-medium tracking-tight">{label}</p>
             <p className="mt-1.5 text-[13px] leading-relaxed text-muted-foreground">{text}</p>

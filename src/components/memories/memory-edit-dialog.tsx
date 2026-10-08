@@ -77,7 +77,7 @@ const sourceHint: Record<MemoryType, { placeholder: string; helper: string }> = 
 };
 
 const saveButtonClass =
-  "rounded-lg brand-gradient text-white shadow-sm shadow-indigo-500/25";
+  "rounded-lg brand-gradient text-white shadow-sm shadow-[0_12px_32px_-12px_color-mix(in_oklab,var(--aurora-2)_65%,transparent)]";
 
 export function MemoryEditDialog({
   memory,

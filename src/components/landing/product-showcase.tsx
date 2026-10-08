@@ -64,7 +64,7 @@ function MemoryGraph() {
         </radialGradient>
       </defs>
 
-      <g stroke="currentColor" strokeWidth="1" className="text-indigo-500/25">
+      <g stroke="currentColor" strokeWidth="1" className="text-aurora-2/40">
         {edges.map((e) => (
           <line key={`${e.x1}-${e.y1}-${e.x2}-${e.y2}`} x1={e.x1} y1={e.y1} x2={e.x2} y2={e.y2} />
         ))}
@@ -104,7 +104,7 @@ function MemoryGraph() {
 
       {leaves.map((l) => (
         <g key={l.label}>
-          <circle cx={l.x} cy={l.y} r={4} className="fill-indigo-500/70" />
+          <circle cx={l.x} cy={l.y} r={4} className="fill-aurora-2/85" />
           <text
             x={l.x}
             y={l.y + 16}
@@ -121,15 +121,15 @@ function MemoryGraph() {
         cx={center.x}
         cy={center.y}
         r={26}
-        className="fill-none stroke-indigo-400/60"
+        className="fill-none stroke-aurora-2/60"
         strokeWidth={1}
       >
         <animate attributeName="r" values="22;28;22" dur="3s" repeatCount="indefinite" />
         <animate attributeName="opacity" values="1;0.5;1" dur="3s" repeatCount="indefinite" />
       </circle>
-      <circle cx={center.x} cy={center.y} r={26} className="fill-transparent stroke-indigo-500" strokeWidth={1.5} />
+      <circle cx={center.x} cy={center.y} r={26} className="fill-transparent stroke-aurora-2" strokeWidth={1.5} />
       <circle cx={center.x} cy={center.y} r={10} className="fill-card" />
-      <circle cx={center.x} cy={center.y} r={5} className="fill-indigo-400" />
+      <circle cx={center.x} cy={center.y} r={5} className="fill-aurora-2" />
       <text
         x={center.x}
         y={center.y + 48}
@@ -160,14 +160,14 @@ function TimelinePreview() {
 
   return (
     <div className="relative space-y-3 pl-5">
-      <div className="absolute bottom-2 left-[5px] top-2 w-px bg-gradient-to-b from-transparent via-indigo-500/30 to-transparent" />
+      <div className="absolute bottom-2 left-[5px] top-2 w-px bg-gradient-to-b from-transparent via-aurora-2/40 to-transparent" />
       {rows.map(({ date, memory }) => (
         <div key={memory.id} className="relative">
-          <span className="absolute -left-5 mt-4 size-2.5 rounded-full bg-indigo-500 ring-4 ring-indigo-500/15" />
+          <span className="absolute -left-5 mt-4 size-2.5 rounded-full bg-aurora-2 ring-4 ring-aurora-2/20" />
           <p className="mb-1.5 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
             {date}
           </p>
-          <div className="flex items-center gap-3 rounded-xl border border-border/50 bg-card/60 p-3">
+          <div className="flex items-center gap-3 rounded-xl border border-border/60 bg-card/60 p-3">
             <MemoryTypeIcon type={memory.type} />
             <div className="min-w-0">
               <p className="line-clamp-1 text-[13px] font-medium">{memory.title}</p>
@@ -189,7 +189,7 @@ function CollectionsPreview() {
       {featured.map((c) => (
         <div
           key={c.id}
-          className="relative overflow-hidden rounded-xl border border-border/50 bg-card/60 p-4"
+          className="relative overflow-hidden rounded-xl border border-border/60 bg-card/60 p-4"
         >
           <div
             className={cn(
@@ -217,20 +217,20 @@ function AISearchPreview() {
 
   return (
     <div className="mx-auto max-w-lg space-y-3">
-      <div className="flex items-center gap-2 rounded-xl border border-border/50 bg-card/70 px-3.5 py-2.5 text-sm">
-        <Search className="size-4 text-indigo-500" />
+      <div className="flex items-center gap-2 rounded-xl border border-border/60 bg-card/70 px-3.5 py-2.5 text-sm">
+        <Search className="size-4 text-aurora-2" />
         <span className="text-muted-foreground">What have I been researching lately?</span>
       </div>
-      <div className="rounded-xl border border-indigo-500/20 bg-gradient-to-br from-indigo-500/[0.06] via-card to-card/60 p-4">
+      <div className="rounded-xl border border-aurora-2/25 bg-gradient-to-br from-aurora-2/[0.09] via-card to-card/70 p-4">
         <div className="mb-1.5 flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
-          <BookOpenText className="size-3.5 text-indigo-400" />
+          <BookOpenText className="size-3.5 text-aurora-2" />
           AI summary
           <span className="text-muted-foreground/60">•</span>
           <span>grounded in 3 memories</span>
         </div>
         <p className="text-[13px] leading-relaxed text-foreground/90">
           You&apos;re researching <strong className="font-semibold">three threads</strong>: cameras,
-          an apartment, and Japan. <strong className="font-semibold text-indigo-600 dark:text-indigo-400">3 cameras</strong>{" "}
+          an apartment, and Japan. <strong className="font-semibold text-aurora-2">3 cameras</strong>{" "}
           are on your shortlist within your $2,800 budget — and the{" "}
           <strong className="font-semibold">A7 IV</strong> fits best.
         </p>

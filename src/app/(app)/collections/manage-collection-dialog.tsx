@@ -136,7 +136,7 @@ export function ManageCollectionDialog({
                     className={cn(
                       "flex w-full items-center gap-3 rounded-lg border px-3 py-2.5 text-left text-sm transition-colors",
                       selected.has(memory.id)
-                        ? "border-indigo-500/50 bg-indigo-500/5"
+                        ? "border-aurora-2/50 bg-aurora-2/10"
                         : "border-border/50 bg-card/60 hover:border-border hover:bg-card"
                     )}
                   >
@@ -144,7 +144,7 @@ export function ManageCollectionDialog({
                       className={cn(
                         "flex size-5 shrink-0 items-center justify-center rounded-md border transition-colors",
                         selected.has(memory.id)
-                          ? "border-indigo-500 bg-indigo-500 text-white"
+                          ? "border-aurora-2 bg-aurora-2 text-white"
                           : "border-border bg-background"
                       )}
                     >

@@ -31,8 +31,8 @@ export function MemoryCard({
 
   return (
     <Link href={`/memory/${memory.id}`} className="group block h-full">
-      <Card className="flex h-full flex-col gap-0 overflow-hidden border-border/60 p-0 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-indigo-500/40 hover:shadow-lg hover:shadow-indigo-500/5">
-        <div className={cn("h-1 bg-gradient-to-r", top)} />
+      <Card className="flex h-full flex-col gap-0 overflow-hidden border-border/60 p-0 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-aurora-2/40 hover:shadow-[0_24px_64px_-24px_color-mix(in_oklab,var(--aurora-2)_65%,transparent)]">
+        <div className={cn("h-1 bg-gradient-to-r shadow-[0_2px_12px_-2px_color-mix(in_oklab,var(--aurora-2)_55%,transparent)]", top)} />
         <div className="flex flex-1 flex-col p-5">
           <div className="mb-2 flex items-center justify-between gap-2">
             <span className="flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
@@ -52,7 +52,7 @@ export function MemoryCard({
 
           <h3
             className={cn(
-              "line-clamp-1 font-semibold leading-snug tracking-tight",
+              "line-clamp-1 font-display font-semibold leading-snug tracking-tight",
               compact ? "text-[13px]" : "text-sm"
             )}
           >

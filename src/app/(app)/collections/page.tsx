@@ -42,7 +42,7 @@ export function CollectionCard({
       href={`/collections/${encodeURIComponent(name)}`}
       className="group block h-full"
     >
-      <Card className="relative flex h-full flex-col gap-0 overflow-hidden border-border/50 p-0 transition-all duration-300 hover:-translate-y-1 hover:border-border hover:shadow-xl hover:shadow-indigo-500/5">
+      <Card className="relative flex h-full flex-col gap-0 overflow-hidden border-border/50 p-0 transition-all duration-300 hover:-translate-y-1 hover:border-border hover:shadow-xl hover:shadow-[0_24px_64px_-28px_color-mix(in_oklab,var(--aurora-2)_50%,transparent)]">
         <div
           className={cn(
             "pointer-events-none absolute inset-0 bg-gradient-to-b opacity-50 transition-opacity duration-300 group-hover:opacity-90",
@@ -96,7 +96,7 @@ function AISuggestionCard({
   onCreate: () => void;
 }) {
   return (
-    <Card className="relative flex h-full flex-col gap-0 overflow-hidden border-dashed border-indigo-500/30 p-0 transition-all duration-300 hover:border-indigo-500/50 hover:shadow-xl hover:shadow-indigo-500/5">
+    <Card className="relative flex h-full flex-col gap-0 overflow-hidden border-dashed border-aurora-2/30 p-0 transition-all duration-300 hover:border-aurora-2/50 hover:shadow-xl hover:shadow-[0_24px_64px_-28px_color-mix(in_oklab,var(--aurora-2)_50%,transparent)]">
       <div
         className={cn(
           "pointer-events-none absolute inset-0 bg-gradient-to-b opacity-40",
@@ -108,7 +108,7 @@ function AISuggestionCard({
           <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-card/80 text-base shadow-sm ring-1 ring-border/40 backdrop-blur">
             {emoji}
           </span>
-          <Badge className="bg-indigo-500/10 px-2 py-0.5 text-[10px] font-medium text-indigo-500 ring-1 ring-inset ring-indigo-500/20">
+          <Badge className="bg-aurora-2/15 px-2 py-0.5 text-[10px] font-medium text-aurora-2 ring-1 ring-inset ring-aurora-2/20">
             AI-suggested
           </Badge>
         </div>
@@ -192,7 +192,7 @@ export default function CollectionsPage() {
         <div>
           <h1 className="flex items-center gap-2.5 text-3xl font-semibold tracking-tight sm:text-4xl">
             <span className="flex size-9 items-center justify-center rounded-lg icon-chip">
-              <LayoutGrid className="size-4 text-indigo-500" />
+              <LayoutGrid className="size-4 text-aurora-2" />
             </span>
             <span className="text-gradient">Collections</span>
           </h1>
@@ -206,7 +206,7 @@ export default function CollectionsPage() {
       </div>
 
       {notice && (
-        <div className="flex items-center gap-2 rounded-xl border border-indigo-500/20 bg-indigo-500/5 px-4 py-3 text-sm text-indigo-600">
+        <div className="flex items-center gap-2 rounded-xl border border-aurora-2/20 bg-aurora-2/10 px-4 py-3 text-sm text-aurora-2">
           <Check className="size-4 shrink-0" />
           {notice}
         </div>
@@ -214,7 +214,7 @@ export default function CollectionsPage() {
 
       <section className="space-y-4">
         <div className="flex items-center gap-2">
-          <Sparkles className="size-4 text-indigo-500" />
+          <Sparkles className="size-4 text-aurora-2" />
           <h2 className="text-sm font-semibold">Suggested by AI</h2>
           <span className="ml-auto hidden text-[11px] text-muted-foreground sm:block">
             Detected from shared tags and related content
@@ -223,7 +223,7 @@ export default function CollectionsPage() {
 
         {suggestions.length === 0 ? (
           <div className="flex items-center gap-3 rounded-2xl border border-dashed border-border/70 px-5 py-8 text-sm text-muted-foreground">
-            <Sparkles className="size-5 text-indigo-500/70" />
+            <Sparkles className="size-5 text-aurora-2/70" />
             <span>
               You&apos;re all organized — Revo OS couldn&apos;t find any new
               groups to suggest. Capture more and they&apos;ll show up here.
@@ -264,10 +264,10 @@ export default function CollectionsPage() {
             trigger={
               <button
                 type="button"
-                className="group flex h-full min-h-36 cursor-pointer items-center justify-center rounded-xl border border-dashed border-border/70 bg-card/30 p-4 text-center transition-colors hover:border-indigo-500/40 hover:bg-card/60"
+                className="group flex h-full min-h-36 cursor-pointer items-center justify-center rounded-xl border border-dashed border-border/70 bg-card/30 p-4 text-center transition-colors hover:border-aurora-2/40 hover:bg-card/60"
               >
                 <span className="flex flex-col items-center gap-2 text-muted-foreground">
-                  <span className="flex size-9 items-center justify-center rounded-lg bg-muted/60 transition-colors group-hover:text-indigo-500">
+                  <span className="flex size-9 items-center justify-center rounded-lg bg-muted/60 transition-colors group-hover:text-aurora-2">
                     <FolderPlus className="size-4" />
                   </span>
                   <span className="text-xs font-medium">New collection</span>

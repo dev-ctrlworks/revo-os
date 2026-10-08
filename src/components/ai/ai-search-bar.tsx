@@ -84,7 +84,7 @@ export function AISearchBar({
     <div className={cn("w-full", big && "mx-auto max-w-2xl")}>
       <div className={cn("relative group", big && "group")}>
         {big && (
-          <div className="pointer-events-none absolute -inset-1 rounded-2xl bg-gradient-to-r from-indigo-500/20 via-violet-400/20 to-purple-500/20 opacity-0 blur-xl transition-opacity group-focus-within:opacity-100" />
+          <div className="pointer-events-none absolute -inset-1 rounded-2xl bg-gradient-to-r from-aurora-2/25 via-aurora-2/20 to-aurora-3/25 opacity-0 blur-xl transition-opacity group-focus-within:opacity-100" />
         )}
         <form
           onSubmit={(e) => {
@@ -94,11 +94,11 @@ export function AISearchBar({
           className={cn(
             "relative flex items-center gap-2 border bg-background/80 backdrop-blur-xl transition-all",
             big
-              ? "rounded-2xl border-border/60 px-4 h-14 shadow-sm group-focus-within:border-indigo-500/40 group-focus-within:shadow-lg group-focus-within:shadow-indigo-500/10"
-              : "rounded-xl border-border/50 px-3 h-11 shadow-sm group-focus-within:border-indigo-500/40"
+              ? "rounded-2xl border-border/60 px-4 h-14 shadow-sm group-focus-within:border-aurora-2/40 group-focus-within:shadow-lg group-focus-within:shadow-[0_12px_32px_-12px_color-mix(in_oklab,var(--aurora-2)_40%,transparent)]"
+              : "rounded-xl border-border/50 px-3 h-11 shadow-sm group-focus-within:border-aurora-2/40"
           )}
         >
-          <Sparkles className={cn("shrink-0 text-indigo-500", big ? "size-5" : "size-4")} />
+          <Sparkles className={cn("shrink-0 text-aurora-2", big ? "size-5" : "size-4")} />
           <input
             ref={inputRef}
             value={query}
@@ -108,14 +108,14 @@ export function AISearchBar({
             autoFocus={autoFocus}
           />
           {loading ? (
-            <Loader2 className="size-4 shrink-0 animate-spin text-indigo-500" />
+            <Loader2 className="size-4 shrink-0 animate-spin text-aurora-2" />
           ) : (
             <button
               type="submit"
               disabled={!query.trim()}
               aria-label="Search memories"
               className={cn(
-                "flex shrink-0 items-center justify-center gap-1 rounded-lg bg-indigo-500 text-white transition-all hover:bg-indigo-600 disabled:bg-muted disabled:text-muted-foreground",
+                "flex shrink-0 items-center justify-center gap-1 rounded-lg bg-aurora-2 text-white transition-all hover:bg-aurora-2 disabled:bg-muted disabled:text-muted-foreground",
                 big ? "h-9 px-3 text-xs font-medium" : "size-8"
               )}
             >
@@ -144,7 +144,7 @@ export function AISearchBar({
                 runSearch(q);
               }}
               disabled={loading}
-              className="rounded-full border border-border/60 bg-card/50 px-2.5 py-1 text-xs text-muted-foreground transition-colors hover:border-indigo-500/40 hover:text-foreground disabled:opacity-50"
+              className="rounded-full border border-border/60 bg-card/50 px-2.5 py-1 text-xs text-muted-foreground transition-colors hover:border-aurora-2/40 hover:text-foreground disabled:opacity-50"
             >
               {q}
             </button>

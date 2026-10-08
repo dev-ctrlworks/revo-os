@@ -73,7 +73,7 @@ export function GraphInspector({
     <aside className="flex h-full flex-col overflow-hidden rounded-2xl border border-border/50 bg-card/60">
       <div className="flex items-center justify-between border-b border-border/50 px-5 py-3 sm:px-6 sm:py-4">
         <div className="flex items-center gap-2 text-sm font-semibold">
-          <Compass className="size-4 text-indigo-500" />
+          <Compass className="size-4 text-aurora-2" />
           {selectedEdge ? "Connection" : selectedNode ? "Node" : "Inspector"}
         </div>
         {(selectedNode || selectedEdge) && (
@@ -199,7 +199,7 @@ function NodeDetail({
 
         {node.kind === "memory" ? (
           <Button
-            className="w-full rounded-lg brand-gradient text-white shadow-sm shadow-indigo-500/25"
+            className="w-full rounded-lg brand-gradient text-white shadow-sm shadow-[0_12px_32px_-12px_color-mix(in_oklab,var(--aurora-2)_65%,transparent)]"
             onClick={() => onOpenMemory(node.id)}
           >
             <ExternalLink className="size-3.5" />
@@ -207,7 +207,7 @@ function NodeDetail({
           </Button>
         ) : (
           <Button variant="outline" className="w-full rounded-lg" onClick={() => onExplore(node.id)}>
-            <Compass className="size-3.5 text-indigo-500" />
+            <Compass className="size-3.5 text-aurora-2" />
             Explore connections
           </Button>
         )}
@@ -355,7 +355,7 @@ function EdgeDetail({
               <button
                 type="button"
                 onClick={() => onOpenMemory(node.id)}
-                className="mt-2 inline-flex items-center gap-1 text-[11px] font-medium text-indigo-500 transition-colors hover:text-indigo-400"
+                className="mt-2 inline-flex items-center gap-1 text-[11px] font-medium text-aurora-2 transition-colors hover:text-aurora-2"
               >
                 <ExternalLink className="size-3" />
                 Open memory

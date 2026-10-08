@@ -21,6 +21,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { Switch } from "@/components/ui/switch";
+import { ThemeToggle } from "@/components/theme/theme-toggle";
 import {
   Tabs,
   TabsContent,
@@ -68,9 +69,9 @@ export default function SettingsPage() {
   return (
     <div className="mx-auto max-w-3xl space-y-8">
       <div>
-        <h1 className="flex items-center gap-2.5 text-3xl font-semibold tracking-tight sm:text-4xl">
+        <h1 className="flex items-center gap-2.5 text-3xl font-display font-semibold tracking-tight sm:text-4xl">
           <span className="flex size-9 items-center justify-center rounded-lg icon-chip">
-            <Settings className="size-4 text-indigo-500" />
+            <Settings className="size-4 text-aurora-2" />
           </span>
           <span className="text-gradient">Settings</span>
         </h1>
@@ -83,6 +84,7 @@ export default function SettingsPage() {
         <TabsList className="flex-wrap justify-start">
           <TabsTrigger value="memory">Memory</TabsTrigger>
           <TabsTrigger value="integrations">Integrations</TabsTrigger>
+          <TabsTrigger value="appearance">Appearance</TabsTrigger>
           <TabsTrigger value="notifications">Notifications</TabsTrigger>
           <TabsTrigger value="shortcuts">Shortcuts</TabsTrigger>
         </TabsList>
@@ -212,8 +214,28 @@ export default function SettingsPage() {
           </Card>
         </TabsContent>
 
+        <TabsContent value="appearance">
+          <Card className="divide-y divide-border/40 border-border/60 p-6">
+            <div className="flex items-center justify-between gap-3 py-4">
+              <div>
+                <p className="text-sm font-medium">Theme</p>
+                <p className="mt-0.5 text-[13px] text-muted-foreground">
+                  Choose between the dark aurora look and the light theme.
+                </p>
+              </div>
+              <ThemeToggle />
+            </div>
+            <SettingRow
+              title="Reduced motion"
+              description="Turn off entrance animations and parallax effects."
+            >
+              <Switch />
+            </SettingRow>
+          </Card>
+        </TabsContent>
+
         <TabsContent value="notifications">
-          <Card className="divide-y divide-border/40 border-border/50 p-6">
+          <Card className="divide-y divide-border/40 border-border/60 p-6">
             <SettingRow
               title="AI insights digests"
               description="Weekly summary of new connections found in your memories."

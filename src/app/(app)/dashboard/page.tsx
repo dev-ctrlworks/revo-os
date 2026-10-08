@@ -34,15 +34,15 @@ export default function DashboardPage() {
   return (
     <div className="space-y-10">
       <section className="pt-4 sm:pt-8">
-        <p className="mb-2 flex items-center gap-1.5 text-xs font-medium uppercase tracking-widest text-indigo-500">
-          <Sparkles className="size-3.5 text-indigo-500" />
+        <p className="mb-2 flex items-center gap-1.5 text-xs font-medium uppercase tracking-widest text-aurora-2">
+          <Sparkles className="size-3.5 text-aurora-2" />
           Revo OS memory
           <span className="ml-1 inline-flex items-center gap-1 rounded-full border border-amber-500/30 bg-amber-500/10 px-2 py-0.5 text-[10px] font-medium normal-case tracking-normal text-amber-600 dark:text-amber-400">
             Demo persona
           </span>
         </p>
         <h1 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
-          What do you <span className="animate-gradient-x bg-gradient-to-r from-indigo-500 via-violet-400 to-purple-500 bg-clip-text text-transparent">remember?</span>
+          What do you <span className="animate-gradient-x bg-gradient-to-r aurora-text">remember?</span>
         </h1>
         <p className="mt-3 max-w-xl text-sm text-muted-foreground sm:text-base">
           Ask in plain language. Revo OS searches {memories.length} memories and
@@ -84,7 +84,7 @@ export default function DashboardPage() {
           ].map((stat) => (
             <Card key={stat.label} className="border-border/50 p-5">
               <div className="mb-2 flex size-8 items-center justify-center rounded-lg icon-chip">
-                <stat.icon className="size-4 text-indigo-500" />
+                <stat.icon className="size-4 text-aurora-2" />
               </div>
               <p className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
                 {stat.label}

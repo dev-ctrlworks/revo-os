@@ -23,7 +23,7 @@ export function Privacy() {
           <Lock className="size-3" />
           Your data stays yours
         </div>
-        <h2 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
+        <h2 className="font-display text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
           You decide what Revo OS sees.
         </h2>
         <p className="mt-4 leading-relaxed text-muted-foreground">
@@ -45,10 +45,10 @@ export function Privacy() {
 
       <div className="relative">
         <div className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center">
-          <div className="size-72 rounded-full bg-gradient-to-br from-indigo-500/15 to-purple-500/15 blur-2xl" />
+          <div className="size-72 rounded-full bg-gradient-to-br from-aurora-2/20 to-aurora-3/15 blur-2xl" />
         </div>
 
-        <div className="animate-fade-up rounded-2xl border border-border/60 bg-card/80 p-5 shadow-2xl shadow-indigo-500/10 backdrop-blur">
+        <div className="animate-fade-up rounded-2xl border border-border/60 bg-card/80 p-5 shadow-[0_32px_90px_-32px_color-mix(in_oklab,var(--aurora-2)_60%,transparent)] ring-glow backdrop-blur">
           <div className="mb-4 flex items-center justify-between border-b border-border/60 pb-4">
             <div>
               <p className="text-sm font-semibold tracking-tight">Access permissions</p>
@@ -77,7 +77,7 @@ export function Privacy() {
                   aria-checked={row.on}
                   className={cn(
                     "relative inline-flex h-5 w-9 shrink-0 items-center rounded-full transition-colors",
-                    row.on ? "bg-indigo-500" : "bg-muted border border-border"
+                    row.on ? "bg-aurora-2 shadow-[0_0_16px_-2px_color-mix(in_oklab,var(--aurora-2)_70%,transparent)]" : "bg-muted border border-border"
                   )}
                 >
                   <span

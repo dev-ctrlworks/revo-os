@@ -83,7 +83,7 @@ export function FeedbackButton() {
         render={
           <Button
             onClick={openDialog}
-            className="fixed bottom-5 right-5 z-40 flex items-center gap-1.5 rounded-full shadow-lg shadow-indigo-500/20"
+            className="fixed bottom-5 right-5 z-40 flex items-center gap-1.5 rounded-full shadow-[0_12px_32px_-12px_color-mix(in_oklab,var(--aurora-2)_55%,transparent)]"
           >
             <MessageCircleHeart className="size-4" />
             Feedback

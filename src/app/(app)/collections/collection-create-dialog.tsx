@@ -146,7 +146,7 @@ export function CreateCollectionDialog({
                     "h-8 w-11 rounded-lg bg-gradient-to-b transition-all",
                     option.value,
                     color === option.value
-                      ? "ring-2 ring-indigo-500 ring-offset-1 ring-offset-card"
+                      ? "ring-2 ring-aurora-2 ring-offset-1 ring-offset-card"
                       : "opacity-60 hover:opacity-100"
                   )}
                 />

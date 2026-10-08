@@ -67,7 +67,7 @@ export function EmailPreview({ memory }: { memory: Memory }) {
         <h3 className="mt-5 text-lg font-semibold tracking-tight">
           {memory.title}
         </h3>
-        <div className="mt-4 space-y-3 border-l-2 border-indigo-500/20 pl-4">
+        <div className="mt-4 space-y-3 border-l-2 border-aurora-2/20 pl-4">
           {paragraphs.map((line, i) => (
             <p
               key={i}

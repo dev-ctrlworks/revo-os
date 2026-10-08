@@ -10,7 +10,7 @@ export default function GraphPage() {
       <div>
         <h1 className="flex items-center gap-2.5 text-3xl font-semibold tracking-tight sm:text-4xl">
           <span className="flex size-9 items-center justify-center rounded-lg icon-chip">
-            <Network className="size-4 text-indigo-500" />
+            <Network className="size-4 text-aurora-2" />
           </span>
           <span className="text-gradient">Memory Graph</span>
         </h1>

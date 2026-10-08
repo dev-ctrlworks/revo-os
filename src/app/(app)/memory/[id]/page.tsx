@@ -119,9 +119,9 @@ function CollectionChip({ memory }: { memory: Memory }) {
   return (
     <Link
       href={`/collections/${encodeURIComponent(memory.collection)}`}
-      className="group inline-flex max-w-full items-center gap-1.5 rounded-full border border-border/60 bg-card/60 px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:border-indigo-500/40 hover:text-foreground"
+      className="group inline-flex max-w-full items-center gap-1.5 rounded-full border border-border/60 bg-card/60 px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:border-aurora-2/40 hover:text-foreground"
     >
-      <FolderOpen className="size-3 shrink-0 transition-colors group-hover:text-indigo-500" />
+      <FolderOpen className="size-3 shrink-0 transition-colors group-hover:text-aurora-2" />
       <span className="truncate">{memory.collection}</span>
     </Link>
   );
@@ -164,7 +164,7 @@ function SectionHeading({
           className={cn(
             "flex size-7 shrink-0 items-center justify-center rounded-lg",
             accent
-              ? "icon-chip text-indigo-500"
+              ? "icon-chip text-aurora-2"
               : "bg-muted"
           )}
         >
@@ -544,10 +544,10 @@ function NoticedCard({
     connections.push(`Captured from ${memory.source}.`);
 
   return (
-    <Card className="overflow-hidden border-indigo-500/20 bg-gradient-to-br from-indigo-500/[0.08] to-purple-500/[0.04]">
+    <Card className="overflow-hidden border-aurora-2/25 bg-gradient-to-br from-aurora-2/[0.10] to-aurora-3/[0.06]">
       <div className="px-5 pt-5">
-        <p className="flex items-center gap-2 text-xs font-semibold text-indigo-500">
-          <span className="inline-flex size-6 items-center justify-center rounded-lg bg-indigo-500/10">
+        <p className="flex items-center gap-2 text-xs font-semibold text-aurora-2">
+          <span className="inline-flex size-6 items-center justify-center rounded-lg bg-aurora-2/15">
             <Sparkles className="size-3.5" />
           </span>
           RevoOS noticed
@@ -642,7 +642,7 @@ function MetadataCard({ memory }: { memory: Memory }) {
                 href={url}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex max-w-full items-center gap-1 font-medium text-indigo-500 transition-colors hover:text-indigo-400"
+                className="inline-flex max-w-full items-center gap-1 font-medium text-aurora-2 transition-colors hover:text-aurora-2"
               >
                 <span className="truncate">
                   {memory.domain ?? new URL(url).hostname}
@@ -656,7 +656,7 @@ function MetadataCard({ memory }: { memory: Memory }) {
                 href={memory.previewUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex max-w-full items-center gap-1 font-medium text-indigo-500 transition-colors hover:text-indigo-400"
+                className="inline-flex max-w-full items-center gap-1 font-medium text-aurora-2 transition-colors hover:text-aurora-2"
               >
                 <span className="truncate">
                   {memory.source.replace(/^Upload · /, "")}
@@ -726,7 +726,7 @@ function TimelineSection({
       <div className="mb-5 flex items-end justify-between gap-3">
         <div>
           <h2 className="flex items-center gap-2 text-base font-semibold tracking-tight">
-            <TrendingUp className="size-4 text-indigo-500" />
+            <TrendingUp className="size-4 text-aurora-2" />
             Evolution of this thread
           </h2>
           <p className="mt-0.5 text-xs text-muted-foreground">
@@ -749,12 +749,12 @@ function TimelineSection({
                   className={cn(
                     "absolute left-0 top-1 flex size-[27px] items-center justify-center rounded-full border",
                     self
-                      ? "border-indigo-500/50 bg-indigo-500/10"
+                      ? "border-aurora-2/50 bg-aurora-2/15"
                       : "border-border/60 bg-card"
                   )}
                 >
                   {self ? (
-                    <Sparkles className="size-3 text-indigo-500" />
+                    <Sparkles className="size-3 text-aurora-2" />
                   ) : (
                     <span className="size-2 rounded-full bg-foreground/25" />
                   )}
@@ -763,8 +763,8 @@ function TimelineSection({
                   className={cn(
                     "border-border/50 transition-colors",
                     self
-                      ? "border-indigo-500/30 bg-indigo-500/[0.04]"
-                      : "hover:border-indigo-500/40"
+                      ? "border-aurora-2/35 bg-aurora-2/[0.06]"
+                      : "hover:border-aurora-2/40"
                   )}
                 >
                   <CardContent className="px-4 py-3.5">
@@ -894,7 +894,7 @@ export default function MemoryDetailPage() {
         <div className="flex items-center justify-between gap-4">
           <Link
             href={`/collections/${encodeURIComponent(memory.collection)}`}
-            className="group inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-card/60 px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-indigo-500/40 hover:text-foreground"
+            className="group inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-card/60 px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-aurora-2/40 hover:text-foreground"
           >
             <ArrowLeft className="size-3.5 transition-transform group-hover:-translate-x-0.5" />
             <span className="max-w-40 truncate sm:max-w-64">
@@ -1149,10 +1149,10 @@ export default function MemoryDetailPage() {
           <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
             <div className="min-w-0 space-y-6">
               {summary && (
-                <Card className="overflow-hidden border-indigo-500/20">
-                  <div className="bg-gradient-to-br from-indigo-500/[0.08] to-purple-500/[0.04] p-5 sm:p-6">
-                    <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-indigo-500">
-                      <span className="inline-flex size-6 items-center justify-center rounded-lg bg-indigo-500/10">
+                <Card className="overflow-hidden border-aurora-2/25">
+                  <div className="bg-gradient-to-br from-aurora-2/[0.10] to-aurora-3/[0.06] p-5 sm:p-6">
+                    <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-aurora-2">
+                      <span className="inline-flex size-6 items-center justify-center rounded-lg bg-aurora-2/15">
                         <Sparkles className="size-3.5" />
                       </span>
                       Summarized by RevoOS
@@ -1185,7 +1185,7 @@ export default function MemoryDetailPage() {
                         key={i}
                         className="flex items-start gap-2.5 text-[13.5px] leading-relaxed text-foreground/85"
                       >
-                        <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-indigo-400" />
+                        <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-aurora-2" />
                         <span>{point}</span>
                       </li>
                     ))}
@@ -1239,14 +1239,14 @@ export default function MemoryDetailPage() {
               notice === "deleted"
                 ? "border-destructive/30"
                 : notice === "shared"
-                  ? "border-indigo-500/30"
+                  ? "border-aurora-2/35"
                   : "border-emerald-500/30"
             )}
           >
             {notice === "deleted" ? (
               <Trash2 className="size-4 text-destructive" />
             ) : notice === "shared" ? (
-              <Share2 className="size-4 text-indigo-500" />
+              <Share2 className="size-4 text-aurora-2" />
             ) : (
               <CheckCircle2 className="size-4 text-emerald-500" />
             )}

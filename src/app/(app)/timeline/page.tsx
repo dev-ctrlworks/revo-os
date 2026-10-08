@@ -61,7 +61,7 @@ export default function TimelinePage() {
         <div>
           <h1 className="flex items-center gap-2.5 text-3xl font-semibold tracking-tight sm:text-4xl">
             <span className="flex size-9 items-center justify-center rounded-lg icon-chip">
-              <Clock3 className="size-4 text-indigo-500" />
+              <Clock3 className="size-4 text-aurora-2" />
             </span>
             <span className="text-gradient">Timeline</span>
           </h1>
@@ -110,7 +110,7 @@ export default function TimelinePage() {
                 className="group mb-3 flex items-center gap-3 text-left"
               >
                 <span className="absolute -left-6 mt-1.5 flex size-[18px] items-center justify-center rounded-full border border-border bg-card shadow-sm">
-                  <span className="size-1.5 rounded-full bg-indigo-500" />
+                  <span className="size-1.5 rounded-full bg-aurora-2" />
                 </span>
                 <span className="flex items-center gap-2 text-sm font-semibold">
                   <CalendarDays className="size-3.5 text-muted-foreground" />

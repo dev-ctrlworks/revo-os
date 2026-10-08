@@ -25,6 +25,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { ThemeToggle } from "@/components/theme/theme-toggle";
 
 const navItems = [
   { href: "/dashboard", label: "Home", icon: Home },
@@ -39,7 +40,7 @@ const navItems = [
 function Logo({ collapsed = false }: { collapsed?: boolean }) {
   return (
     <Link href="/" className="flex items-center gap-2.5 select-none" aria-label="Revo OS home">
-      <span className="relative flex size-8 shrink-0 items-center justify-center rounded-xl brand-gradient shadow-lg shadow-indigo-500/25">
+      <span className="relative flex size-8 shrink-0 items-center justify-center rounded-xl brand-gradient shadow-[0_12px_32px_-12px_color-mix(in_oklab,var(--aurora-2)_65%,transparent)]">
         <span className="absolute inset-0 rounded-xl ring-1 ring-white/20 ring-inset" />
         <BrainCircuit className="size-4 text-white" />
       </span>
@@ -77,7 +78,7 @@ function NavLinks({
                 className={cn(
                   "flex size-10 items-center justify-center rounded-xl transition-all",
                   active
-                    ? "brand-gradient text-white shadow-lg shadow-indigo-500/25"
+                    ? "brand-gradient text-white shadow-[0_12px_32px_-12px_color-mix(in_oklab,var(--aurora-2)_65%,transparent)]"
                     : "text-muted-foreground hover:bg-accent hover:text-foreground"
                 )}
               >
@@ -95,7 +96,7 @@ function NavLinks({
             className={cn(
               "flex items-center gap-3 rounded-xl px-3 py-2 transition-all",
               active
-                ? "brand-gradient text-white shadow-lg shadow-indigo-500/25"
+                ? "brand-gradient text-white shadow-[0_12px_32px_-12px_color-mix(in_oklab,var(--aurora-2)_65%,transparent)]"
                 : "text-muted-foreground hover:bg-accent hover:text-foreground"
             )}
           >
@@ -113,14 +114,14 @@ export function AppSidebar() {
 
   return (
     <>
-      <aside className="fixed inset-y-0 left-0 z-30 hidden w-16 shrink-0 flex-col border-r border-border/40 bg-card/60 backdrop-blur-xl lg:flex">
-        <div className="flex h-14 items-center justify-center border-b border-border/40">
+      <aside className="fixed inset-y-0 left-0 z-30 hidden w-16 shrink-0 flex-col border-r border-border/60 bg-card/60 backdrop-blur-xl lg:flex">
+        <div className="flex h-14 items-center justify-center border-b border-border/60">
           <Logo collapsed />
         </div>
         <div className="flex flex-1 flex-col py-4">
           <NavLinks collapsed />
         </div>
-        <div className="border-t border-border/40 p-3">
+        <div className="flex flex-col gap-1 border-t border-border/60 p-3">
           <Tooltip>
             <TooltipTrigger
               render={<Link href="/settings" />}
@@ -130,6 +131,9 @@ export function AppSidebar() {
             </TooltipTrigger>
             <TooltipContent side="right">Open settings</TooltipContent>
           </Tooltip>
+          <div className="flex size-10 items-center justify-center">
+            <ThemeToggle />
+          </div>
         </div>
       </aside>
 
@@ -147,9 +151,9 @@ export function AppSidebar() {
           <Menu className="size-4" />
         </SheetTrigger>
         <SheetContent side="left" className="w-70 p-0">
-          <SheetHeader className="h-14 items-start justify-center border-b border-border/40 px-4">
+          <SheetHeader className="h-14 items-start justify-center border-b border-border/60 px-4">
             <SheetTitle className="flex w-auto items-center gap-2.5">
-              <span className="relative flex size-8 items-center justify-center rounded-xl brand-gradient shadow-lg shadow-indigo-500/25">
+              <span className="relative flex size-8 items-center justify-center rounded-xl brand-gradient shadow-[0_12px_32px_-12px_color-mix(in_oklab,var(--aurora-2)_65%,transparent)]">
                 <span className="absolute inset-0 rounded-xl ring-1 ring-white/20 ring-inset" />
                 <BrainCircuit className="size-4 text-white" />
               </span>

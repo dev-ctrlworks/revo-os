@@ -43,13 +43,13 @@ export function WaitlistForm() {
     return (
       <div className="animate-fade-up mx-auto mt-10 max-w-md">
         <div className="relative mx-auto mb-6 flex size-16 items-center justify-center">
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-500/20 via-violet-500/10 to-purple-500/20 blur-xl" />
-          <div className="relative flex size-12 items-center justify-center rounded-full brand-gradient shadow-xl shadow-indigo-500/25">
+          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-aurora-2/25 via-aurora-2/15 to-aurora-3/25 blur-xl" />
+          <div className="relative flex size-12 items-center justify-center rounded-full brand-gradient shadow-[0_16px_40px_-12px_color-mix(in_oklab,var(--aurora-2)_70%,transparent)]">
             <span className="absolute inset-0 rounded-full ring-1 ring-white/20 ring-inset" />
             <Check className="size-6 text-white" />
           </div>
         </div>
-        <p className="flex items-center justify-center gap-1.5 text-sm font-medium text-indigo-600 dark:text-indigo-400">
+        <p className="flex items-center justify-center gap-1.5 text-sm font-medium text-aurora-2">
           <PartyPopper className="size-4" />
           You&apos;re on the list
         </p>

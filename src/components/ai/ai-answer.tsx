@@ -32,10 +32,10 @@ export function AIAnswerView({
 }) {
   return (
     <div className="space-y-4">
-      <Card className="relative overflow-hidden border-indigo-500/20 bg-gradient-to-br from-indigo-500/[0.06] via-card to-card/60 p-5">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-500/40 to-transparent" />
+      <Card className="relative overflow-hidden border-aurora-2/25 bg-gradient-to-br from-aurora-2/[0.09] via-card to-card/70 p-5 shadow-[0_24px_80px_-32px_color-mix(in_oklab,var(--aurora-2)_60%,transparent)]">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-aurora-2/60 to-transparent" />
         <div className="mb-1.5 flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
-          <BookOpenText className="size-3.5 text-indigo-400" />
+          <BookOpenText className="size-3.5 text-aurora-2" />
           AI summary
           <span className="text-muted-foreground/60">•</span>
           <span>{timeAgo(answer.createdAt)}</span>
@@ -53,7 +53,7 @@ export function AIAnswerView({
       {answer.sources.length > 0 && (
         <div>
           <div className="mb-2 flex items-center gap-2 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
-            <span className="flex size-5 items-center justify-center rounded-full bg-indigo-500/10 text-[10px] font-semibold text-indigo-500">
+            <span className="flex size-5 items-center justify-center rounded-full bg-aurora-2/15 text-[10px] font-semibold text-aurora-2">
               {answer.sources.length}
             </span>
             Source memories
@@ -72,10 +72,10 @@ export function AIAnswerView({
 function SourceChip({ memory }: { memory: Memory }) {
   return (
     <Link href={`/memory/${memory.id}`} className="group block">
-      <Card className="flex items-center gap-3 border-border/50 bg-card/50 p-3 transition-all hover:border-indigo-500/40 hover:bg-card">
+      <Card className="flex items-center gap-3 border-border/60 bg-card/50 p-3 transition-all hover:border-aurora-2/40 hover:bg-card hover:shadow-[0_16px_48px_-20px_color-mix(in_oklab,var(--aurora-2)_55%,transparent)]">
         <MemoryTypeIcon type={memory.type} />
         <div className="min-w-0 flex-1">
-          <p className="line-clamp-1 text-[13px] font-medium">{memory.title}</p>
+          <p className="font-display line-clamp-1 text-[13px] font-medium">{memory.title}</p>
           <p className="flex items-center gap-1 text-[11px] text-muted-foreground">
             <span>{memoryTypeLabel(memory.type)}</span>
             <span>·</span>

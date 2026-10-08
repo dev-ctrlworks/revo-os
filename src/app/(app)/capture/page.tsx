@@ -108,19 +108,19 @@ export default function CapturePage() {
   }
 
   const triggerClass =
-    "group-data-[variant=default]/tabs-list:data-active:bg-gradient-to-br group-data-[variant=default]/tabs-list:data-active:from-indigo-500 group-data-[variant=default]/tabs-list:data-active:to-violet-500 group-data-[variant=default]/tabs-list:data-active:text-white group-data-[variant=default]/tabs-list:data-active:shadow-[0_2px_10px_-2px_rgba(99,102,241,0.45)] flex min-w-0 shrink-0 items-center justify-center gap-1.5 rounded-lg px-2.5 text-[11px] whitespace-nowrap sm:px-4 sm:text-[13px]";
+    "group-data-[variant=default]/tabs-list:data-active:bg-gradient-to-br group-data-[variant=default]/tabs-list:data-active:from-aurora-2 group-data-[variant=default]/tabs-list:data-active:to-aurora-3 group-data-[variant=default]/tabs-list:data-active:text-white group-data-[variant=default]/tabs-list:data-active:shadow-[0_2px_10px_-2px_rgba(99,102,241,0.45)] flex min-w-0 shrink-0 items-center justify-center gap-1.5 rounded-lg px-2.5 text-[11px] whitespace-nowrap sm:px-4 sm:text-[13px]";
 
   return (
     <div className="mx-auto max-w-3xl space-y-8">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="mb-2 flex items-center gap-1.5 text-xs font-medium uppercase tracking-widest text-indigo-500">
-            <Sparkles className="size-3.5 text-indigo-500" />
+          <p className="mb-2 flex items-center gap-1.5 text-xs font-medium uppercase tracking-widest text-aurora-2">
+            <Sparkles className="size-3.5 text-aurora-2" />
             Revo OS capture
           </p>
           <h1 className="flex items-center gap-2.5 text-3xl font-semibold tracking-tight sm:text-4xl">
             <span className="flex size-9 items-center justify-center rounded-lg icon-chip">
-              <Plus className="size-4 text-indigo-500" />
+              <Plus className="size-4 text-aurora-2" />
             </span>
             <span className="text-gradient">Capture</span>
           </h1>

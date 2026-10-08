@@ -44,11 +44,11 @@ export function Architecture() {
           <div key={layer.name} className="flex flex-1 flex-col items-center gap-1.5 md:flex-row md:gap-1.5">
             <Card
               className={cn(
-                "w-full border-border/50 p-5 text-center transition-all hover:-translate-y-1 hover:shadow-lg",
+                "w-full border-border/60 p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-aurora-2/40 hover:shadow-[0_24px_64px_-28px_color-mix(in_oklab,var(--aurora-2)_60%,transparent)]",
                 layer.tone === "memory" &&
-                  "border-indigo-500/40 bg-gradient-to-b from-indigo-500/[0.07] to-card shadow-indigo-500/10",
+                  "border-aurora-2/40 bg-gradient-to-b from-aurora-2/[0.10] to-card",
                 layer.tone === "ai" &&
-                  "border-transparent brand-gradient text-white shadow-xl shadow-indigo-500/25"
+                  "border-transparent brand-gradient text-white shadow-[0_24px_64px_-24px_color-mix(in_oklab,var(--aurora-2)_80%,transparent)]"
               )}
             >
               <span
@@ -62,13 +62,13 @@ export function Architecture() {
                 <layer.icon
                   className={cn(
                     "size-5",
-                    layer.tone === "ai" ? "text-white" : "text-indigo-500"
+                    layer.tone === "ai" ? "text-white" : "text-aurora-2"
                   )}
                 />
               </span>
               <p
                 className={cn(
-                  "text-sm font-semibold tracking-tight",
+                  "font-display text-sm font-semibold tracking-tight",
                   layer.tone === "ai" && "text-white"
                 )}
               >
@@ -85,10 +85,10 @@ export function Architecture() {
             </Card>
 
             {!isLast && (
-              <ArrowRight className="hidden size-4 shrink-0 text-indigo-500/50 animate-pulse md:block" />
+              <ArrowRight className="hidden size-4 shrink-0 text-aurora-2/60 animate-pulse md:block" />
             )}
             {!isLast && (
-              <ArrowDown className="size-4 shrink-0 text-indigo-500/50 animate-pulse md:hidden" />
+              <ArrowDown className="size-4 shrink-0 text-aurora-2/60 animate-pulse md:hidden" />
             )}
           </div>
         );
