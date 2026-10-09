@@ -26,6 +26,16 @@
   ],
   "routes": [
     {
+      "pattern": "revoos.app",
+      "zone_name": "revoos.app",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.revoos.app",
+      "zone_name": "revoos.app",
+      "custom_domain": true
+    },
+    {
       "pattern": "revoos.ctrlworks.co",
       "zone_name": "ctrlworks.co",
       "custom_domain": true

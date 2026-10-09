@@ -64,8 +64,8 @@ export default function DataRequestPage() {
           Settings
         </Link>
         . For anything else, email{" "}
-        <a href="mailto:hello@ctrlworks.co" className="text-aurora-2 underline">
-          hello@ctrlworks.co
+        <a href="mailto:hello@revoos.app" className="text-aurora-2 underline">
+          hello@revoos.app
         </a>
         .
       </p>

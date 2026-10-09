@@ -53,21 +53,21 @@ export default function LandingPage() {
       {
           "@type": "WebSite",
           name: "Revo OS",
-          alternateName: ["Revo", "RevoOS", "revoos.ctrlworks.co"],
-          url: "https://revoos.ctrlworks.co",
+          alternateName: ["Revo", "RevoOS", "revoos.app"],
+          url: "https://revoos.app",
         description:
           "Revo OS is the AI memory layer for your digital life. It captures screenshots, notes, links, and documents, then answers questions about them in plain language.",
         inLanguage: "en",
         potentialAction: {
           "@type": "SearchAction",
-          target: "https://revoos.ctrlworks.co/search?q={query}",
+          target: "https://revoos.app/search?q={query}",
           "query-input": "required name=query",
         },
       },
       {
         "@type": "SoftwareApplication",
         name: "Revo OS",
-        url: "https://revoos.ctrlworks.co",
+        url: "https://revoos.app",
         applicationCategory: "BusinessApplication",
         operatingSystem: "Web",
         description:
@@ -76,8 +76,8 @@ export default function LandingPage() {
       {
         "@type": "Organization",
         name: "Revo OS",
-        url: "https://revoos.ctrlworks.co",
-        email: "hello@ctrlworks.co",
+        url: "https://revoos.app",
+        email: "hello@revoos.app",
       },
     ],
   };

@@ -19,10 +19,10 @@ export default function PrivacyPolicyPage() {
           Revo OS is a working prototype operated by <strong>Ctrl Works</strong>{" "}
           (&ldquo;we&rdquo;, &ldquo;us&rdquo;). This policy explains what we
           collect when you use the prototype at{" "}
-          <a href="https://revoos.ctrlworks.co">revoos.ctrlworks.co</a>, why we
+          <a href="https://revoos.app">revoos.app</a>, why we
           collect it, and the choices you have. For any privacy question or
           request, contact{" "}
-          <a href="mailto:hello@ctrlworks.co">hello@ctrlworks.co</a>.
+          <a href="mailto:hello@revoos.app">hello@revoos.app</a>.
         </p>
         <p>
           Revo OS is a demo, not a finished product. It is intended for people
@@ -208,7 +208,7 @@ export default function PrivacyPolicyPage() {
         <p>
           You can exercise access and deletion for waitlist and feedback data
           yourself on the <Link href="/privacy/request">Your data</Link> page, or
-          email <a href="mailto:hello@ctrlworks.co">hello@ctrlworks.co</a>. You
+          email <a href="mailto:hello@revoos.app">hello@revoos.app</a>. You
           can also clear everything Revo OS stores locally at any time from{" "}
           <Link href="/settings">Settings</Link> or by clearing your browser
           storage. If you are in the UK/EU, you have the right to complain to
@@ -234,7 +234,7 @@ export default function PrivacyPolicyPage() {
 
       <LegalSection heading="Contact">
         <p>
-          Ctrl Works — <a href="mailto:hello@ctrlworks.co">hello@ctrlworks.co</a>
+          Ctrl Works — <a href="mailto:hello@revoos.app">hello@revoos.app</a>
         </p>
       </LegalSection>
     </LegalPage>

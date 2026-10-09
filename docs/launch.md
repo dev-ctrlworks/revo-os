@@ -1,7 +1,7 @@
 # Revo OS — launch kit
 
-**Site:** https://revoos.ctrlworks.co
-**Sitemap:** https://revoos.ctrlworks.co/sitemap.xml
+**Site:** https://revoos.app
+**Sitemap:** https://revoos.app/sitemap.xml
 **Feedback/waitlist:** live (Supabase), counts read from `/api/counts`.
 
 ---
@@ -11,18 +11,18 @@
 ### X / Twitter
 > Built a thing I've wanted for years: an AI memory layer for your digital life.
 > Revo OS quietly captures screenshots, notes, links, docs — then answers questions in plain language. No folders. No filing. Just memory.
-> Try it: revoos.ctrlworks.co
+> Try it: revoos.app
 
 ### LinkedIn
 > Most "second brain" tools make you file everything. Revo OS inverts it: you capture by pasting, screenshots, pages, or a quick note — and it does the memory-keeping.
 > Ask "what camera was I researching in April?" and it answers with the sources it pulled from.
-> Working prototype → https://revoos.ctrlworks.co (waitlist open on the page).
+> Working prototype → https://revoos.app (waitlist open on the page).
 
 ### Threads / short form
-> Your digital life, with a memory. That's Revo OS — capture anything, then ask it anything. revoos.ctrlworks.co
+> Your digital life, with a memory. That's Revo OS — capture anything, then ask it anything. revoos.app
 
 ### Hacker News (Show HN)
-> Show HN: Revo OS — an AI memory layer for your digital life. Local-first prototype: capture via screenshot/paste/link/browser/note, auto-grouped collections, a memory graph, and grounded Q&A with sources. Waitlist + feedback live → revoos.ctrlworks.co
+> Show HN: Revo OS — an AI memory layer for your digital life. Local-first prototype: capture via screenshot/paste/link/browser/note, auto-grouped collections, a memory graph, and grounded Q&A with sources. Waitlist + feedback live → revoos.app
 
 ---
 
@@ -48,10 +48,10 @@ Crop to 1600px wide; X likes 16:9, LinkedIn 1200×627.
 ## Indexing notes
 - GSC: https://search.google.com/search-console — Domain property → verify via Cloudflare provider (zone is on Cloudflare).
 - IndexNow key: `d512a71e8c9f5cc3622568457d769d10`
-  - Ping: `https://api.indexnow.org/indexnow?url=https://revoos.ctrlworks.co/&key=d512a71e8c9f5cc3622568457d769d10`
+  - Ping: `https://api.indexnow.org/indexnow?url=https://revoos.app/&key=d512a71e8c9f5cc3622568457d769d10`
   - Key is public (ownership proof served from the site root) — don't reuse it as a secret.
 
 ## Deploy/ops cheatsheet
-- Live domain: https://revoos.ctrlworks.co (Cloudflare Worker `revoos`; custom domain via `wrangler.jsonc` routes).
+- Live domain: https://revoos.app (Cloudflare Worker `revoos`; custom domain via `wrangler.jsonc` routes).
 - Runtime secrets are per-worker `wrangler secret put OPENAI_API_KEY|OPENAI_MODEL|SUPABASE_URL|SUPABASE_SERVICE_ROLE_KEY` (never baked into the bundle).
 - Rebuild+deploy: `npm run deploy:cf` · local preview: `npm run preview:cf` (or `next dev` for :3000).

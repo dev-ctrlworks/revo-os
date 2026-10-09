@@ -51,7 +51,7 @@ export function LegalPage({
             Your data
           </Link>
           <CookieSettingsButton className="transition-colors hover:text-foreground" />
-          <a href="mailto:hello@ctrlworks.co" className="transition-colors hover:text-foreground">
+          <a href="mailto:hello@revoos.app" className="transition-colors hover:text-foreground">
             Contact
           </a>
         </div>

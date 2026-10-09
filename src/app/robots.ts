@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: "https://revoos.ctrlworks.co/sitemap.xml",
-    host: "https://revoos.ctrlworks.co",
+    sitemap: "https://revoos.app/sitemap.xml",
+    host: "https://revoos.app",
   };
 }

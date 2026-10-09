@@ -24,7 +24,7 @@ function PostHogConsentSync({ consent }: { consent: Consent | null }) {
           capture_pageview: false,
           capture_pageleave: true,
           person_profiles: "identified_only",
-          tracing_headers: ["revoos.ctrlworks.co", "localhost"],
+          tracing_headers: ["revoos.app", "localhost"],
         });
       } else {
         posthog.opt_in_capturing();

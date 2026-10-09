@@ -21,7 +21,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://revoos.ctrlworks.co"),
+  metadataBase: new URL("https://revoos.app"),
   title: {
     default: "Revo OS — your AI memory layer",
     template: "%s — Revo OS",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     "local-first AI",
     "Revo OS",
   ],
-  authors: [{ name: "Revo OS", url: "https://revoos.ctrlworks.co" }],
+  authors: [{ name: "Revo OS", url: "https://revoos.app" }],
   creator: "Revo OS",
   robots: {
     index: true,
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Revo OS",
-    url: "https://revoos.ctrlworks.co",
+    url: "https://revoos.app",
     title: "Revo OS — your AI memory layer",
     description:
       "Capture everything. Then ask anything. Revo OS is the AI memory layer for your digital life — local-first and private.",

@@ -20,7 +20,7 @@ export default function TermsOfServicePage() {
           (the &ldquo;Service&rdquo;), a prototype operated by{" "}
           <strong>Ctrl Works</strong> (&ldquo;we&rdquo;, &ldquo;us&rdquo;) and
           available at{" "}
-          <a href="https://revoos.ctrlworks.co">revoos.ctrlworks.co</a>. By using
+          <a href="https://revoos.app">revoos.app</a>. By using
           the Service you agree to these Terms and to our{" "}
           <Link href="/privacy">Privacy Policy</Link>. If you do not agree, do
           not use the Service.
@@ -134,7 +134,7 @@ export default function TermsOfServicePage() {
       <LegalSection heading="Contact">
         <p>
           Questions about these Terms:{" "}
-          <a href="mailto:hello@ctrlworks.co">hello@ctrlworks.co</a>
+          <a href="mailto:hello@revoos.app">hello@revoos.app</a>
         </p>
       </LegalSection>
     </LegalPage>

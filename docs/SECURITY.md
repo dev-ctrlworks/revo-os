@@ -185,5 +185,5 @@ Analytics is opt-in and reversible:
 
 ## Reporting
 
-Security issues: `hello@ctrlworks.co` (see the Organization JSON-LD on the
+Security issues: `hello@revoos.app` (see the Organization JSON-LD on the
 landing page).

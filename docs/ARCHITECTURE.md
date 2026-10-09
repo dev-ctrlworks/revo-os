@@ -140,7 +140,7 @@ truncates, and forwards them to OpenAI, returning either `{ answer }` or
     `.open-next/assets` bound as `ASSETS`.
   - `nodejs_compat` + `global_fetch_strictly_public`.
   - `RATE_LIMITER` binding (simple limit: 30 req / 60 s, namespace `1001`).
-  - Custom domain route `revoos.ctrlworks.co`.
+  - Custom domain route `revoos.app`.
 - `tsconfig.json` — path alias `@/* -> ./src/*`, `strict`, `moduleResolution:
   bundler`, includes `.next/types` and `**/*.mts`.
 - `eslint.config.mjs` — flat config extending `eslint-config-next`

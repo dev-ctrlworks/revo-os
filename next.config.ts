@@ -39,6 +39,34 @@ const nextConfig: NextConfig = {
   images: { unoptimized: true },
   poweredByHeader: false,
   skipTrailingSlashRedirect: true,
+  async redirects() {
+    return [
+      {
+        source: "/",
+        has: [{ type: "host", value: "www.revoos.app" }],
+        destination: "https://revoos.app/",
+        permanent: true,
+      },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.revoos.app" }],
+        destination: "https://revoos.app/:path*",
+        permanent: true,
+      },
+      {
+        source: "/",
+        has: [{ type: "host", value: "revoos.ctrlworks.co" }],
+        destination: "https://revoos.app/",
+        permanent: true,
+      },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "revoos.ctrlworks.co" }],
+        destination: "https://revoos.app/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async rewrites() {
     return [
       {
