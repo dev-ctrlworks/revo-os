@@ -51,9 +51,10 @@ export default function LandingPage() {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "WebSite",
-        name: "Revo OS",
-        url: "https://revoos.ctrlworks.co",
+          "@type": "WebSite",
+          name: "Revo OS",
+          alternateName: ["Revo", "RevoOS", "revoos.ctrlworks.co"],
+          url: "https://revoos.ctrlworks.co",
         description:
           "Revo OS is the AI memory layer for your digital life. It captures screenshots, notes, links, and documents, then answers questions about them in plain language.",
         inLanguage: "en",
