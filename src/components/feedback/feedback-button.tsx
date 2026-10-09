@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { MessageCircleHeart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -83,10 +84,10 @@ export function FeedbackButton() {
         render={
           <Button
             onClick={openDialog}
-            className="fixed bottom-5 right-5 z-40 flex items-center gap-1.5 rounded-full shadow-[0_12px_32px_-12px_color-mix(in_oklab,var(--aurora-2)_55%,transparent)]"
+            className="fixed bottom-5 right-5 z-40 flex items-center gap-1.5 rounded-full px-3.5 shadow-[0_12px_32px_-12px_color-mix(in_oklab,var(--aurora-2)_55%,transparent)] sm:px-4"
           >
             <MessageCircleHeart className="size-4" />
-            Feedback
+            <span className="hidden sm:inline">Feedback</span>
           </Button>
         }
       />
@@ -145,6 +146,17 @@ export function FeedbackButton() {
                 {error}
               </p>
             )}
+            <p className="text-[11px] leading-relaxed text-muted-foreground">
+              Your message goes to the Revo OS team. You can request deletion
+              anytime. See our{" "}
+              <Link
+                href="/privacy"
+                className="underline transition-colors hover:text-foreground"
+              >
+                Privacy Policy
+              </Link>
+              .
+            </p>
             <DialogFooter showCloseButton>
               <Button type="submit" disabled={status === "submitting"}>
                 {status === "submitting" ? "Sending…" : "Send feedback"}

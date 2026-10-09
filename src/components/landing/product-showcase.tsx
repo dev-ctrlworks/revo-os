@@ -148,7 +148,8 @@ function MemoryGraph() {
   ];
 
   return (
-    <svg viewBox="0 0 560 300" className="mx-auto h-[260px] w-full max-w-xl">
+    <div className="overflow-x-auto">
+      <svg viewBox="0 0 560 300" className="mx-auto h-[260px] w-full min-w-[420px] max-w-xl">
       <defs>
         <radialGradient id="graph-glow-lg">
           <stop offset="0%" stopColor="#818cf8" stopOpacity="0.35" />
@@ -208,7 +209,8 @@ function MemoryGraph() {
       </circle>
       <circle cx={center.x} cy={center.y} r={9} className="fill-card" />
       <circle cx={center.x} cy={center.y} r={4.5} className="fill-aurora-2" />
-    </svg>
+      </svg>
+    </div>
   );
 }
 

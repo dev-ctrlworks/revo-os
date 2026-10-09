@@ -9,7 +9,7 @@ const accessRows = [
 ];
 
 const guarantees = [
-  { icon: HardDrive, title: "Local-first", text: "Only what you choose ever leaves your device." },
+  { icon: HardDrive, title: "Local-first", text: "Captures stay on your device; AI answers send only the relevant memories to our AI provider." },
   { icon: Filter, title: "Opt-in per source", text: "Nothing is captured until you allow it." },
   { icon: RotateCcw, title: "Revocable anytime", text: "Turn any source off; capture stops immediately." },
 ];

@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Inter, Space_Grotesk } from "next/font/google";
+import { CookieNotice } from "@/components/layout/cookie-notice";
+import { PostHogAnalytics } from "@/components/analytics/posthog-analytics";
 import "./globals.css";
 
 const inter = Inter({
@@ -15,6 +17,7 @@ const spaceGrotesk = Space_Grotesk({
 
 export const viewport: Viewport = {
   themeColor: "#f4f3fb",
+  viewportFit: "cover",
 };
 
 export const metadata: Metadata = {
@@ -101,6 +104,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             data-cf-beacon={JSON.stringify({ token: analyticsToken })}
           />
         )}
+        <PostHogAnalytics />
+        <CookieNotice />
       </body>
     </html>
   );

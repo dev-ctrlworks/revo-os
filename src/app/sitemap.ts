@@ -11,6 +11,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/settings",
     "/collections",
     "/capture",
+    "/privacy",
+    "/terms",
   ];
 
   return staticPaths.map((path) => ({

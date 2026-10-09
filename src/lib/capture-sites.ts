@@ -1,3 +1,5 @@
+import { hostnameOf, safeExternalUrl } from "./safe-url";
+
 export interface SampleSite {
   hostname: string;
   title: string;
@@ -65,17 +67,10 @@ export const sampleSites: SampleSite[] = [
 ];
 
 export function normalizeUrl(raw: string): string {
-  const trimmed = raw.trim();
-  return /^[a-z]+:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
+  return safeExternalUrl(raw) ?? "";
 }
 
-export function hostnameOf(url: string): string {
-  try {
-    return new URL(url).hostname.replace(/^www\./, "");
-  } catch {
-    return url;
-  }
-}
+export { hostnameOf };
 
 export function inferSite(rawUrl: string): SampleSite {
   const url = normalizeUrl(rawUrl);

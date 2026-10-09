@@ -8,11 +8,11 @@ export default function GraphPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="flex items-center gap-2.5 text-3xl font-semibold tracking-tight sm:text-4xl">
+        <h1 className="flex items-center gap-2.5 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
           <span className="flex size-9 items-center justify-center rounded-lg icon-chip">
             <Network className="size-4 text-aurora-2" />
           </span>
-          <span className="text-gradient">Memory Graph</span>
+          <span>Memory Graph</span>
         </h1>
         <p className="mt-3 max-w-2xl text-sm text-muted-foreground">
           {count} memories wired to the people, places, products, and topics

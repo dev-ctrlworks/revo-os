@@ -86,7 +86,7 @@ export function BrowserPanel({ onToast }: { onToast: (message: string) => void }
             }}
             onKeyDown={(e) => e.key === "Enter" && browse()}
             placeholder="https://…"
-            className="h-11 rounded-xl pl-9 font-mono text-[13px]"
+            className="h-11 rounded-xl pl-9 font-mono text-base sm:text-[13px]"
           />
         </div>
         <Button
@@ -138,9 +138,13 @@ export function BrowserPanel({ onToast }: { onToast: (message: string) => void }
                     </p>
                     <button
                       type="button"
-                      className="shrink-0 rounded-md p-1 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                      className="shrink-0 rounded-md p-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                       aria-label="Open link"
-                      onClick={() => window.open(normalizeUrl(url), "_blank")}
+                      onClick={() => {
+                        const target = normalizeUrl(url);
+                        if (target)
+                          window.open(target, "_blank", "noopener,noreferrer");
+                      }}
                     >
                       <ArrowUpRight className="size-3.5" />
                     </button>

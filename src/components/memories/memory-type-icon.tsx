@@ -53,13 +53,13 @@ export function MemoryTypeIcon({
   className,
 }: {
   type: MemoryType;
-  size?: "sm" | "md";
+  size?: "xs" | "sm" | "md" | "lg";
   className?: string;
 }) {
   const config = typeConfig[type];
   const Icon = config.icon;
-  const dims = size === "sm" ? "size-7 rounded-lg" : "size-9 rounded-xl";
-  const iconSize = size === "sm" ? "size-3.5" : "size-4.5";
+  const dims = size === "xs" ? "size-5 rounded" : size === "sm" ? "size-7 rounded-lg" : size === "md" ? "size-9 rounded-xl" : "size-10 rounded-xl";
+  const iconSize = size === "xs" ? "size-2.5" : size === "sm" ? "size-3.5" : size === "md" ? "size-4.5" : "size-5";
   return (
     <span
       className={cn(

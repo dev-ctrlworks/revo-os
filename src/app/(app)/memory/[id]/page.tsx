@@ -41,6 +41,7 @@ import {
   generateMemorySummary,
 } from "@/lib/summarize";
 import { generatedMemoryPreview } from "@/lib/memory-preview";
+import { safeExternalUrl } from "@/lib/safe-url";
 import { formatDate, formatDateTime } from "@/lib/utils-format";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
@@ -585,7 +586,7 @@ function NoticedCard({
 
 function MetadataCard({ memory }: { memory: Memory }) {
   const [copied, setCopied] = useState(false);
-  const url = memory.source.startsWith("http") ? memory.source : null;
+  const url = safeExternalUrl(memory.source);
 
   const copyUrl = async () => {
     if (!url) return;
@@ -922,7 +923,7 @@ export default function MemoryDetailPage() {
                   </span>
                 )}
               </div>
-              <h1 className="mt-3.5 max-w-3xl text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
+              <h1 className="mt-3.5 max-w-3xl font-display text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
                 {memory.title}
               </h1>
               <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-muted-foreground">
@@ -1024,11 +1025,11 @@ export default function MemoryDetailPage() {
                   Original
                 </span>
                 <span className="flex-1" />
-                {isLink ? (
+                {isLink && safeExternalUrl(memory.source) ? (
                   <a
-                    href={memory.source}
+                    href={safeExternalUrl(memory.source) ?? undefined}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className={cn(
                       buttonVariants({ variant: "outline", size: "sm" }),
                       "rounded-lg"
@@ -1037,6 +1038,16 @@ export default function MemoryDetailPage() {
                     Open source
                     <ArrowUpRight className="size-3.5" />
                   </a>
+                ) : isLink ? (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="rounded-lg text-muted-foreground"
+                    disabled
+                  >
+                    <ArrowUpRight className="size-3.5" />
+                    Open source
+                  </Button>
                 ) : textLike(memory.type) ? (
                   <Button
                     variant="outline"
@@ -1220,7 +1231,7 @@ export default function MemoryDetailPage() {
             </div>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {related.map((m) => (
-                <MemoryCard key={m.id} memory={m} compact />
+                <MemoryCard key={m.id} memory={m} variant="compact" />
               ))}
             </div>
           </section>

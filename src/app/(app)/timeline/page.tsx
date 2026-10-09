@@ -59,11 +59,11 @@ export default function TimelinePage() {
     <div className="space-y-8">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="flex items-center gap-2.5 text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h1 className="flex items-center gap-2.5 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
             <span className="flex size-9 items-center justify-center rounded-lg icon-chip">
               <Clock3 className="size-4 text-aurora-2" />
             </span>
-            <span className="text-gradient">Timeline</span>
+            <span>Timeline</span>
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
             {totalMemories} memories · every fragment, in order.
@@ -107,7 +107,7 @@ export default function TimelinePage() {
               <button
                 type="button"
                 onClick={() => toggleDate(group.date)}
-                className="group mb-3 flex items-center gap-3 text-left"
+                className="group mb-3 flex flex-wrap items-center gap-3 text-left"
               >
                 <span className="absolute -left-6 mt-1.5 flex size-[18px] items-center justify-center rounded-full border border-border bg-card shadow-sm">
                   <span className="size-1.5 rounded-full bg-aurora-2" />
@@ -134,7 +134,7 @@ export default function TimelinePage() {
 
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {dayMemories.map((memory) => (
-                  <MemoryCard key={memory.id} memory={memory} compact />
+                  <MemoryCard key={memory.id} memory={memory} variant="compact" />
                 ))}
               </div>
             </section>
@@ -151,7 +151,7 @@ export default function TimelinePage() {
         )}
       </div>
 
-      <div className="flex items-center justify-center gap-2 pt-2 text-xs text-muted-foreground">
+      <div className="flex flex-wrap items-center justify-center gap-2 pt-2 text-center text-xs text-muted-foreground">
         <Badge variant="secondary" className="rounded-full text-[10px]">
           {typeFilters.find((f) => f.value === activeType)?.label}
         </Badge>

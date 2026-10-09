@@ -6,6 +6,8 @@ import {
   getSnapshot,
   subscribe,
   syncFromStorage,
+  getAskedCount,
+  setAskedCount,
 } from "./memory-store";
 
 export function useMemoryStore(): ReturnType<typeof getSnapshot> {
@@ -20,4 +22,12 @@ export function useMemoryStore(): ReturnType<typeof getSnapshot> {
   }, []);
 
   return memories;
+}
+
+export function useAskedCount(): number {
+  return getAskedCount();
+}
+
+export function incrementAskedCount(): void {
+  setAskedCount(getAskedCount() + 1);
 }

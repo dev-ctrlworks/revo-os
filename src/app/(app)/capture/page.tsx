@@ -118,11 +118,11 @@ export default function CapturePage() {
             <Sparkles className="size-3.5 text-aurora-2" />
             Revo OS capture
           </p>
-          <h1 className="flex items-center gap-2.5 text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h1 className="flex items-center gap-2.5 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
             <span className="flex size-9 items-center justify-center rounded-lg icon-chip">
               <Plus className="size-4 text-aurora-2" />
             </span>
-            <span className="text-gradient">Capture</span>
+            <span>Capture</span>
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
             Add a memory. Revo OS handles the filing — no folders needed.

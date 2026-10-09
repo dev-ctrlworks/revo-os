@@ -73,7 +73,7 @@ export function CollectionPicker({
       <PopoverContent
         align="start"
         sideOffset={6}
-        className="w-72 overflow-hidden p-1!"
+        className="w-[min(18rem,calc(100vw-2rem))] overflow-hidden p-1!"
       >
         <Command>
           <CommandList>

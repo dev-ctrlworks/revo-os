@@ -11,6 +11,7 @@ const STORAGE_KEY = "revoos.captured.memories.v1";
 const EDITS_KEY = "revoos.memory-edits.v1";
 const COLLECTION_META_KEY = "revoos.collection-meta.v1";
 const DELETED_KEY = "revoos.deleted-memories.v1";
+const ASKED_COUNT_KEY = "revoos.asked-count.v1";
 
 export const STORAGE_FULL_MESSAGE =
   "Demo storage is full. Clear captured memories in Settings to keep capturing.";
@@ -318,4 +319,22 @@ export function syncFromStorage(): void {
 function notify(): void {
   cachedSnapshot = computeSnapshot();
   listeners.forEach((listener) => listener());
+}
+
+export function getAskedCount(): number {
+  if (typeof window === "undefined") return 0;
+  try {
+    return parseInt(window.localStorage.getItem(ASKED_COUNT_KEY) ?? "0", 10);
+  } catch {
+    return 0;
+  }
+}
+
+export function setAskedCount(count: number): void {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.setItem(ASKED_COUNT_KEY, String(count));
+  } catch {
+    // ignore
+  }
 }

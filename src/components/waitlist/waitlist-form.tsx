@@ -108,7 +108,12 @@ export function WaitlistForm() {
         </p>
       )}
       <p className="mt-3 text-xs text-muted-foreground">
-        No spam. One email when access opens — that&apos;s it.
+        No spam. One email when access opens — that&apos;s it. By joining you
+        agree to our{" "}
+        <Link href="/privacy" className="underline transition-colors hover:text-foreground">
+          Privacy Policy
+        </Link>
+        .
       </p>
     </form>
   );

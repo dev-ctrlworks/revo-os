@@ -106,7 +106,7 @@ export function AISearchBar({
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="What do you remember?"
-            className="w-full bg-transparent text-sm outline-none placeholder:text-muted-foreground"
+            className="w-full min-w-0 bg-transparent text-base outline-none placeholder:text-muted-foreground sm:text-sm"
             autoFocus={autoFocus}
           />
           {loading ? (

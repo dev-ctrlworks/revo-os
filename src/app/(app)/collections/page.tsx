@@ -190,11 +190,11 @@ export default function CollectionsPage() {
     <div className="space-y-10">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="flex items-center gap-2.5 text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h1 className="flex items-center gap-2.5 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
             <span className="flex size-9 items-center justify-center rounded-lg icon-chip">
               <LayoutGrid className="size-4 text-aurora-2" />
             </span>
-            <span className="text-gradient">Collections</span>
+            <span>Collections</span>
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
             Revo OS groups related memories automatically — you stay in control.

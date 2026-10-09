@@ -74,8 +74,8 @@ export default function CollectionDetailPage() {
             {meta.emoji}
           </span>
           <div className="min-w-0 flex-1">
-            <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-              {name}
+            <h1 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+              <span>{name}</span>
             </h1>
             {meta.description && (
               <p className="mt-1 text-sm text-muted-foreground">
@@ -168,7 +168,7 @@ export default function CollectionDetailPage() {
         </div>
       ) : (
         <>
-          <div className="flex items-center justify-between">
+          <div className="flex flex-wrap items-center justify-between gap-2">
             <h2 className="text-sm font-semibold">
               {items.length} {items.length === 1 ? "memory" : "memories"}
             </h2>

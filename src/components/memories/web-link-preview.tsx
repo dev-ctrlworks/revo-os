@@ -2,22 +2,11 @@
 
 import { ArrowUpRight, LinkIcon } from "lucide-react";
 import type { Memory } from "@/lib/types";
-
-function hostnameOf(url: string): string {
-  try {
-    return new URL(url).hostname.replace(/^www\./, "");
-  } catch {
-    return url;
-  }
-}
-
-function normalizeUrl(source: string): string {
-  return /^[a-z]+:\/\//i.test(source) ? source : `https://${source}`;
-}
+import { hostnameOf, safeExternalUrl } from "@/lib/safe-url";
 
 export function WebLinkPreview({ memory }: { memory: Memory }) {
-  const url = normalizeUrl(memory.source);
-  const host = hostnameOf(url);
+  const url = safeExternalUrl(memory.source);
+  const host = hostnameOf(memory.source) || memory.source;
 
   return (
     <div>
@@ -40,7 +29,7 @@ export function WebLinkPreview({ memory }: { memory: Memory }) {
           </span>
           <div className="min-w-0 flex-1">
             <a
-              href={url}
+              href={url ?? undefined}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-start gap-1.5 text-sm font-semibold leading-snug tracking-tight text-foreground transition-colors hover:text-emerald-500"
@@ -53,7 +42,7 @@ export function WebLinkPreview({ memory }: { memory: Memory }) {
             </p>
           </div>
           <a
-            href={url}
+            href={url ?? undefined}
             target="_blank"
             rel="noreferrer"
             className="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-gradient-to-r from-emerald-500 to-teal-500 px-3 py-1.5 text-xs font-semibold text-white shadow-sm shadow-emerald-500/25 transition-all hover:brightness-110"
@@ -71,7 +60,7 @@ export function WebLinkPreview({ memory }: { memory: Memory }) {
       <div className="flex items-center justify-between gap-2 border-t border-border/40 px-5 py-3 text-[11px] text-muted-foreground sm:px-6">
         <span className="min-w-0 truncate">Web preview · {host}</span>
         <a
-          href={url}
+          href={url ?? undefined}
           target="_blank"
           rel="noreferrer"
           className="ml-2 inline-flex shrink-0 items-center gap-1 font-medium text-emerald-500 transition-colors hover:text-emerald-400"

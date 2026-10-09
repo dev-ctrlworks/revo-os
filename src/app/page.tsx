@@ -24,7 +24,9 @@ import { Privacy } from "@/components/landing/privacy";
 import { WaitlistForm } from "@/components/waitlist/waitlist-form";
 import { WaitlistCount } from "@/components/waitlist/waitlist-count";
 import { FeedbackButton } from "@/components/feedback/feedback-button";
+import { CookieSettingsButton } from "@/components/analytics/cookie-settings-button";
 import { memories } from "@/lib/mock-data";
+import { jsonLdScript } from "@/lib/safe-url";
 
 const perks = [
   {
@@ -83,7 +85,7 @@ export default function LandingPage() {
     <div className="min-h-screen overflow-hidden">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(jsonLd) }}
       />
       <AuroraBackground />
       <header className="sticky top-0 z-40 px-4 pt-4 sm:px-5">
@@ -130,7 +132,7 @@ export default function LandingPage() {
                 </span>
                 Your memory layer — in working beta
               </Badge>
-              <h1 className="animate-fade-up font-display text-balance text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
+              <h1 className="animate-fade-up font-display text-balance text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
                 Your digital life,{" "}
                 <span className="text-gradient">with a memory.</span>
               </h1>
@@ -301,7 +303,7 @@ export default function LandingPage() {
                     Join the preview
                   </Badge>
                   <WaitlistForm />
-                  <div className="mt-2 flex items-center justify-center gap-6">
+                  <div className="mt-2 flex flex-wrap items-center justify-center gap-4 text-center sm:gap-6">
                     <div>
                       <p className="font-display text-2xl font-semibold tracking-tight">
                         <WaitlistCount />
@@ -324,10 +326,10 @@ export default function LandingPage() {
 
         <section className="container mx-auto max-w-7xl px-5 pb-28 pt-16">
           <Reveal>
-            <div className="relative overflow-hidden rounded-[28px] bg-gradient-to-br from-[color-mix(in_oklab,var(--aurora-1)_90%,black)] via-[color-mix(in_oklab,var(--aurora-1)_72%,var(--aurora-3))] to-aurora-3 p-14 text-center shadow-[0_30px_80px_-40px_color-mix(in_oklab,var(--aurora-2)_70%,transparent)]">
+            <div className="relative overflow-hidden rounded-[28px] bg-gradient-to-br from-[color-mix(in_oklab,var(--aurora-1)_90%,black)] via-[color-mix(in_oklab,var(--aurora-1)_72%,var(--aurora-3))] to-aurora-3 p-8 text-center shadow-[0_30px_80px_-40px_color-mix(in_oklab,var(--aurora-2)_70%,transparent)] sm:p-14">
               <div className="pointer-events-none absolute -left-16 -top-16 size-64 rounded-full bg-white/15 blur-3xl" />
               <div className="relative flex flex-col items-center justify-center gap-8 lg:flex-row lg:justify-between lg:text-left">
-                <div className="flex items-start gap-5">
+                <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:items-start sm:text-left">
                   <div className="relative flex size-12 shrink-0 items-center justify-center rounded-2xl bg-white/15 ring-1 ring-white/25 ring-inset backdrop-blur-xl">
                     <BrainCircuit className="size-5 text-white" />
                   </div>
@@ -363,13 +365,21 @@ export default function LandingPage() {
           </span>
           <span className="font-display font-semibold text-foreground">Revo OS</span>
         </div>
-        <p>A working prototype. Memories pre-loaded from a demo persona — your own captures stay in your browser.</p>
-        <div className="flex items-center gap-4">
+        <p className="text-center sm:text-left">
+          A working prototype by Ctrl Works. Your captures stay in your browser;
+          AI answers send the relevant memories to our AI provider.
+        </p>
+        <div className="flex flex-wrap items-center justify-center gap-4">
           <a href="#waitlist" className="transition-colors hover:text-foreground">Waitlist</a>
           <Link href="/dashboard" className="transition-colors hover:text-foreground">Open the app</Link>
-          <Link href="/timeline" className="transition-colors hover:text-foreground">Timeline</Link>
+          <Link href="/privacy" className="transition-colors hover:text-foreground">Privacy</Link>
+          <Link href="/terms" className="transition-colors hover:text-foreground">Terms</Link>
+          <CookieSettingsButton className="transition-colors hover:text-foreground" />
         </div>
       </footer>
+      <div className="container mx-auto max-w-7xl px-5 pb-8 text-center text-[11px] text-muted-foreground/80 sm:text-left">
+        © {new Date().getFullYear()} Ctrl Works. All rights reserved.
+      </div>
 
       <FeedbackButton />
     </div>
