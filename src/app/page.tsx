@@ -16,6 +16,7 @@ import { SectionHeader } from "@/components/landing/section-header";
 import { AuroraBackground } from "@/components/motion/aurora-background";
 import { MemoryPreview } from "@/components/landing/memory-preview";
 import { CaptureSources } from "@/components/landing/capture-sources";
+import { Difference } from "@/components/landing/difference";
 import { HowItWorks } from "@/components/landing/how-it-works";
 import { ConnectionDiagram } from "@/components/landing/connection-diagram";
 import { ProductShowcase } from "@/components/landing/product-showcase";
@@ -100,6 +101,7 @@ export default function LandingPage() {
           </Link>
           <div className="flex items-center gap-3">
             <nav className="hidden items-center gap-7 text-sm font-medium text-muted-foreground lg:flex">
+              <a href="#why" className="transition-colors hover:text-foreground">Why</a>
               <a href="#capture" className="transition-colors hover:text-foreground">Capture</a>
               <a href="#how" className="transition-colors hover:text-foreground">How it works</a>
               <a href="#product" className="transition-colors hover:text-foreground">Product</a>
@@ -134,13 +136,14 @@ export default function LandingPage() {
                 Your memory layer — in working beta
               </Badge>
               <h1 className="animate-fade-up font-display text-balance text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
-                Your digital life,{" "}
-                <span className="text-gradient">with a memory.</span>
+                Save anything.{" "}
+                <span className="text-gradient">Remember why.</span>
               </h1>
               <p className="animate-fade-up delay-75 mt-6 max-w-lg text-balance text-base leading-relaxed text-muted-foreground sm:text-lg">
-                Revo OS quietly captures your screenshots, notes, links, and
-                documents — then lets you ask questions and get grounded answers
-                in plain language. No folders. No filing. Just memory.
+                Most tools help you save things. Revo OS remembers why you saved
+                them — the project, the moment, the reason — and connects related
+                items on its own. Ask in plain language, get grounded answers. No
+                folders. No filing. Just memory.
               </p>
               <div className="animate-fade-up delay-100 mt-9 flex flex-wrap items-center gap-3">
                 <Button
@@ -196,6 +199,23 @@ export default function LandingPage() {
               </StaggerItem>
             ))}
           </Stagger>
+        </section>
+
+        <section id="why" className="container mx-auto max-w-7xl px-5 py-20 sm:py-24">
+          <SectionHeader
+            kicker="Why Revo OS"
+            align="center"
+            title={
+              <>
+                Not another place to{" "}
+                <span className="text-gradient">dump links.</span>
+              </>
+            }
+            lead="Saving is easy. Remembering why you saved it is the hard part. Revo OS keeps the context around every capture and connects related items on its own — so a screenshot is never just a screenshot."
+          />
+          <Reveal className="mt-14" y={32}>
+            <Difference />
+          </Reveal>
         </section>
 
         <section id="capture" className="container mx-auto max-w-7xl px-5 py-20 sm:py-24">
