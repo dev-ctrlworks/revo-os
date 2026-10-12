@@ -53,18 +53,6 @@ const nextConfig: NextConfig = {
         destination: "https://revoos.app/:path*",
         permanent: true,
       },
-      {
-        source: "/",
-        has: [{ type: "host", value: "revoos.ctrlworks.co" }],
-        destination: "https://revoos.app/",
-        permanent: true,
-      },
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "revoos.ctrlworks.co" }],
-        destination: "https://revoos.app/:path*",
-        permanent: true,
-      },
     ];
   },
   async rewrites() {
