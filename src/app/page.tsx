@@ -90,7 +90,7 @@ export default function LandingPage() {
             kicker="Use cases"
             align="center"
             title="Ask across your life."
-            lead="One memory layer answers work, study, travel, shopping, and everyday questions."
+            lead="One memory layer answers work, study, travel, shopping, and everyday questions. Here are a few examples."
           />
           <Reveal className="mt-12" y={32}>
             <UseCases />

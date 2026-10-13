@@ -40,7 +40,8 @@ export function Privacy() {
           </h2>
           <p className="mt-4 leading-relaxed text-muted-foreground">
             Local-first by default. You choose what goes in, and answers stay
-            grounded in what you saved — with sources you can open.
+            grounded in what you saved — with sources you can open. No background
+            scraping, and no vague guarantees.
           </p>
         </div>
 

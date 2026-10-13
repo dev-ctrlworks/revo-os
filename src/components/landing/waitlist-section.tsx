@@ -32,7 +32,7 @@ export function WaitlistSection() {
                 <span className="text-gradient">personal AI memory.</span>
               </>
             }
-            lead="Join the waitlist to follow development and try new versions first."
+            lead="Join the waitlist to follow development and try new versions first. No spam — just a note when something ships."
           />
           <div className="mt-9 space-y-4">
             {perks.map(({ icon: Icon, title, text }) => (

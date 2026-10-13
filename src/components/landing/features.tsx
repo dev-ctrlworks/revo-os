@@ -173,20 +173,20 @@ export function Features() {
       <div className="mt-16 space-y-16 sm:space-y-24">
         <FeatureBlock
           title={<>Save it and move on.</>}
-          text="Paste, note, link, upload, or drag & drop — no folders needed."
+          text="Paste, note, link, upload, or drag & drop — no folders needed. Save it now, and Revo OS keeps it findable later."
           visual={<CaptureVisual />}
         />
 
         <FeatureBlock
           title={<>Find it by asking.</>}
-          text="Plain-language questions, answers with their sources."
+          text="Plain-language questions, answers with their sources. Every answer shows where it came from, so you can trace it."
           visual={<AskVisual />}
           reverse
         />
 
         <FeatureBlock
           title={<>It all connects.</>}
-          text="Related notes, links, and files stay grouped by topic."
+          text="Related notes, links, and files stay grouped by topic. Plan a trip and the flights, hotels, and notes stay in one thread."
           visual={<ConnectionDiagram />}
         />
       </div>

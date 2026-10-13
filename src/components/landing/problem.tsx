@@ -50,7 +50,7 @@ export function Problem() {
             story.
           </>
         }
-        lead="Your useful stuff ends up scattered across six different apps."
+        lead="Your useful stuff ends up scattered across six different apps — and weeks later you can't remember where any of it went."
       />
 
       <div className="mt-14 grid gap-4 md:grid-cols-3">

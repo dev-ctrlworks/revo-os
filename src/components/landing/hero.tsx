@@ -30,8 +30,9 @@ export function Hero() {
             Save anything. <span className="text-gradient">Remember why.</span>
           </h1>
           <p className="animate-fade-up delay-75 mt-6 max-w-lg text-balance text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Save notes, links, screenshots, and files in one place. Find anything
-            by asking.
+            Save notes, links, screenshots, and files in one place. Revo OS keeps
+            the context around each one, so you can find anything by asking in
+            plain language.
           </p>
           <div className="animate-fade-up delay-100 mt-9 flex flex-wrap items-center gap-3">
             <Button

@@ -31,7 +31,7 @@ export function Demo() {
             <span className="text-gradient">Try it.</span>
           </>
         }
-        lead="Ask the sample memories a question."
+        lead="Ask the sample memories a question. Watch it find the sources and answer in plain language."
       />
 
       <Reveal className="mt-10" y={28}>
