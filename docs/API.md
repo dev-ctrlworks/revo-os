@@ -76,15 +76,18 @@ Add an email to the waitlist. Idempotent.
 **Request**
 
 ```json
-{ "email": "you@example.com" }
+{ "email": "you@example.com", "interest": "Find the camera I researched last month" }
 ```
 
 - Email is trimmed, capped at 320 chars, and regex-validated
   (`/^[^\s@]+@[^\s@]+\.[^\s@]+$/`).
+- `interest` is optional, trimmed, and capped at 280 chars; omitted rows store
+  `NULL`.
 
 **Behavior**
 
-- Origin check, rate limit (5 / 60 s), validate, then insert into `waitlist`.
+- Origin check, rate limit (5 / 60 s), validate, then insert into `waitlist`
+  (`{ email, interest? }`).
 - Postgres unique violation (`23505`) is treated as success.
 - Emits `waitlist_joined` via `after()` if consented.
 
@@ -93,7 +96,7 @@ Add an email to the waitlist. Idempotent.
 | Status | Body |
 | --- | --- |
 | `200` | `{ "ok": true }` |
-| `400` | `{ "error": "Invalid JSON" \| "Please enter a valid email address." }` |
+| `400` | `{ "error": "Invalid JSON" \| "Please enter a valid email address." \| "That answer is a little too long." }` |
 | `403` | `{ "error": "Forbidden" }` |
 | `429` | `{ "error": "Too many requests" }` |
 | `500` | `{ "error": "Something went wrong. Please try again." }` |
@@ -169,7 +172,7 @@ Export or delete waitlist/feedback data for an email (GDPR-style self-service).
 
 - Origin check, rate limit (3 / 10 min).
 - Matching is case-insensitive (`ilike` on `email`).
-- `export` returns `waitlist` (`email`, `created_at`) and `feedback`
+- `export` returns `waitlist` (`email`, `interest`, `created_at`) and `feedback`
   (`message`, `page`, `created_at`).
 - `delete` removes matching rows from both tables.
 

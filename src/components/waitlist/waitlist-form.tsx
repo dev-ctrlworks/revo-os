@@ -5,9 +5,11 @@ import { ArrowRight, Check, Mail, PartyPopper } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 export function WaitlistForm() {
   const [email, setEmail] = useState("");
+  const [interest, setInterest] = useState("");
   const [error, setError] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "done">("idle");
 
@@ -24,7 +26,10 @@ export function WaitlistForm() {
       const res = await fetch("/api/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim() }),
+        body: JSON.stringify({
+          email: email.trim(),
+          ...(interest.trim() ? { interest: interest.trim() } : {}),
+        }),
       });
       if (!res.ok) {
         const data = await res.json().catch(() => null);
@@ -107,6 +112,27 @@ export function WaitlistForm() {
           {error}
         </p>
       )}
+      <div className="mt-4 text-left">
+        <label
+          htmlFor="waitlist-interest"
+          className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground"
+        >
+          What would you most like Revo OS to remember?
+          <span className="rounded-full border border-border/60 bg-card/60 px-1.5 py-0.5 text-[10px] font-normal">
+            optional
+          </span>
+        </label>
+        <Textarea
+          id="waitlist-interest"
+          placeholder="e.g. Find the camera I was researching last month"
+          maxLength={280}
+          rows={2}
+          disabled={status === "submitting"}
+          className="mt-1.5 resize-none rounded-xl text-sm"
+          value={interest}
+          onChange={(e) => setInterest(e.target.value)}
+        />
+      </div>
       <p className="mt-3 text-xs text-muted-foreground">
         No spam. One email when access opens — that&apos;s it. By joining you
         agree to our{" "}

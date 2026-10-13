@@ -19,7 +19,9 @@ export async function POST(request: Request) {
     return Response.json({ error: "Too many requests" }, { status: 429 });
   }
 
-  const body = await readJsonBody<{ email?: unknown }>(request);
+  const body = await readJsonBody<{ email?: unknown; interest?: unknown }>(
+    request
+  );
   if (!body) {
     return Response.json({ error: "Invalid JSON" }, { status: 400 });
   }
@@ -32,9 +34,21 @@ export async function POST(request: Request) {
     );
   }
 
+  // Optional free-text answer to "What would you most like Revo OS to
+  // remember?" Stored alongside the email when provided.
+  const interest = asString(body.interest, 281)?.trim();
+  if (interest && interest.length > 280) {
+    return Response.json(
+      { error: "That answer is a little too long." },
+      { status: 400 }
+    );
+  }
+
   try {
     const supabase = getSupabase();
-    const { error } = await supabase.from("waitlist").insert({ email });
+    const { error } = await supabase
+      .from("waitlist")
+      .insert({ email, ...(interest ? { interest } : {}) });
     if (error && error.code !== "23505") {
       console.error("Waitlist insert failed:", error.message);
       return Response.json(

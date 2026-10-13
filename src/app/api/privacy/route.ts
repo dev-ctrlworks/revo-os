@@ -47,7 +47,10 @@ export async function POST(request: Request) {
 
     if (action === "export") {
       const [{ data: waitlist }, { data: feedback }] = await Promise.all([
-        supabase.from("waitlist").select("email, created_at").ilike("email", email),
+        supabase
+          .from("waitlist")
+          .select("email, interest, created_at")
+          .ilike("email", email),
         supabase
           .from("feedback")
           .select("message, page, created_at")

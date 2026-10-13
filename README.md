@@ -38,10 +38,14 @@ Create a project and run this SQL:
 create table if not exists waitlist (
   id uuid primary key default gen_random_uuid(),
   email text unique not null,
+  interest text,
   created_at timestamptz default now()
 );
 alter table waitlist enable row level security;
 create policy "public insert" on waitlist for insert with check (true);
+
+-- Existing projects: add the optional context column.
+alter table waitlist add column if not exists interest text;
 
 create table if not exists feedback (
   id uuid primary key default gen_random_uuid(),
@@ -57,7 +61,7 @@ create policy "public insert" on feedback for insert with check (true);
 ## API routes
 
 - `POST /api/ask` — AI answer grounded in captured memories (rate-limited, 10/min/IP).
-- `POST /api/waitlist` — add an email to the waitlist (idempotent on duplicates).
+- `POST /api/waitlist` — add an email to the waitlist (idempotent on duplicates; optional `interest` note).
 - `POST /api/feedback` — submit in-app feedback (`message`, optional `email`, `page`).
 - `GET /api/counts` — live waitlist count.
 

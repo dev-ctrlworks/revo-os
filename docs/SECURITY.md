@@ -158,7 +158,7 @@ Analytics is opt-in and reversible:
 `POST /api/privacy` supports `export` and `delete` by email:
 
 - Both actions use case-insensitive `ilike` matching on the email.
-- `export` returns the matching `waitlist` (`email`, `created_at`) and
+- `export` returns the matching `waitlist` (`email`, `interest`, `created_at`) and
   `feedback` (`message`, `page`, `created_at`) rows.
 - `delete` removes matching rows from both tables.
 - Rate limited to 3 / 10 min and origin-checked.

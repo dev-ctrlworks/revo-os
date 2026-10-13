@@ -19,10 +19,14 @@ Create a project, then run:
 create table if not exists waitlist (
   id uuid primary key default gen_random_uuid(),
   email text unique not null,
+  interest text,
   created_at timestamptz default now()
 );
 alter table waitlist enable row level security;
 create policy "public insert" on waitlist for insert with check (true);
+
+-- Existing projects: add the optional context column.
+alter table waitlist add column if not exists interest text;
 
 create table if not exists feedback (
   id uuid primary key default gen_random_uuid(),
@@ -43,15 +47,16 @@ create policy "public insert" on feedback for insert with check (true);
 | --- | --- | --- |
 | `id` | `uuid` | PK, `gen_random_uuid()`. |
 | `email` | `text` | `unique not null`. Uniqueness enforced by a unique index; duplicate inserts raise Postgres error `23505`. |
+| `interest` | `text` | Optional. Free-text answer to "What would you most like Revo OS to remember?" Capped at 280 chars in the route. |
 | `created_at` | `timestamptz` | Defaults to `now()`. |
 
-- **Writes:** `POST /api/waitlist` inserts `{ email }`. A `23505` unique
+- **Writes:** `POST /api/waitlist` inserts `{ email, interest? }`. A `23505` unique
   violation is treated as success (idempotent signup).
 - **Reads:** `GET /api/counts` runs a head/exact-count query (`select("id",
   { count: "exact", head: true })`) and returns `{ waitlist: count }`, cached
   `public, s-maxage=60, stale-while-revalidate=300`.
-- **Privacy:** `POST /api/privacy` exports `email, created_at` by case-
-  insensitive email match, or deletes matching rows.
+- **Privacy:** `POST /api/privacy` exports `email, interest, created_at` by
+  case-insensitive email match, or deletes matching rows.
 
 ### `feedback`
 

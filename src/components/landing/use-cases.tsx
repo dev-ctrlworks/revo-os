@@ -1,16 +1,11 @@
 import {
-  Bookmark,
   Briefcase,
-  FileText,
   GraduationCap,
-  HeartPulse,
   Home,
-  LinkIcon,
-  Monitor,
+  Lightbulb,
   Plane,
   Search,
   ShoppingBag,
-  StickyNote,
   type LucideIcon,
 } from "lucide-react";
 
@@ -20,87 +15,55 @@ const useCases: {
   tone: string;
   chipBg: string;
   question: string;
-  lead: string;
-  rest: string;
-  sources: { icon: LucideIcon; label: string }[];
+  answer: string;
 }[] = [
   {
-    kicker: "Shopping",
-    icon: ShoppingBag,
-    tone: "text-pink-500",
-    chipBg: "bg-pink-400/10",
-    question: "Which camera should I buy?",
-    lead: "Sony A7 IV",
-    rest: "— best full-frame under your $2,800 budget.",
-    sources: [
-      { icon: Monitor, label: "spec sheet" },
-      { icon: StickyNote, label: "budget note" },
-    ],
-  },
-  {
-    kicker: "Travel",
-    icon: Plane,
-    tone: "text-sky-500",
-    chipBg: "bg-sky-400/10",
-    question: "What did I decide for the Tokyo trip?",
-    lead: "JFK→NRT, stay in Shinjuku",
-    rest: "— and rent the 24-70 lens.",
-    sources: [
-      { icon: LinkIcon, label: "flight page" },
-      { icon: StickyNote, label: "itinerary" },
-    ],
-  },
-  {
-    kicker: "Work",
-    icon: Briefcase,
-    tone: "text-violet-500",
-    chipBg: "bg-violet-400/10",
-    question: "Summarize my Q3 planning notes.",
-    lead: "Three priorities:",
-    rest: "onboarding, pricing, and hiring.",
-    sources: [
-      { icon: FileText, label: "planning.pdf" },
-      { icon: StickyNote, label: "meeting note" },
-    ],
-  },
-  {
-    kicker: "Home",
-    icon: Home,
-    tone: "text-amber-500",
-    chipBg: "bg-amber-400/10",
-    question: "What did the landlord say about the lease?",
-    lead: "12-month term,",
-    rest: "utilities extra, photograph every unit.",
-    sources: [
-      { icon: FileText, label: "lease.pdf" },
-      { icon: Monitor, label: "unit photos" },
-    ],
-  },
-  {
-    kicker: "Learning",
+    kicker: "Research & learning",
     icon: GraduationCap,
     tone: "text-emerald-500",
     chipBg: "bg-emerald-400/10",
     question: "Recap what I saved about sourdough.",
-    lead: "75% hydration,",
-    rest: "bulk ferment overnight, bake at 250°C.",
-    sources: [
-      { icon: LinkIcon, label: "recipe" },
-      { icon: Bookmark, label: "saved post" },
-    ],
+    answer: "75% hydration, bulk ferment overnight, bake at 250°C — plus the discard cracker recipe.",
   },
   {
-    kicker: "Health",
-    icon: HeartPulse,
+    kicker: "Shopping decisions",
+    icon: ShoppingBag,
+    tone: "text-pink-500",
+    chipBg: "bg-pink-400/10",
+    question: "Which camera should I buy?",
+    answer: "Sony A7 IV — best full-frame under your $2,800 budget, with the Tamron 24-70.",
+  },
+  {
+    kicker: "Projects & ideas",
+    icon: Lightbulb,
+    tone: "text-amber-500",
+    chipBg: "bg-amber-400/10",
+    question: "What did I collect for my new project?",
+    answer: "A contextual note-app concept, a settings redesign, and a résumé v4 case study.",
+  },
+  {
+    kicker: "Travel planning",
+    icon: Plane,
+    tone: "text-sky-500",
+    chipBg: "bg-sky-400/10",
+    question: "What did I decide for the Tokyo trip?",
+    answer: "Oct 8–22, stay in Shinjuku, Gora Kadan ryokan in Hakone, JR pass worth it.",
+  },
+  {
+    kicker: "Work & productivity",
+    icon: Briefcase,
+    tone: "text-violet-500",
+    chipBg: "bg-violet-400/10",
+    question: "Summarize my weekly review.",
+    answer: "Shipped the settings redesign, two apartment tours, camera down to three candidates.",
+  },
+  {
+    kicker: "Everyday life",
+    icon: Home,
     tone: "text-rose-500",
     chipBg: "bg-rose-400/10",
-    question: "What was that sleep idea I saved?",
-    lead: "Deep-work block 6–9am,",
-    rest: "no meetings, phone outside the room.",
-    sources: [
-      { icon: Bookmark, label: "podcast" },
-      { icon: StickyNote, label: "note" },
-    ],
+    question: "What was that gift idea for Jane?",
+    answer: "A weekend watercolor workshop at the community center, plus a new brush set.",
   },
 ];
 
@@ -128,23 +91,9 @@ export function UseCases() {
 
             <div className="mt-2 rounded-xl border border-aurora-2/20 bg-gradient-to-br from-aurora-2/10 via-card/50 to-aurora-3/10 px-3 py-2.5 backdrop-blur-xl">
               <p className="text-xs leading-relaxed text-muted-foreground">
-                <span className="font-semibold text-aurora-2">{item.lead}</span> {item.rest}
+                <span className="font-semibold text-aurora-2">Answer · </span>
+                {item.answer}
               </p>
-            </div>
-
-            <div className="mt-auto flex flex-wrap items-center gap-1.5 pt-4">
-              {item.sources.map((source) => {
-                const SrcIcon = source.icon;
-                return (
-                  <span
-                    key={source.label}
-                    className="inline-flex items-center gap-1 rounded-full border border-border/50 bg-card/60 px-2 py-0.5 text-[10px] text-muted-foreground"
-                  >
-                    <SrcIcon className="size-2.5" />
-                    {source.label}
-                  </span>
-                );
-              })}
             </div>
           </div>
         );
