@@ -39,7 +39,7 @@ export function SiteHeader() {
             render={<Link href="/dashboard" />}
             nativeButton={false}
           >
-            Try the Prototype
+            Try Revo OS
             <ArrowRight className="ml-1.5 size-3.5" />
           </Button>
         </div>
