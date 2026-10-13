@@ -59,6 +59,8 @@ export default function LandingPage() {
         description:
           "Revo OS is the AI memory layer for your digital life. It captures screenshots, notes, links, and documents, then answers questions about them in plain language.",
         inLanguage: "en",
+        image: "https://revoos.app/og.png",
+        logo: "https://revoos.app/logo.png",
         potentialAction: {
           "@type": "SearchAction",
           target: "https://revoos.app/search?q={query}",
@@ -71,6 +73,7 @@ export default function LandingPage() {
         url: "https://revoos.app",
         applicationCategory: "BusinessApplication",
         operatingSystem: "Web",
+        image: "https://revoos.app/logo.png",
         description:
           "An AI memory layer that captures screenshots, notes, links, and documents, then answers questions about your life in plain language, local-first.",
       },
@@ -79,6 +82,12 @@ export default function LandingPage() {
         name: "Revo OS",
         url: "https://revoos.app",
         email: "hello@revoos.app",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://revoos.app/logo.png",
+          width: 512,
+          height: 512,
+        },
       },
     ],
   };

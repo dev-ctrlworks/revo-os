@@ -9,6 +9,7 @@
  * Outputs:
  *   public/apple-touch-icon.png  (180x180)
  *   public/favicon.ico           (32x32, PNG-embedded ICO)
+ *   public/logo.png              (512x512, structured-data / knowledge panel)
  *   public/og.png                (1200x630 social card)
  */
 import { readFileSync, writeFileSync } from "node:fs";
@@ -58,6 +59,10 @@ async function main() {
   const fav = await sharp(svg).resize(32, 32).png().toBuffer();
   writeFileSync(join(root, "public", "favicon.ico"), pngToIco(fav, 32));
 
+  // Square logo for structured data / knowledge panel (512x512)
+  const logo = await sharp(svg).resize(512, 512).png().toBuffer();
+  writeFileSync(join(root, "public", "logo.png"), logo);
+
   // Social card (1200x630): gradient + text, with the mark composited on top
   // (librsvg doesn't reliably render <image> data-URIs, so no <image> tag here).
   const mark = await sharp(svg).resize(180, 180).png().toBuffer();
@@ -84,6 +89,7 @@ async function main() {
   for (const [name, buf] of [
     ["apple-touch-icon.png", apple],
     ["favicon.ico", fav],
+    ["logo.png", logo],
     ["og.png", ogPng],
   ]) {
     const meta = await sharp(buf).metadata();
