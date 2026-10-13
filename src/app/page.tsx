@@ -7,7 +7,6 @@ import { Problem } from "@/components/landing/problem";
 import { Features } from "@/components/landing/features";
 import { UseCases } from "@/components/landing/use-cases";
 import { Demo } from "@/components/landing/demo";
-import { WhyRevo } from "@/components/landing/why-revo";
 import { Privacy } from "@/components/landing/privacy";
 import { WaitlistSection } from "@/components/landing/waitlist-section";
 import { Faq, faqs } from "@/components/landing/faq";
@@ -26,7 +25,7 @@ export default function LandingPage() {
         alternateName: ["Revo", "RevoOS", "revoos.app"],
         url: "https://revoos.app",
         description:
-          "Revo OS is the AI memory layer for your digital life. It captures screenshots, notes, links, and documents, then answers questions about them in plain language.",
+          "Revo OS is a personal AI memory. Save notes, links, and files in one place, then ask questions and get answers with sources.",
         inLanguage: "en",
         image: "https://revoos.app/og.png",
         logo: "https://revoos.app/logo.png",
@@ -44,7 +43,7 @@ export default function LandingPage() {
         operatingSystem: "Web",
         image: "https://revoos.app/logo.png",
         description:
-          "An AI memory layer that captures screenshots, notes, links, and documents, then answers questions about your life in plain language, local-first.",
+          "A personal AI memory layer: save notes, links, and files, then ask questions and get answers with sources. Local-first.",
       },
       {
         "@type": "Organization",
@@ -90,8 +89,8 @@ export default function LandingPage() {
           <SectionHeader
             kicker="Use cases"
             align="center"
-            title="Made for the things you don't want to forget."
-            lead="Research, shopping, projects, travel, work, and everyday life — one memory layer answers questions across all of it."
+            title="Ask across your life."
+            lead="One memory layer answers work, study, travel, shopping, and everyday questions."
           />
           <Reveal className="mt-12" y={32}>
             <UseCases />
@@ -99,7 +98,6 @@ export default function LandingPage() {
         </section>
 
         <Demo />
-        <WhyRevo />
         <Privacy />
         <WaitlistSection />
         <Faq />

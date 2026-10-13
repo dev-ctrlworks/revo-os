@@ -19,8 +19,7 @@ export function FinalCta() {
                   Stop losing the things worth remembering.
                 </h2>
                 <p className="mt-3 max-w-xl text-white/80">
-                  Bring your digital memories together and discover a better way
-                  to find what matters.
+                  Bring your memories together. Find what matters.
                 </p>
               </div>
             </div>

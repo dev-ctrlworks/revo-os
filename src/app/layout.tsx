@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: "%s — Revo OS",
   },
   description:
-    "Revo OS quietly captures your screenshots, notes, links, and documents, then answers questions about your life in plain language. No folders. No filing. Just memory.",
+    "Revo OS brings your notes, links, and files into one searchable memory, then answers questions in plain language. No folders, no filing. Just memory.",
   applicationName: "Revo OS",
   icons: {
     icon: "/icon.svg",

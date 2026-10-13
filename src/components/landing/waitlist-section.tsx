@@ -1,4 +1,4 @@
-import { Bell, MessagesSquare, Sparkles, Zap, type LucideIcon } from "lucide-react";
+import { MessagesSquare, Sparkles, Zap, type LucideIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { SectionHeader } from "@/components/landing/section-header";
 import { Reveal } from "@/components/motion/reveal";
@@ -9,18 +9,13 @@ import { memories } from "@/lib/mock-data";
 const perks: { icon: LucideIcon; title: string; text: string }[] = [
   {
     icon: Zap,
-    title: "Skip the line",
-    text: "Early access before the public launch — and a head start grounding your memories.",
+    title: "Early access",
+    text: "Try new versions before the public launch.",
   },
   {
     icon: MessagesSquare,
     title: "Shape the product",
-    text: "Your feedback goes straight into our roadmap. Early members help set the direction.",
-  },
-  {
-    icon: Bell,
-    title: "Stay in the loop",
-    text: "Follow development and hear about new capabilities as they ship.",
+    text: "Your feedback goes straight into the roadmap.",
   },
 ];
 
@@ -37,7 +32,7 @@ export function WaitlistSection() {
                 <span className="text-gradient">personal AI memory.</span>
               </>
             }
-            lead="Revo OS is evolving. Join the waitlist to follow development, hear about new capabilities, and get the opportunity to try future versions as they become available."
+            lead="Join the waitlist to follow development and try new versions first."
           />
           <div className="mt-9 space-y-4">
             {perks.map(({ icon: Icon, title, text }) => (

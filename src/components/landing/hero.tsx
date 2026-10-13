@@ -30,10 +30,8 @@ export function Hero() {
             Save anything. <span className="text-gradient">Remember why.</span>
           </h1>
           <p className="animate-fade-up delay-75 mt-6 max-w-lg text-balance text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Save the things you find, collect the things you learn, and keep the
-            context behind them. Revo OS brings your notes, links, screenshots,
-            and documents into one searchable memory — so you can find what
-            matters when you need it.
+            Save notes, links, screenshots, and files in one place. Find anything
+            by asking.
           </p>
           <div className="animate-fade-up delay-100 mt-9 flex flex-wrap items-center gap-3">
             <Button
@@ -55,9 +53,6 @@ export function Hero() {
               Join the Waitlist
             </Button>
           </div>
-          <p className="animate-fade-up delay-150 mt-6 text-xs text-muted-foreground">
-            Explore the interactive prototype. No setup, no signup required.
-          </p>
           <p className="animate-fade-up delay-200 mt-6 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
             <span className="rounded-full border border-border/50 bg-card/45 px-2.5 py-1 font-medium backdrop-blur-xl">no signup</span>
             <span className="rounded-full border border-border/50 bg-card/45 px-2.5 py-1 font-medium backdrop-blur-xl">local-first</span>

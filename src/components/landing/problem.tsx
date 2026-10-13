@@ -1,6 +1,8 @@
 import {
+  Check,
   FolderTree,
   HelpCircle,
+  Sparkles,
   Unlink,
   type LucideIcon,
 } from "lucide-react";
@@ -12,30 +14,27 @@ const problems: { icon: LucideIcon; title: string; text: string; tone: string }[
   {
     icon: FolderTree,
     title: "Lost in the pile",
-    text: "You remember saving something useful, but you can't find it again.",
+    text: "You saved something useful but can't find it again.",
     tone: "text-amber-500",
   },
   {
     icon: HelpCircle,
     title: "Missing context",
-    text: "You find the link or screenshot but forget why it mattered.",
+    text: "You find the link but forget why it mattered.",
     tone: "text-sky-500",
   },
   {
     icon: Unlink,
-    title: "Disconnected information",
-    text: "The note, document, and reference that belong together are scattered across different places.",
+    title: "Scattered",
+    text: "Notes, links, and files live in different apps.",
     tone: "text-rose-500",
   },
 ];
 
-const scattered = [
-  { label: "Screenshots", where: "Camera roll" },
-  { label: "Bookmarks", where: "Browser" },
-  { label: "Notes", where: "Notes app" },
-  { label: "PDFs", where: "Downloads" },
-  { label: "Links", where: "Chat" },
-  { label: "Docs", where: "Work drive" },
+const revo = [
+  "One place for every kind of memory.",
+  "Find things by asking, not remembering.",
+  "Related memories stay connected.",
 ];
 
 export function Problem() {
@@ -51,7 +50,7 @@ export function Problem() {
             story.
           </>
         }
-        lead="Useful information lands across bookmarks, screenshots, notes, documents, messages, and downloads. Weeks later you can't recall where something went — or why you kept it."
+        lead="Your useful stuff ends up scattered across six different apps."
       />
 
       <div className="mt-14 grid gap-4 md:grid-cols-3">
@@ -72,54 +71,24 @@ export function Problem() {
         ))}
       </div>
 
-      <Reveal className="mt-12" y={28}>
-        <div className="relative overflow-hidden rounded-[28px] border border-border/50 bg-card/45 p-6 backdrop-blur-xl sm:p-10">
-          <div className="relative grid items-center gap-6 md:grid-cols-[1fr_auto_1fr]">
-            <div className="space-y-2.5">
-              <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
-                Where it ends up today
-              </p>
-              <div className="grid grid-cols-2 gap-2">
-                {scattered.map((item) => (
-                  <div
-                    key={item.label}
-                    className="rounded-xl border border-border/50 bg-card/60 px-3 py-2.5 backdrop-blur-xl"
-                  >
-                    <p className="text-[13px] font-medium">{item.label}</p>
-                    <p className="text-[11px] text-muted-foreground">{item.where}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex items-center justify-center">
-              <span className="flex size-11 items-center justify-center rounded-2xl brand-gradient text-white shadow-[0_12px_30px_-14px_color-mix(in_oklab,var(--aurora-2)_80%,transparent)]">
-                <span className="font-display text-lg font-bold">→</span>
-              </span>
-            </div>
-
-            <div className="space-y-3">
-              <p className="text-[11px] font-semibold uppercase tracking-widest text-aurora-2">
-                One memory layer
-              </p>
-              <div className="rounded-2xl border border-aurora-2/30 bg-gradient-to-br from-aurora-2/[0.08] via-card/55 to-aurora-3/[0.08] p-5 shadow-[0_28px_70px_-40px_color-mix(in_oklab,var(--aurora-2)_60%,transparent)] backdrop-blur-xl">
-                <p className="font-display text-lg font-semibold tracking-tight">
-                  Everything, in one searchable place
-                </p>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                  Context preserved, related items linked, and answers one
-                  natural-language question away.
-                </p>
-              </div>
-            </div>
-          </div>
+      <Reveal className="mt-6" y={28}>
+        <div className="rounded-[28px] border border-aurora-2/30 bg-gradient-to-br from-aurora-2/[0.08] via-card/55 to-aurora-3/[0.08] p-6 shadow-[0_28px_70px_-40px_color-mix(in_oklab,var(--aurora-2)_60%,transparent)] backdrop-blur-xl sm:p-8">
+          <ul className="grid gap-4 sm:grid-cols-3">
+            {revo.map((item) => (
+              <li key={item} className="flex items-start gap-2.5 text-sm">
+                <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-aurora-2/15 text-aurora-2">
+                  <Check className="size-3" />
+                </span>
+                <span className="font-medium text-foreground/90">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-5 flex items-center justify-center gap-1.5 text-[11px] text-muted-foreground">
+            <Sparkles className="size-3.5 text-aurora-2" />
+            With Revo OS — the prototype runs on sample data.
+          </p>
         </div>
       </Reveal>
-
-      <p className="mx-auto mt-10 max-w-2xl text-center text-balance text-base font-medium text-foreground/80">
-        Your digital life shouldn&apos;t depend on your ability to remember which
-        app you used.
-      </p>
     </section>
   );
 }

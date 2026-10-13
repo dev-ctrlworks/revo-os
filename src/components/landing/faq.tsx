@@ -6,37 +6,41 @@ export const faqs: { question: string; answer: string }[] = [
   {
     question: "What is Revo OS?",
     answer:
-      "A personal AI memory system designed to bring your digital information together and make it easier to retrieve and connect. It captures what you save, keeps the context, and answers plain-language questions with sources you can open.",
+      "A personal AI memory. Save what matters, then ask for it later and get an answer with its sources.",
   },
   {
     question: "What can I save?",
     answer:
-      "In the working prototype you can add memories by pasting text, writing a note, saving a link, uploading a file, or dragging and dropping — and explore a set of sample memories that ship with the demo. Screenshot capture, browser trails, and app imports are on the roadmap, not available yet.",
+      "Paste, notes, links, files, and drag & drop — plus sample memories in the demo. Screenshots and app imports are planned.",
   },
   {
-    question: "Can I import information from other apps?",
+    question: "Where is my data stored?",
     answer:
-      "Not yet. Today the prototype works with the capture methods above and sample data. Connecting apps and importing existing notes, links, and files is planned — those integrations are clearly labeled as future work and no partnerships are implied.",
+      "Captured memories stay in your browser. Waitlist and feedback are stored on our servers, and analytics only run with your consent.",
   },
   {
-    question: "Is Revo OS available now?",
+    question: "What happens when I ask a question?",
     answer:
-      "An interactive prototype is available to explore right now — no signup, no setup. The broader product is still evolving, and the features shown as \"planned\" are not built yet.",
+      "Only the memories relevant to your question are sent to our AI provider to write the answer. Every answer stays grounded in what you saved, with sources you can open.",
   },
   {
-    question: "Does Revo OS use my real data in the prototype?",
+    question: "How is this different from a notes app or bookmarks?",
     answer:
-      "No. The prototype runs on sample data, and any memories you capture stay in your own browser. If you ask a question, only the relevant sample memories are sent to our AI provider to synthesize the answer.",
+      "Instead of filing everything yourself, you save first and ask later. Revo finds the sources and answers in plain language.",
+  },
+  {
+    question: "Does it connect to other apps yet?",
+    answer:
+      "Not yet. The prototype works with the capture methods above and sample data. Connecting apps and importing existing notes is planned.",
   },
   {
     question: "Is it free?",
     answer:
-      "The prototype is free to explore today. We haven't set pricing for future versions — we'll share that openly before anything changes, and waitlist members will hear first.",
+      "The prototype is free to explore. We haven't set pricing for future versions — we'll share it openly first.",
   },
   {
-    question: "How can I get early access?",
-    answer:
-      "Join the waitlist below. You'll get early access before the public launch and can follow development as new capabilities ship.",
+    question: "How do I get early access?",
+    answer: "Join the waitlist below. You'll get early access before the public launch.",
   },
 ];
 

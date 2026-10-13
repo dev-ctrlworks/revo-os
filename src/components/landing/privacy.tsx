@@ -1,12 +1,9 @@
 import {
-  Check,
   Cloud,
   HardDrive,
   Lock,
   Monitor,
-  RotateCcw,
   ShieldCheck,
-  Slash,
   type LucideIcon,
 } from "lucide-react";
 
@@ -14,30 +11,19 @@ const guarantees: { icon: LucideIcon; title: string; text: string }[] = [
   {
     icon: HardDrive,
     title: "Local-first",
-    text: "Captured memories live in your browser's storage — not on our servers.",
+    text: "Captured memories live in your browser, not on our servers.",
   },
   {
     icon: Cloud,
     title: "Grounded answers",
-    text: "When you ask a question, only the relevant memories are sent to our AI provider.",
-  },
-  {
-    icon: Slash,
-    title: "Consent-gated analytics",
-    text: "Product analytics stay off until you explicitly opt in.",
-  },
-  {
-    icon: RotateCcw,
-    title: "Your controls",
-    text: "Export or delete the data you gave us (waitlist, feedback) anytime.",
+    text: "Only the memories relevant to your question are sent to our AI provider.",
   },
 ];
 
 const dataRows: { icon: LucideIcon; label: string; where: string; stored: boolean }[] = [
   { icon: Monitor, label: "Captured memories", where: "This browser only", stored: false },
-  { icon: Cloud, label: "Waitlist email", where: "Supabase (server)", stored: true },
-  { icon: Monitor, label: "Feedback you send", where: "Supabase (server)", stored: true },
-  { icon: ShieldCheck, label: "Analytics events", where: "Only with your consent", stored: false },
+  { icon: Cloud, label: "Waitlist & feedback", where: "Supabase (server)", stored: true },
+  { icon: ShieldCheck, label: "Analytics events", where: "Only with consent", stored: false },
 ];
 
 export function Privacy() {
@@ -50,28 +36,12 @@ export function Privacy() {
             Privacy & trust
           </div>
           <h2 className="font-display text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
-            Your memories deserve to be handled thoughtfully.
+            Your memories stay yours.
           </h2>
           <p className="mt-4 leading-relaxed text-muted-foreground">
-            A memory system, not a surveillance tool. Personal memories should
-            stay under your control — and you should always understand what you
-            import and how it&apos;s used.
+            Local-first by default. You choose what goes in, and answers stay
+            grounded in what you saved — with sources you can open.
           </p>
-
-          <ul className="mt-7 space-y-3.5">
-            {[
-              "You explicitly choose what Revo OS can access — it never scrapes in the background.",
-              "Answers are grounded only in what you allowed in, with sources you can open.",
-              "We avoid vague guarantees. The prototype uses sample data and stores no real memories.",
-            ].map((item) => (
-              <li key={item} className="flex items-start gap-3 text-sm">
-                <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/10">
-                  <Check className="size-3 text-emerald-500" />
-                </span>
-                <span className="leading-relaxed text-foreground/85">{item}</span>
-              </li>
-            ))}
-          </ul>
         </div>
 
         <div className="relative">
