@@ -33,6 +33,8 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 !.env.example
+# .env.production is committed on purpose — NEXT_PUBLIC_* publishable values ONLY.
+# Never put real secrets here (OPENAI_API_KEY, SUPABASE_SERVICE_ROLE_KEY, etc.) — use .env.local.
 !.env.production
 
 # vercel
