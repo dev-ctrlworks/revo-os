@@ -10,11 +10,11 @@
 
 ### X / Twitter
 > Built a thing I've wanted for years: an AI memory layer for your digital life.
-> Revo OS quietly captures screenshots, notes, links, docs — then answers questions in plain language. No folders. No filing. Just memory.
+> Revo OS brings your notes, links, and files into one place — then answers questions in plain language. No folders. No filing. Just memory.
 > Try it: revoos.app
 
 ### LinkedIn
-> Most "second brain" tools make you file everything. Revo OS inverts it: you capture by pasting, screenshots, pages, or a quick note — and it does the memory-keeping.
+> Most "second brain" tools make you file everything. Revo OS inverts it: you capture by pasting, saving a link, uploading a file, or a quick note — and it does the memory-keeping.
 > Ask "what camera was I researching in April?" and it answers with the sources it pulled from.
 > Working prototype → https://revoos.app (waitlist open on the page).
 
@@ -22,7 +22,7 @@
 > Your digital life, with a memory. That's Revo OS — capture anything, then ask it anything. revoos.app
 
 ### Hacker News (Show HN)
-> Show HN: Revo OS — an AI memory layer for your digital life. Local-first prototype: capture via screenshot/paste/link/browser/note, auto-grouped collections, a memory graph, and grounded Q&A with sources. Waitlist + feedback live → revoos.app
+> Show HN: Revo OS — an AI memory layer for your digital life. Local-first prototype: capture via paste/note/link/upload/drag & drop, auto-grouped collections, a memory graph, and grounded Q&A with sources. Waitlist + feedback live → revoos.app
 
 ---
 

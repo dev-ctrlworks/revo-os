@@ -4,10 +4,14 @@ A working prototype of a second brain: Revo OS captures what you read, watch, sc
 
 ## Features
 
-- **Capture**: notes, uploads, links, and screenshots land in a local-first memory store.
+- **Capture**: paste, notes, links, uploads, and drag & drop land in a local-first memory store (screenshot capture is planned).
 - **Connect**: memories auto-link across people, projects, and topics in a relationship graph.
 - **Ask**: plain-language questions answered by OpenAI (GPT-4o-mini), grounded in your captured memories with citations.
 - **Honest prototype**: memories ship pre-loaded from a demo persona and live in your browser localStorage. Public waitlist + feedback are backed by Supabase.
+
+## Roadmap
+
+See [`docs/ROADMAP.md`](docs/ROADMAP.md) for the phased product + business plan, metrics, and decision gates.
 
 ## Getting started
 

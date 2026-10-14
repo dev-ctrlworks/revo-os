@@ -109,10 +109,14 @@ compact view modes.
 
 ## Landing page sections
 
-In order: hero (CTAs, trust chips), demo stat strip, **Capture** (six sources),
-**How it works** (capture → understand → ask + connection diagram),
-**Product** showcase (timeline, collections, graph, search),
-**Use cases**, **Privacy**, **Waitlist** (form + perks), final CTA, footer.
+In order: hero (CTAs, stat strip, trust chips), **The problem** (`#why`, merged
+with the old "Why Revo OS" comparison), **How it works** (`#how`, capture → ask
+→ connect), **Use cases** (`#use-cases`, three examples), **Interactive demo**
+(`#demo`), **Privacy** (`#privacy`), **Waitlist** (`#waitlist`), **FAQ**
+(`#faq`), final CTA, footer.
+
+The page keeps a deliberately small copy footprint, and every claim is labeled
+live vs planned. See [`ROADMAP.md`](./ROADMAP.md) for what ships next.
 
 ## Compliance & privacy requirements
 
@@ -139,18 +143,14 @@ In order: hero (CTAs, trust chips), demo stat strip, **Capture** (six sources),
 - Server-side storage of memories.
 - Multi-user sharing or collaboration.
 - True semantic/vector retrieval (search is keyword-based; the LLM synthesizes
-  but does not embed).
+  but does not embed). **Promoted out of non-goals — it is the top item in
+  Phase 1 of [`ROADMAP.md`](./ROADMAP.md).**
 - Monetization or billing.
 
 ## Roadmap themes
 
-1. **Real capture pipeline** — browser extension and share sheet that save
-   full article text/images, plus screenshot OCR.
-2. **Semantic retrieval** — embeddings + reranking so "ask" works over the
-   whole corpus, not just keyword matches.
-3. **Sync & accounts** — optionally sync memories across devices with
-   end-to-end encryption.
-4. **Agentic actions** — reminders, follow-ups, and proactive resurfacing
-   (e.g. "your Ryokan booking window opens today").
-5. **Hardening** — stronger CSP, authenticated data-rights requests, bot
-   management on public APIs.
+The detailed, phased product + business roadmap lives in
+[`ROADMAP.md`](./ROADMAP.md). In brief, the next big steps are: a real capture
+pipeline (extension + OCR), semantic retrieval, accounts + end-to-end-encrypted
+sync, proactive/agentic memory, and platform/business work. The prototype
+non-goals above are the starting point for those phases.
