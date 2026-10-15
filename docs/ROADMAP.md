@@ -15,7 +15,7 @@ Capture → recall is the product loop. A person doing only one side is not yet
 retained, so this metric — not signups, not pageviews — is the one to optimize.
 
 Supporting metrics: waitlist signups (`/api/counts`), query satisfaction
-(fraction of `/search` questions answered without the canned fallback),
+(fraction of `/ask` questions answered without the canned fallback),
 activation (a new visitor performs ≥1 capture and ≥1 ask), and consent-granted
 engagement events (`ai_question_asked`, `waitlist_joined`,
 `feedback_submitted`).
@@ -58,19 +58,47 @@ column · `hello@revoos.app` mailbox.
 
 **Goal:** everything the site claims is true, and every public flow works.
 
-**Workstreams**
+**Status (Oct 2026):** the code/infra and quality tracks have landed; what
+remains is account/DNS/billing work that needs dashboard access. Shipped:
+structured error logging (`src/lib/log.ts` + Workers observability + optional
+`ERROR_WEBHOOK_URL`), CI (`.github/workflows/ci.yml`), a 15-minute uptime
+workflow (`/`, `POST /api/ask`, waitlist validation, sitemap, robots),
+`supabase/migrations/0001_init_waitlist_feedback.sql`, a waitlist insert that
+degrades (retries without `interest`) instead of 500ing on a missing column,
+Google-eligible favicons + web manifest, and a WCAG AA contrast/heading pass.
 
-- **Ops blockers:** add OpenAI credits (real answers); apply
-  `alter table waitlist add column if not exists interest text;`; provision
-  `hello@revoos.app` via Cloudflare Email Routing; verify Google Search Console
-  + submit sitemap; submit the IndexNow ping; add the Cloudflare Web Analytics
-  token; add Google-eligible favicon sizes.
-- **Reliability:** error logging/alerting (Cloudflare or Sentry); uptime check
-  on `/` and `/api/ask`; commit `supabase/migrations/` to the repo and harden
-  the waitlist route so a missing column can never 500.
-- **Quality:** mobile, `prefers-reduced-motion`, and keyboard/a11y pass;
-  Lighthouse pass; refresh the stale pitches in `docs/launch.md`; capture
-  screenshots for posts.
+**Ops blockers**
+
+- [ ] Add OpenAI credits — `/api/ask` returns the canned fallback until funded
+  (no code change).
+- [ ] Apply `supabase/migrations/0001_init_waitlist_feedback.sql` in the
+  Supabase SQL editor (adds `waitlist.interest`; the route degrades until then).
+- [ ] Provision `hello@revoos.app` via Cloudflare Email Routing.
+- [ ] Google Search Console: verify `revoos.app`, submit `sitemap.xml`, request
+  indexing of `/`.
+- [ ] IndexNow ping
+  (`https://api.indexnow.org/indexnow?url=https://revoos.app/&key=…`).
+- [ ] Cloudflare Web Analytics token → `NEXT_PUBLIC_CF_WEB_ANALYTICS_TOKEN`,
+  then `npm run deploy:cf`.
+- [x] Google-eligible favicon sizes (16/32/48 PNG + 192/512 app icons + web
+  manifest).
+
+**Reliability**
+
+- [x] Error logging/alerting: structured JSON logs + Workers observability;
+  optional `ERROR_WEBHOOK_URL` webhook for Slack/Discord/PagerDuty.
+- [x] Uptime check on `/` and `POST /api/ask` (plus waitlist validation,
+  `sitemap.xml`, `robots.txt`).
+- [x] CI on every push/PR (lint + typecheck + build).
+- [x] Commit `supabase/migrations/`; harden the waitlist route so a missing
+  column can never 500.
+
+**Quality**
+
+- [x] WCAG AA contrast + heading/a11y pass.
+- [ ] Lighthouse **performance** pass; record scores.
+- [ ] Refresh the stale pitches in `docs/launch.md`; capture screenshots for
+  posts.
 
 **Exit criteria:** `/api/ask` returns real answers; waitlist submit-with-interest
 works; mail arrives at `hello@revoos.app`; site indexed; funnel events firing.

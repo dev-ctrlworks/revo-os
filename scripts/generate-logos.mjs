@@ -8,6 +8,11 @@
  *
  * Outputs:
  *   public/apple-touch-icon.png  (180x180)
+ *   public/favicon-16x16.png     (16x16,  Google-eligible)
+ *   public/favicon-32x32.png     (32x32,  Google-eligible)
+ *   public/favicon-48x48.png     (48x48,  Google-eligible)
+ *   public/icon-192.png          (192x192, web manifest)
+ *   public/icon-512.png          (512x512, web manifest, maskable)
  *   public/favicon.ico           (32x32, PNG-embedded ICO)
  *   public/logo.png              (512x512, structured-data / knowledge panel)
  *   public/og.png                (1200x630 social card)
@@ -55,6 +60,17 @@ async function main() {
   const apple = await sharp(svg).resize(180, 180).png().toBuffer();
   writeFileSync(join(root, "public", "apple-touch-icon.png"), apple);
 
+  // Google-eligible favicons and web-manifest app icons.
+  const png = {};
+  for (const size of [16, 32, 48, 192, 512]) {
+    png[size] = await sharp(svg).resize(size, size).png().toBuffer();
+  }
+  writeFileSync(join(root, "public", "favicon-16x16.png"), png[16]);
+  writeFileSync(join(root, "public", "favicon-32x32.png"), png[32]);
+  writeFileSync(join(root, "public", "favicon-48x48.png"), png[48]);
+  writeFileSync(join(root, "public", "icon-192.png"), png[192]);
+  writeFileSync(join(root, "public", "icon-512.png"), png[512]);
+
   // Favicon (32x32 PNG-embedded ICO)
   const fav = await sharp(svg).resize(32, 32).png().toBuffer();
   writeFileSync(join(root, "public", "favicon.ico"), pngToIco(fav, 32));
@@ -88,6 +104,11 @@ async function main() {
 
   for (const [name, buf] of [
     ["apple-touch-icon.png", apple],
+    ["favicon-16x16.png", png[16]],
+    ["favicon-32x32.png", png[32]],
+    ["favicon-48x48.png", png[48]],
+    ["icon-192.png", png[192]],
+    ["icon-512.png", png[512]],
     ["favicon.ico", fav],
     ["logo.png", logo],
     ["og.png", ogPng],

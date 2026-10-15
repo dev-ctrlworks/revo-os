@@ -69,7 +69,7 @@ Marketing / static:
 App (route group `(app)`, wrapped by `src/app/(app)/layout.tsx`):
 
 - `/dashboard` — home feed, metrics, heatmap, quick actions.
-- `/search` — AI ask + grounding sources.
+- `/ask` — AI ask + grounding sources (legacy `/search` 301-redirects here).
 - `/capture` — five capture methods.
 - `/timeline` — chronological browse.
 - `/collections`, `/collections/[slug]` — grouped memories.
@@ -119,7 +119,7 @@ Storage is capped at ~5 MB; on `setItem` failure the store raises a
 ### Server interaction
 
 The client only calls the server for AI answers and the public waitlist /
-feedback / privacy flows. On `/search`, the client sends the query plus the
+feedback / privacy flows. On `/ask`, the client sends the query plus the
 top matching memories as `sources` to `/api/ask`; the server re-validates,
 truncates, and forwards them to OpenAI, returning either `{ answer }` or
 `{ fallback: true }` (the client then falls back to `generateAnswer`).

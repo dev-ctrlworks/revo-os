@@ -131,7 +131,7 @@ live vs planned. See [`ROADMAP.md`](./ROADMAP.md) for what ships next.
 ## Success metrics
 
 - Waitlist signups (count via `/api/counts`) and feedback volume/quality.
-- Query satisfaction: fraction of `/search` questions answered without
+- Query satisfaction: fraction of `/ask` questions answered without
   falling back to the canned responses.
 - Activation: a new visitor performs at least one capture and one ask.
 - Engagement via consent-granted analytics (pageviews, `ai_question_asked`,
