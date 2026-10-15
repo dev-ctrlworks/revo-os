@@ -7,6 +7,7 @@ import {
   readJsonBody,
 } from "@/lib/security";
 import { captureServerEvent, getPostHogDistinctId } from "@/lib/posthog-server";
+import { logError } from "@/lib/log";
 
 const OPENAI_URL = "https://api.openai.com/v1/chat/completions";
 const MAX_CONTENT_CHARS = 600;
@@ -143,11 +144,11 @@ export async function POST(request: Request) {
     });
 
     if (!response.ok) {
-      console.error(
-        `OpenAI request failed: ${response.status} ${await response
-          .text()
-          .catch(() => "")}`
-      );
+      const body = await response.text().catch(() => "");
+      logError("ask", "OpenAI request failed", undefined, {
+        status: response.status,
+        body: body.slice(0, 500),
+      });
       return Response.json({ fallback: true });
     }
 
@@ -159,7 +160,7 @@ export async function POST(request: Request) {
 
     return Response.json({ answer });
   } catch (error) {
-    console.error("OpenAI request threw:", error);
+    logError("ask", "OpenAI request threw", error);
     return Response.json({ fallback: true });
   }
 }

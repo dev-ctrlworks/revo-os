@@ -53,7 +53,7 @@ export function ConnectionDiagram() {
       <div className="relative mx-auto -mt-12 mb-8 flex w-max max-w-full items-center gap-2 rounded-full border border-border/50 bg-card/65 px-4 py-1.5 text-xs font-medium shadow-sm backdrop-blur-xl sm:-mt-16">
         <Sparkles className="size-3.5 text-aurora-2" />
         Related memories
-        <span className="text-muted-foreground/60">·</span>
+        <span className="text-muted-foreground">·</span>
         Camera research
       </div>
 
@@ -86,7 +86,7 @@ export function ConnectionDiagram() {
             {chip}
           </span>
         ))}
-        <span className="rounded-full border border-aurora-2/25 bg-aurora-2/10 px-3 py-1 text-xs font-semibold text-aurora-2">
+        <span className="rounded-full border border-aurora-2/25 bg-aurora-2/10 px-3 py-1 text-xs font-semibold text-aurora-ink">
           One through-line
         </span>
       </div>
@@ -119,7 +119,7 @@ function Row({
       <span
         className={cn(
           "relative mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-md",
-          item.matched ? "bg-aurora-2/15 text-aurora-2" : "bg-muted text-muted-foreground"
+          item.matched ? "bg-aurora-2/15 text-aurora-ink" : "bg-muted text-muted-foreground"
         )}
       >
         <Icon className="size-3.5" />

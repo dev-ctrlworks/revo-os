@@ -53,7 +53,7 @@ export function SiteFooter() {
           </nav>
         </div>
 
-        <div className="mt-10 flex flex-col items-center justify-between gap-2 border-t border-border/40 pt-6 text-center text-[11px] text-muted-foreground/80 sm:flex-row sm:text-left">
+        <div className="mt-10 flex flex-col items-center justify-between gap-2 border-t border-border/40 pt-6 text-center text-[11px] text-muted-foreground sm:flex-row sm:text-left">
           <p>© {new Date().getFullYear()} Ctrl Works. All rights reserved.</p>
           <p>A working prototype by Ctrl Works.</p>
         </div>

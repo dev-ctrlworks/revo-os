@@ -188,7 +188,7 @@ export function MemoryGraph() {
               <SlidersHorizontal className="mr-1.5 size-3.5" />
               Types
               {types.size !== availableTypes.length && (
-                <span className="ml-1.5 rounded-full bg-aurora-2/20 px-1.5 text-[10px] font-semibold text-aurora-2">
+                <span className="ml-1.5 rounded-full bg-aurora-2/20 px-1.5 text-[10px] font-semibold text-aurora-ink">
                   {types.size}
                 </span>
               )}
@@ -220,7 +220,7 @@ export function MemoryGraph() {
                 className={cn(
                   "rounded-md px-2.5 py-1 text-[11px] font-medium transition-colors",
                   range === option.value
-                    ? "bg-aurora-2/15 text-aurora-2"
+                    ? "bg-aurora-2/10 text-aurora-ink"
                     : "text-muted-foreground hover:text-foreground"
                 )}
               >
@@ -382,7 +382,7 @@ function TopicChip({
       className={cn(
         "flex shrink-0 items-center gap-1.5 rounded-full border px-3 py-1 text-[11px] font-medium transition-colors",
         active
-          ? "border-aurora-2/40 bg-aurora-2/15 text-aurora-2"
+          ? "border-aurora-2/40 bg-aurora-2/15 text-aurora-ink"
           : "border-border/60 bg-card/60 text-muted-foreground hover:text-foreground"
       )}
     >

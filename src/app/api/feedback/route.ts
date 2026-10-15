@@ -7,6 +7,7 @@ import {
   readJsonBody,
 } from "@/lib/security";
 import { captureServerEvent, getPostHogDistinctId } from "@/lib/posthog-server";
+import { logError } from "@/lib/log";
 
 const MAX_MESSAGE_CHARS = 2000;
 const MAX_PAGE_CHARS = 200;
@@ -60,13 +61,17 @@ export async function POST(request: Request) {
       page: page || null,
     });
     if (error) {
-      console.error("Feedback insert failed:", error.message);
+      logError("feedback", "insert failed", undefined, {
+        code: error.code,
+        detail: error.message,
+      });
       return Response.json(
         { error: "Something went wrong. Please try again." },
         { status: 500 }
       );
     }
-  } catch {
+  } catch (error) {
+    logError("feedback", "insert threw", error);
     return Response.json(
       { error: "Something went wrong. Please try again." },
       { status: 500 }

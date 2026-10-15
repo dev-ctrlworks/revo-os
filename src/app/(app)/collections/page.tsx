@@ -108,7 +108,7 @@ function AISuggestionCard({
           <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-card/80 text-base shadow-sm ring-1 ring-border/40 backdrop-blur">
             {emoji}
           </span>
-          <Badge className="bg-aurora-2/15 px-2 py-0.5 text-[10px] font-medium text-aurora-2 ring-1 ring-inset ring-aurora-2/20">
+          <Badge className="bg-aurora-2/15 px-2 py-0.5 text-[10px] font-medium text-aurora-ink ring-1 ring-inset ring-aurora-2/20">
             AI-suggested
           </Badge>
         </div>
@@ -206,7 +206,11 @@ export default function CollectionsPage() {
       </div>
 
       {notice && (
-        <div className="flex items-center gap-2 rounded-xl border border-aurora-2/20 bg-aurora-2/10 px-4 py-3 text-sm text-aurora-2">
+        <div
+          role="status"
+          aria-live="polite"
+          className="flex items-center gap-2 rounded-xl border border-aurora-2/20 bg-aurora-2/10 px-4 py-3 text-sm text-aurora-ink"
+        >
           <Check className="size-4 shrink-0" />
           {notice}
         </div>

@@ -105,7 +105,7 @@ function AskVisual() {
             className={cn(
               "rounded-full border px-3 py-1 text-[11px]",
               i === 0
-                ? "border-aurora-2/40 bg-aurora-2/10 font-medium text-aurora-2"
+                ? "border-aurora-2/40 bg-aurora-2/10 font-medium text-aurora-ink"
                 : "border-border/50 bg-card/60 text-muted-foreground"
             )}
           >
@@ -125,7 +125,7 @@ function AskVisual() {
         <div className="mb-1.5 flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
           <BookOpenText className="size-3.5 text-aurora-2" />
           AI summary
-          <span className="text-muted-foreground/60">•</span>
+          <span className="text-muted-foreground">•</span>
           <span>grounded in 4 memories</span>
         </div>
         <p className="text-[13px] leading-relaxed text-foreground/90">

@@ -31,7 +31,7 @@ import { timeAgo } from "@/lib/utils-format";
 const navigation = [
   { group: "Navigate", items: [
     { id: "nav-home", label: "Home", icon: Home, href: "/dashboard" },
-    { id: "nav-search", label: "Search memories", icon: Search, href: "/search" },
+    { id: "nav-ask", label: "Ask your memories", icon: Search, href: "/ask" },
     { id: "nav-capture", label: "Capture new memory", icon: Camera, href: "/capture" },
     { id: "nav-collections", label: "Collections", icon: LayoutGrid, href: "/collections" },
     { id: "nav-graph", label: "Memory Graph", icon: Network, href: "/graph" },
@@ -117,7 +117,7 @@ export function CommandPalette() {
                       onSelect={() => navigate(`/memory/${m.id}`)}
                       className="flex items-center gap-3"
                     >
-                      <span className="flex size-7 shrink-0 items-center justify-center rounded-md bg-aurora-2/15 text-[10px] font-bold text-aurora-2">
+                      <span className="flex size-7 shrink-0 items-center justify-center rounded-md bg-aurora-2/15 text-[10px] font-bold text-aurora-ink">
                         {m.type[0].toUpperCase()}
                       </span>
                       <span className="min-w-0 flex-1">

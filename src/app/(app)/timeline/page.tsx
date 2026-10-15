@@ -20,8 +20,7 @@ import { Button } from "@/components/ui/button";
 import { MemoryCard } from "@/components/memories/memory-card";
 import { cn } from "@/lib/utils";
 
-const typeFilters: Array<{ value: MemoryType | "all"; label: string }> = [
-  { value: "all", label: "All types" },
+const typeFilters: Array<{ value: MemoryType; label: string }> = [
   { value: "screenshot", label: "Screenshots" },
   { value: "note", label: "Notes" },
   { value: "link", label: "Links" },
@@ -29,20 +28,39 @@ const typeFilters: Array<{ value: MemoryType | "all"; label: string }> = [
   { value: "discussion", label: "Conversations" },
   { value: "email", label: "Emails" },
   { value: "image", label: "Images" },
+  { value: "archive", label: "Archives" },
 ];
 
 export default function TimelinePage() {
-  const [activeType, setActiveType] = useState<MemoryType | "all">("all");
+  const [selectedTypes, setSelectedTypes] = useState<Set<MemoryType>>(
+    () => new Set()
+  );
   const [expanded, setExpanded] = useState<Set<string>>(() => new Set());
   const memories = useMemoryStore();
 
   const groups = useMemo(() => {
     const filtered =
-      activeType === "all"
+      selectedTypes.size === 0
         ? memories
-        : memories.filter((m) => m.type === activeType);
+        : memories.filter((m) => selectedTypes.has(m.type));
     return groupMemoriesByDate(filtered);
-  }, [activeType, memories]);
+  }, [selectedTypes, memories]);
+
+  const filterLabel =
+    selectedTypes.size === 0
+      ? "All types"
+      : selectedTypes.size === 1
+        ? (typeFilters.find((f) => selectedTypes.has(f.value))?.label ?? "1 type")
+        : `${selectedTypes.size} types`;
+
+  function toggleType(type: MemoryType) {
+    setSelectedTypes((prev) => {
+      const next = new Set(prev);
+      if (next.has(type)) next.delete(type);
+      else next.add(type);
+      return next;
+    });
+  }
 
   function toggleDate(dateKey: string) {
     setExpanded((prev) => {
@@ -73,20 +91,25 @@ export default function TimelinePage() {
         <DropdownMenu>
           <DropdownMenuTrigger render={<Button variant="outline" size="sm" className="rounded-lg" />}>
               <Filter className="mr-1.5 size-3.5" />
-              {typeFilters.find((f) => f.value === activeType)?.label}
+              {filterLabel}
               <ChevronDown className="ml-1.5 size-3 text-muted-foreground" />
             </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-48">
             <DropdownMenuGroup>
               <DropdownMenuLabel>Filter by type</DropdownMenuLabel>
               <DropdownMenuSeparator />
+              <DropdownMenuCheckboxItem
+                checked={selectedTypes.size === 0}
+                onCheckedChange={() => setSelectedTypes(new Set())}
+              >
+                All types
+              </DropdownMenuCheckboxItem>
+              <DropdownMenuSeparator />
               {typeFilters.map((filter) => (
                 <DropdownMenuCheckboxItem
                   key={filter.value}
-                  checked={activeType === filter.value}
-                  onCheckedChange={() =>
-                    setActiveType(filter.value as MemoryType | "all")
-                  }
+                  checked={selectedTypes.has(filter.value)}
+                  onCheckedChange={() => toggleType(filter.value)}
                 >
                   {filter.label}
                 </DropdownMenuCheckboxItem>
@@ -97,6 +120,7 @@ export default function TimelinePage() {
       </div>
 
       <div className="relative space-y-8 pl-6">
+        <h2 className="sr-only">Memories by day</h2>
         <div className="absolute bottom-2 left-[9px] top-2 w-px bg-gradient-to-b from-transparent via-border to-transparent" />
 
         {groups.map((group) => {
@@ -153,10 +177,10 @@ export default function TimelinePage() {
 
       <div className="flex flex-wrap items-center justify-center gap-2 pt-2 text-center text-xs text-muted-foreground">
         <Badge variant="secondary" className="rounded-full text-[10px]">
-          {typeFilters.find((f) => f.value === activeType)?.label}
+          {filterLabel}
         </Badge>
         <span>
-          {totalMemories} memories · source: mock data, no backend
+          {totalMemories} {totalMemories === 1 ? "memory" : "memories"}
         </span>
       </div>
     </div>

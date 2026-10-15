@@ -31,7 +31,7 @@ export function Privacy() {
     <section id="privacy" className="container mx-auto max-w-7xl px-5 py-20 sm:py-24">
       <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.1fr]">
         <div>
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-3 py-1 text-[11px] font-medium text-emerald-600 dark:text-emerald-400">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-3 py-1 text-[11px] font-medium text-emerald-700 dark:text-emerald-400">
             <Lock className="size-3" />
             Privacy & trust
           </div>
@@ -46,7 +46,7 @@ export function Privacy() {
         </div>
 
         <div className="relative">
-          <span className="absolute -right-3 -top-3 z-10 flex items-center gap-1.5 rounded-full border border-border/50 bg-card/75 px-3 py-1 text-[11px] font-semibold text-emerald-600 shadow-sm backdrop-blur-xl dark:text-emerald-400">
+          <span className="absolute -right-3 -top-3 z-10 flex items-center gap-1.5 rounded-full border border-border/50 bg-card/75 px-3 py-1 text-[11px] font-semibold text-emerald-700 shadow-sm backdrop-blur-xl dark:text-emerald-400">
             <ShieldCheck className="size-3.5" />
             What actually happens
           </span>
@@ -74,8 +74,8 @@ export function Privacy() {
                   <span
                     className={
                       stored
-                        ? "shrink-0 rounded-full bg-aurora-2/10 px-2.5 py-1 text-[10px] font-medium text-aurora-2"
-                        : "shrink-0 rounded-full bg-emerald-500/10 px-2.5 py-1 text-[10px] font-medium text-emerald-600 dark:text-emerald-400"
+                        ? "shrink-0 rounded-full bg-aurora-2/10 px-2.5 py-1 text-[10px] font-medium text-aurora-ink"
+                        : "shrink-0 rounded-full bg-emerald-500/10 px-2.5 py-1 text-[10px] font-medium text-emerald-700 dark:text-emerald-400"
                     }
                   >
                     {where}

@@ -1,5 +1,6 @@
 import { getSupabase } from "@/lib/supabase";
 import { enforceRateLimit } from "@/lib/security";
+import { logError } from "@/lib/log";
 
 export const dynamic = "force-dynamic";
 
@@ -17,7 +18,8 @@ export async function GET(request: Request) {
       { waitlist: count ?? 0 },
       { headers: { "Cache-Control": "public, s-maxage=60, stale-while-revalidate=300" } }
     );
-  } catch {
+  } catch (error) {
+    logError("counts", "count query failed", error);
     return Response.json({ waitlist: 0 });
   }
 }

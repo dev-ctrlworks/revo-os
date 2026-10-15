@@ -1,0 +1,44 @@
+name: Uptime
+
+on:
+  schedule:
+    # Every 15 minutes.
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Home page
+        run: |
+          code=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://revoos.app/)
+          echo "GET / -> $code"
+          test "$code" = "200"
+
+      - name: Ask API (POST)
+        run: |
+          code=$(curl -sS -o /tmp/ask.json -w '%{http_code}' --max-time 30 \
+            -X POST https://revoos.app/api/ask \
+            -H 'Content-Type: application/json' \
+            -d '{"query":"uptime check","sources":[]}')
+          echo "POST /api/ask -> $code"
+          cat /tmp/ask.json
+          test "$code" = "200"
+
+      - name: Waitlist API rejects invalid input (not 5xx)
+        run: |
+          code=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 \
+            -X POST https://revoos.app/api/waitlist \
+            -H 'Content-Type: application/json' \
+            -d '{"email":"not-an-email"}')
+          echo "POST /api/waitlist (invalid) -> $code"
+          test "$code" = "400"
+
+      - name: Sitemap and robots
+        run: |
+          for path in /sitemap.xml /robots.txt; do
+            code=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 "https://revoos.app$path")
+            echo "GET $path -> $code"
+            test "$code" = "200"
+          done

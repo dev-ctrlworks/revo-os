@@ -76,7 +76,7 @@ export function Problem() {
           <ul className="grid gap-4 sm:grid-cols-3">
             {revo.map((item) => (
               <li key={item} className="flex items-start gap-2.5 text-sm">
-                <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-aurora-2/15 text-aurora-2">
+                <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-aurora-2/15 text-aurora-ink">
                   <Check className="size-3" />
                 </span>
                 <span className="font-medium text-foreground/90">{item}</span>

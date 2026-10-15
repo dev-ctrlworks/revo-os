@@ -7,13 +7,20 @@ Revo OS has two data stores:
 2. **Browser `localStorage`** — where every captured memory actually lives
    (the "local-first" model). There is no server-side memory database.
 
-There are no migration files in the repository. The Supabase schema is
-provisioned manually; the canonical SQL is reproduced here (and in the
+Migrations live in [`supabase/migrations/`](../supabase/migrations/) and are
+applied manually in the Supabase SQL editor (or `supabase db push` when the
+CLI is linked). The canonical SQL is also reproduced here (and in the
 `README.md`).
 
 ## Supabase setup
 
-Create a project, then run:
+Apply the migration:
+
+```
+supabase/migrations/0001_init_waitlist_feedback.sql
+```
+
+Or create a project and run:
 
 ```sql
 create table if not exists waitlist (
@@ -51,7 +58,9 @@ create policy "public insert" on feedback for insert with check (true);
 | `created_at` | `timestamptz` | Defaults to `now()`. |
 
 - **Writes:** `POST /api/waitlist` inserts `{ email, interest? }`. A `23505` unique
-  violation is treated as success (idempotent signup).
+  violation is treated as success (idempotent signup). If the `interest` column
+  is missing (`PGRST204`), the route retries the insert without it, so a schema
+  gap degrades instead of 500ing.
 - **Reads:** `GET /api/counts` runs a head/exact-count query (`select("id",
   { count: "exact", head: true })`) and returns `{ waitlist: count }`, cached
   `public, s-maxage=60, stale-while-revalidate=300`.

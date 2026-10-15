@@ -30,7 +30,7 @@ const GROUPS = [
     label: "Main",
     items: [
       { href: "/dashboard", label: "Home", icon: Home },
-      { href: "/search", label: "Search", icon: Search },
+      { href: "/ask", label: "Ask", icon: Search },
       { href: "/capture", label: "Capture", icon: Plus },
     ],
   },
@@ -81,7 +81,7 @@ function NavItem({
   expanded: boolean;
 }) {
   const pathname = usePathname();
-  const active = pathname.startsWith(href);
+  const active = pathname === href || pathname.startsWith(`${href}/`);
 
   return (
     <Link
@@ -137,7 +137,7 @@ function NavBody({
       {GROUPS.map((group) => (
         <div key={group.label} className={expanded ? "mb-6" : "mb-4"}>
           {expanded && (
-            <p className="mb-2 px-3 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/60">
+            <p className="mb-2 px-3 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
               {group.label}
             </p>
           )}
@@ -158,19 +158,19 @@ function NavBody({
         {expanded ? (
           <div className="flex items-center gap-2.5 rounded-xl border border-border/50 bg-card/50 px-3 py-2.5 text-xs text-muted-foreground">
             <span className="relative flex size-1.5 shrink-0">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
-              <span className="relative inline-flex size-1.5 rounded-full bg-emerald-500" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-aurora-2 opacity-60" />
+              <span className="relative inline-flex size-1.5 rounded-full bg-aurora-2" />
             </span>
-            <span className="truncate">{memories.length} memories · synced</span>
+            <span className="truncate">{memories.length} memories · saved locally</span>
           </div>
         ) : (
           <div
             className="flex justify-center rounded-xl py-2.5"
-            title={`${memories.length} memories · synced`}
+            title={`${memories.length} memories · saved locally`}
           >
             <span className="relative flex size-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
-              <span className="relative inline-flex size-2 rounded-full bg-emerald-500" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-aurora-2 opacity-60" />
+              <span className="relative inline-flex size-2 rounded-full bg-aurora-2" />
             </span>
           </div>
         )}

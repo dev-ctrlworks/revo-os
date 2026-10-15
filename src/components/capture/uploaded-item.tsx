@@ -23,7 +23,7 @@ export function UploadedItem({
             ? "bg-emerald-500/10 text-emerald-500"
             : failed
               ? "bg-red-500/10 text-red-500"
-              : "bg-aurora-2/15 text-aurora-2"
+              : "bg-aurora-2/15 text-aurora-ink"
         )}
       >
         {indexed ? (

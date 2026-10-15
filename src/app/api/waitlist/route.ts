@@ -7,6 +7,7 @@ import {
   readJsonBody,
 } from "@/lib/security";
 import { captureServerEvent, getPostHogDistinctId } from "@/lib/posthog-server";
+import { logError } from "@/lib/log";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -46,17 +47,31 @@ export async function POST(request: Request) {
 
   try {
     const supabase = getSupabase();
-    const { error } = await supabase
+    let { error } = await supabase
       .from("waitlist")
       .insert({ email, ...(interest ? { interest } : {}) });
     if (error && error.code !== "23505") {
-      console.error("Waitlist insert failed:", error.message);
-      return Response.json(
-        { error: "Something went wrong. Please try again." },
-        { status: 500 }
-      );
+      const isMissingColumn =
+        error.code === "PGRST204" ||
+        error.message?.toLowerCase().includes("interest");
+      if (isMissingColumn && interest) {
+        // Retry without interest to tolerate missing column
+        const retry = await supabase.from("waitlist").insert({ email });
+        error = retry.error;
+      }
+      if (error && error.code !== "23505") {
+        logError("waitlist", "insert failed", undefined, {
+          code: error.code,
+          detail: error.message,
+        });
+        return Response.json(
+          { error: "Something went wrong. Please try again." },
+          { status: 500 }
+        );
+      }
     }
-  } catch {
+  } catch (e) {
+    logError("waitlist", "insert threw", e);
     return Response.json(
       { error: "Something went wrong. Please try again." },
       { status: 500 }

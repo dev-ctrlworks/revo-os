@@ -55,3 +55,8 @@ Crop to 1600px wide; X likes 16:9, LinkedIn 1200×627.
 - Live domain: https://revoos.app (Cloudflare Worker `revoos`; custom domain via `wrangler.jsonc` routes).
 - Runtime secrets are per-worker `wrangler secret put OPENAI_API_KEY|OPENAI_MODEL|SUPABASE_URL|SUPABASE_SERVICE_ROLE_KEY` (never baked into the bundle).
 - Rebuild+deploy: `npm run deploy:cf` · local preview: `npm run preview:cf` (or `next dev` for :3000).
+- **Schema:** apply files in `supabase/migrations/` in the Supabase SQL editor. Missing columns degrade instead of erroring, but run them anyway.
+- **Observability:** Workers Logs are enabled (`observability.enabled` in `wrangler.jsonc`); server errors log one-line JSON (`scope`, `msg`, `error`) via `src/lib/log.ts`.
+- **Alerting:** set the optional `ERROR_WEBHOOK_URL` secret to a Slack/Discord/PagerDuty-compatible webhook to receive every logged error.
+- **CI:** `.github/workflows/ci.yml` runs lint + typecheck + build on every push/PR.
+- **Uptime:** `.github/workflows/uptime.yml` checks `/`, `POST /api/ask`, `/api/waitlist` (invalid input), `/sitemap.xml`, and `/robots.txt` every 15 minutes; a failure turns the workflow red (GitHub emails you).

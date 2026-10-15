@@ -5,20 +5,12 @@ import { Calendar, Heart, Check, ChevronRight } from "lucide-react";
 import type { Memory, MemoryType } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { timeAgo } from "@/lib/utils-format";
+import { memoryTypeMeta } from "@/lib/memory-type";
+import { cardSurfaceClass } from "@/lib/ui";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 import { MemoryTypeIcon, memoryTypeLabel } from "./memory-type-icon";
-
-const topPalette: Record<MemoryType, string> = {
-  screenshot: "from-violet-500 to-fuchsia-500",
-  note: "from-amber-500 to-orange-500",
-  document: "from-sky-500 to-blue-500",
-  link: "from-emerald-500 to-teal-500",
-  image: "from-rose-500 to-pink-500",
-  discussion: "from-teal-500 to-cyan-500",
-  email: "from-indigo-500 to-violet-500",
-  archive: "from-slate-500 to-slate-600",
-};
 
 export type MemoryCardVariant = "default" | "compact" | "grid" | "feed";
 
@@ -39,7 +31,7 @@ export function MemoryCard({
   onFavoriteToggle,
   onCollectionChange,
 }: MemoryCardProps) {
-  const top = topPalette[memory.type] ?? topPalette.note;
+  const top = memoryTypeMeta[memory.type]?.gradient ?? memoryTypeMeta.note.gradient;
   const isInteractive = Boolean(onSelect || onFavoriteToggle || onCollectionChange);
   const isOuterLink = !isInteractive;
 
@@ -74,6 +66,7 @@ export function MemoryCard({
             )}
             {onFavoriteToggle && (
               <button
+                type="button"
                 onClick={handleFavoriteToggle}
                 className={cn(
                   "p-1 rounded-lg transition-colors hover:bg-aurora-2/20",
@@ -86,10 +79,11 @@ export function MemoryCard({
             )}
             {onSelect && (
               <button
+                type="button"
                 onClick={handleClick}
                 className={cn(
                   "p-1 rounded-lg transition-colors",
-                  selected ? "bg-aurora-2/20 text-aurora-2" : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                  selected ? "bg-aurora-2/20 text-aurora-ink" : "text-muted-foreground hover:bg-muted hover:text-foreground"
                 )}
                 aria-label={selected ? "Deselect" : "Select"}
                 aria-pressed={selected}
@@ -101,7 +95,7 @@ export function MemoryCard({
         </div>
 
         {memory.collection && (
-          <p className="truncate text-[10px] font-medium uppercase tracking-wider text-muted-foreground/80">
+          <p className="truncate text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
             {memory.collection}
           </p>
         )}
@@ -176,8 +170,8 @@ export function MemoryCard({
     return (
       <div
         className={cn(
-          "group relative rounded-2xl border overflow-hidden transition-all duration-300",
-          "border-border/50 bg-card/55 backdrop-blur-xl",
+          "group relative overflow-hidden transition-all duration-300",
+          cardSurfaceClass,
           selected && "border-aurora-2/40 bg-aurora-2/5 shadow-[0_0_0_1px_var(--aurora-2),0_12px_32px_-16px_color-mix(in_oklab,var(--aurora-2)_40%,transparent)]",
           "hover:border-aurora-2/40 hover:shadow-[0_12px_32px_-16px_color-mix(in_oklab,var(--aurora-2)_40%,transparent)]"
         )}
@@ -203,8 +197,8 @@ export function MemoryCard({
     <Link
       href={`/memory/${memory.id}`}
       className={cn(
-        "group block h-full rounded-2xl border overflow-hidden transition-all duration-300",
-        "border-border/50 bg-card/55 backdrop-blur-xl",
+        "group block h-full overflow-hidden transition-all duration-300",
+        cardSurfaceClass,
         "hover:-translate-y-0.5 hover:border-aurora-2/40 hover:shadow-[0_24px_60px_-28px_color-mix(in_oklab,var(--aurora-2)_50%,transparent)]",
         variant === "grid" && "flex flex-col"
       )}
@@ -216,28 +210,28 @@ export function MemoryCard({
 
 export function MemoryCardSkeleton({ variant = "default" }: { variant?: MemoryCardVariant }) {
   return (
-    <Card className={cn("animate-pulse gap-0 overflow-hidden border-border/50 p-0", variant === "grid" && "flex flex-col")}>
-      <div className="h-1 bg-muted/60" />
+    <Card className={cn("gap-0 overflow-hidden border-border/50 p-0", variant === "grid" && "flex flex-col")}>
+      <Skeleton className="h-1 rounded-none" />
       <div className={cn("flex flex-1 flex-col", variant === "grid" ? "p-4" : "p-5")}>
         <div className="mb-2 flex items-center justify-between">
           <div className="flex items-center gap-1.5">
-            <div className="size-1.5 rounded-full bg-muted" />
-            <div className="h-3 w-16 rounded bg-muted" />
+            <Skeleton className="size-1.5 rounded-full" />
+            <Skeleton className="h-3 w-16" />
           </div>
-          <div className="size-3.5 rounded bg-muted" />
+          <Skeleton className="size-3.5" />
         </div>
-        <div className="h-3 w-20 rounded bg-muted" />
-        <div className="mt-2 h-4 w-3/4 rounded bg-muted" />
+        <Skeleton className="h-3 w-20" />
+        <Skeleton className="mt-2 h-4 w-3/4" />
         {variant !== "compact" && (
           <>
-            <div className="mt-2.5 h-3 w-full rounded bg-muted" />
-            <div className="mt-1.5 h-3 w-5/6 rounded bg-muted" />
+            <Skeleton className="mt-2.5 h-3 w-full" />
+            <Skeleton className="mt-1.5 h-3 w-5/6" />
           </>
         )}
-        <div className="mt-4 h-px w-full bg-muted/70" />
+        <Skeleton className="mt-4 h-px w-full" />
         <div className="mt-3 flex items-center justify-between">
-          <div className="h-3 w-12 rounded bg-muted" />
-          <div className="h-3 w-8 rounded bg-muted" />
+          <Skeleton className="h-3 w-12" />
+          <Skeleton className="h-3 w-8" />
         </div>
       </div>
     </Card>
@@ -292,8 +286,15 @@ export function MemoryCardFeedRow({
       )}
       onClick={onClick}
       role={onClick ? "button" : undefined}
+      aria-label={onClick ? `Open ${memory.title}` : undefined}
       tabIndex={onClick ? 0 : undefined}
-      onKeyDown={(e) => onClick && e.key === "Enter" && onClick()}
+      onKeyDown={(e) => {
+        if (!onClick) return;
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onClick();
+        }
+      }}
     >
       <MemoryTypeIcon type={memory.type} />
       <div className="min-w-0 flex-1">

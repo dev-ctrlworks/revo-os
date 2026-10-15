@@ -5,6 +5,7 @@ import {
   isAllowedOrigin,
   readJsonBody,
 } from "@/lib/security";
+import { logError } from "@/lib/log";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -72,10 +73,9 @@ export async function POST(request: Request) {
       ]);
 
     if (waitlistError || feedbackError) {
-      console.error(
-        "Privacy delete failed:",
-        waitlistError?.message ?? feedbackError?.message
-      );
+      logError("privacy", "delete failed", undefined, {
+        detail: waitlistError?.message ?? feedbackError?.message,
+      });
       return Response.json(
         { error: "Something went wrong. Please try again." },
         { status: 500 }
@@ -83,7 +83,8 @@ export async function POST(request: Request) {
     }
 
     return Response.json({ ok: true });
-  } catch {
+  } catch (error) {
+    logError("privacy", "request threw", error);
     return Response.json(
       { error: "Something went wrong. Please try again." },
       { status: 500 }
