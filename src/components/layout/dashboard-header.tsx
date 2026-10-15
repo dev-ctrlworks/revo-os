@@ -26,27 +26,21 @@ export function DashboardHeader() {
         <Badge
           variant="secondary"
           className="hidden rounded-full text-[11px] font-medium text-muted-foreground sm:inline-flex"
-          title="Your memory layer is stored locally and up to date"
+          title="Captured memories are stored in this browser"
         >
           <span className="relative mr-1.5 inline-flex size-1.5">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
-            <span className="relative inline-flex size-1.5 rounded-full bg-emerald-500" />
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-aurora-2 opacity-60" />
+            <span className="relative inline-flex size-1.5 rounded-full bg-aurora-2" />
           </span>
-          {count} memories · synced
+          {count} memories · saved locally
         </Badge>
         <Link
           href="/capture"
           aria-label="Capture a memory"
-          className="inline-flex size-9 items-center justify-center rounded-xl border border-border bg-background/50 text-foreground backdrop-blur transition-all hover:bg-muted sm:hidden"
-        >
-          <Plus className="size-4" />
-        </Link>
-        <Link
-          href="/capture"
-          className="hidden sm:inline-flex items-center gap-1.5 rounded-xl border border-border bg-background/50 px-3 py-1.5 text-sm font-medium text-foreground backdrop-blur hover:bg-muted hover:text-foreground transition-all"
+          className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-background/50 px-3 py-1.5 text-sm font-medium text-foreground backdrop-blur transition-all hover:bg-muted"
         >
           <Plus className="size-3.5" />
-          Capture
+          <span className="hidden sm:inline">Capture</span>
         </Link>
       </div>
     </header>

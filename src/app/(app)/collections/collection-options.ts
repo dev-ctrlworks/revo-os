@@ -1,4 +1,4 @@
-import { gradientButtonClass } from "@/lib/brand";
+import { primaryCtaClass } from "@/lib/ui";
 
 export const collectionColorOptions = [
   { label: "Indigo", value: "from-indigo-500/20 to-cyan-500/5" },
@@ -9,4 +9,4 @@ export const collectionColorOptions = [
   { label: "Violet", value: "from-violet-500/20 to-purple-500/5" },
 ];
 
-export const saveButtonClass = `${gradientButtonClass} rounded-lg`;
+export const saveButtonClass = `${primaryCtaClass} rounded-lg`;

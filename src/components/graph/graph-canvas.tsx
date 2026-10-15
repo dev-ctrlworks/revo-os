@@ -177,7 +177,7 @@ export function GraphCanvas({
         viewBox={`0 0 ${width} ${height}`}
         preserveAspectRatio="xMidYMid meet"
         className="h-full w-full cursor-grab touch-none active:cursor-grabbing"
-        role="img"
+        role="group"
         aria-label="Memory graph showing how your memories, topics, people, and places connect"
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}

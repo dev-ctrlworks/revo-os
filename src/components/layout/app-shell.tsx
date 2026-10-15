@@ -1,5 +1,6 @@
 import React from "react";
 import { AppSidebar } from "@/components/layout/app-sidebar";
+import { MobileTabBar } from "@/components/layout/mobile-tab-bar";
 import { AuroraBackground } from "@/components/motion/aurora-background";
 
 export function AppShell({ children }: { children: React.ReactNode }) {
@@ -8,6 +9,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       <AuroraBackground />
       <AppSidebar />
       <main className="lg:pl-[76px]">{children}</main>
+      <MobileTabBar />
     </div>
   );
 }

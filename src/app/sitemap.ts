@@ -6,7 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/dashboard",
     "/timeline",
-    "/search",
+    "/ask",
     "/graph",
     "/settings",
     "/collections",

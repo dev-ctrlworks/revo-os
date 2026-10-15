@@ -55,8 +55,9 @@ Four `--aurora-*` values drive gradients, glows, and the animated background:
 | `--aurora-3` | `0.76 0.13 240` | sky blue |
 | `--aurora-4` | `0.78 0.07 300` | lavender |
 
-Referenced as `text-aurora-2`, `bg-aurora-2/10`, `from-aurora-2`, etc. The
-brand gradient (`src/lib/brand.ts`) is
+Referenced as `text-aurora-2`, `bg-aurora-2/10`, `from-aurora-2`, etc. All four
+are mapped in `@theme inline` (via `--color-aurora-*`). The brand gradient
+(`src/lib/brand.ts`) is
 `linear-gradient(135deg, oklch(0.58 0.19 292), oklch(0.62 0.16 260) 55%,
 oklch(0.76 0.13 240))`.
 
@@ -110,27 +111,25 @@ Motion (see below for keyframes):
   `.animate-beam-dash`, `.animate-scan`.
 - Stagger helpers: `.delay-100` … `.delay-700`.
 
-Dashboard utilities:
-
-- `.scrollbar-hide`
-- `.dashboard-density-comfortable|compact|dense` — set `--card-padding`,
-  `--card-gap`, `--item-height`.
-- `.dashboard-grid` — 1 → 2 (sm) → 4 (lg) column responsive grid.
-- `.heatmap-cell`, `.type-bar`, `.selection-ring`, `.metric-strip`,
-  `.empty-state-pulse`, `.feed-row`, `.filter-chip-active`, `.quick-action`.
+Shared surface/CTA class constants live in `src/lib/ui.ts`
+(`cardClass`, `cardSurfaceClass`, `primaryCtaClass`, `savePrimaryButtonClass`,
+`outlineCtaClass`, `iconChipClass`) and are re-exported from `src/lib/brand.ts`.
+Prefer these over hand-rolled recipes.
 
 ## Motion
 
 - `@keyframes`: `fadeUp`, `fadeIn`, `scaleIn`, `gradientX`, `floatY`,
   `breathe`, `shimmer`, `spinSlow`, `dashFlow`, `barGrow`, `pathFlow`,
-  `trackTravel`, `tapeScroll`, `beamStrip`, `scan`, `pulse-ring`.
+  `trackTravel`, `tapeScroll`, `beamStrip`, `scan`.
 - Easing convention: `cubic-bezier(0.16, 1, 0.3, 1)` for entrances.
 - React-level motion uses `framer-motion` through the `motion/` components:
   `Reveal` (scroll reveal), `Stagger`/`StaggerItem`, `CountUp`, and
   `AuroraBackground`.
 - **Reduced motion is respected** globally: a
   `@media (prefers-reduced-motion: reduce)` block forces near-zero
-  animation/transition durations and disables smooth scrolling.
+  animation/transition durations and disables smooth scrolling. Users can also
+  opt in via Settings → Appearance, which toggles a `.reduce-motion` class on
+  `<html>` with the same effect.
 
 ## Components
 
@@ -140,18 +139,21 @@ Built on Base UI + shadcn conventions, styled with CVA and `cn`:
 `avatar`, `badge`, `button`, `card`, `checkbox`, `command`, `dialog` +
 `dialog-shell`, `dropdown-menu`, `input`, `input-group`, `label`, `popover`,
 `progress`, `scroll-area`, `select`, `separator`, `sheet`, `skeleton`,
-`switch`, `tabs`, `textarea`, `toggle`, `tooltip`.
+`switch`, `tabs`, `textarea`, `toast`, `toggle`, `tooltip`.
+
+`dialog-shell` standardizes modal chrome (icon header, scrollable body, footer)
+and supports a `tone="destructive"` variant for delete confirmations.
 
 ### Composite areas
 
 - `layout/` — `app-shell`, `app-sidebar` (collapsible rail with hover-expand,
-  mobile sheet), `dashboard-header`, `cookie-notice`.
+  mobile sheet), `mobile-tab-bar` (bottom nav with a raised Capture action,
+  `lg:hidden`), `dashboard-header`, `cookie-notice`.
 - `landing/` — `section-header`, `capture-sources`, `how-it-works`,
   `connection-diagram`, `product-showcase`, `use-cases`, `privacy`,
   `memory-preview`.
-- `dashboard/` — `MetricGrid`, `ActivityHeatmap`, `ActivityGraph`,
-  `TypeBreakdown`, `QuickActions`, `FilterChips(+Wrapper)`, `ViewModeToggle`,
-  `DashboardLayout`.
+- `dashboard/` — removed. The dashboard page now composes its own cards from
+  the shared `cardClass` (`src/lib/ui.ts`).
 - `memories/` — `memory-card`, `memory-type-icon`, `memory-edit-dialog`,
   `artifact-preview`, `web-link-preview`, `collection-picker`.
 - `capture/`, `graph/`, `ai/`, `command/`, `feedback/`, `waitlist/`,
@@ -169,9 +171,13 @@ Built on Base UI + shadcn conventions, styled with CVA and `cn`:
   aurora glow dot — see `app-sidebar.tsx`.
 - **Chips/pills:** `rounded-full border-border/50 bg-card/45` for trust tags;
   `filter-chip-active` for selected filters.
-- **Status dot:** `animate-ping` ring + solid emerald dot for the
-  "N memories · synced" indicator.
-- **Empty states:** `empty-state-pulse` radiating ring behind a CTA.
+- **Status dot:** `animate-ping` ring + solid aurora dot for the
+  "N memories · saved locally" indicator.
+- **Toasts:** the shared `ui/toast` primitive (`success` / `error` / `info`)
+  renders fixed, `role="status"`, centered pills; `capture-toast` wraps it and
+  lifts above the mobile tab bar.
+- **Empty states:** dashed border card with an icon chip and a primary CTA,
+  plus a secondary action where useful (e.g. "Restore demo data").
 - **Icon chips:** `.icon-chip` background with an `aurora-2` icon.
 
 ## Accessibility

@@ -18,6 +18,7 @@ export function DialogShell({
   footer,
   children,
   className,
+  tone = "default",
 }: {
   icon: LucideIcon;
   title: string;
@@ -25,7 +26,9 @@ export function DialogShell({
   footer?: ReactNode;
   children: ReactNode;
   className?: string;
+  tone?: "default" | "destructive";
 }) {
+  const destructive = tone === "destructive";
   return (
     <DialogContent
       showCloseButton
@@ -34,9 +37,24 @@ export function DialogShell({
         className
       )}
     >
-      <DialogHeader className="shrink-0 flex-row items-center gap-3 border-b border-border/40 px-5 py-3 sm:px-6 sm:py-4">
-        <span className="flex size-9 shrink-0 items-center justify-center rounded-lg icon-chip">
-          <Icon className="size-4.5 text-aurora-2" />
+      <DialogHeader
+        className={cn(
+          "shrink-0 flex-row items-center gap-3 border-b border-border/40 px-5 py-3 sm:px-6 sm:py-4",
+          destructive && "bg-destructive/10"
+        )}
+      >
+        <span
+          className={cn(
+            "flex size-9 shrink-0 items-center justify-center rounded-lg",
+            destructive ? "bg-destructive/15" : "icon-chip"
+          )}
+        >
+          <Icon
+            className={cn(
+              "size-4.5",
+              destructive ? "text-destructive" : "text-aurora-2"
+            )}
+          />
         </span>
         <div className="min-w-0 flex-1 space-y-1">
           <DialogTitle className="font-semibold text-base">{title}</DialogTitle>
@@ -65,5 +83,5 @@ export function FieldLabel({
 }
 
 export function HelperText({ children }: { children: ReactNode }) {
-  return <p className="mt-1.5 text-[11px] text-muted-foreground/60">{children}</p>;
+  return <p className="mt-1.5 text-[11px] text-muted-foreground">{children}</p>;
 }

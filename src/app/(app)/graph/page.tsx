@@ -1,9 +1,12 @@
+"use client";
+
 import { Network } from "lucide-react";
-import { getMemoryCount } from "@/lib/ai";
+import { useMemoryStore } from "@/lib/use-memory-store";
 import { MemoryGraph } from "@/components/graph/memory-graph";
 
 export default function GraphPage() {
-  const count = getMemoryCount();
+  const memories = useMemoryStore();
+  const count = memories.length;
 
   return (
     <div className="space-y-6">

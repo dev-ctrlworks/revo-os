@@ -11,6 +11,7 @@ import {
   LayoutDashboard,
   LayoutGrid,
   Plus,
+  RotateCcw,
   Sparkles,
   TrendingDown,
   TrendingUp,
@@ -23,21 +24,10 @@ import { exampleQueries } from "@/lib/mock-data";
 import { AISearchBar } from "@/components/ai/ai-search-bar";
 import { AIAnswerView } from "@/components/ai/ai-answer";
 import { MemoryTypeIcon, memoryTypeLabel } from "@/components/memories/memory-type-icon";
+import { memoryTypeMeta } from "@/lib/memory-type";
+import { cardClass } from "@/lib/ui";
+import { restoreDemoData } from "@/lib/memory-store";
 import { Button } from "@/components/ui/button";
-
-const cardClass =
-  "rounded-2xl border border-border/50 bg-card/55 backdrop-blur-xl shadow-[0_10px_30px_-24px_rgba(30,27,46,0.3)]";
-
-const typeBar: Record<MemoryType, string> = {
-  screenshot: "from-violet-500 to-fuchsia-500",
-  note: "from-amber-500 to-orange-500",
-  document: "from-sky-500 to-blue-500",
-  link: "from-emerald-500 to-teal-500",
-  image: "from-rose-500 to-pink-500",
-  discussion: "from-teal-500 to-cyan-500",
-  email: "from-indigo-500 to-violet-500",
-  archive: "from-slate-500 to-slate-600",
-};
 
 function greeting() {
   const h = new Date().getHours();
@@ -195,7 +185,7 @@ export default function DashboardPage() {
   ];
 
   return (
-    <div className="mx-auto w-full max-w-7xl space-y-6 px-4 py-6 sm:px-6 sm:py-8">
+    <div className="space-y-6">
       <header className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-aurora-2">
@@ -275,15 +265,24 @@ export default function DashboardPage() {
             Capture your first screenshot, note, or link — your stats, charts, and
             searchable memory will appear here.
           </p>
-          <Button
-            className="relative mt-5"
-            size="sm"
-            render={<Link href="/capture" />}
-            nativeButton={false}
-          >
-            <Plus className="mr-1.5 size-3.5" />
-            Capture your first memory
-          </Button>
+          <div className="relative mt-5 flex flex-wrap items-center justify-center gap-2">
+            <Button
+              size="sm"
+              render={<Link href="/capture" />}
+              nativeButton={false}
+            >
+              <Plus className="mr-1.5 size-3.5" />
+              Capture your first memory
+            </Button>
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={() => restoreDemoData()}
+            >
+              <RotateCcw className="mr-1.5 size-3.5" />
+              Restore demo data
+            </Button>
+          </div>
         </div>
       ) : (
         <>
@@ -344,7 +343,7 @@ export default function DashboardPage() {
                     {["", "Mon", "", "Wed", "", "Fri", ""].map((label, i) => (
                       <span
                         key={i}
-                        className="h-3 w-6 text-[9px] leading-3 text-muted-foreground/60"
+                        className="h-3 w-6 text-[9px] leading-3 text-muted-foreground"
                       >
                         {label}
                       </span>
@@ -355,7 +354,7 @@ export default function DashboardPage() {
                       {heatmap.monthLabels.map((label, i) => (
                         <span
                           key={i}
-                          className="w-3 text-[9px] leading-3 whitespace-nowrap text-muted-foreground/60"
+                          className="w-3 text-[9px] leading-3 whitespace-nowrap text-muted-foreground"
                         >
                           {label}
                         </span>
@@ -422,7 +421,7 @@ export default function DashboardPage() {
                     </div>
                     <div className="h-1.5 overflow-hidden rounded-full bg-muted/70">
                       <div
-                        className={`animate-bar-grow h-full rounded-full bg-gradient-to-r ${typeBar[t.type]}`}
+                        className={`animate-bar-grow h-full rounded-full bg-gradient-to-r ${memoryTypeMeta[t.type].gradient}`}
                         style={{ width: `${(t.count / maxType) * 100}%` }}
                       />
                     </div>
@@ -522,11 +521,11 @@ export default function DashboardPage() {
                     {topTags.map((t) => (
                       <Link
                         key={t.name}
-                        href="/search"
+                        href={`/ask?q=${encodeURIComponent(t.name)}`}
                         className="inline-flex items-center gap-1 rounded-full border border-border/50 bg-card/70 px-2.5 py-1 text-[11px] text-muted-foreground transition-colors hover:border-aurora-2/40 hover:text-foreground"
                       >
                         {t.name}
-                        <span className="text-muted-foreground/60">{t.count}</span>
+                        <span className="text-muted-foreground">{t.count}</span>
                       </Link>
                     ))}
                   </div>
@@ -541,8 +540,7 @@ export default function DashboardPage() {
         <p className="pt-1 text-xs text-muted-foreground">
           {recent[0]
             ? `Last capture ${timeAgo(recent[0].createdAt)}`
-            : "No captures yet"}{" "}
-          · prototype data stored locally
+            : "No captures yet"}
           {asked > 0 ? ` · ${asked} questions asked` : ""}
         </p>
       )}

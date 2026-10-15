@@ -11,7 +11,7 @@ import {
   BookOpen,
   Calendar,
   Check,
-  CheckCircle2,
+  ChevronLeft,
   ChevronRight,
   Copy,
   Download,
@@ -47,6 +47,7 @@ import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Toast } from "@/components/ui/toast";
 import {
   MemoryTypeIcon,
   memoryTypeLabel,
@@ -680,6 +681,7 @@ function MetadataCard({ memory }: { memory: Memory }) {
                 {url}
               </span>
               <button
+                type="button"
                 onClick={copyUrl}
                 aria-label="Copy link"
                 className="inline-flex size-6 shrink-0 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
@@ -887,6 +889,16 @@ export default function MemoryDetailPage() {
 
   const isLink = memory.type === "link";
 
+  const ordered = [...memories].sort(
+    (a, b) => +new Date(b.createdAt) - +new Date(a.createdAt)
+  );
+  const currentIndex = ordered.findIndex((m) => m.id === memory.id);
+  const newer = currentIndex > 0 ? ordered[currentIndex - 1] : null;
+  const older =
+    currentIndex >= 0 && currentIndex < ordered.length - 1
+      ? ordered[currentIndex + 1]
+      : null;
+
   return (
     <div className="relative mx-auto w-full max-w-6xl">
       <div className="pointer-events-none absolute inset-x-0 -top-24 -z-10 h-56 bg-[radial-gradient(ellipse_at_top,rgba(99,102,241,0.09),transparent_70%)]" />
@@ -902,13 +914,49 @@ export default function MemoryDetailPage() {
               Back to {memory.collection}
             </span>
           </Link>
-          <Link
-            href="/dashboard"
-            className="inline-flex shrink-0 items-center gap-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
-          >
-            All memories
-            <ChevronRight className="size-3.5" />
-          </Link>
+          <div className="flex shrink-0 items-center gap-3">
+            <div className="flex items-center gap-1">
+              {newer ? (
+                <Link
+                  href={`/memory/${newer.id}`}
+                  aria-label="Newer memory"
+                  className="flex size-7 items-center justify-center rounded-lg border border-border/60 bg-card/60 text-muted-foreground transition-colors hover:border-aurora-2/40 hover:text-foreground"
+                >
+                  <ChevronLeft className="size-3.5" />
+                </Link>
+              ) : (
+                <span
+                  aria-hidden
+                  className="flex size-7 items-center justify-center rounded-lg border border-border/40 bg-card/30 text-muted-foreground/40"
+                >
+                  <ChevronLeft className="size-3.5" />
+                </span>
+              )}
+              {older ? (
+                <Link
+                  href={`/memory/${older.id}`}
+                  aria-label="Older memory"
+                  className="flex size-7 items-center justify-center rounded-lg border border-border/60 bg-card/60 text-muted-foreground transition-colors hover:border-aurora-2/40 hover:text-foreground"
+                >
+                  <ChevronRight className="size-3.5" />
+                </Link>
+              ) : (
+                <span
+                  aria-hidden
+                  className="flex size-7 items-center justify-center rounded-lg border border-border/40 bg-card/30 text-muted-foreground/40"
+                >
+                  <ChevronRight className="size-3.5" />
+                </span>
+              )}
+            </div>
+            <Link
+              href="/timeline"
+              className="inline-flex shrink-0 items-center gap-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
+            >
+              All memories
+              <ChevronRight className="size-3.5" />
+            </Link>
+          </div>
         </div>
 
         <header>
@@ -942,8 +990,9 @@ export default function MemoryDetailPage() {
                 size="sm"
                 className="rounded-lg"
                 onClick={() => {
-                  setFavorite((f) => !f);
-                  updateMemory(memory.id, { favorite: !favorite });
+                  const next = !favorite;
+                  setFavorite(next);
+                  updateMemory(memory.id, { favorite: next });
                 }}
                 aria-label={favorite ? "Unfavorite" : "Favorite"}
               >
@@ -1238,37 +1287,24 @@ export default function MemoryDetailPage() {
         )}
       </div>
 
-      {notice && (
-        <div
-          role="status"
-          aria-live="polite"
-          className="pointer-events-none fixed inset-x-0 bottom-6 z-50 flex justify-center px-4"
-        >
-          <div
-            className={cn(
-              "flex items-center gap-2 rounded-full border bg-background/95 px-4 py-2 text-sm font-medium text-foreground shadow-lg shadow-black/10 backdrop-blur",
-              notice === "deleted"
-                ? "border-destructive/30"
-                : notice === "shared"
-                  ? "border-aurora-2/35"
-                  : "border-emerald-500/30"
-            )}
-          >
-            {notice === "deleted" ? (
-              <Trash2 className="size-4 text-destructive" />
-            ) : notice === "shared" ? (
-              <Share2 className="size-4 text-aurora-2" />
-            ) : (
-              <CheckCircle2 className="size-4 text-emerald-500" />
-            )}
-            {notice === "deleted"
-              ? "Memory deleted"
-              : notice === "shared"
-                ? "Link copied to clipboard"
-                : "Memory updated"}
-          </div>
-        </div>
-      )}
+      <Toast
+        message={
+          notice === "deleted"
+            ? "Memory deleted"
+            : notice === "shared"
+              ? "Link copied to clipboard"
+              : notice === "updated"
+                ? "Memory updated"
+                : null
+        }
+        variant={
+          notice === "deleted"
+            ? "error"
+            : notice === "shared"
+              ? "info"
+              : "success"
+        }
+      />
 
       <OriginalViewer target={viewer} onClose={() => setViewer(null)} />
 

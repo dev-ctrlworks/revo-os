@@ -30,7 +30,7 @@ import { UploadPanel } from "@/components/capture/upload-panel";
 import { LinkPanel } from "@/components/capture/link-panel";
 import { NotePanel } from "@/components/capture/note-panel";
 import { BrowserPanel } from "@/components/capture/browser-panel";
-import { CaptureToast } from "@/components/capture/capture-toast";
+import { CaptureToast, type CaptureToastVariant } from "@/components/capture/capture-toast";
 
 type CaptureTab = "paste" | "upload" | "link" | "browser" | "note";
 
@@ -45,12 +45,29 @@ const tabs: { value: CaptureTab; label: string; icon: LucideIcon }[] = [
 export default function CapturePage() {
   const [tab, setTab] = useState<CaptureTab>("link");
   const [uploaded, setUploaded] = useState<UploadedFile[]>([]);
-  const [toast, setToast] = useState<string | null>(null);
+  const [toast, setToast] = useState<{
+    message: string;
+    variant: CaptureToastVariant;
+  } | null>(null);
 
-  const showToast = useCallback((message: string) => {
-    setToast(message);
-    window.setTimeout(() => setToast(null), 3200);
-  }, []);
+  const showToast = useCallback(
+    (message: string, variant: CaptureToastVariant = "success") => {
+      if (variant === "success") {
+        try {
+          if (
+            window.localStorage.getItem("revoos.captureConfirmations") === "0"
+          ) {
+            return;
+          }
+        } catch {
+          /* storage unavailable */
+        }
+      }
+      setToast({ message, variant });
+      window.setTimeout(() => setToast(null), 3200);
+    },
+    []
+  );
 
   function addFiles(files: FileList | File[]) {
     if (files.length === 0) return;
@@ -95,14 +112,20 @@ export default function CapturePage() {
               : f
           )
         );
-        if (i === 0)
-          showToast(
-            memory
-              ? entries.length > 1
+        if (i === 0) {
+          if (memory) {
+            showToast(
+              entries.length > 1
                 ? `Indexed ${entries.length} files`
                 : `Indexed “${memory.title}”`
-              : "Couldn't save — demo storage is full. Clear captured memories in Settings."
-          );
+            );
+          } else {
+            showToast(
+              "Couldn't save — demo storage is full. Clear captured memories in Settings.",
+              "error"
+            );
+          }
+        }
       }, 600 + i * 220);
     });
   }
@@ -173,7 +196,10 @@ export default function CapturePage() {
         </Tabs>
       </Card>
 
-      <CaptureToast message={toast ? `${toast}. Ask about it anytime.` : null} />
+      <CaptureToast
+        message={toast?.message ?? null}
+        variant={toast?.variant}
+      />
     </div>
   );
 }

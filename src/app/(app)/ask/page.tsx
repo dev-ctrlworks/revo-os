@@ -1,21 +1,48 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useCallback, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { Clock, Search, Trash2 } from "lucide-react";
 import type { AIAnswer } from "@/lib/types";
 import { AISearchBar } from "@/components/ai/ai-search-bar";
 import { AIAnswerView } from "@/components/ai/ai-answer";
+import { useHydrated, useLocalStorageJson } from "@/lib/use-local-storage";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 
-export default function SearchPage() {
-  const [answers, setAnswers] = useState<AIAnswer[]>([]);
+const STORAGE_KEY = "revoos.ask.history.v1";
+const EMPTY_HISTORY: AIAnswer[] = [];
+
+const starterQueries = [
+  "What cameras have I been considering?",
+  "What apartments did I save?",
+  "Show my Japan plans.",
+];
+
+function AskPageContent() {
+  const searchParams = useSearchParams();
+  const initialFromUrl = searchParams.get("q") ?? undefined;
+
+  const hydrated = useHydrated();
+  const [answers, setAnswers] = useLocalStorageJson<AIAnswer[]>(
+    STORAGE_KEY,
+    EMPTY_HISTORY
+  );
   const [pendingQuery, setPendingQuery] = useState<string | null>(null);
+  const [preset, setPreset] = useState<string | undefined>(initialFromUrl);
 
-  function handleAnswer(answer: AIAnswer) {
-    setPendingQuery(null);
-    setAnswers((prev) => [answer, ...prev]);
-  }
+  const handleAnswer = useCallback(
+    (answer: AIAnswer) => {
+      setPendingQuery(null);
+      setAnswers([answer, ...answers].slice(0, 50));
+    },
+    [answers, setAnswers]
+  );
+
+  const runPreset = useCallback((query: string) => {
+    setPreset(query);
+  }, []);
 
   return (
     <div className="space-y-8">
@@ -25,7 +52,7 @@ export default function SearchPage() {
             <span className="flex size-9 items-center justify-center rounded-lg icon-chip">
               <Search className="size-4 text-aurora-2" />
             </span>
-            Search your mind
+            <span>Ask your memories</span>
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
             Every answer is synthesized from the memories it cites.
@@ -39,7 +66,7 @@ export default function SearchPage() {
             onClick={() => setAnswers([])}
           >
             <Trash2 className="mr-1.5 size-3.5" />
-            Clear
+            Clear history
           </Button>
         )}
       </div>
@@ -48,6 +75,8 @@ export default function SearchPage() {
         <AISearchBar
           onAnswer={handleAnswer}
           onLoadingChange={setPendingQuery}
+          initialQuery={preset}
+          autoRun={Boolean(preset)}
         />
       </div>
 
@@ -61,8 +90,8 @@ export default function SearchPage() {
         </div>
       )}
 
-      {answers.length === 0 && !pendingQuery && (
-        <EmptySearchHistory />
+      {hydrated && answers.length === 0 && !pendingQuery && (
+        <EmptyAskHistory onPick={runPreset} />
       )}
 
       <div className="space-y-6">
@@ -70,13 +99,11 @@ export default function SearchPage() {
           <div
             key={answer.id}
             className={
-              index === 0
-                ? "animate-fade-up"
-                : "animate-fade-up opacity-100"
+              index === 0 ? "animate-fade-up" : "animate-fade-up opacity-100"
             }
           >
             <div className="mb-2 flex items-center gap-2">
-              <span className="flex size-6 items-center justify-center rounded-md bg-aurora-2/15 text-[10px] font-bold text-aurora-2">
+              <span className="flex size-6 items-center justify-center rounded-md bg-aurora-2/15 text-[10px] font-bold text-aurora-ink">
                 Q{answers.length - index}
               </span>
               <span className="text-sm font-medium">{answer.query}</span>
@@ -89,7 +116,19 @@ export default function SearchPage() {
   );
 }
 
-function EmptySearchHistory() {
+function AskPageFallback() {
+  return <Skeleton className="h-11 max-w-2xl rounded-xl" />;
+}
+
+export default function AskPage() {
+  return (
+    <Suspense fallback={<AskPageFallback />}>
+      <AskPageContent />
+    </Suspense>
+  );
+}
+
+function EmptyAskHistory({ onPick }: { onPick: (query: string) => void }) {
   return (
     <Card className="flex flex-col items-center justify-center border-dashed border-border/70 py-16 text-center">
       <div className="relative mb-5">
@@ -97,23 +136,21 @@ function EmptySearchHistory() {
           <Clock className="size-6 text-aurora-2" />
         </div>
       </div>
-      <h3 className="text-base font-semibold">Ask your memories anything</h3>
+      <h2 className="text-base font-semibold">Ask your memories anything</h2>
       <p className="mt-1.5 max-w-sm text-sm text-muted-foreground">
         Your previous questions and AI answers will stack up here — like a chat
         with your past self.
       </p>
       <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
-        {[
-          "What cameras have I been considering?",
-          "What apartments did I save?",
-          "Show my Japan plans.",
-        ].map((q) => (
-          <span
+        {starterQueries.map((q) => (
+          <button
             key={q}
-            className="rounded-full border border-border/60 bg-card/50 px-3 py-1 text-xs text-muted-foreground"
+            type="button"
+            onClick={() => onPick(q)}
+            className="rounded-full border border-border/60 bg-card/50 px-3 py-1 text-xs text-muted-foreground transition-colors hover:border-aurora-2/40 hover:text-foreground"
           >
             {q}
-          </span>
+          </button>
         ))}
       </div>
     </Card>

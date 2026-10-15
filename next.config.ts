@@ -42,6 +42,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/search",
+        destination: "/ask",
+        permanent: true,
+      },
+      {
         source: "/",
         has: [{ type: "host", value: "www.revoos.app" }],
         destination: "https://revoos.app/",

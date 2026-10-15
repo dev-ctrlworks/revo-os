@@ -284,6 +284,60 @@ export function clearCapturedMemories(): void {
   notify();
 }
 
+export function exportData(): string {
+  if (typeof window === "undefined") return "{}";
+  let deleted: string[] = [];
+  try {
+    const value = JSON.parse(window.localStorage.getItem(DELETED_KEY) ?? "[]");
+    deleted = Array.isArray(value) ? value.filter((v) => typeof v === "string") : [];
+  } catch {
+    deleted = [];
+  }
+  const payload = {
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    captured: safeParse(window.localStorage.getItem(STORAGE_KEY)),
+    edits: safeParseEdits(window.localStorage.getItem(EDITS_KEY)),
+    collectionMeta: safeParseMeta(window.localStorage.getItem(COLLECTION_META_KEY)),
+    deleted,
+  };
+  return JSON.stringify(payload, null, 2);
+}
+
+export function importData(json: string): { ok: boolean; error?: string } {
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(json);
+  } catch {
+    return { ok: false, error: "That file isn't valid JSON." };
+  }
+  if (!parsed || typeof parsed !== "object") {
+    return { ok: false, error: "That file doesn't look like a Revo OS export." };
+  }
+  const data = parsed as Record<string, unknown>;
+  const captured = Array.isArray(data.captured) ? data.captured : [];
+  const edits =
+    data.edits && typeof data.edits === "object" ? data.edits : {};
+  const collectionMeta =
+    data.collectionMeta && typeof data.collectionMeta === "object"
+      ? data.collectionMeta
+      : {};
+  const deleted = Array.isArray(data.deleted)
+    ? data.deleted.filter((v) => typeof v === "string")
+    : [];
+  writeLocal(STORAGE_KEY, JSON.stringify(captured));
+  writeLocal(EDITS_KEY, JSON.stringify(edits));
+  writeLocal(COLLECTION_META_KEY, JSON.stringify(collectionMeta));
+  writeLocal(DELETED_KEY, JSON.stringify(deleted));
+  notify();
+  return { ok: true };
+}
+
+export function restoreDemoData(): void {
+  removeLocal(DELETED_KEY);
+  notify();
+}
+
 type Listener = () => void;
 const listeners = new Set<Listener>();
 

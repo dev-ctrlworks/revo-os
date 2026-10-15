@@ -43,6 +43,7 @@ export interface AIAnswer {
   answer: string;
   sources: Memory[];
   createdAt: string;
+  degraded?: boolean;
 }
 
 export interface TimelineGroup {

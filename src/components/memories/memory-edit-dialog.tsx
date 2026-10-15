@@ -5,6 +5,7 @@ import { useState } from "react";
 import type { Memory, MemoryType } from "@/lib/types";
 import { updateMemory } from "@/lib/memory-store";
 import { useMemoryStore } from "@/lib/use-memory-store";
+import { primaryCtaClass } from "@/lib/ui";
 import {
   generateMemoryDescription,
   generateMemoryKeyPoints,
@@ -76,8 +77,7 @@ const sourceHint: Record<MemoryType, { placeholder: string; helper: string }> = 
   },
 };
 
-const saveButtonClass =
-  "rounded-lg brand-gradient text-white shadow-sm shadow-[0_12px_32px_-12px_color-mix(in_oklab,var(--aurora-2)_65%,transparent)]";
+const saveButtonClass = `${primaryCtaClass} rounded-lg`;
 
 export function MemoryEditDialog({
   memory,

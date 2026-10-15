@@ -16,6 +16,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export function BrowserPanel({ onToast }: { onToast: (message: string) => void }) {
   const [url, setUrl] = useState("https://www.thekestrelsummit.com");
@@ -118,10 +119,10 @@ export function BrowserPanel({ onToast }: { onToast: (message: string) => void }
         <div className="p-0">
           {phase === "loading" && (
             <div className="space-y-2.5 p-5">
-              <div className="h-3.5 w-1/3 animate-pulse rounded-md bg-muted" />
-              <div className="h-2.5 w-full animate-pulse rounded-md bg-muted/70" />
-              <div className="h-2.5 w-5/6 animate-pulse rounded-md bg-muted/70" />
-              <div className="h-2.5 w-2/3 animate-pulse rounded-md bg-muted/70" />
+              <Skeleton className="h-3.5 w-1/3" />
+              <Skeleton className="h-2.5 w-full" />
+              <Skeleton className="h-2.5 w-5/6" />
+              <Skeleton className="h-2.5 w-2/3" />
             </div>
           )}
 

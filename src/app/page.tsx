@@ -31,7 +31,7 @@ export default function LandingPage() {
         logo: "https://revoos.app/logo.png",
         potentialAction: {
           "@type": "SearchAction",
-          target: "https://revoos.app/search?q={query}",
+          target: "https://revoos.app/ask?q={query}",
           "query-input": "required name=query",
         },
       },

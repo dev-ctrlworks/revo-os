@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Loader2, ArrowRight, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { AIAnswer } from "@/lib/types";
@@ -24,6 +24,7 @@ export function AISearchBar({
   initialQuery,
   big = false,
   suggestions,
+  autoRun = false,
 }: {
   onAnswer?: (answer: AIAnswer) => void;
   onLoadingChange?: (query: string | null) => void;
@@ -31,10 +32,12 @@ export function AISearchBar({
   initialQuery?: string;
   big?: boolean;
   suggestions?: { label: string; query: string }[];
+  autoRun?: boolean;
 }) {
   const [query, setQuery] = useState(initialQuery ?? "");
   const [loading, setLoading] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const lastRunRef = useRef<string | null>(null);
 
   async function runSearch(q?: string) {
     const finalQuery = (q ?? query).trim();
@@ -46,6 +49,7 @@ export function AISearchBar({
     const sources = searchMemories({ query: finalQuery });
 
     let madeAnswer: AIAnswer;
+    let degraded = false;
     try {
       const res = await fetch("/api/ask", {
         method: "POST",
@@ -63,24 +67,37 @@ export function AISearchBar({
         }),
       });
       const data = await res.json();
-      madeAnswer =
-        data && !data.fallback && typeof data.answer === "string"
-          ? {
-              id: crypto.randomUUID(),
-              query: finalQuery,
-              answer: data.answer,
-              sources,
-              createdAt: new Date().toISOString(),
-            }
-          : makeFallbackAnswer(finalQuery, sources);
+      if (data && !data.fallback && typeof data.answer === "string") {
+        madeAnswer = {
+          id: crypto.randomUUID(),
+          query: finalQuery,
+          answer: data.answer,
+          sources,
+          createdAt: new Date().toISOString(),
+        };
+      } else {
+        madeAnswer = makeFallbackAnswer(finalQuery, sources);
+        degraded = true;
+      }
     } catch {
       madeAnswer = makeFallbackAnswer(finalQuery, sources);
+      degraded = true;
     }
 
+    madeAnswer.degraded = degraded;
     setLoading(false);
     onAnswer?.(madeAnswer);
     onLoadingChange?.(null);
   }
+
+  useEffect(() => {
+    if (!autoRun) return;
+    const q = (initialQuery ?? "").trim();
+    if (!q || lastRunRef.current === q) return;
+    lastRunRef.current = q;
+    void runSearch(q);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [autoRun, initialQuery]);
 
   return (
     <div className={cn("w-full", big && "mx-auto max-w-2xl")}>
@@ -115,7 +132,7 @@ export function AISearchBar({
             <button
               type="submit"
               disabled={!query.trim()}
-              aria-label="Search memories"
+              aria-label={big ? "Ask" : "Search memories"}
               className={cn(
                 "flex shrink-0 items-center justify-center gap-1 rounded-full bg-gradient-to-r from-aurora-1 to-aurora-3 text-white shadow-[0_8px_20px_-8px_color-mix(in_oklab,var(--aurora-2)_70%,transparent)] transition-all hover:brightness-105 disabled:opacity-60",
                 big ? "h-9 px-4 text-xs font-semibold" : "size-8"
