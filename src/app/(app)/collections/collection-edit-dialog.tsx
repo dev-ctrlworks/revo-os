@@ -12,11 +12,7 @@ import {
   HelperText,
 } from "@/components/ui/dialog-shell";
 import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
-import {
-  collectionColorOptions,
-  saveButtonClass,
-} from "@/app/(app)/collections/collection-options";
+import { saveButtonClass } from "@/app/(app)/collections/collection-options";
 
 export function CollectionEditDialog({
   name,
@@ -30,7 +26,7 @@ export function CollectionEditDialog({
   const [title, setTitle] = useState(name);
   const [emoji, setEmoji] = useState(meta.emoji);
   const [description, setDescription] = useState(meta.description);
-  const [color, setColor] = useState(meta.color);
+  const [color] = useState(meta.color);
   const [open, setOpen] = useState(false);
 
   const handleSave = () => {
@@ -53,7 +49,7 @@ export function CollectionEditDialog({
           <Button
             variant="outline"
             size="sm"
-            className="shrink-0 rounded-lg backdrop-blur"
+            className="shrink-0 rounded-lg"
           />
         }
       >
@@ -121,29 +117,6 @@ export function CollectionEditDialog({
                 placeholder="What is this collection about?"
               />
             </div>
-          </div>
-
-          <div>
-            <FieldLabel>Accent color</FieldLabel>
-            <div className="flex items-center gap-2">
-              {collectionColorOptions.map((option) => (
-                <button
-                  key={option.value}
-                  type="button"
-                  title={option.label}
-                  aria-label={option.label}
-                  onClick={() => setColor(option.value)}
-                  className={cn(
-                    "h-8 w-11 rounded-lg bg-gradient-to-b transition-all",
-                    option.value,
-                    color === option.value
-                      ? "ring-2 ring-aurora-2 ring-offset-1 ring-offset-card"
-                      : "opacity-60 hover:opacity-100"
-                  )}
-                />
-              ))}
-            </div>
-            <HelperText>Used for the card and page accents.</HelperText>
           </div>
         </div>
       </DialogShell>

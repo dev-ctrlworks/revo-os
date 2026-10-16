@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { ArrowRight, Check, FolderPlus, LayoutGrid, Sparkles } from "lucide-react";
+import { ArrowRight, Check, FolderPlus, Sparkles } from "lucide-react";
 import { useMemoryStore } from "@/lib/use-memory-store";
 import {
   resolveCollectionMeta,
@@ -178,11 +178,8 @@ export default function CollectionsPage() {
     <div className="space-y-10">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="flex items-center gap-2.5 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-            <span className="flex size-9 items-center justify-center rounded-lg icon-chip">
-              <LayoutGrid className="size-4 text-aurora-2" />
-            </span>
-            <span>Collections</span>
+          <h1 className="font-display text-2xl font-semibold tracking-tight">
+            Collections
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
             Revo OS groups related memories automatically — you stay in control.
@@ -206,7 +203,7 @@ export default function CollectionsPage() {
 
       <section className="space-y-4">
         <div className="flex items-center gap-2">
-          <Sparkles className="size-4 text-aurora-2" />
+          <Sparkles className="size-4 text-muted-foreground" />
           <h2 className="text-sm font-semibold">Suggested by AI</h2>
           <span className="ml-auto hidden text-[11px] text-muted-foreground sm:block">
             Detected from shared tags and related content
@@ -215,7 +212,7 @@ export default function CollectionsPage() {
 
         {suggestions.length === 0 ? (
           <div className="flex items-center gap-3 rounded-2xl border border-dashed border-border/70 px-5 py-8 text-sm text-muted-foreground">
-            <Sparkles className="size-5 text-aurora-2/70" />
+            <Sparkles className="size-5 text-muted-foreground" />
             <span>
               You&apos;re all organized — Revo OS couldn&apos;t find any new
               groups to suggest. Capture more and they&apos;ll show up here.
@@ -256,10 +253,10 @@ export default function CollectionsPage() {
             trigger={
               <button
                 type="button"
-                className="group flex h-full min-h-36 cursor-pointer items-center justify-center rounded-xl border border-dashed border-border/70 bg-card/30 p-4 text-center transition-colors hover:border-aurora-2/40 hover:bg-card/60"
+                className="group flex h-full min-h-36 cursor-pointer items-center justify-center rounded-xl border border-dashed border-border/70 bg-card/30 p-4 text-center transition-colors hover:border-border hover:bg-secondary"
               >
                 <span className="flex flex-col items-center gap-2 text-muted-foreground">
-                  <span className="flex size-9 items-center justify-center rounded-lg bg-muted/60 transition-colors group-hover:text-aurora-2">
+                  <span className="flex size-9 items-center justify-center rounded-lg bg-secondary transition-colors group-hover:text-foreground">
                     <FolderPlus className="size-4" />
                   </span>
                   <span className="text-xs font-medium">New collection</span>

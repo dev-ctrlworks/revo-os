@@ -14,11 +14,7 @@ import {
   HelperText,
 } from "@/components/ui/dialog-shell";
 import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
-import {
-  collectionColorOptions,
-  saveButtonClass,
-} from "@/app/(app)/collections/collection-options";
+import { saveButtonClass } from "@/app/(app)/collections/collection-options";
 
 export function CreateCollectionDialog({
   onCreated,
@@ -32,7 +28,6 @@ export function CreateCollectionDialog({
   const [emoji, setEmoji] = useState(defaultCollectionMeta.emoji);
   const [emojiTouched, setEmojiTouched] = useState(false);
   const [description, setDescription] = useState("");
-  const [color, setColor] = useState(defaultCollectionMeta.color);
 
   const handleCreate = () => {
     const trimmed = name.trim();
@@ -40,14 +35,13 @@ export function CreateCollectionDialog({
     createCollection(trimmed, {
       emoji: (emoji.trim() || defaultCollectionMeta.emoji).slice(0, 4),
       description: description.trim() || undefined,
-      color,
+      color: defaultCollectionMeta.color,
     });
     setOpen(false);
     setName("");
     setEmoji(defaultCollectionMeta.emoji);
     setEmojiTouched(false);
     setDescription("");
-    setColor(defaultCollectionMeta.color);
     onCreated?.(trimmed);
   };
 
@@ -130,29 +124,6 @@ export function CreateCollectionDialog({
                 placeholder="What is this collection about?"
               />
             </div>
-          </div>
-
-          <div>
-            <FieldLabel>Accent color</FieldLabel>
-            <div className="flex items-center gap-2">
-              {collectionColorOptions.map((option) => (
-                <button
-                  key={option.value}
-                  type="button"
-                  title={option.label}
-                  aria-label={option.label}
-                  onClick={() => setColor(option.value)}
-                  className={cn(
-                    "h-8 w-11 rounded-lg bg-gradient-to-b transition-all",
-                    option.value,
-                    color === option.value
-                      ? "ring-2 ring-aurora-2 ring-offset-1 ring-offset-card"
-                      : "opacity-60 hover:opacity-100"
-                  )}
-                />
-              ))}
-            </div>
-            <HelperText>Used for the card and page accents.</HelperText>
           </div>
         </div>
       </DialogShell>

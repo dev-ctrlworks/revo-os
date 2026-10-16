@@ -94,7 +94,7 @@ export function AddMemoriesDialog({
               className="shrink-0 rounded-lg"
               aria-label={`Add memories to ${name}`}
             >
-              <Sparkles className="mr-1.5 size-3.5 text-aurora-2" />
+              <Sparkles className="mr-1.5 size-3.5 text-muted-foreground" />
               Add memories
             </Button>
           )
@@ -148,7 +148,7 @@ export function AddMemoriesDialog({
           {aiSuggestions.length > 0 && (
             <div>
               <h4 className="mb-2 flex items-center gap-1.5 text-xs font-semibold text-muted-foreground">
-                <Sparkles className="size-3 text-aurora-2" />
+                <Sparkles className="size-3 text-muted-foreground" />
                 Suggested by AI
               </h4>
               <div className="space-y-2">
@@ -206,7 +206,7 @@ function MemoryRow({
       className={cn(
         "flex w-full items-center gap-3 rounded-lg border px-3 py-2.5 text-left text-sm transition-colors",
         selected
-          ? "border-aurora-2/50 bg-aurora-2/10"
+          ? "border-primary/50 bg-secondary"
           : "border-border/50 bg-card/60 hover:border-border hover:bg-card"
       )}
     >
@@ -214,7 +214,7 @@ function MemoryRow({
         className={cn(
           "flex size-5 shrink-0 items-center justify-center rounded-md border transition-colors",
           selected
-            ? "border-aurora-2 bg-aurora-2 text-white"
+            ? "border-primary bg-primary text-primary-foreground"
             : "border-border bg-background"
         )}
       >
