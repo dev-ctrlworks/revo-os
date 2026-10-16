@@ -22,7 +22,7 @@ export function CookieNotice() {
 
   return (
     <div className="pointer-events-none fixed inset-x-0 bottom-0 z-50 p-3 sm:p-4">
-      <div className="pointer-events-auto mx-auto flex max-w-3xl flex-col gap-3 rounded-xl border border-border bg-card p-4 text-xs text-muted-foreground shadow-lg shadow-black/5 sm:flex-row sm:items-center sm:justify-between">
+      <div className="pointer-events-auto mx-auto flex max-w-3xl flex-col gap-3 rounded-xl border border-border bg-card p-4 text-xs text-muted-foreground shadow-sm shadow-black/5 sm:flex-row sm:items-center sm:justify-between">
         <p className="flex items-start gap-2">
           <Cookie className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
           <span>
