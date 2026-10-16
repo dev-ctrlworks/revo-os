@@ -433,7 +433,7 @@ function ContentInner({ memory }: { memory: Memory }) {
           Content
         </span>
         {memory.domain && (
-          <span className="flex items-center gap-1 text-[11px] font-medium normal-case tracking-normal text-emerald-500">
+          <span className="flex items-center gap-1 text-[11px] font-medium normal-case tracking-normal text-muted-foreground">
             <Globe className="size-3" />
             {memory.domain}
           </span>
@@ -604,17 +604,17 @@ function NoticedCard({
       </div>
       <div className="px-5 py-4">
         <div className="flex items-start gap-3 rounded-xl border border-border/40 bg-card/60 p-3.5">
-          <Lightbulb className="mt-0.5 size-4 shrink-0 text-amber-500" />
+          <Lightbulb className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
           <p className="text-[13px] leading-relaxed text-foreground/90">
             {matters}
           </p>
         </div>
         <div className="mt-3.5 flex items-start gap-3">
-          <Link2 className="mt-0.5 size-4 shrink-0 text-teal-500" />
+          <Link2 className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
           <ul className="space-y-2 text-[13px] leading-relaxed text-foreground/85">
             {connections.map((line, i) => (
               <li key={i} className="flex items-start gap-2">
-                <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-teal-400" />
+                <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-foreground/30" />
                 <span>{line}</span>
               </li>
             ))}
@@ -673,7 +673,7 @@ function MetadataCard({ memory }: { memory: Memory }) {
 
         {memory.domain && (
           <MetaRow label="Domain">
-            <span className="inline-flex items-center gap-1 font-medium text-emerald-500">
+            <span className="inline-flex items-center gap-1 font-medium text-muted-foreground">
               <Globe className="size-3.5" />
               {memory.domain}
             </span>
@@ -1308,7 +1308,7 @@ export default function MemoryDetailPage() {
             <div className="mb-4 flex items-center justify-between gap-3">
               <div>
                 <h2 className="flex items-center gap-2 text-base font-semibold tracking-tight">
-                  <Link2 className="size-4 text-teal-500" />
+                  <Link2 className="size-4 text-muted-foreground" />
                   Related memories
                 </h2>
                 <p className="mt-0.5 text-xs text-muted-foreground">

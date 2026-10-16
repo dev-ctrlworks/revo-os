@@ -124,7 +124,7 @@ function EmptyState({ activeTopicLabel }: { activeTopicLabel?: string | null }) 
       </p>
       <div className="space-y-2 rounded-xl border border-border/50 bg-background/60 p-3">
         <p className="flex items-center gap-1.5 text-xs font-semibold text-foreground">
-          <Sparkles className="size-3.5 text-pink-500" />
+          <Sparkles className="size-3.5 text-primary" />
           RevoOS discovered
         </p>
         <p className="text-xs">
@@ -321,7 +321,7 @@ function EdgeDetail({
             {meta.label}
           </span>
           {edge.discovered && (
-            <Badge variant="outline" className="gap-1 border-pink-500/40 text-pink-600">
+            <Badge variant="outline" className="gap-1 border-primary/40 text-primary">
               <Sparkles className="size-3" />
               AI inferred
             </Badge>

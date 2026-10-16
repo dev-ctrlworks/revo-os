@@ -305,8 +305,8 @@ export default function SettingsPage() {
                 </div>
                 <div className="flex items-center gap-2">
                   {integration.connected ? (
-                    <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-0.5 text-[11px] font-medium text-emerald-600">
-                      <span className="size-1.5 rounded-full bg-emerald-500" />
+                    <span className="inline-flex items-center gap-1 rounded-full bg-success/10 px-2 py-0.5 text-[11px] font-medium text-success">
+                      <span className="size-1.5 rounded-full bg-success" />
                       Active
                     </span>
                   ) : (

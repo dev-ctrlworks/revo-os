@@ -112,7 +112,7 @@ function AISuggestionCard({
             disabled={busy}
             className={cn(
               "rounded-lg px-2.5 py-1 text-xs",
-              busy ? "bg-emerald-500 text-white" : saveButtonClass
+              busy ? "bg-success text-white" : saveButtonClass
             )}
           >
             {busy ? (

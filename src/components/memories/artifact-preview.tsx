@@ -13,8 +13,8 @@ import { formatDateTime } from "@/lib/utils-format";
 export function Highlight({ memory }: { memory: Memory }) {
   if (!memory.highlight) return null;
   return (
-    <div className="mt-5 rounded-xl border border-amber-500/20 bg-amber-500/5 p-4 sm:p-5">
-      <p className="text-[11px] font-medium uppercase tracking-wide text-amber-600 dark:text-amber-400">
+    <div className="mt-5 rounded-xl border border-border bg-secondary p-4 sm:p-5">
+      <p className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
         Highlight
       </p>
       <p className="mt-1 text-sm font-medium leading-relaxed">
@@ -109,7 +109,7 @@ export function DiscussionPreview({ memory }: { memory: Memory }) {
             <div
               key={i}
               className={cn(
-                "max-w-[90%] rounded-2xl border border-teal-500/20 bg-teal-500/[0.06] px-4 py-3.5",
+                "max-w-[90%] rounded-2xl border border-border bg-secondary px-4 py-3.5",
                 i === 0 ? "rounded-tl-md" : "rounded-tl-lg"
               )}
             >
@@ -149,7 +149,7 @@ export function NotePreview({ memory }: { memory: Memory }) {
           <div className="px-6 py-6 sm:px-8 sm:py-7">
             <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] text-muted-foreground">
               <span className="flex items-center gap-1.5">
-                <PenLine className="size-3.5 text-amber-500" />
+                <PenLine className="size-3.5 text-muted-foreground" />
                 Written note
               </span>
               <time className="tabular-nums">{formatDateTime(memory.createdAt)}</time>
@@ -157,7 +157,7 @@ export function NotePreview({ memory }: { memory: Memory }) {
             <h3 className="mt-4 text-xl font-semibold tracking-tight">
               {memory.title}
             </h3>
-            <p className="mt-5 whitespace-pre-wrap border-l-2 border-amber-400/40 pl-5 text-[14.5px] leading-8 text-foreground/90">
+            <p className="mt-5 whitespace-pre-wrap border-l-2 border-border pl-5 text-[14.5px] leading-8 text-foreground/90">
               {memory.content}
             </p>
             <Highlight memory={memory} />

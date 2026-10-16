@@ -342,7 +342,7 @@ export function MemoryGraph() {
               )}
             >
               {relation === "discovered" ? (
-                <Sparkles className="size-3 text-pink-500" />
+                <Sparkles className="size-3 text-primary" />
               ) : (
                 <span
                   className="h-0 w-4 border-t"
