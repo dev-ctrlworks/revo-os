@@ -4,7 +4,8 @@ import { ArrowRightLeft, Check } from "lucide-react";
 import { useState } from "react";
 import { useMemoryStore } from "@/lib/use-memory-store";
 import {
-  moveMemoryToCollection,
+  addMemoryToCollection,
+  getCollectionIds,
   removeMemoryFromCollection,
 } from "@/lib/memory-store";
 import { CollectionPicker } from "@/components/memories/collection-picker";
@@ -28,7 +29,7 @@ export function ManageCollectionDialog({
   name: string;
 }) {
   const memories = useMemoryStore();
-  const members = memories.filter((m) => m.collection === name);
+  const members = memories.filter((m) => getCollectionIds(m).includes(name));
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [destination, setDestination] = useState("");
 
@@ -47,13 +48,16 @@ export function ManageCollectionDialog({
   };
 
   const handleRemove = () => {
-    for (const id of selected) removeMemoryFromCollection(id);
+    for (const id of selected) removeMemoryFromCollection(id, name);
     clear();
   };
 
   const handleMove = () => {
     if (!destination.trim() || destination === name) return;
-    for (const id of selected) moveMemoryToCollection(id, destination);
+    for (const id of selected) {
+      removeMemoryFromCollection(id, name);
+      addMemoryToCollection(id, destination);
+    }
     clear();
   };
 

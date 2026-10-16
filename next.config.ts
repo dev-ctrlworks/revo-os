@@ -47,6 +47,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/graph",
+        destination: "/connections",
+        permanent: true,
+      },
+      {
         source: "/",
         has: [{ type: "host", value: "www.revoos.app" }],
         destination: "https://revoos.app/",

@@ -4,7 +4,7 @@ import { Network } from "lucide-react";
 import { useMemoryStore } from "@/lib/use-memory-store";
 import { MemoryGraph } from "@/components/graph/memory-graph";
 
-export default function GraphPage() {
+export default function ConnectionsPage() {
   const memories = useMemoryStore();
   const count = memories.length;
 
@@ -12,10 +12,10 @@ export default function GraphPage() {
     <div className="space-y-6">
       <div>
         <h1 className="flex items-center gap-2.5 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-          <span className="flex size-9 items-center justify-center rounded-lg icon-chip">
-            <Network className="size-4 text-aurora-2" />
+          <span className="flex size-9 items-center justify-center rounded-lg bg-secondary">
+            <Network className="size-4 text-primary" />
           </span>
-          <span>Memory Graph</span>
+          <span>Connections</span>
         </h1>
         <p className="mt-3 max-w-2xl text-sm text-muted-foreground">
           {count} memories wired to the people, places, products, and topics

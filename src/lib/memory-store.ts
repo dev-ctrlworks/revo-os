@@ -12,6 +12,38 @@ const EDITS_KEY = "revoos.memory-edits.v1";
 const COLLECTION_META_KEY = "revoos.collection-meta.v1";
 const DELETED_KEY = "revoos.deleted-memories.v1";
 const ASKED_COUNT_KEY = "revoos.asked-count.v1";
+const SCHEMA_VERSION_KEY = "revoos.schema.version";
+const SCHEMA_VERSION = 2;
+
+/**
+ * Normalizes a memory to the v2 shape (multi-collection membership, timestamps,
+ * processing status). Safe to call repeatedly; used as the read-time migration
+ * so every memory returned from the store has a consistent shape.
+ */
+export function normalizeMemory(memory: Memory): Memory {
+  const collectionIds =
+    memory.collectionIds && memory.collectionIds.length
+      ? memory.collectionIds
+      : memory.collection
+        ? [memory.collection]
+        : [];
+  const primary = memory.collection || collectionIds[0] || "New captures";
+  return {
+    ...memory,
+    collection: primary,
+    collectionIds: collectionIds.length ? collectionIds : [primary],
+    updatedAt: memory.updatedAt ?? memory.createdAt,
+    processingStatus: memory.processingStatus ?? "ready",
+  };
+}
+
+/** Membership set for a memory (falls back to the primary collection). */
+export function getCollectionIds(memory: Memory): string[] {
+  if (memory.collectionIds && memory.collectionIds.length) {
+    return memory.collectionIds;
+  }
+  return memory.collection ? [memory.collection] : [];
+}
 
 export const STORAGE_FULL_MESSAGE =
   "Demo storage is full. Clear captured memories in Settings to keep capturing.";
@@ -127,12 +159,14 @@ export function getAllMemories(): Memory[] {
   const deleted = getDeletedIds();
   return [...getCapturedMemories(), ...baseMemories]
     .filter((m) => !deleted.has(m.id))
-    .map((m) => (edits[m.id] ? { ...m, ...edits[m.id] } : m));
+    .map((m) => normalizeMemory(edits[m.id] ? { ...m, ...edits[m.id] } : m));
 }
 
 export function updateMemory(id: string, patch: Partial<Memory>): void {
   const edits = getEdits();
-  edits[id] = { ...edits[id], ...patch };
+  const merged = { ...edits[id], ...patch };
+  if (!("updatedAt" in patch)) merged.updatedAt = new Date().toISOString();
+  edits[id] = merged;
   writeLocal(EDITS_KEY, JSON.stringify(edits));
   notify();
 }
@@ -205,23 +239,46 @@ export function deleteCollection(name: string): void {
 }
 
 export function moveMemoryToCollection(id: string, collection: string): void {
-  updateMemory(id, { collection: collection.trim() || "New captures" });
+  const name = collection.trim() || "New captures";
+  const memory = getAllMemories().find((m) => m.id === id);
+  const ids = memory ? getCollectionIds(memory) : [];
+  const nextIds = ids.includes(name) ? ids : [name, ...ids];
+  updateMemory(id, { collection: name, collectionIds: nextIds });
 }
 
-export function removeMemoryFromCollection(id: string): void {
-  updateMemory(id, { collection: "New captures" });
+/** Adds a memory to an additional collection without removing its others. */
+export function addMemoryToCollection(id: string, collection: string): void {
+  const name = collection.trim();
+  if (!name) return;
+  const memory = getAllMemories().find((m) => m.id === id);
+  if (!memory) return;
+  const ids = getCollectionIds(memory);
+  if (ids.includes(name)) return;
+  updateMemory(id, { collectionIds: [...ids, name] });
+}
+
+export function removeMemoryFromCollection(id: string, collection?: string): void {
+  const memory = getAllMemories().find((m) => m.id === id);
+  const ids = memory ? getCollectionIds(memory) : [];
+  const target = collection ?? memory?.collection;
+  const nextIds = target ? ids.filter((n) => n !== target) : [];
+  const fallback = nextIds[0] ?? "New captures";
+  updateMemory(id, {
+    collectionIds: nextIds.length ? nextIds : [fallback],
+    collection: fallback,
+  });
 }
 
 export function getCollectionNames(): string[] {
   const names = new Set<string>();
   for (const m of getAllMemories()) {
-    if (m.collection) names.add(m.collection);
+    for (const name of getCollectionIds(m)) names.add(name);
   }
   for (const m of getCapturedMemories()) {
     if (m.collection) names.add(m.collection);
   }
   Object.keys(getCollectionMetaOverrides()).forEach((n) => names.add(n));
-  return Array.from(names).sort((a, b) => a.localeCompare(b));
+  return Array.from(names).filter(Boolean).sort((a, b) => a.localeCompare(b));
 }
 
 export function addMemory(input: {
@@ -239,17 +296,22 @@ export function addMemory(input: {
   favorite?: boolean;
   previewUrl?: string;
 }): Memory | null {
+  const now = new Date().toISOString();
+  const collectionName = input.collection ?? "New captures";
   const memory: Memory = {
     id: `cap-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
     type: input.type,
     title: input.title,
     content: input.content,
-    createdAt: new Date().toISOString(),
+    createdAt: now,
+    updatedAt: now,
     source: input.source ?? input.type,
     domain: input.domain,
     tags: input.tags ?? [],
     favorite: input.favorite ?? false,
-    collection: input.collection ?? "New captures",
+    collection: collectionName,
+    collectionIds: [collectionName],
+    processingStatus: "ready",
     highlight: input.highlight,
     summary: input.summary ?? generateMemorySummary(input),
     description: input.description ?? generateMemoryDescription(input),
@@ -294,7 +356,7 @@ export function exportData(): string {
     deleted = [];
   }
   const payload = {
-    version: 1,
+    version: 2,
     exportedAt: new Date().toISOString(),
     captured: safeParse(window.localStorage.getItem(STORAGE_KEY)),
     edits: safeParseEdits(window.localStorage.getItem(EDITS_KEY)),
@@ -367,7 +429,31 @@ export function getServerSnapshot(): Memory[] {
 export function syncFromStorage(): void {
   if (typeof window === "undefined" || hydratedFromStorage) return;
   hydratedFromStorage = true;
+  migrateStorageToV2();
   notify();
+}
+
+/**
+ * One-time, non-destructive v1 → v2 upgrade of captured memories: backfills
+ * `collectionIds`, `updatedAt`, and `processingStatus`. Read-time normalization
+ * still applies if this is skipped or fails.
+ */
+function migrateStorageToV2(): void {
+  if (typeof window === "undefined") return;
+  try {
+    const version = parseInt(
+      window.localStorage.getItem(SCHEMA_VERSION_KEY) ?? "0",
+      10
+    );
+    if (version >= SCHEMA_VERSION) return;
+    const captured = safeParse(window.localStorage.getItem(STORAGE_KEY));
+    if (captured.length) {
+      writeLocal(STORAGE_KEY, JSON.stringify(captured.map(normalizeMemory)));
+    }
+    writeLocal(SCHEMA_VERSION_KEY, String(SCHEMA_VERSION));
+  } catch {
+    // best-effort; read-time normalization still applies
+  }
 }
 
 function notify(): void {

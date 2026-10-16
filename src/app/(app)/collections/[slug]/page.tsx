@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { useMemoryStore } from "@/lib/use-memory-store";
 import { useCollectionMeta } from "@/lib/use-collection-meta";
-import { deleteCollection } from "@/lib/memory-store";
+import { deleteCollection, getCollectionIds } from "@/lib/memory-store";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MemoryCard } from "@/components/memories/memory-card";
@@ -39,7 +39,7 @@ export default function CollectionDetailPage() {
   const router = useRouter();
   const name = decodeURIComponent(slug);
   const memories = useMemoryStore();
-  const items = memories.filter((m) => m.collection === name);
+  const items = memories.filter((m) => getCollectionIds(m).includes(name));
   const meta = useCollectionMeta(name);
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [manageOpen, setManageOpen] = useState(false);

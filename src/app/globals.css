@@ -39,6 +39,7 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-success: var(--success);
   --color-aurora-1: var(--aurora-1);
   --color-aurora-2: var(--aurora-2);
   --color-aurora-3: var(--aurora-3);
@@ -54,45 +55,49 @@
 }
 
 :root {
-  --background: oklch(0.978 0.006 295);
-  --foreground: oklch(0.285 0.032 292);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.285 0.032 292);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.285 0.032 292);
-  --primary: oklch(0.56 0.19 292);
-  --primary-foreground: oklch(0.99 0.005 290);
-  --secondary: oklch(0.955 0.012 293);
-  --secondary-foreground: oklch(0.34 0.03 292);
-  --muted: oklch(0.952 0.01 293);
-  --muted-foreground: oklch(0.48 0.02 292);
-  --accent: oklch(0.94 0.022 290);
-  --accent-foreground: oklch(0.3 0.04 292);
-  --destructive: oklch(0.58 0.22 25);
-  --border: oklch(0.3 0.02 292 / 12%);
-  --input: oklch(0.3 0.02 292 / 14%);
-  --ring: oklch(0.56 0.19 292);
-  --chart-1: oklch(0.56 0.19 292);
-  --chart-2: oklch(0.6 0.16 250);
-  --chart-3: oklch(0.68 0.15 275);
-  --chart-4: oklch(0.7 0.14 220);
-  --chart-5: oklch(0.72 0.14 315);
+  /* RevoOS semantic palette — calm, minimal, light-only. */
+  --background: #f8f8fb;
+  --foreground: #242333;
+  --card: #ffffff;
+  --card-foreground: #242333;
+  --popover: #ffffff;
+  --popover-foreground: #242333;
+  --primary: #6d55d9;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f0f7;
+  --secondary-foreground: #242333;
+  --muted: #f1f0f7;
+  --muted-foreground: #777487;
+  --accent: #f1f0f7;
+  --accent-foreground: #242333;
+  --destructive: #c43d4b;
+  --success: #16845b;
+  --border: #e7e5ef;
+  --input: #e7e5ef;
+  --ring: #6d55d9;
+  --chart-1: #6d55d9;
+  --chart-2: #5c9bff;
+  --chart-3: #8a7be0;
+  --chart-4: #59bbfb;
+  --chart-5: #b9a9ef;
   --radius: 0.75rem;
-  --sidebar: oklch(0.985 0.004 295);
-  --sidebar-foreground: oklch(0.285 0.032 292);
-  --sidebar-primary: oklch(0.56 0.19 292);
-  --sidebar-primary-foreground: oklch(0.99 0.005 290);
-  --sidebar-accent: oklch(0.94 0.022 290);
-  --sidebar-accent-foreground: oklch(0.3 0.04 292);
-  --sidebar-border: oklch(0.3 0.02 292 / 12%);
-  --sidebar-ring: oklch(0.56 0.19 292);
+  --sidebar: #ffffff;
+  --sidebar-foreground: #242333;
+  --sidebar-primary: #6d55d9;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f1f0f7;
+  --sidebar-accent-foreground: #242333;
+  --sidebar-border: #e7e5ef;
+  --sidebar-ring: #6d55d9;
 
-  --aurora-1: oklch(0.58 0.19 292);
-  --aurora-2: oklch(0.55 0.19 292);
-  --aurora-3: oklch(0.76 0.13 240);
-  --aurora-4: oklch(0.78 0.07 300);
-  /* Brand purple for small text sitting on an aurora tint (WCAG AA ≥ 4.5:1). */
-  --aurora-ink: oklch(0.5 0.19 292);
+  /* Legacy brand aliases, retained so existing utility classes keep resolving.
+     Repointed to the calmer palette; prefer semantic tokens in new code. */
+  --aurora-1: #6d55d9;
+  --aurora-2: #6d55d9;
+  --aurora-3: #59bbfb;
+  --aurora-4: #b9a9ef;
+  /* Brand purple for small text on a tinted surface (WCAG AA ≥ 4.5:1). */
+  --aurora-ink: #5b46b8;
 }
 
 /* Keep the brand purple brighter on dark surfaces, where the light-theme

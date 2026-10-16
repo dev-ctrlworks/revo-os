@@ -29,6 +29,7 @@ import {
   Share2,
   Sparkles,
   Star,
+  StickyNote,
   Trash2,
   TrendingUp,
   X,
@@ -77,7 +78,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { removeMemory, updateMemory } from "@/lib/memory-store";
+import { getCollectionIds, removeMemory, updateMemory } from "@/lib/memory-store";
 
 const accentStrip: Record<MemoryType, string> = {
   screenshot: "from-violet-500/25",
@@ -117,15 +118,69 @@ function TypePill({ type }: { type: MemoryType }) {
   );
 }
 
-function CollectionChip({ memory }: { memory: Memory }) {
+function CollectionChips({ memory }: { memory: Memory }) {
+  const ids = getCollectionIds(memory);
+  if (ids.length === 0) return null;
   return (
-    <Link
-      href={`/collections/${encodeURIComponent(memory.collection)}`}
-      className="group inline-flex max-w-full items-center gap-1.5 rounded-full border border-border/60 bg-card/60 px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:border-aurora-2/40 hover:text-foreground"
-    >
-      <FolderOpen className="size-3 shrink-0 transition-colors group-hover:text-aurora-2" />
-      <span className="truncate">{memory.collection}</span>
-    </Link>
+    <span className="inline-flex flex-wrap items-center justify-end gap-1.5">
+      {ids.map((name) => (
+        <Link
+          key={name}
+          href={`/collections/${encodeURIComponent(name)}`}
+          className="group inline-flex max-w-full items-center gap-1.5 rounded-full border border-border bg-card px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground"
+        >
+          <FolderOpen className="size-3 shrink-0 transition-colors group-hover:text-primary" />
+          <span className="truncate">{name}</span>
+        </Link>
+      ))}
+    </span>
+  );
+}
+
+function UserContextCard({ memory }: { memory: Memory }) {
+  const [draft, setDraft] = useState(memory.userContext ?? "");
+  const [saved, setSaved] = useState(false);
+  const dirty = draft !== (memory.userContext ?? "");
+
+  const save = () => {
+    updateMemory(memory.id, { userContext: draft.trim() || undefined });
+    setSaved(true);
+    setTimeout(() => setSaved(false), 1600);
+  };
+
+  return (
+    <Card className="border-border/50">
+      <div className="flex items-center justify-between gap-2 px-5 pb-2 pt-4">
+        <span className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+          <StickyNote className="size-3.5" />
+          Your context
+        </span>
+        {saved && <span className="text-[11px] font-medium text-success">Saved</span>}
+      </div>
+      <div className="px-5 pb-5">
+        <textarea
+          value={draft}
+          onChange={(e) => setDraft(e.target.value)}
+          placeholder="Why did you save this? Add your own notes, decisions, or reminders…"
+          className="min-h-24 w-full resize-y rounded-lg border border-border bg-background px-3 py-2 text-sm leading-relaxed outline-none transition-colors focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40"
+          aria-label="Your context for this memory"
+        />
+        <div className="mt-2.5 flex items-center justify-between gap-3">
+          <p className="text-[11px] text-muted-foreground">
+            Only you write this — the AI never touches it.
+          </p>
+          <Button
+            size="sm"
+            variant="outline"
+            className="rounded-lg"
+            disabled={!dirty}
+            onClick={save}
+          >
+            Save
+          </Button>
+        </div>
+      </div>
+    </Card>
   );
 }
 
@@ -617,7 +672,7 @@ function MetadataCard({ memory }: { memory: Memory }) {
         </MetaRow>
 
         <MetaRow label="Collection">
-          <CollectionChip memory={memory} />
+          <CollectionChips memory={memory} />
         </MetaRow>
 
         <MetaRow label="Added">
@@ -877,11 +932,11 @@ export default function MemoryDetailPage() {
 
   const related = getRelatedMemories(memory, 6);
   const timelineEntries = memories
-    .filter(
-      (m) =>
-        m.collection === memory.collection ||
-        m.tags.some((t) => memory.tags.includes(t))
-    )
+    .filter((m) => {
+      const same = getCollectionIds(m).some((n) => getCollectionIds(memory).includes(n));
+      if (same) return true;
+      return m.tags.some((t) => memory.tags.includes(t));
+    })
     .sort((a, b) => +new Date(a.createdAt) - +new Date(b.createdAt))
     .slice(-8);
   const summary = memory.summary ?? generateMemorySummary(memory);
@@ -905,15 +960,17 @@ export default function MemoryDetailPage() {
 
       <div className="space-y-10 pb-16">
         <div className="flex items-center justify-between gap-4">
-          <Link
-            href={`/collections/${encodeURIComponent(memory.collection)}`}
-            className="group inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-card/60 px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-aurora-2/40 hover:text-foreground"
-          >
-            <ArrowLeft className="size-3.5 transition-transform group-hover:-translate-x-0.5" />
-            <span className="max-w-40 truncate sm:max-w-64">
-              Back to {memory.collection}
-            </span>
-          </Link>
+            <Link
+              href={`/collections/${encodeURIComponent(
+                getCollectionIds(memory)[0] ?? memory.collection
+              )}`}
+              className="group inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-card/60 px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-aurora-2/40 hover:text-foreground"
+            >
+              <ArrowLeft className="size-3.5 transition-transform group-hover:-translate-x-0.5" />
+              <span className="max-w-40 truncate sm:max-w-64">
+                Back to {getCollectionIds(memory)[0] ?? memory.collection}
+              </span>
+            </Link>
           <div className="flex shrink-0 items-center gap-3">
             <div className="flex items-center gap-1">
               {newer ? (
@@ -980,7 +1037,7 @@ export default function MemoryDetailPage() {
                   {formatDateTime(memory.createdAt)}
                 </span>
                 <span className="hidden text-muted-foreground/40 sm:inline">·</span>
-                <CollectionChip memory={memory} />
+                <CollectionChips memory={memory} />
               </div>
             </div>
 
@@ -1194,6 +1251,7 @@ export default function MemoryDetailPage() {
             </div>
 
             <aside className="min-w-0 space-y-6 self-start xl:sticky xl:top-6">
+              <UserContextCard memory={memory} />
               <MetadataCard memory={memory} />
             </aside>
           </div>

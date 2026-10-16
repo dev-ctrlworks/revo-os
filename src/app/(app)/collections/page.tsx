@@ -10,8 +10,9 @@ import {
 } from "@/lib/use-collection-meta";
 import { suggestAICollections } from "@/lib/ai-collections";
 import {
+  addMemoryToCollection,
   createCollection,
-  moveMemoryToCollection,
+  getCollectionIds,
 } from "@/lib/memory-store";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -153,7 +154,9 @@ export default function CollectionsPage() {
   const yourCollections = useMemo(() => {
     const counts = new Map<string, number>();
     memories.forEach((m) =>
-      counts.set(m.collection, (counts.get(m.collection) ?? 0) + 1)
+      getCollectionIds(m).forEach((name) =>
+        counts.set(name, (counts.get(name) ?? 0) + 1)
+      )
     );
     return collectionNames
       .map((name) => ({
@@ -179,7 +182,7 @@ export default function CollectionsPage() {
       aiGenerated: true,
     });
     for (const id of suggestion.memberIds) {
-      moveMemoryToCollection(id, suggestion.name);
+      addMemoryToCollection(id, suggestion.name);
     }
     setCreating((prev) => new Set(prev).add(suggestion.name));
     setNotice(`AI-created “${suggestion.name}” with ${memoryCount} ${memoryCount === 1 ? "memory" : "memories"}.`);

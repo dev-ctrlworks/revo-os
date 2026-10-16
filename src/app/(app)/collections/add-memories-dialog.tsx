@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 import type { ReactElement } from "react";
 import type { Memory } from "@/lib/types";
 import { suggestMemoriesForCollection } from "@/lib/ai-collections";
-import { moveMemoryToCollection } from "@/lib/memory-store";
+import { addMemoryToCollection, getCollectionIds } from "@/lib/memory-store";
 import { useMemoryStore } from "@/lib/use-memory-store";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogFooter, DialogTrigger } from "@/components/ui/dialog";
@@ -32,7 +32,7 @@ export function AddMemoriesDialog({
   const all = useMemoryStore();
 
   const notInCollection = useMemo(
-    () => all.filter((m) => m.collection !== name),
+    () => all.filter((m) => !getCollectionIds(m).includes(name)),
     [all, name]
   );
 
@@ -66,7 +66,7 @@ export function AddMemoriesDialog({
   const handleAdd = () => {
     let count = 0;
     for (const id of selected) {
-      moveMemoryToCollection(id, name);
+      addMemoryToCollection(id, name);
       count++;
     }
     setJustAdded(count);
