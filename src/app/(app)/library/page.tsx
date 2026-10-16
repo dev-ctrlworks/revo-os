@@ -165,7 +165,7 @@ export default function LibraryPage() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search your library…"
-            className="h-9 rounded-lg pl-9"
+            className="h-10 rounded-lg pl-9"
             aria-label="Search library"
           />
         </div>
@@ -250,7 +250,7 @@ export default function LibraryPage() {
             <Button
               variant="ghost"
               size="icon"
-              className="size-8 rounded-lg"
+              className="size-10 rounded-lg"
               aria-label="Exit selection"
               onClick={exitSelectMode}
             >

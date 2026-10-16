@@ -33,7 +33,7 @@ export function DashboardHeader() {
         <Link
           href="/capture"
           aria-label="Capture a memory"
-          className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-card px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+          className="inline-flex h-10 items-center gap-1.5 rounded-xl border border-border bg-card px-3 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
         >
           <Plus className="size-3.5" />
           <span className="hidden sm:inline">Capture</span>

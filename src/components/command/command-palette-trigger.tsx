@@ -7,7 +7,7 @@ export function CommandPaletteTrigger() {
     <button
       type="button"
       onClick={() => window.dispatchEvent(new Event("revoos:open-palette"))}
-      className="flex w-full items-center gap-2 rounded-xl border border-border/60 bg-card/60 px-3 py-2 text-left text-[13px] text-muted-foreground transition-all hover:border-border hover:bg-card hover:text-foreground"
+      className="flex h-10 w-full items-center gap-2 rounded-xl border border-border/60 bg-card/60 px-3 text-left text-[13px] text-muted-foreground transition-colors hover:border-border hover:bg-card hover:text-foreground"
     >
       <Search className="size-3.5 shrink-0" />
       <span className="flex-1 truncate">Search memories…</span>

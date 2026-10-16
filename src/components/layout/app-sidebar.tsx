@@ -79,7 +79,7 @@ function NavItem({
       aria-label={!expanded ? label : undefined}
       aria-current={active ? "page" : undefined}
       className={cn(
-        "group relative flex items-center rounded-xl px-3 py-2 text-[13px] font-medium transition-colors",
+        "group relative flex items-center rounded-xl px-3 py-2.5 text-[13px] font-medium transition-colors",
         !expanded && "justify-center",
         active
           ? "bg-secondary text-foreground"
