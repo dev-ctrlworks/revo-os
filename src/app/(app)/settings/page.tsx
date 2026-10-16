@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import {
   Download,
   RotateCcw,
-  Settings,
   Trash2,
   Upload,
 } from "lucide-react";
@@ -130,11 +129,8 @@ export default function SettingsPage() {
   return (
     <div className="mx-auto max-w-3xl space-y-8">
       <div>
-        <h1 className="flex items-center gap-2.5 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-          <span className="flex size-9 items-center justify-center rounded-lg icon-chip">
-            <Settings className="size-4 text-aurora-2" />
-          </span>
-          <span>Settings</span>
+        <h1 className="font-display text-2xl font-semibold tracking-tight">
+          Settings
         </h1>
         <p className="mt-1 text-sm text-muted-foreground">
           Manage how Revo OS captures, stores, and answers.

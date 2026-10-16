@@ -7,7 +7,6 @@ import {
   Globe,
   LinkIcon,
   Lock,
-  Plus,
   Sparkles,
   UploadCloud,
 } from "lucide-react";
@@ -131,27 +130,24 @@ export default function CapturePage() {
   }
 
   const triggerClass =
-    "group-data-[variant=default]/tabs-list:data-active:bg-gradient-to-br group-data-[variant=default]/tabs-list:data-active:from-aurora-2 group-data-[variant=default]/tabs-list:data-active:to-aurora-3 group-data-[variant=default]/tabs-list:data-active:text-white group-data-[variant=default]/tabs-list:data-active:shadow-[0_2px_10px_-2px_rgba(99,102,241,0.45)] flex min-w-0 shrink-0 items-center justify-center gap-1.5 rounded-lg px-2.5 text-[11px] whitespace-nowrap sm:px-4 sm:text-[13px]";
+    "group-data-[variant=default]/tabs-list:data-active:bg-primary group-data-[variant=default]/tabs-list:data-active:text-primary-foreground group-data-[variant=default]/tabs-list:data-active:shadow-none flex min-w-0 shrink-0 items-center justify-center gap-1.5 rounded-lg px-2.5 text-[11px] whitespace-nowrap sm:px-4 sm:text-[13px]";
 
   return (
     <div className="mx-auto max-w-3xl space-y-8">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="mb-2 flex items-center gap-1.5 text-xs font-medium uppercase tracking-widest text-aurora-2">
-            <Sparkles className="size-3.5 text-aurora-2" />
-            Revo OS capture
+          <p className="mb-1.5 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
+            <Sparkles className="size-3.5" />
+            Capture
           </p>
-          <h1 className="flex items-center gap-2.5 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-            <span className="flex size-9 items-center justify-center rounded-lg icon-chip">
-              <Plus className="size-4 text-aurora-2" />
-            </span>
-            <span>Capture</span>
+          <h1 className="font-display text-2xl font-semibold tracking-tight">
+            Add a memory
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Add a memory. Revo OS handles the filing — no folders needed.
+            Revo OS handles the filing — no folders needed.
           </p>
         </div>
-        <span className="hidden items-center gap-1.5 rounded-full border border-border/50 bg-card/60 px-2.5 py-1 text-[11px] text-muted-foreground sm:inline-flex">
+        <span className="hidden items-center gap-1.5 rounded-full border border-border px-2.5 py-1 text-[11px] text-muted-foreground sm:inline-flex">
           <Lock className="size-3" />
           Everything stays on your device
         </span>

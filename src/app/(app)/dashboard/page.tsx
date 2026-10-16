@@ -8,7 +8,6 @@ import {
   Hash,
   Heart,
   Inbox,
-  LayoutDashboard,
   LayoutGrid,
   Plus,
   RotateCcw,
@@ -187,11 +186,7 @@ export default function DashboardPage() {
     <div className="space-y-6">
       <header className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-aurora-2">
-            <span className="relative flex size-1.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-aurora-2 opacity-60" />
-              <span className="relative inline-flex size-1.5 rounded-full bg-aurora-2" />
-            </span>
+          <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
             {greeting()} ·{" "}
             {new Date().toLocaleDateString("en-US", {
               weekday: "long",
@@ -199,11 +194,8 @@ export default function DashboardPage() {
               day: "numeric",
             })}
           </p>
-          <h1 className="mt-3 flex items-center gap-2.5 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-            <span className="flex size-9 items-center justify-center rounded-lg icon-chip">
-              <LayoutDashboard className="size-4 text-aurora-2" />
-            </span>
-            <span>Dashboard</span>
+          <h1 className="mt-2 font-display text-2xl font-semibold tracking-tight">
+            Home
           </h1>
         </div>
       </header>
@@ -227,7 +219,7 @@ export default function DashboardPage() {
         >
           <div className="flex items-center justify-between gap-3">
             <p className="flex min-w-0 items-center gap-2 text-xs text-muted-foreground">
-              <Sparkles className="size-3.5 shrink-0 text-aurora-2" />
+              <Sparkles className="size-3.5 shrink-0 text-muted-foreground" />
               <span className="truncate">
                 Answer for{" "}
                 <span className="font-medium text-foreground">“{answer.query}”</span>
@@ -237,7 +229,7 @@ export default function DashboardPage() {
               type="button"
               onClick={() => setAnswer(null)}
               aria-label="Clear results"
-              className="inline-flex shrink-0 items-center gap-1 rounded-full border border-border/50 bg-card/70 px-2.5 py-1 text-[11px] font-medium text-muted-foreground backdrop-blur-xl transition-colors hover:border-aurora-2/40 hover:text-foreground"
+              className="inline-flex shrink-0 items-center gap-1 rounded-full border border-border px-2.5 py-1 text-[11px] font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               <X className="size-3" />
               Clear
@@ -253,9 +245,8 @@ export default function DashboardPage() {
 
       {isEmpty ? (
         <div className={`${cardClass} relative overflow-hidden border-dashed p-10 text-center sm:p-16`}>
-          <span className="pointer-events-none absolute left-1/2 top-0 size-64 -translate-x-1/2 -translate-y-1/2 rounded-full icon-chip opacity-70 blur-3xl" />
-          <span className="relative mx-auto mb-4 flex size-14 items-center justify-center rounded-2xl icon-chip">
-            <Inbox className="size-6 text-aurora-2" />
+          <span className="relative mx-auto mb-4 flex size-14 items-center justify-center rounded-2xl bg-secondary">
+            <Inbox className="size-6 text-muted-foreground" />
           </span>
           <h2 className="relative font-display text-lg font-semibold tracking-tight">
             Your dashboard is waiting
@@ -289,8 +280,8 @@ export default function DashboardPage() {
             {kpis.map((kpi) => (
               <div key={kpi.label} className={`${cardClass} p-4 sm:p-5`}>
                 <div className="flex items-center justify-between">
-                  <span className="flex size-9 items-center justify-center rounded-xl icon-chip">
-                    <kpi.icon className="size-4 text-aurora-2" />
+                  <span className="flex size-9 items-center justify-center rounded-xl bg-secondary">
+                    <kpi.icon className="size-4 text-muted-foreground" />
                   </span>
                   {typeof kpi.delta === "number" && (
                     <span
@@ -368,12 +359,12 @@ export default function DashboardPage() {
                               cell.count === 0
                                 ? "bg-muted/60"
                                 : ratio <= 0.25
-                                  ? "bg-aurora-2/25"
+                                  ? "bg-primary/25"
                                   : ratio <= 0.5
-                                    ? "bg-aurora-2/45"
+                                    ? "bg-primary/45"
                                     : ratio <= 0.75
-                                      ? "bg-aurora-2/70"
-                                      : "bg-aurora-2";
+                                      ? "bg-primary/70"
+                                      : "bg-primary";
                             return (
                               <span
                                 key={di}
@@ -395,10 +386,10 @@ export default function DashboardPage() {
               <div className="mt-4 flex items-center justify-end gap-1.5 text-[10px] text-muted-foreground">
                 <span>Less</span>
                 <span className="size-2.5 rounded-[2px] bg-muted/60" />
-                <span className="size-2.5 rounded-[2px] bg-aurora-2/25" />
-                <span className="size-2.5 rounded-[2px] bg-aurora-2/45" />
-                <span className="size-2.5 rounded-[2px] bg-aurora-2/70" />
-                <span className="size-2.5 rounded-[2px] bg-aurora-2" />
+                <span className="size-2.5 rounded-[2px] bg-primary/25" />
+                <span className="size-2.5 rounded-[2px] bg-primary/45" />
+                <span className="size-2.5 rounded-[2px] bg-primary/70" />
+                <span className="size-2.5 rounded-[2px] bg-primary" />
                 <span>More</span>
               </div>
             </div>
@@ -457,13 +448,13 @@ export default function DashboardPage() {
                   <h2 className="font-display text-sm font-semibold tracking-tight">
                     Top collections
                   </h2>
-                  <LayoutGrid className="size-4 text-aurora-2" />
+                  <LayoutGrid className="size-4 text-muted-foreground" />
                 </div>
                 <div className="mt-4 space-y-3">
                   {collections.slice(0, 4).map((c) => (
                     <Link key={c.name} href="/collections" className="group block">
                       <div className="mb-1.5 flex items-center justify-between gap-2 text-[12px]">
-                        <span className="truncate font-medium transition-colors group-hover:text-aurora-2">
+                        <span className="truncate font-medium transition-colors group-hover:text-foreground">
                           {c.name}
                         </span>
                         <span className="shrink-0 text-muted-foreground">{c.count}</span>
@@ -496,7 +487,7 @@ export default function DashboardPage() {
                       <Link
                         key={memory.id}
                         href={`/memory/${memory.id}`}
-                        className="flex items-center gap-2.5 rounded-xl px-2 py-2 transition-colors hover:bg-aurora-2/10"
+                        className="flex items-center gap-2.5 rounded-xl px-2 py-2 transition-colors hover:bg-secondary"
                       >
                         <MemoryTypeIcon type={memory.type} />
                         <span className="min-w-0 flex-1 truncate text-[13px] font-medium">
@@ -514,14 +505,14 @@ export default function DashboardPage() {
                     <h2 className="font-display text-sm font-semibold tracking-tight">
                       Top tags
                     </h2>
-                    <Hash className="size-4 text-aurora-2" />
+                    <Hash className="size-4 text-muted-foreground" />
                   </div>
                   <div className="mt-3 flex flex-wrap gap-1.5">
                     {topTags.map((t) => (
                       <Link
                         key={t.name}
                         href={`/ask?q=${encodeURIComponent(t.name)}`}
-                        className="inline-flex items-center gap-1 rounded-full border border-border/50 bg-card/70 px-2.5 py-1 text-[11px] text-muted-foreground transition-colors hover:border-aurora-2/40 hover:text-foreground"
+                        className="inline-flex items-center gap-1 rounded-full border border-border/50 bg-card/70 px-2.5 py-1 text-[11px] text-muted-foreground transition-colors hover:border-border hover:text-foreground"
                       >
                         {t.name}
                         <span className="text-muted-foreground">{t.count}</span>

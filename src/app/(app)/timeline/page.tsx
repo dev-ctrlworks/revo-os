@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { CalendarDays, ChevronDown, Clock3, Filter } from "lucide-react";
+import { CalendarDays, ChevronDown, Filter } from "lucide-react";
 import type { MemoryType } from "@/lib/types";
 import { useMemoryStore } from "@/lib/use-memory-store";
 import { groupMemoriesByDate } from "@/lib/ai";
@@ -77,11 +77,8 @@ export default function TimelinePage() {
     <div className="space-y-8">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="flex items-center gap-2.5 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-            <span className="flex size-9 items-center justify-center rounded-lg icon-chip">
-              <Clock3 className="size-4 text-aurora-2" />
-            </span>
-            <span>Timeline</span>
+          <h1 className="font-display text-2xl font-semibold tracking-tight">
+            Timeline
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
             {totalMemories} memories · every fragment, in order.
@@ -121,7 +118,7 @@ export default function TimelinePage() {
 
       <div className="relative space-y-8 pl-6">
         <h2 className="sr-only">Memories by day</h2>
-        <div className="absolute bottom-2 left-[9px] top-2 w-px bg-gradient-to-b from-transparent via-border to-transparent" />
+        <div className="absolute bottom-2 left-[9px] top-2 w-px bg-border" />
 
         {groups.map((group) => {
           const isOpen = expanded.has(group.date);

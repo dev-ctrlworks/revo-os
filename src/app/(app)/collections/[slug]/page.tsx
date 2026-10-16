@@ -32,7 +32,6 @@ import { CollectionEditDialog } from "@/app/(app)/collections/collection-edit-di
 import { AddMemoriesDialog } from "@/app/(app)/collections/add-memories-dialog";
 import { ManageCollectionDialog } from "@/app/(app)/collections/manage-collection-dialog";
 import { CollectionDeleteDialog } from "@/app/(app)/collections/collection-delete-dialog";
-import { cn } from "@/lib/utils";
 
 export default function CollectionDetailPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -62,19 +61,13 @@ export default function CollectionDetailPage() {
         All collections
       </Link>
 
-      <Card className="relative overflow-hidden border-border/50 p-6">
-        <div
-          className={cn(
-            "pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b opacity-70",
-            meta.color
-          )}
-        />
+      <Card className="relative overflow-hidden p-6">
         <div className="relative flex flex-col gap-4 sm:flex-row sm:items-start">
-          <span className="flex size-14 shrink-0 items-center justify-center rounded-2xl border border-border/40 bg-card/80 text-2xl shadow-sm backdrop-blur">
+          <span className="flex size-14 shrink-0 items-center justify-center rounded-2xl border border-border bg-secondary text-2xl">
             {meta.emoji}
           </span>
           <div className="min-w-0 flex-1">
-            <h1 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+            <h1 className="font-display text-2xl font-semibold tracking-tight">
               <span>{name}</span>
             </h1>
             {meta.description && (

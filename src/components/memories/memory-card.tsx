@@ -67,8 +67,8 @@ export function MemoryCard({
                 type="button"
                 onClick={handleFavoriteToggle}
                 className={cn(
-                  "p-1 rounded-lg transition-colors hover:bg-aurora-2/20",
-                  memory.favorite && "text-amber-400"
+                  "p-1 rounded-lg transition-colors hover:bg-secondary",
+                  memory.favorite && "text-amber-500"
                 )}
                 aria-label={memory.favorite ? "Remove from favorites" : "Add to favorites"}
               >
@@ -81,7 +81,7 @@ export function MemoryCard({
                 onClick={handleClick}
                 className={cn(
                   "p-1 rounded-lg transition-colors",
-                  selected ? "bg-aurora-2/20 text-aurora-ink" : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                  selected ? "bg-primary/15 text-primary" : "text-muted-foreground hover:bg-muted hover:text-foreground"
                 )}
                 aria-label={selected ? "Deselect" : "Select"}
                 aria-pressed={selected}
@@ -168,10 +168,10 @@ export function MemoryCard({
     return (
       <div
         className={cn(
-          "group relative overflow-hidden transition-all duration-300",
+          "group relative overflow-hidden transition-colors duration-150",
           cardSurfaceClass,
-          selected && "border-aurora-2/40 bg-aurora-2/5 shadow-[0_0_0_1px_var(--aurora-2),0_12px_32px_-16px_color-mix(in_oklab,var(--aurora-2)_40%,transparent)]",
-          "hover:border-aurora-2/40 hover:shadow-[0_12px_32px_-16px_color-mix(in_oklab,var(--aurora-2)_40%,transparent)]"
+          selected && "border-primary/40 bg-secondary ring-1 ring-primary/40",
+          "hover:border-border"
         )}
         onClick={onSelect ? handleClick : undefined}
         role={onSelect ? "checkbox" : undefined}
@@ -184,9 +184,6 @@ export function MemoryCard({
         }
       >
         {renderContent()}
-        {onSelect && selected && (
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-aurora-2/10 to-aurora-3/10" />
-        )}
       </div>
     );
   }
@@ -195,9 +192,9 @@ export function MemoryCard({
     <Link
       href={`/memory/${memory.id}`}
       className={cn(
-        "group block h-full overflow-hidden transition-all duration-300",
+        "group block h-full overflow-hidden transition-colors duration-200",
         cardSurfaceClass,
-        "hover:-translate-y-0.5 hover:border-aurora-2/40 hover:shadow-[0_24px_60px_-28px_color-mix(in_oklab,var(--aurora-2)_50%,transparent)]",
+        "hover:border-border",
         variant === "grid" && "flex flex-col"
       )}
     >

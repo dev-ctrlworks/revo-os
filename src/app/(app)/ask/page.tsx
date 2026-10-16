@@ -2,7 +2,7 @@
 
 import { Suspense, useCallback, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { Clock, Search, Trash2 } from "lucide-react";
+import { Clock, Trash2 } from "lucide-react";
 import type { AIAnswer } from "@/lib/types";
 import { AISearchBar } from "@/components/ai/ai-search-bar";
 import { AIAnswerView } from "@/components/ai/ai-answer";
@@ -48,11 +48,8 @@ function AskPageContent() {
     <div className="space-y-8">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="flex items-center gap-2.5 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-            <span className="flex size-9 items-center justify-center rounded-lg icon-chip">
-              <Search className="size-4 text-aurora-2" />
-            </span>
-            <span>Ask your memories</span>
+          <h1 className="font-display text-2xl font-semibold tracking-tight">
+            Ask your memories
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
             Every answer is synthesized from the memories it cites.
@@ -82,8 +79,8 @@ function AskPageContent() {
 
       {pendingQuery && (
         <div className="animate-fade-in flex items-center gap-2 text-sm text-muted-foreground">
-          <span className="flex size-5 items-center justify-center rounded-full bg-aurora-2/15">
-            <span className="size-2 animate-pulse rounded-full bg-aurora-2" />
+          <span className="flex size-5 items-center justify-center rounded-full bg-secondary">
+            <span className="size-2 animate-pulse rounded-full bg-muted-foreground" />
           </span>
           Thinking about &ldquo;{pendingQuery}&rdquo;
           <span className="animate-pulse">…</span>
@@ -103,7 +100,7 @@ function AskPageContent() {
             }
           >
             <div className="mb-2 flex items-center gap-2">
-              <span className="flex size-6 items-center justify-center rounded-md bg-aurora-2/15 text-[10px] font-bold text-aurora-ink">
+              <span className="flex size-6 items-center justify-center rounded-md bg-secondary text-[10px] font-bold text-foreground">
                 Q{answers.length - index}
               </span>
               <span className="text-sm font-medium">{answer.query}</span>
@@ -132,8 +129,8 @@ function EmptyAskHistory({ onPick }: { onPick: (query: string) => void }) {
   return (
     <Card className="flex flex-col items-center justify-center border-dashed border-border/70 py-16 text-center">
       <div className="relative mb-5">
-        <div className="flex size-14 items-center justify-center rounded-2xl icon-chip">
-          <Clock className="size-6 text-aurora-2" />
+        <div className="flex size-14 items-center justify-center rounded-2xl bg-secondary">
+          <Clock className="size-6 text-muted-foreground" />
         </div>
       </div>
       <h2 className="text-base font-semibold">Ask your memories anything</h2>
@@ -147,7 +144,7 @@ function EmptyAskHistory({ onPick }: { onPick: (query: string) => void }) {
             key={q}
             type="button"
             onClick={() => onPick(q)}
-            className="rounded-full border border-border/60 bg-card/50 px-3 py-1 text-xs text-muted-foreground transition-colors hover:border-aurora-2/40 hover:text-foreground"
+            className="rounded-full border border-border px-3 py-1 text-xs text-muted-foreground transition-colors hover:border-border hover:text-foreground"
           >
             {q}
           </button>

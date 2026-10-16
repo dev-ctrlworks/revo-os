@@ -5,7 +5,6 @@ import {
   ArrowDownUp,
   CheckSquare,
   LayoutGrid,
-  Library as LibraryIcon,
   List,
   Search,
   Trash2,
@@ -110,11 +109,8 @@ export default function LibraryPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="flex items-center gap-2.5 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-            <span className="flex size-9 items-center justify-center rounded-lg bg-secondary">
-              <LibraryIcon className="size-4 text-primary" />
-            </span>
-            <span>Library</span>
+          <h1 className="font-display text-2xl font-semibold tracking-tight">
+            Library
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
             {filtered.length} of {memories.length} memories
