@@ -201,7 +201,7 @@ export default function SettingsPage() {
                 </div>
                 <div className="h-2 w-24 shrink-0 overflow-hidden rounded-full bg-muted sm:w-32">
                   <div
-                    className="h-full rounded-full brand-gradient transition-all"
+                    className="h-full rounded-full bg-primary transition-all"
                     style={{
                       width: `${Math.min(
                         100,
