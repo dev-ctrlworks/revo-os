@@ -7,6 +7,7 @@ import {
   Camera,
   Clock3,
   Home,
+  Library,
   LayoutGrid,
   Network,
   Plus,
@@ -26,15 +27,17 @@ import {
   CommandSeparator,
 } from "@/components/ui/command";
 import { useMemoryStore } from "@/lib/use-memory-store";
+import { getCollectionIds } from "@/lib/memory-store";
 import { timeAgo } from "@/lib/utils-format";
 
 const navigation = [
   { group: "Navigate", items: [
     { id: "nav-home", label: "Home", icon: Home, href: "/dashboard" },
+    { id: "nav-library", label: "Library", icon: Library, href: "/library" },
     { id: "nav-ask", label: "Ask your memories", icon: Search, href: "/ask" },
     { id: "nav-capture", label: "Capture new memory", icon: Camera, href: "/capture" },
     { id: "nav-collections", label: "Collections", icon: LayoutGrid, href: "/collections" },
-    { id: "nav-graph", label: "Memory Graph", icon: Network, href: "/graph" },
+    { id: "nav-connections", label: "Connections", icon: Network, href: "/connections" },
     { id: "nav-timeline", label: "Timeline", icon: Clock3, href: "/timeline" },
     { id: "nav-settings", label: "Settings", icon: Settings, href: "/settings" },
   ]},
@@ -69,7 +72,7 @@ export function CommandPalette() {
     if (!tokens.length) return [];
     return memories
       .map((m) => {
-        const haystack = `${m.title} ${m.content} ${m.tags.join(" ")} ${m.collection}`.toLowerCase();
+        const haystack = `${m.title} ${m.content} ${m.tags.join(" ")} ${getCollectionIds(m).join(" ")}`.toLowerCase();
         const score = tokens.filter((t) => haystack.includes(t)).length;
         return { memory: m, score };
       })
@@ -123,7 +126,7 @@ export function CommandPalette() {
                       <span className="min-w-0 flex-1">
                         <span className="block truncate text-sm">{m.title}</span>
                         <span className="block text-[11px] text-muted-foreground">
-                          {m.collection} · {timeAgo(m.createdAt)}
+                          {getCollectionIds(m).slice(0,1).join(" ") || m.collection} · {timeAgo(m.createdAt)}
                         </span>
                       </span>
                       <ArrowUpRight className="size-3.5 text-muted-foreground/50" />
