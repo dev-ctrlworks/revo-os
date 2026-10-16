@@ -6,6 +6,7 @@ import { useState } from "react";
 import {
   Menu,
   Home,
+  Library,
   LayoutGrid,
   Plus,
   Search,
@@ -30,17 +31,20 @@ const GROUPS = [
     label: "Main",
     items: [
       { href: "/dashboard", label: "Home", icon: Home },
-      { href: "/ask", label: "Ask", icon: Search },
-      { href: "/capture", label: "Capture", icon: Plus },
+      { href: "/library", label: "Library", icon: Library },
+      { href: "/collections", label: "Collections", icon: LayoutGrid },
     ],
   },
   {
-    label: "Organize",
+    label: "Explore",
     items: [
+      { href: "/connections", label: "Connections", icon: Network },
       { href: "/timeline", label: "Timeline", icon: Clock3 },
-      { href: "/collections", label: "Collections", icon: LayoutGrid },
-      { href: "/graph", label: "Memory Graph", icon: Network },
     ],
+  },
+  {
+    label: "Recall",
+    items: [{ href: "/ask", label: "Ask", icon: Search }],
   },
 ];
 
@@ -49,13 +53,12 @@ type IconType = React.ComponentType<{ className?: string }>;
 function Logo({ expanded }: { expanded: boolean }) {
   return (
     <Link
-      href="/"
-      className="flex items-center gap-2.5 select-none"
+      href="/dashboard"
+      className="flex select-none items-center gap-2.5"
       aria-label="Revo OS home"
     >
-      <span className="relative flex size-8 shrink-0 items-center justify-center rounded-xl brand-gradient shadow-[0_12px_32px_-12px_color-mix(in_oklab,var(--aurora-2)_65%,transparent)]">
-        <span className="absolute inset-0 rounded-xl ring-1 ring-white/20 ring-inset" />
-        <BrainCircuit className="size-4 text-white" />
+      <span className="relative flex size-8 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+        <BrainCircuit className="size-4" />
       </span>
       {expanded && (
         <span className="flex flex-col leading-none">
@@ -88,37 +91,53 @@ function NavItem({
       href={href}
       onClick={onNavigate}
       aria-label={!expanded ? label : undefined}
+      aria-current={active ? "page" : undefined}
       className={cn(
-        "group relative flex items-center rounded-xl px-3 py-2 text-[13px] font-medium transition-all duration-200",
+        "group relative flex items-center rounded-xl px-3 py-2 text-[13px] font-medium transition-colors",
         !expanded && "justify-center",
         active
-          ? "bg-gradient-to-r from-aurora-2/15 to-aurora-3/15 text-foreground shadow-[inset_0_0_0_1px_color-mix(in_oklab,var(--aurora-2)_28%,transparent),0_10px_26px_-16px_color-mix(in_oklab,var(--aurora-2)_65%,transparent)]"
-          : "text-muted-foreground hover:bg-aurora-2/10 hover:text-foreground"
+          ? "bg-secondary text-foreground"
+          : "text-muted-foreground hover:bg-secondary/60 hover:text-foreground"
       )}
     >
       <span
         className={cn(
-          "absolute -left-3 top-1/2 h-5 w-1 -translate-y-1/2 rounded-r-full bg-aurora-2 transition-opacity",
-          active ? "opacity-100" : "opacity-0 group-hover:opacity-60"
+          "absolute -left-3 top-1/2 h-5 w-1 -translate-y-1/2 rounded-r-full bg-primary transition-opacity",
+          active ? "opacity-100" : "opacity-0"
         )}
       />
       <span
         className={cn(
-          "flex size-7 shrink-0 items-center justify-center rounded-lg transition-colors duration-200",
-          active ? "bg-aurora-2/15" : "group-hover:bg-aurora-2/10"
+          "flex size-7 shrink-0 items-center justify-center rounded-lg",
+          active ? "text-primary" : "text-muted-foreground group-hover:text-foreground"
         )}
       >
-        <Icon
-          className={cn(
-            "size-[17px] transition-colors",
-            active ? "text-aurora-2" : "text-muted-foreground group-hover:text-foreground"
-          )}
-        />
+        <Icon className="size-[17px]" />
       </span>
       {expanded && <span className="ml-3 truncate">{label}</span>}
-      {expanded && active && pathname !== "/" && (
-        <span className="ml-auto size-1.5 rounded-full bg-aurora-2 shadow-[0_0_8px_var(--aurora-2)]" />
+    </Link>
+  );
+}
+
+function CaptureButton({
+  expanded,
+  onNavigate,
+}: {
+  expanded: boolean;
+  onNavigate?: () => void;
+}) {
+  return (
+    <Link
+      href="/capture"
+      onClick={onNavigate}
+      aria-label="Capture a memory"
+      className={cn(
+        "mb-4 flex items-center gap-2 rounded-xl bg-primary text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90",
+        expanded ? "px-3 py-2.5" : "justify-center px-0 py-2.5"
       )}
+    >
+      <Plus className="size-4 shrink-0" />
+      {expanded && <span>Capture</span>}
     </Link>
   );
 }
@@ -134,6 +153,8 @@ function NavBody({
 
   return (
     <div className="flex flex-1 flex-col overflow-y-auto overflow-x-hidden px-3 py-4">
+      <CaptureButton expanded={expanded} onNavigate={onNavigate} />
+
       {GROUPS.map((group) => (
         <div key={group.label} className={expanded ? "mb-6" : "mb-4"}>
           {expanded && (
@@ -141,7 +162,7 @@ function NavBody({
               {group.label}
             </p>
           )}
-          <nav className="flex flex-col gap-1.5">
+          <nav className="flex flex-col gap-1">
             {group.items.map((item) => (
               <NavItem
                 key={item.href}
@@ -154,13 +175,10 @@ function NavBody({
         </div>
       ))}
 
-      <div className="mt-auto space-y-2 border-t border-border/50 pt-3">
+      <div className="mt-auto space-y-2 border-t border-border pt-3">
         {expanded ? (
-          <div className="flex items-center gap-2.5 rounded-xl border border-border/50 bg-card/50 px-3 py-2.5 text-xs text-muted-foreground">
-            <span className="relative flex size-1.5 shrink-0">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-aurora-2 opacity-60" />
-              <span className="relative inline-flex size-1.5 rounded-full bg-aurora-2" />
-            </span>
+          <div className="flex items-center gap-2.5 rounded-xl bg-secondary px-3 py-2.5 text-xs text-muted-foreground">
+            <span className="size-1.5 shrink-0 rounded-full bg-success" />
             <span className="truncate">{memories.length} memories · saved locally</span>
           </div>
         ) : (
@@ -168,10 +186,7 @@ function NavBody({
             className="flex justify-center rounded-xl py-2.5"
             title={`${memories.length} memories · saved locally`}
           >
-            <span className="relative flex size-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-aurora-2 opacity-60" />
-              <span className="relative inline-flex size-2 rounded-full bg-aurora-2" />
-            </span>
+            <span className="size-2 rounded-full bg-success" />
           </div>
         )}
         <NavItem
@@ -199,32 +214,19 @@ export function AppSidebar() {
         onFocus={() => setExpanded(true)}
         onBlur={() => setExpanded(false)}
         className={cn(
-          "fixed inset-y-0 left-0 z-40 hidden shrink-0 flex-col overflow-hidden border-r border-border/50 backdrop-blur-xl transition-[width] duration-300 ease-in-out lg:flex",
-          expanded
-            ? "w-64 bg-card/85 shadow-[0_24px_60px_-30px_rgba(15,23,42,0.35)]"
-            : "w-[76px] bg-card/60"
+          "fixed inset-y-0 left-0 z-40 hidden shrink-0 flex-col overflow-hidden border-r border-border bg-sidebar transition-[width] duration-300 ease-in-out lg:flex",
+          expanded ? "w-60 shadow-sm" : "w-[72px]"
         )}
       >
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-px bg-gradient-to-b from-transparent via-aurora-2/25 to-transparent" />
         <div
           className={cn(
-            "flex h-14 items-center border-b border-border/50",
+            "flex h-14 shrink-0 items-center border-b border-border",
             expanded ? "px-4" : "justify-center px-0"
           )}
         >
           <Logo expanded={expanded} />
         </div>
         <NavBody expanded={expanded} />
-        <div
-          className={cn(
-            "flex items-center justify-center border-t border-border/50 py-2.5",
-            expanded ? "px-3" : "px-0"
-          )}
-        >
-          <span className="text-[10px] text-muted-foreground">
-            {expanded ? "revo.app" : "•"}
-          </span>
-        </div>
       </aside>
 
       <Sheet open={open} onOpenChange={setOpen}>
@@ -241,15 +243,12 @@ export function AppSidebar() {
           <Menu className="size-4" />
         </SheetTrigger>
         <SheetContent side="left" className="w-72 p-0">
-          <SheetHeader className="h-14 items-start justify-center border-b border-border/50 px-4">
+          <SheetHeader className="h-14 items-start justify-center border-b border-border px-4">
             <SheetTitle className="flex w-auto items-center gap-2.5">
               <Logo expanded />
             </SheetTitle>
           </SheetHeader>
           <NavBody expanded onNavigate={() => setOpen(false)} />
-          <div className="flex items-center justify-center border-t border-border/50 px-4 py-2.5">
-            <span className="text-[10px] text-muted-foreground">revo.app</span>
-          </div>
         </SheetContent>
       </Sheet>
     </>

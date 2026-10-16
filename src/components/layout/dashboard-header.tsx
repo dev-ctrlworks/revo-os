@@ -11,10 +11,9 @@ export function DashboardHeader() {
   const count = memories.length;
 
   return (
-    <header className="sticky top-0 z-20 flex h-14 items-center justify-between gap-4 border-b border-border/50 bg-card/60 pl-14 pr-4 backdrop-blur-xl sm:pr-6 lg:pl-6">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-aurora-2/50 to-transparent" />
+    <header className="sticky top-0 z-20 flex h-14 items-center justify-between gap-4 border-b border-border bg-background/85 pl-14 pr-4 backdrop-blur sm:pr-6 lg:pl-6">
       <div className="flex w-full items-center gap-3 lg:ml-0 lg:w-auto lg:min-w-0">
-        <span className="aurora-text shrink-0 text-sm font-display font-semibold tracking-tight lg:hidden">
+        <span className="shrink-0 text-sm font-display font-semibold tracking-tight lg:hidden">
           Revo OS
         </span>
         <div className="w-full lg:w-72">
@@ -28,16 +27,13 @@ export function DashboardHeader() {
           className="hidden rounded-full text-[11px] font-medium text-muted-foreground sm:inline-flex"
           title="Captured memories are stored in this browser"
         >
-          <span className="relative mr-1.5 inline-flex size-1.5">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-aurora-2 opacity-60" />
-            <span className="relative inline-flex size-1.5 rounded-full bg-aurora-2" />
-          </span>
+          <span className="mr-1.5 inline-flex size-1.5 rounded-full bg-success" />
           {count} memories · saved locally
         </Badge>
         <Link
           href="/capture"
           aria-label="Capture a memory"
-          className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-background/50 px-3 py-1.5 text-sm font-medium text-foreground backdrop-blur transition-all hover:bg-muted"
+          className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-card px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
         >
           <Plus className="size-3.5" />
           <span className="hidden sm:inline">Capture</span>

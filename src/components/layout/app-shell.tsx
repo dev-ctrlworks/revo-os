@@ -1,14 +1,12 @@
 import React from "react";
 import { AppSidebar } from "@/components/layout/app-sidebar";
 import { MobileTabBar } from "@/components/layout/mobile-tab-bar";
-import { AuroraBackground } from "@/components/motion/aurora-background";
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   return (
-    <div className="relative min-h-screen overflow-hidden">
-      <AuroraBackground />
+    <div className="relative min-h-screen">
       <AppSidebar />
-      <main className="lg:pl-[76px]">{children}</main>
+      <main className="lg:pl-[72px]">{children}</main>
       <MobileTabBar />
     </div>
   );

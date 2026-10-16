@@ -40,11 +40,11 @@
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
   --color-success: var(--success);
-  --color-aurora-1: var(--aurora-1);
-  --color-aurora-2: var(--aurora-2);
-  --color-aurora-3: var(--aurora-3);
-  --color-aurora-4: var(--aurora-4);
-  --color-aurora-ink: var(--aurora-ink);
+  --color-aurora-1: var(--primary);
+  --color-aurora-2: var(--primary);
+  --color-aurora-3: var(--primary);
+  --color-aurora-4: var(--primary);
+  --color-aurora-ink: var(--primary);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
