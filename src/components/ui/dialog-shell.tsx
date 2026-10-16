@@ -46,13 +46,13 @@ export function DialogShell({
         <span
           className={cn(
             "flex size-9 shrink-0 items-center justify-center rounded-lg",
-            destructive ? "bg-destructive/15" : "icon-chip"
+            destructive ? "bg-destructive/15" : "bg-secondary"
           )}
         >
           <Icon
             className={cn(
               "size-4.5",
-              destructive ? "text-destructive" : "text-aurora-2"
+              destructive ? "text-destructive" : "text-foreground"
             )}
           />
         </span>

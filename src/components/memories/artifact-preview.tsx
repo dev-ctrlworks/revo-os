@@ -67,7 +67,7 @@ export function EmailPreview({ memory }: { memory: Memory }) {
         <h3 className="mt-5 text-lg font-semibold tracking-tight">
           {memory.title}
         </h3>
-        <div className="mt-4 space-y-3 border-l-2 border-aurora-2/20 pl-4">
+        <div className="mt-4 space-y-3 border-l-2 border-border pl-4">
           {paragraphs.map((line, i) => (
             <p
               key={i}
@@ -92,7 +92,7 @@ export function DiscussionPreview({ memory }: { memory: Memory }) {
   return (
     <div className="bg-muted/20">
       <div className="flex items-center gap-3 border-b border-border/40 bg-card px-5 py-3 sm:px-6">
-        <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-teal-500 to-cyan-500 text-xs font-bold text-white">
+        <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-secondary text-xs font-bold text-foreground">
           {initialOf(sender)}
         </span>
         <div className="min-w-0 flex-1">
@@ -131,7 +131,7 @@ export function DiscussionPreview({ memory }: { memory: Memory }) {
           <div className="flex-1 rounded-full bg-muted px-4 py-2 text-[11px] text-muted-foreground">
             This conversation was captured by Revo OS
           </div>
-          <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-teal-500 to-cyan-500 text-white">
+          <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-secondary text-foreground">
             <Send className="size-3.5" />
           </span>
         </div>
@@ -145,7 +145,7 @@ export function NotePreview({ memory }: { memory: Memory }) {
     <div className="px-5 py-7 sm:px-8 sm:py-9">
       <div className="relative mx-auto max-w-2xl">
         <div className="overflow-hidden rounded-xl border border-border/60 bg-card shadow-sm">
-          <div className="h-1 w-full bg-gradient-to-r from-amber-400 to-orange-500" />
+          <div className="h-1 w-full bg-secondary" />
           <div className="px-6 py-6 sm:px-8 sm:py-7">
             <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] text-muted-foreground">
               <span className="flex items-center gap-1.5">

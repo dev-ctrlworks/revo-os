@@ -27,7 +27,7 @@ export function MobileTabBar() {
       aria-label="Primary"
       className="fixed inset-x-0 bottom-0 z-40 px-3 pb-3 lg:hidden"
     >
-      <div className="flex items-end justify-around gap-1 rounded-2xl border border-border bg-card px-2 py-1.5 shadow-lg">
+      <div className="flex items-end justify-around gap-1 rounded-2xl border border-border bg-card px-2 py-1.5 shadow-sm">
         {tabs.map((tab) => {
           const active =
             pathname === tab.href || pathname.startsWith(`${tab.href}/`);
@@ -39,7 +39,7 @@ export function MobileTabBar() {
                 key={tab.href}
                 href={tab.href}
                 aria-label={tab.label}
-                className="-mt-5 flex size-12 shrink-0 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-lg transition-transform hover:scale-105"
+                className="-mt-5 flex size-12 shrink-0 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
               >
                 <Icon className="size-5" />
               </Link>

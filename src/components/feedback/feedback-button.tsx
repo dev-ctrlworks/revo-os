@@ -84,7 +84,7 @@ export function FeedbackButton() {
         render={
           <Button
             onClick={openDialog}
-            className="fixed bottom-5 right-5 z-40 flex items-center gap-1.5 rounded-full px-3.5 shadow-[0_12px_32px_-12px_color-mix(in_oklab,var(--aurora-2)_55%,transparent)] sm:px-4"
+            className="fixed bottom-5 right-5 z-40 flex items-center gap-1.5 rounded-full px-3.5 shadow-sm sm:px-4"
           >
             <MessageCircleHeart className="size-4" />
             <span className="hidden sm:inline">Feedback</span>
@@ -95,7 +95,7 @@ export function FeedbackButton() {
         {status === "done" ? (
           <>
             <DialogHeader>
-              <DialogTitle className="text-gradient">Thank you!</DialogTitle>
+              <DialogTitle>Thank you!</DialogTitle>
               <DialogDescription>
                 Your feedback has been sent. It goes straight to the Revo OS team.
               </DialogDescription>

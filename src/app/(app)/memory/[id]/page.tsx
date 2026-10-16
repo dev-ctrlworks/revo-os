@@ -688,7 +688,7 @@ function MetadataCard({ memory }: { memory: Memory }) {
                 href={url}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex max-w-full items-center gap-1 font-medium text-aurora-2 transition-colors hover:text-aurora-2"
+                className="inline-flex max-w-full items-center gap-1 font-medium text-foreground transition-colors hover:underline"
               >
                 <span className="truncate">
                   {memory.domain ?? new URL(url).hostname}
@@ -702,7 +702,7 @@ function MetadataCard({ memory }: { memory: Memory }) {
                 href={memory.previewUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex max-w-full items-center gap-1 font-medium text-aurora-2 transition-colors hover:text-aurora-2"
+                className="inline-flex max-w-full items-center gap-1 font-medium text-foreground transition-colors hover:underline"
               >
                 <span className="truncate">
                   {memory.source.replace(/^Upload · /, "")}
@@ -773,7 +773,7 @@ function TimelineSection({
       <div className="mb-5 flex items-end justify-between gap-3">
         <div>
           <h2 className="flex items-center gap-2 text-base font-semibold tracking-tight">
-            <TrendingUp className="size-4 text-aurora-2" />
+            <TrendingUp className="size-4 text-muted-foreground" />
             Evolution of this thread
           </h2>
           <p className="mt-0.5 text-xs text-muted-foreground">
@@ -796,12 +796,12 @@ function TimelineSection({
                   className={cn(
                     "absolute left-0 top-1 flex size-[27px] items-center justify-center rounded-full border",
                     self
-                      ? "border-aurora-2/50 bg-aurora-2/15"
+                      ? "border-primary bg-secondary"
                       : "border-border/60 bg-card"
                   )}
                 >
                   {self ? (
-                    <Sparkles className="size-3 text-aurora-2" />
+                    <Sparkles className="size-3 text-muted-foreground" />
                   ) : (
                     <span className="size-2 rounded-full bg-foreground/25" />
                   )}
@@ -810,8 +810,8 @@ function TimelineSection({
                   className={cn(
                     "border-border/50 transition-colors",
                     self
-                      ? "border-aurora-2/35 bg-aurora-2/[0.06]"
-                      : "hover:border-aurora-2/40"
+                      ? "border-border bg-secondary"
+                      : "hover:border-border"
                   )}
                 >
                   <CardContent className="px-4 py-3.5">
@@ -945,7 +945,6 @@ export default function MemoryDetailPage() {
 
   return (
     <div className="relative mx-auto w-full max-w-6xl">
-      <div className="pointer-events-none absolute inset-x-0 -top-24 -z-10 h-56 bg-[radial-gradient(ellipse_at_top,rgba(99,102,241,0.09),transparent_70%)]" />
 
       <div className="space-y-10 pb-16">
         <div className="flex items-center justify-between gap-4">
@@ -953,7 +952,7 @@ export default function MemoryDetailPage() {
               href={`/collections/${encodeURIComponent(
                 getCollectionIds(memory)[0] ?? memory.collection
               )}`}
-              className="group inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-card/60 px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-aurora-2/40 hover:text-foreground"
+              className="group inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-card/60 px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-border hover:text-foreground"
             >
               <ArrowLeft className="size-3.5 transition-transform group-hover:-translate-x-0.5" />
               <span className="max-w-40 truncate sm:max-w-64">
@@ -966,7 +965,7 @@ export default function MemoryDetailPage() {
                 <Link
                   href={`/memory/${newer.id}`}
                   aria-label="Newer memory"
-                  className="flex size-7 items-center justify-center rounded-lg border border-border/60 bg-card/60 text-muted-foreground transition-colors hover:border-aurora-2/40 hover:text-foreground"
+                  className="flex size-7 items-center justify-center rounded-lg border border-border/60 bg-card/60 text-muted-foreground transition-colors hover:border-border hover:text-foreground"
                 >
                   <ChevronLeft className="size-3.5" />
                 </Link>
@@ -982,7 +981,7 @@ export default function MemoryDetailPage() {
                 <Link
                   href={`/memory/${older.id}`}
                   aria-label="Older memory"
-                  className="flex size-7 items-center justify-center rounded-lg border border-border/60 bg-card/60 text-muted-foreground transition-colors hover:border-aurora-2/40 hover:text-foreground"
+                  className="flex size-7 items-center justify-center rounded-lg border border-border/60 bg-card/60 text-muted-foreground transition-colors hover:border-border hover:text-foreground"
                 >
                   <ChevronRight className="size-3.5" />
                 </Link>

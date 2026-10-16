@@ -103,7 +103,7 @@ export function CommandPalette() {
               {searchResults.length === 0 && (
                 <CommandEmpty>
                   <div className="py-8 text-center">
-                    <Sparkles className="mx-auto mb-3 size-5 text-aurora-2" />
+                    <Sparkles className="mx-auto mb-3 size-5 text-muted-foreground" />
                     <p className="text-sm font-medium">No memories found</p>
                     <p className="mt-1 text-xs text-muted-foreground">
                       Try a different phrase or browse the timeline.
@@ -120,7 +120,7 @@ export function CommandPalette() {
                       onSelect={() => navigate(`/memory/${m.id}`)}
                       className="flex items-center gap-3"
                     >
-                      <span className="flex size-7 shrink-0 items-center justify-center rounded-md bg-aurora-2/15 text-[10px] font-bold text-aurora-ink">
+                      <span className="flex size-7 shrink-0 items-center justify-center rounded-md bg-secondary text-[10px] font-bold text-foreground">
                         {m.type[0].toUpperCase()}
                       </span>
                       <span className="min-w-0 flex-1">

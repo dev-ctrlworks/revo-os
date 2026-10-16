@@ -68,7 +68,7 @@ export function BrowserPanel({ onToast }: { onToast: (message: string) => void }
                 setUrl(`https://${s.hostname}`);
                 setJustClipped(false);
               }}
-              className="rounded-full border border-border/60 bg-card/60 px-3 py-1 text-[11px] text-muted-foreground transition-colors hover:border-aurora-2/40 hover:text-foreground"
+              className="rounded-full border border-border/60 bg-card/60 px-3 py-1 text-[11px] text-muted-foreground transition-colors hover:border-border hover:text-foreground"
             >
               {s.hostname}
             </button>
@@ -129,7 +129,7 @@ export function BrowserPanel({ onToast }: { onToast: (message: string) => void }
           {phase === "loaded" && (
             <div className="p-5">
               <div className="flex items-start gap-3">
-                <span className="flex size-9 shrink-0 items-center justify-center rounded-xl icon-chip text-sm font-bold text-aurora-2 ring-1 ring-inset ring-aurora-2/10">
+                <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-secondary text-sm font-bold text-muted-foreground">
                   {page.hostname.charAt(0).toUpperCase()}
                 </span>
                 <div className="min-w-0 flex-1">
@@ -212,7 +212,7 @@ export function BrowserPanel({ onToast }: { onToast: (message: string) => void }
       </div>
 
       <p className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
-        <Sparkles className="size-3 text-aurora-2" />
+        <Sparkles className="size-3 text-muted-foreground" />
         Prototype simulation — in the full product, the browser extension
         captures pages in one click while you browse.
       </p>

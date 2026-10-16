@@ -171,7 +171,7 @@ export function GraphCanvas({
   };
 
   return (
-    <div className="relative h-full w-full overflow-hidden rounded-2xl border border-border/50 bg-gradient-to-b from-card/50 to-card/10">
+    <div className="relative h-full w-full overflow-hidden rounded-2xl border border-border bg-card">
       <svg
         ref={svgRef}
         viewBox={`0 0 ${width} ${height}`}
@@ -207,20 +207,6 @@ export function GraphCanvas({
         <rect x={0} y={0} width={width} height={height} fill="url(#graph-dots)" />
 
         <g transform={`translate(${view.x} ${view.y}) scale(${view.k})`}>
-          {nodes
-            .filter((node) => node.hub)
-            .map((node) => (
-              <circle
-                key={`glow-${node.id}`}
-                cx={node.x}
-                cy={node.y}
-                r={170}
-                fill={node.color}
-                opacity={activeIds.has(node.id) ? 0.07 : 0.03}
-                className="transition-opacity duration-300"
-              />
-            ))}
-
           {edges.map((edge) => {
             const from = nodeById.get(edge.source);
             const to = nodeById.get(edge.target);
@@ -388,7 +374,7 @@ export function GraphCanvas({
         Scroll to zoom · drag to pan · click a node or connection
       </div>
 
-      <div className="absolute bottom-3 right-3 flex flex-col overflow-hidden rounded-lg border border-border/60 bg-card/90 shadow-sm backdrop-blur">
+      <div className="absolute bottom-3 right-3 flex flex-col overflow-hidden rounded-lg border border-border bg-card shadow-sm">
         <button
           type="button"
           onClick={() => zoomAt(1.3)}

@@ -20,9 +20,9 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           aria-checked={indeterminate ? "mixed" : checked}
           className={cn(
             "peer h-4 w-4 appearance-none rounded-sm border border-border bg-card",
-            "checked:bg-aurora-2 checked:border-aurora-2 checked:text-white",
-            "indeterminate:bg-aurora-2 indeterminate:border-aurora-2 indeterminate:text-white",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aurora-2/50 focus-visible:ring-offset-2",
+            "checked:bg-primary checked:border-primary checked:text-primary-foreground",
+            "indeterminate:bg-primary indeterminate:border-primary indeterminate:text-primary-foreground",
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-offset-2",
             "disabled:opacity-50 disabled:cursor-not-allowed",
             "transition-colors duration-150",
             className

@@ -73,7 +73,7 @@ export function GraphInspector({
     <aside className="flex h-full flex-col overflow-hidden rounded-2xl border border-border/50 bg-card/60">
       <div className="flex items-center justify-between border-b border-border/50 px-5 py-3 sm:px-6 sm:py-4">
         <div className="flex items-center gap-2 text-sm font-semibold">
-          <Compass className="size-4 text-aurora-2" />
+          <Compass className="size-4 text-muted-foreground" />
           {selectedEdge ? "Connection" : selectedNode ? "Node" : "Inspector"}
         </div>
         {(selectedNode || selectedEdge) && (
@@ -207,7 +207,7 @@ function NodeDetail({
           </Button>
         ) : (
           <Button variant="outline" className="w-full rounded-lg" onClick={() => onExplore(node.id)}>
-            <Compass className="size-3.5 text-aurora-2" />
+            <Compass className="size-3.5 text-muted-foreground" />
             Explore connections
           </Button>
         )}
@@ -355,7 +355,7 @@ function EdgeDetail({
               <button
                 type="button"
                 onClick={() => onOpenMemory(node.id)}
-                className="mt-2 inline-flex items-center gap-1 text-[11px] font-medium text-aurora-2 transition-colors hover:text-aurora-2"
+                className="mt-2 inline-flex items-center gap-1 text-[11px] font-medium text-foreground transition-colors hover:text-foreground"
               >
                 <ExternalLink className="size-3" />
                 Open memory

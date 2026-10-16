@@ -24,7 +24,7 @@ export function WebLinkPreview({ memory }: { memory: Memory }) {
 
       <div className="p-5 sm:p-6">
         <div className="flex items-start gap-3">
-          <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500/15 to-teal-500/15 text-base font-bold text-emerald-600">
+          <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-secondary text-base font-bold text-foreground">
             {host.charAt(0).toUpperCase()}
           </span>
           <div className="min-w-0 flex-1">
@@ -32,12 +32,12 @@ export function WebLinkPreview({ memory }: { memory: Memory }) {
               href={url ?? undefined}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-start gap-1.5 text-sm font-semibold leading-snug tracking-tight text-foreground transition-colors hover:text-emerald-500"
+              className="inline-flex items-start gap-1.5 text-sm font-semibold leading-snug tracking-tight text-foreground transition-colors hover:underline"
             >
               <span className="line-clamp-2">{memory.title}</span>
-              <ArrowUpRight className="mt-0.5 size-3.5 shrink-0 text-emerald-500" />
+              <ArrowUpRight className="mt-0.5 size-3.5 shrink-0 text-muted-foreground" />
             </a>
-            <p className="mt-0.5 text-[11px] font-medium text-emerald-500">
+            <p className="mt-0.5 text-[11px] font-medium text-muted-foreground">
               {memory.domain ?? host}
             </p>
           </div>
@@ -45,7 +45,7 @@ export function WebLinkPreview({ memory }: { memory: Memory }) {
             href={url ?? undefined}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-gradient-to-r from-emerald-500 to-teal-500 px-3 py-1.5 text-xs font-semibold text-white shadow-sm shadow-emerald-500/25 transition-all hover:brightness-110"
+            className="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
           >
             <LinkIcon className="size-3.5" />
             Open
@@ -63,7 +63,7 @@ export function WebLinkPreview({ memory }: { memory: Memory }) {
           href={url ?? undefined}
           target="_blank"
           rel="noreferrer"
-          className="ml-2 inline-flex shrink-0 items-center gap-1 font-medium text-emerald-500 transition-colors hover:text-emerald-400"
+          className="ml-2 inline-flex shrink-0 items-center gap-1 font-medium text-foreground transition-colors hover:underline"
         >
           Visit page
           <ArrowUpRight className="size-3" />

@@ -188,7 +188,7 @@ export function MemoryGraph() {
               <SlidersHorizontal className="mr-1.5 size-3.5" />
               Types
               {types.size !== availableTypes.length && (
-                <span className="ml-1.5 rounded-full bg-aurora-2/20 px-1.5 text-[10px] font-semibold text-aurora-ink">
+                <span className="ml-1.5 rounded-full bg-secondary px-1.5 text-[10px] font-semibold text-foreground">
                   {types.size}
                 </span>
               )}
@@ -220,7 +220,7 @@ export function MemoryGraph() {
                 className={cn(
                   "rounded-md px-2.5 py-1 text-[11px] font-medium transition-colors",
                   range === option.value
-                    ? "bg-aurora-2/10 text-aurora-ink"
+                    ? "bg-secondary text-foreground"
                     : "text-muted-foreground hover:text-foreground"
                 )}
               >
@@ -260,8 +260,8 @@ export function MemoryGraph() {
       </div>
 
       {exploreNode && (
-        <div className="flex flex-wrap items-center gap-2 rounded-xl border border-aurora-2/30 bg-aurora-2/[0.09] px-4 py-2.5">
-          <Compass className="size-4 text-aurora-2" />
+        <div className="flex flex-wrap items-center gap-2 rounded-xl border border-border bg-secondary px-4 py-2.5">
+          <Compass className="size-4 text-muted-foreground" />
           <p className="text-xs text-foreground">
             Exploring <span className="font-semibold">{exploreNode.label}</span> ·{" "}
             {exploreCount} direct connections highlighted
@@ -272,7 +272,7 @@ export function MemoryGraph() {
               setExploreId(null);
               canvasRef.current?.reset();
             }}
-            className="ml-auto text-[11px] font-medium text-aurora-2 transition-colors hover:text-aurora-2"
+            className="ml-auto text-[11px] font-medium text-foreground transition-colors hover:text-foreground"
           >
             Exit explore
           </button>
@@ -382,7 +382,7 @@ function TopicChip({
       className={cn(
         "flex shrink-0 items-center gap-1.5 rounded-full border px-3 py-1 text-[11px] font-medium transition-colors",
         active
-          ? "border-aurora-2/40 bg-aurora-2/15 text-aurora-ink"
+          ? "border-border bg-secondary text-foreground"
           : "border-border/60 bg-card/60 text-muted-foreground hover:text-foreground"
       )}
     >

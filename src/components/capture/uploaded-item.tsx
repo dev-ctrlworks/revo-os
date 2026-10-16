@@ -23,7 +23,7 @@ export function UploadedItem({
             ? "bg-emerald-500/10 text-emerald-500"
             : failed
               ? "bg-red-500/10 text-red-500"
-              : "bg-aurora-2/15 text-aurora-ink"
+              : "bg-secondary text-foreground"
         )}
       >
         {indexed ? (
@@ -46,7 +46,7 @@ export function UploadedItem({
             <span className="block text-[10px] text-muted-foreground">
               {file.sizeLabel} · indexed
             </span>
-            <span className="mt-0.5 line-clamp-2 block text-[10px] leading-snug text-aurora-2/80">
+            <span className="mt-0.5 line-clamp-2 block text-[10px] leading-snug text-muted-foreground">
               ✦ Auto summary: {file.summary}
             </span>
           </>
@@ -60,7 +60,7 @@ export function UploadedItem({
       {indexed && file.memoryId ? (
         <Link
           href={`/memory/${file.memoryId}`}
-          className="inline-flex h-6 shrink-0 items-center gap-0.5 rounded-md px-1.5 text-[11px] font-medium text-aurora-2 underline-offset-2 transition-colors hover:text-aurora-2 hover:underline"
+          className="inline-flex h-6 shrink-0 items-center gap-0.5 rounded-md px-1.5 text-[11px] font-medium text-foreground underline-offset-2 transition-colors hover:underline"
         >
           View
           <ArrowUpRight className="size-3" />

@@ -41,10 +41,9 @@ export function AIAnswerView({
           </span>
         </div>
       )}
-      <Card className="relative overflow-hidden border-aurora-2/20 bg-gradient-to-br from-aurora-2/10 via-card/60 to-aurora-3/10 p-5 shadow-[0_24px_60px_-32px_color-mix(in_oklab,var(--aurora-2)_50%,transparent)] backdrop-blur-xl">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-aurora-2/60 to-transparent" />
+      <Card className="relative overflow-hidden p-5">
         <div className="mb-1.5 flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
-          <BookOpenText className="size-3.5 text-aurora-2" />
+          <BookOpenText className="size-3.5" />
           AI summary
           <span className="text-muted-foreground">•</span>
           <span>{timeAgo(answer.createdAt)}</span>
@@ -62,7 +61,7 @@ export function AIAnswerView({
       {answer.sources.length > 0 && (
         <div>
           <div className="mb-2 flex items-center gap-2 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
-            <span className="flex size-5 items-center justify-center rounded-full bg-aurora-2/15 text-[10px] font-semibold text-aurora-ink">
+            <span className="flex size-5 items-center justify-center rounded-full bg-secondary text-[10px] font-semibold text-foreground">
               {answer.sources.length}
             </span>
             Source memories
@@ -81,7 +80,7 @@ export function AIAnswerView({
 function SourceChip({ memory }: { memory: Memory }) {
   return (
     <Link href={`/memory/${memory.id}`} className="group block">
-      <Card className="flex items-center gap-3 border-border/50 bg-card/55 p-3 backdrop-blur-xl transition-all hover:border-aurora-2/40 hover:bg-card/75 hover:shadow-[0_16px_40px_-24px_color-mix(in_oklab,var(--aurora-2)_45%,transparent)]">
+      <Card className="flex items-center gap-3 p-3 transition-colors hover:bg-secondary">
         <MemoryTypeIcon type={memory.type} />
         <div className="min-w-0 flex-1">
           <p className="font-display line-clamp-1 text-[13px] font-medium">{memory.title}</p>
