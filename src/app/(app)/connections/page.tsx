@@ -3,6 +3,8 @@
 import { Network } from "lucide-react";
 import { useMemoryStore } from "@/lib/use-memory-store";
 import { MemoryGraph } from "@/components/graph/memory-graph";
+import { RelationshipsPanel } from "./relationships";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function ConnectionsPage() {
   const memories = useMemoryStore();
@@ -19,13 +21,23 @@ export default function ConnectionsPage() {
         </h1>
         <p className="mt-3 max-w-2xl text-sm text-muted-foreground">
           {count} memories wired to the people, places, products, and topics
-          they mention. Search to find a thread, filter by type or topic, then
-          click any node or connection to see why it&apos;s linked — including
-          the connections Revo OS discovered on its own.
+          they mention. Search to find a thread, then explore the relationship
+          list or the interactive graph.
         </p>
       </div>
 
-      <MemoryGraph />
+      <Tabs defaultValue="list">
+        <TabsList className="grid w-full max-w-xs grid-cols-2">
+          <TabsTrigger value="list">Relationships</TabsTrigger>
+          <TabsTrigger value="graph">Graph</TabsTrigger>
+        </TabsList>
+        <TabsContent value="list" className="mt-4">
+          <RelationshipsPanel />
+        </TabsContent>
+        <TabsContent value="graph" className="mt-4">
+          <MemoryGraph />
+        </TabsContent>
+      </Tabs>
     </div>
   );
 }
