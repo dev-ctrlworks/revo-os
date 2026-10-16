@@ -74,7 +74,7 @@
   --success: #15803d;
   --border: #e7e5e4;
   --input: #e7e5e4;
-  --ring: #a8a29e;
+  --ring: #78716c;
   --chart-1: #171717;
   --chart-2: #57534e;
   --chart-3: #a8a29e;
@@ -88,7 +88,7 @@
   --sidebar-accent: #f5f5f4;
   --sidebar-accent-foreground: #1c1917;
   --sidebar-border: #e7e5e4;
-  --sidebar-ring: #a8a29e;
+  --sidebar-ring: #78716c;
 
   /* Legacy brand aliases, retained so existing utility classes keep resolving.
      Repointed to the monochrome ink ramp. */
