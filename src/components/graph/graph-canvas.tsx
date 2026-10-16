@@ -200,7 +200,7 @@ export function GraphCanvas({
             markerHeight="5"
             orient="auto-start-reverse"
           >
-            <path d="M 0 0 L 10 5 L 0 10 z" fill="#292524" />
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#6558c8" />
           </marker>
         </defs>
 
@@ -221,7 +221,7 @@ export function GraphCanvas({
                 y1={from.y}
                 x2={to.x}
                 y2={to.y}
-                stroke={isSelected ? "#171717" : meta.color}
+                stroke={isSelected ? "#6558c8" : meta.color}
                 strokeWidth={isSelected ? meta.width + 1.4 : meta.width}
                 strokeOpacity={active ? (isSelected ? 0.95 : 0.5) : 0.08}
                 strokeDasharray={meta.dashed ? "4 5" : undefined}
@@ -270,7 +270,7 @@ export function GraphCanvas({
                   cx={(from.x + to.x) / 2}
                   cy={(from.y + to.y) / 2}
                   r={2.4}
-                  fill="#171717"
+                  fill="#6558c8"
                   opacity={active ? 0.85 : 0.1}
                   className="pointer-events-none transition-opacity duration-200"
                 />
