@@ -150,7 +150,7 @@ export function BrowserPanel({ onToast }: { onToast: (message: string) => void }
                       <ArrowUpRight className="size-3.5" />
                     </button>
                   </div>
-                  <p className="text-[11px] font-medium text-emerald-500">
+                  <p className="text-[11px] font-medium text-muted-foreground">
                     {page.domain}
                   </p>
                 </div>
@@ -175,7 +175,7 @@ export function BrowserPanel({ onToast }: { onToast: (message: string) => void }
                     No tags detected — filing under “{page.collection}”
                   </span>
                 )}
-                <span className="ml-auto inline-flex items-center gap-1 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-2.5 py-0.5 text-[11px] font-medium text-emerald-500">
+                <span className="ml-auto inline-flex items-center gap-1 rounded-full border border-border bg-secondary px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground">
                   <Sparkles className="size-3" />
                   {page.collection}
                 </span>
@@ -186,7 +186,7 @@ export function BrowserPanel({ onToast }: { onToast: (message: string) => void }
                   size="sm"
                   onClick={clip}
                   disabled={justClipped}
-                  className={cn("rounded-lg", justClipped && "bg-emerald-500/10 text-emerald-600 ring-1 ring-inset ring-emerald-500/20 hover:bg-emerald-500/15", !justClipped && gradientButtonClass)}
+                  className={cn("rounded-lg", justClipped && "bg-success/10 text-success ring-1 ring-inset ring-success/20 hover:bg-success/15", !justClipped && gradientButtonClass)}
                 >
                   {justClipped ? (
                     <>
