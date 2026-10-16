@@ -36,7 +36,7 @@ import {
 } from "lucide-react";
 import type { Memory, MemoryType } from "@/lib/types";
 import { useMemoryStore } from "@/lib/use-memory-store";
-import { getRelatedMemories } from "@/lib/ai";
+import { getRelatedMemories } from "@/lib/retrieval";
 import {
   generateMemoryKeyPoints,
   generateMemorySummary,

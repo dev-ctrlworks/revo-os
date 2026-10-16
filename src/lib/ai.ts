@@ -1,5 +1,5 @@
 import { collections } from "./mock-data";
-import { getAllMemories } from "./memory-store";
+import { getAllMemories, getCollectionIds } from "./memory-store";
 import type { Memory } from "./types";
 
 export interface SearchOptions {
@@ -22,7 +22,7 @@ function scoreMemory(memory: Memory, tokens: string[]): number {
     memory.content,
     memory.domain ?? "",
     ...memory.tags,
-    memory.collection,
+    ...getCollectionIds(memory),
     memory.source,
   ]
     .join(" ")
@@ -33,7 +33,7 @@ function scoreMemory(memory: Memory, tokens: string[]): number {
     if (searchable.includes(token)) score += 4;
     if (memory.title.toLowerCase().includes(token)) score += 3;
     if (memory.tags.some((tag) => tag.includes(token))) score += 2;
-    if (memory.collection.toLowerCase().includes(token)) score += 1;
+    if (getCollectionIds(memory).some((c) => c.toLowerCase().includes(token))) score += 1;
   }
   return score;
 }
@@ -59,7 +59,11 @@ export function getRelatedMemories(memory: Memory, limit = 3): Memory[] {
     .filter((m) => m.id !== memory.id)
     .map((m) => {
       const overlap = m.tags.filter((tag) => memory.tags.includes(tag)).length;
-      const sameCollection = m.collection === memory.collection ? 1 : 0;
+      const sameCollection = getCollectionIds(m).some((c) =>
+        getCollectionIds(memory).includes(c)
+      )
+        ? 1
+        : 0;
       return { memory: m, score: overlap * 2 + sameCollection };
     })
     .filter((item) => item.score > 0)
@@ -72,7 +76,7 @@ export function getRelatedMemories(memory: Memory, limit = 3): Memory[] {
 }
 
 export function generateAnswer(query: string, sources: Memory[]): string {
-  const matchedCollections = new Set(sources.map((s) => s.collection));
+  const matchedCollections = new Set(sources.flatMap((s) => getCollectionIds(s)));
   const collectionList = Array.from(matchedCollections).slice(0, 2).join(" and ");
 
   const researchQuery = /research|working on|been up to|focusing on|recently/i.test(query);
