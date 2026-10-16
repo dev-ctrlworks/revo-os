@@ -5,7 +5,6 @@ import { Calendar, Heart, Check, ChevronRight } from "lucide-react";
 import type { Memory, MemoryType } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { timeAgo } from "@/lib/utils-format";
-import { memoryTypeMeta } from "@/lib/memory-type";
 import { cardSurfaceClass } from "@/lib/ui";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -31,7 +30,6 @@ export function MemoryCard({
   onFavoriteToggle,
   onCollectionChange,
 }: MemoryCardProps) {
-  const top = memoryTypeMeta[memory.type]?.gradient ?? memoryTypeMeta.note.gradient;
   const isInteractive = Boolean(onSelect || onFavoriteToggle || onCollectionChange);
   const isOuterLink = !isInteractive;
 
@@ -53,7 +51,7 @@ export function MemoryCard({
 
   const renderContent = () => (
     <>
-      <div className={cn("h-1 bg-gradient-to-r shadow-[0_2px_12px_-2px_color-mix(in_oklab,var(--aurora-2)_55%,transparent)]", top)} />
+      <div className="h-px shrink-0 bg-border/70" />
       <div className={cn("flex flex-1 flex-col", variant === "grid" ? "p-4" : "p-5")}>
         <div className="mb-2 flex items-center justify-between gap-2">
           <span className="flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-wider text-muted-foreground">

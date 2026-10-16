@@ -34,33 +34,25 @@ export function CollectionCard({
   name,
   emoji,
   description,
-  color,
   generated,
   memoryCount,
-}: CollectionCardProps) {
-  return (
+}: CollectionCardProps) {  return (
     <Link
       href={`/collections/${encodeURIComponent(name)}`}
       className="group block h-full"
     >
-      <Card className="relative flex h-full flex-col gap-0 overflow-hidden border-border/50 p-0 transition-all duration-300 hover:-translate-y-1 hover:border-border hover:shadow-xl hover:shadow-[0_24px_64px_-28px_color-mix(in_oklab,var(--aurora-2)_50%,transparent)]">
-        <div
-          className={cn(
-            "pointer-events-none absolute inset-0 bg-gradient-to-b opacity-50 transition-opacity duration-300 group-hover:opacity-90",
-            color
-          )}
-        />
+      <Card className="relative flex h-full flex-col gap-0 overflow-hidden p-0 transition-colors duration-200 hover:border-border">
         <div className="relative flex h-full flex-col p-4">
           <div className="mb-2.5 flex items-center justify-between gap-2">
-            <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-card/80 text-base shadow-sm ring-1 ring-border/40 backdrop-blur">
+            <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-secondary text-base">
               {emoji}
             </span>
             {generated ? (
-              <Badge className="rounded-full brand-gradient px-2 py-0.5 text-[10px] font-medium text-white">
+              <Badge className="rounded-full bg-primary px-2 py-0.5 text-[10px] font-medium text-primary-foreground">
                 AI-curated
               </Badge>
             ) : (
-              <span className="rounded-md bg-card/80 px-2 py-0.5 text-[11px] font-medium text-muted-foreground shadow-sm ring-1 ring-border/40 backdrop-blur">
+              <span className="rounded-md bg-muted px-2 py-0.5 text-[11px] font-medium text-muted-foreground">
                 {memoryCount}
               </span>
             )}
@@ -88,7 +80,6 @@ function AISuggestionCard({
   name,
   emoji,
   description,
-  color,
   memoryCount,
   busy,
   onCreate,
@@ -97,19 +88,13 @@ function AISuggestionCard({
   onCreate: () => void;
 }) {
   return (
-    <Card className="relative flex h-full flex-col gap-0 overflow-hidden border-dashed border-aurora-2/30 p-0 transition-all duration-300 hover:border-aurora-2/50 hover:shadow-xl hover:shadow-[0_24px_64px_-28px_color-mix(in_oklab,var(--aurora-2)_50%,transparent)]">
-      <div
-        className={cn(
-          "pointer-events-none absolute inset-0 bg-gradient-to-b opacity-40",
-          color
-        )}
-      />
+    <Card className="relative flex h-full flex-col gap-0 overflow-hidden border-dashed p-0 transition-colors duration-200">
       <div className="relative flex h-full flex-col p-4">
         <div className="mb-2.5 flex items-center justify-between gap-2">
-          <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-card/80 text-base shadow-sm ring-1 ring-border/40 backdrop-blur">
+          <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-secondary text-base">
             {emoji}
           </span>
-          <Badge className="bg-aurora-2/15 px-2 py-0.5 text-[10px] font-medium text-aurora-ink ring-1 ring-inset ring-aurora-2/20">
+          <Badge className="rounded-full bg-secondary px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
             AI-suggested
           </Badge>
         </div>
@@ -212,7 +197,7 @@ export default function CollectionsPage() {
         <div
           role="status"
           aria-live="polite"
-          className="flex items-center gap-2 rounded-xl border border-aurora-2/20 bg-aurora-2/10 px-4 py-3 text-sm text-aurora-ink"
+          className="flex items-center gap-2 rounded-xl border border-border bg-secondary px-4 py-3 text-sm text-foreground"
         >
           <Check className="size-4 shrink-0" />
           {notice}

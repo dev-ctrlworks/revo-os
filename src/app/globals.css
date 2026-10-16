@@ -55,49 +55,49 @@
 }
 
 :root {
-  /* RevoOS semantic palette — calm, minimal, light-only. */
-  --background: #f8f8fb;
-  --foreground: #242333;
+  /* RevoOS semantic palette — calm, minimal, light-only, mostly monochrome. */
+  --background: #fafafa;
+  --foreground: #18181b;
   --card: #ffffff;
-  --card-foreground: #242333;
+  --card-foreground: #18181b;
   --popover: #ffffff;
-  --popover-foreground: #242333;
-  --primary: #6d55d9;
+  --popover-foreground: #18181b;
+  --primary: #6558c8;
   --primary-foreground: #ffffff;
-  --secondary: #f1f0f7;
-  --secondary-foreground: #242333;
-  --muted: #f1f0f7;
-  --muted-foreground: #777487;
-  --accent: #f1f0f7;
-  --accent-foreground: #242333;
+  --secondary: #f4f4f5;
+  --secondary-foreground: #18181b;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --accent: #f4f4f5;
+  --accent-foreground: #18181b;
   --destructive: #c43d4b;
   --success: #16845b;
-  --border: #e7e5ef;
-  --input: #e7e5ef;
-  --ring: #6d55d9;
-  --chart-1: #6d55d9;
-  --chart-2: #5c9bff;
-  --chart-3: #8a7be0;
-  --chart-4: #59bbfb;
-  --chart-5: #b9a9ef;
+  --border: #e4e4e7;
+  --input: #e4e4e7;
+  --ring: #6558c8;
+  --chart-1: #6558c8;
+  --chart-2: #71717a;
+  --chart-3: #a1a1aa;
+  --chart-4: #d4d4d8;
+  --chart-5: #52525b;
   --radius: 0.75rem;
   --sidebar: #ffffff;
-  --sidebar-foreground: #242333;
-  --sidebar-primary: #6d55d9;
+  --sidebar-foreground: #18181b;
+  --sidebar-primary: #6558c8;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #f1f0f7;
-  --sidebar-accent-foreground: #242333;
-  --sidebar-border: #e7e5ef;
-  --sidebar-ring: #6d55d9;
+  --sidebar-accent: #f4f4f5;
+  --sidebar-accent-foreground: #18181b;
+  --sidebar-border: #e4e4e7;
+  --sidebar-ring: #6558c8;
 
   /* Legacy brand aliases, retained so existing utility classes keep resolving.
-     Repointed to the calmer palette; prefer semantic tokens in new code. */
-  --aurora-1: #6d55d9;
-  --aurora-2: #6d55d9;
-  --aurora-3: #59bbfb;
-  --aurora-4: #b9a9ef;
+     Repointed to the monochrome + restrained accent palette. */
+  --aurora-1: #6558c8;
+  --aurora-2: #6558c8;
+  --aurora-3: #71717a;
+  --aurora-4: #a1a1aa;
   /* Brand purple for small text on a tinted surface (WCAG AA ≥ 4.5:1). */
-  --aurora-ink: #5b46b8;
+  --aurora-ink: #5548b0;
 }
 
 /* Keep the brand purple brighter on dark surfaces, where the light-theme
@@ -188,28 +188,16 @@
     animation: scan 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   }
   .text-gradient {
-    background-image: linear-gradient(90deg, #7c5cff, #5c9bff 50%, #38bdf8);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: var(--primary);
   }
   .brand-gradient {
-    background-image: linear-gradient(
-      135deg,
-      oklch(0.58 0.19 292),
-      oklch(0.62 0.16 260) 55%,
-      oklch(0.76 0.13 240)
-    );
+    background-color: var(--primary);
   }
   .icon-chip {
-    background-image: linear-gradient(
-      135deg,
-      color-mix(in oklab, var(--aurora-1) 14%, transparent),
-      color-mix(in oklab, var(--aurora-3) 14%, transparent)
-    );
+    background-color: color-mix(in oklab, var(--primary) 10%, transparent);
   }
   .color-copy-primary {
-    color: color-mix(in oklab, var(--aurora-2) 88%, var(--foreground));
+    color: color-mix(in oklab, var(--primary) 88%, var(--foreground));
   }
   .glass {
     background-color: color-mix(in oklab, var(--card) 55%, transparent);

@@ -26,26 +26,12 @@ import {
 } from "@/components/ui/sheet";
 import { useMemoryStore } from "@/lib/use-memory-store";
 
-const GROUPS = [
-  {
-    label: "Main",
-    items: [
-      { href: "/dashboard", label: "Home", icon: Home },
-      { href: "/library", label: "Library", icon: Library },
-      { href: "/collections", label: "Collections", icon: LayoutGrid },
-    ],
-  },
-  {
-    label: "Explore",
-    items: [
-      { href: "/connections", label: "Connections", icon: Network },
-      { href: "/timeline", label: "Timeline", icon: Clock3 },
-    ],
-  },
-  {
-    label: "Recall",
-    items: [{ href: "/ask", label: "Ask", icon: Search }],
-  },
+const PRIMARY_NAV = [
+  { href: "/dashboard", label: "Home", icon: Home },
+  { href: "/library", label: "Library", icon: Library },
+  { href: "/collections", label: "Collections", icon: LayoutGrid },
+  { href: "/connections", label: "Connections", icon: Network },
+  { href: "/timeline", label: "Timeline", icon: Clock3 },
 ];
 
 type IconType = React.ComponentType<{ className?: string }>;
@@ -155,27 +141,32 @@ function NavBody({
     <div className="flex flex-1 flex-col overflow-y-auto overflow-x-hidden px-3 py-4">
       <CaptureButton expanded={expanded} onNavigate={onNavigate} />
 
-      {GROUPS.map((group) => (
-        <div key={group.label} className={expanded ? "mb-6" : "mb-4"}>
-          {expanded && (
-            <p className="mb-2 px-3 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
-              {group.label}
-            </p>
-          )}
-          <nav className="flex flex-col gap-1">
-            {group.items.map((item) => (
-              <NavItem
-                key={item.href}
-                {...item}
-                onNavigate={onNavigate}
-                expanded={expanded}
-              />
-            ))}
-          </nav>
-        </div>
-      ))}
+      <nav className="mb-6 flex flex-col gap-1">
+        {PRIMARY_NAV.map((item) => (
+          <NavItem
+            key={item.href}
+            {...item}
+            onNavigate={onNavigate}
+            expanded={expanded}
+          />
+        ))}
+      </nav>
 
-      <div className="mt-auto space-y-2 border-t border-border pt-3">
+      <div className="mt-auto space-y-1 border-t border-border pt-3">
+        <NavItem
+          href="/ask"
+          label="Ask"
+          icon={Search}
+          onNavigate={onNavigate}
+          expanded={expanded}
+        />
+        <NavItem
+          href="/settings"
+          label="Settings"
+          icon={Settings}
+          onNavigate={onNavigate}
+          expanded={expanded}
+        />
         {expanded ? (
           <div className="flex items-center gap-2.5 rounded-xl bg-secondary px-3 py-2.5 text-xs text-muted-foreground">
             <span className="size-1.5 shrink-0 rounded-full bg-success" />
@@ -186,16 +177,9 @@ function NavBody({
             className="flex justify-center rounded-xl py-2.5"
             title={`${memories.length} memories · saved locally`}
           >
-            <span className="size-2 rounded-full bg-success" />
+            <span className="size-1.5 rounded-full bg-success" />
           </div>
         )}
-        <NavItem
-          href="/settings"
-          label="Settings"
-          icon={Settings}
-          onNavigate={onNavigate}
-          expanded={expanded}
-        />
       </div>
     </div>
   );
@@ -203,30 +187,14 @@ function NavBody({
 
 export function AppSidebar() {
   const [open, setOpen] = useState(false);
-  const [expanded, setExpanded] = useState(false);
 
   return (
     <>
-      <aside
-        data-expanded={expanded}
-        onMouseEnter={() => setExpanded(true)}
-        onMouseLeave={() => setExpanded(false)}
-        onFocus={() => setExpanded(true)}
-        onBlur={() => setExpanded(false)}
-        className={cn(
-          "fixed inset-y-0 left-0 z-40 hidden shrink-0 flex-col overflow-hidden border-r border-border bg-sidebar transition-[width] duration-300 ease-in-out lg:flex",
-          expanded ? "w-60 shadow-sm" : "w-[72px]"
-        )}
-      >
-        <div
-          className={cn(
-            "flex h-14 shrink-0 items-center border-b border-border",
-            expanded ? "px-4" : "justify-center px-0"
-          )}
-        >
-          <Logo expanded={expanded} />
+      <aside className="fixed inset-y-0 left-0 z-40 hidden w-60 shrink-0 flex-col overflow-y-auto overflow-x-hidden border-r border-border bg-sidebar lg:flex">
+        <div className="flex h-14 shrink-0 items-center border-b border-border px-4">
+          <Logo expanded />
         </div>
-        <NavBody expanded={expanded} />
+        <NavBody expanded />
       </aside>
 
       <Sheet open={open} onOpenChange={setOpen}>

@@ -199,7 +199,7 @@ function NodeDetail({
 
         {node.kind === "memory" ? (
           <Button
-            className="w-full rounded-lg brand-gradient text-white shadow-sm shadow-[0_12px_32px_-12px_color-mix(in_oklab,var(--aurora-2)_65%,transparent)]"
+            className="w-full rounded-lg bg-primary text-primary-foreground shadow-sm"
             onClick={() => onOpenMemory(node.id)}
           >
             <ExternalLink className="size-3.5" />

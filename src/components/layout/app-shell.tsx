@@ -6,7 +6,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative min-h-screen">
       <AppSidebar />
-      <main className="lg:pl-[72px]">{children}</main>
+      <main className="lg:pl-60">{children}</main>
       <MobileTabBar />
     </div>
   );

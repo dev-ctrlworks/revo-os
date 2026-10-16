@@ -24,7 +24,6 @@ import { exampleQueries } from "@/lib/mock-data";
 import { AISearchBar } from "@/components/ai/ai-search-bar";
 import { AIAnswerView } from "@/components/ai/ai-answer";
 import { MemoryTypeIcon, memoryTypeLabel } from "@/components/memories/memory-type-icon";
-import { memoryTypeMeta } from "@/lib/memory-type";
 import { cardClass } from "@/lib/ui";
 import { restoreDemoData } from "@/lib/memory-store";
 import { Button } from "@/components/ui/button";
@@ -421,7 +420,7 @@ export default function DashboardPage() {
                     </div>
                     <div className="h-1.5 overflow-hidden rounded-full bg-muted/70">
                       <div
-                        className={`animate-bar-grow h-full rounded-full bg-gradient-to-r ${memoryTypeMeta[t.type].gradient}`}
+                        className="animate-bar-grow h-full rounded-full bg-foreground/25"
                         style={{ width: `${(t.count / maxType) * 100}%` }}
                       />
                     </div>
@@ -471,7 +470,7 @@ export default function DashboardPage() {
                       </div>
                       <div className="h-1.5 overflow-hidden rounded-full bg-muted/70">
                         <div
-                          className="animate-bar-grow h-full rounded-full brand-gradient"
+                          className="animate-bar-grow h-full rounded-full bg-primary"
                           style={{ width: `${(c.count / maxCollection) * 100}%` }}
                         />
                       </div>

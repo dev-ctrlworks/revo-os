@@ -11,7 +11,7 @@ export function DashboardHeader() {
   const count = memories.length;
 
   return (
-    <header className="sticky top-0 z-20 flex h-14 items-center justify-between gap-4 border-b border-border bg-background/85 pl-14 pr-4 backdrop-blur sm:pr-6 lg:pl-6">
+    <header className="sticky top-0 z-20 flex h-14 items-center justify-between gap-4 border-b border-border bg-background pl-14 pr-4 sm:pr-6 lg:pl-6">
       <div className="flex w-full items-center gap-3 lg:ml-0 lg:w-auto lg:min-w-0">
         <span className="shrink-0 text-sm font-display font-semibold tracking-tight lg:hidden">
           Revo OS

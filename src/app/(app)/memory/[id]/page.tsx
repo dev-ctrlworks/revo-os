@@ -80,17 +80,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { getCollectionIds, removeMemory, updateMemory } from "@/lib/memory-store";
 
-const accentStrip: Record<MemoryType, string> = {
-  screenshot: "from-violet-500/25",
-  note: "from-amber-500/25",
-  document: "from-sky-500/25",
-  link: "from-emerald-500/25",
-  image: "from-rose-500/25",
-  discussion: "from-teal-500/25",
-  email: "from-indigo-500/25",
-  archive: "from-slate-500/25",
-};
-
 const textLike = (t: MemoryType) => t === "note" || t === "email" || t === "discussion";
 const imageLike = (t: MemoryType) => t === "image" || t === "screenshot";
 
@@ -221,7 +210,7 @@ function SectionHeading({
           className={cn(
             "flex size-7 shrink-0 items-center justify-center rounded-lg",
             accent
-              ? "icon-chip text-aurora-2"
+              ? "bg-secondary text-primary"
               : "bg-muted"
           )}
         >
@@ -401,7 +390,7 @@ function ArchiveFile({ memory }: { memory: Memory }) {
   const sizeKb = (memory.content.length * 137 + 42) % 4096;
 
   return (
-    <div className="flex flex-wrap items-center gap-4 bg-gradient-to-br from-slate-500/10 to-transparent px-5 py-6 sm:px-7">
+    <div className="flex flex-wrap items-center gap-4 border-b border-border px-5 py-6 sm:px-7">
       <span className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-card ring-1 ring-border">
         <Archive className="size-5 text-muted-foreground" />
       </span>
@@ -601,10 +590,10 @@ function NoticedCard({
     connections.push(`Captured from ${memory.source}.`);
 
   return (
-    <Card className="overflow-hidden border-aurora-2/25 bg-gradient-to-br from-aurora-2/[0.10] to-aurora-3/[0.06]">
+    <Card className="overflow-hidden">
       <div className="px-5 pt-5">
-        <p className="flex items-center gap-2 text-xs font-semibold text-aurora-2">
-          <span className="inline-flex size-6 items-center justify-center rounded-lg bg-aurora-2/15">
+        <p className="flex items-center gap-2 text-xs font-semibold text-foreground">
+          <span className="inline-flex size-6 items-center justify-center rounded-lg bg-secondary text-muted-foreground">
             <Sparkles className="size-3.5" />
           </span>
           RevoOS noticed
@@ -1119,12 +1108,7 @@ export default function MemoryDetailPage() {
           />
           <div className="grid items-start gap-6 xl:grid-cols-[minmax(0,1fr)_320px]">
             <div className="min-w-0 overflow-hidden rounded-2xl border border-border/50 bg-card">
-              <div
-                className={cn(
-                  "h-1 w-full bg-gradient-to-r to-transparent",
-                  accentStrip[memory.type]
-                )}
-              />
+              <div className="h-px w-full bg-border" />
               <div className="flex flex-wrap items-center gap-2 border-b border-border/40 bg-muted/30 px-5 py-2.5 sm:px-6">
                 <span className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
                   <Files className="size-3.5" />
@@ -1267,10 +1251,10 @@ export default function MemoryDetailPage() {
           <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
             <div className="min-w-0 space-y-6">
               {summary && (
-                <Card className="overflow-hidden border-aurora-2/25">
-                  <div className="bg-gradient-to-br from-aurora-2/[0.10] to-aurora-3/[0.06] p-5 sm:p-6">
-                    <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-aurora-2">
-                      <span className="inline-flex size-6 items-center justify-center rounded-lg bg-aurora-2/15">
+                <Card className="overflow-hidden">
+                  <div className="p-5 sm:p-6">
+                    <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                      <span className="inline-flex size-6 items-center justify-center rounded-lg bg-secondary text-muted-foreground">
                         <Sparkles className="size-3.5" />
                       </span>
                       Summarized by RevoOS
@@ -1303,7 +1287,7 @@ export default function MemoryDetailPage() {
                         key={i}
                         className="flex items-start gap-2.5 text-[13.5px] leading-relaxed text-foreground/85"
                       >
-                        <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-aurora-2" />
+                        <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-muted-foreground/50" />
                         <span>{point}</span>
                       </li>
                     ))}
