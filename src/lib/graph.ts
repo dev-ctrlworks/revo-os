@@ -146,7 +146,7 @@ export const RELATION_META: Record<
   },
   discovered: {
     label: "RevoOS discovered",
-    color: "#6558c8",
+    color: "#7c3aed",
     dashed: true,
     width: 1.3,
     description: "An AI-inferred connection across topics",

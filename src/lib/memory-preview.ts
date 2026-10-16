@@ -1,13 +1,13 @@
 import type { Memory, MemoryType } from "./types";
 
 const coverPalettes: Record<MemoryType, readonly [string, string]> = {
-  screenshot: ["#8b7fe0", "#6558c8"],
-  note: ["#a99ef0", "#8b7fe0"],
-  document: ["#5b4fc0", "#6558c8"],
-  link: ["#6558c8", "#8b7fe0"],
-  image: ["#7c6ee0", "#5b4fc0"],
-  discussion: ["#6a5fce", "#8b7fe0"],
-  email: ["#4f46b5", "#6558c8"],
+  screenshot: ["#a78bfa", "#7c3aed"],
+  note: ["#c4b5fd", "#a78bfa"],
+  document: ["#6d28d9", "#7c3aed"],
+  link: ["#7c3aed", "#a78bfa"],
+  image: ["#8b5cf6", "#6d28d9"],
+  discussion: ["#7c3aed", "#a78bfa"],
+  email: ["#6d28d9", "#7c3aed"],
   archive: ["#57534e", "#78716c"],
 };
 
