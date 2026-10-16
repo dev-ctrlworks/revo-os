@@ -39,7 +39,7 @@ export function MobileTabBar() {
                 key={tab.href}
                 href={tab.href}
                 aria-label={tab.label}
-                className="-mt-5 flex size-12 shrink-0 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-sm transition-colors hover:bg-primary-hover"
+                className="-mt-5 flex size-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-b from-[#6d5ce7] to-[#5a4ac0] text-primary-foreground shadow-sm hover:from-[#6353dc] hover:to-[#4f42ad] transition-colors"
               >
                 <Icon className="size-5" />
               </Link>

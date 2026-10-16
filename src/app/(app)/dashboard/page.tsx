@@ -23,9 +23,12 @@ import { exampleQueries } from "@/lib/mock-data";
 import { AISearchBar } from "@/components/ai/ai-search-bar";
 import { AIAnswerView } from "@/components/ai/ai-answer";
 import { MemoryTypeIcon, memoryTypeLabel } from "@/components/memories/memory-type-icon";
+import { memoryTypeMeta } from "@/lib/memory-type";
 import { cardClass } from "@/lib/ui";
 import { restoreDemoData } from "@/lib/memory-store";
 import { Button } from "@/components/ui/button";
+
+const ACCENTS = ["#6258CC", "#3B6FE0", "#7C3AED", "#0E9E96", "#5677E8", "#A855F7"];
 
 function greeting() {
   const h = new Date().getHours();
@@ -160,12 +163,16 @@ export default function DashboardPage() {
       label: "Total memories",
       value: memories.length.toLocaleString(),
       hint: "in your layer",
+      toneBg: "bg-[#EEECFF]",
+      toneText: "text-[#6258CC]",
     },
     {
       icon: CalendarDays,
       label: "Captured today",
       value: String(todayCount),
       hint: "since midnight",
+      toneBg: "bg-[#E9F0FF]",
+      toneText: "text-[#3B6FE0]",
     },
     {
       icon: TrendingUp,
@@ -173,12 +180,16 @@ export default function DashboardPage() {
       value: String(weekCount),
       hint: "last 7 days",
       delta: weekDelta,
+      toneBg: "bg-[#F3EDFF]",
+      toneText: "text-[#7C3AED]",
     },
     {
       icon: LayoutGrid,
       label: "Collections",
       value: String(collections.length),
       hint: "auto-grouped",
+      toneBg: "bg-[#E4F7F5]",
+      toneText: "text-[#0E9E96]",
     },
   ];
 
@@ -280,8 +291,8 @@ export default function DashboardPage() {
             {kpis.map((kpi) => (
               <div key={kpi.label} className={`${cardClass} p-4 sm:p-5`}>
                 <div className="flex items-center justify-between">
-                  <span className="flex size-9 items-center justify-center rounded-xl bg-secondary">
-                    <kpi.icon className="size-4 text-muted-foreground" />
+                  <span className={`flex size-9 items-center justify-center rounded-xl ${kpi.toneBg}`}>
+                    <kpi.icon className={`size-4 ${kpi.toneText}`} />
                   </span>
                   {typeof kpi.delta === "number" && (
                     <span
@@ -411,8 +422,11 @@ export default function DashboardPage() {
                     </div>
                     <div className="h-1.5 overflow-hidden rounded-full bg-muted/70">
                       <div
-                        className="animate-bar-grow h-full rounded-full bg-foreground/25"
-                        style={{ width: `${(t.count / maxType) * 100}%` }}
+                        className="animate-bar-grow h-full rounded-full"
+                        style={{
+                          width: `${(t.count / maxType) * 100}%`,
+                          backgroundColor: memoryTypeMeta[t.type].accent,
+                        }}
                       />
                     </div>
                   </div>
@@ -451,7 +465,7 @@ export default function DashboardPage() {
                   <LayoutGrid className="size-4 text-muted-foreground" />
                 </div>
                 <div className="mt-4 space-y-3">
-                  {collections.slice(0, 4).map((c) => (
+                  {collections.slice(0, 4).map((c, i) => (
                     <Link key={c.name} href="/collections" className="group block">
                       <div className="mb-1.5 flex items-center justify-between gap-2 text-[12px]">
                         <span className="truncate font-medium transition-colors group-hover:text-foreground">
@@ -461,8 +475,11 @@ export default function DashboardPage() {
                       </div>
                       <div className="h-1.5 overflow-hidden rounded-full bg-muted/70">
                         <div
-                          className="animate-bar-grow h-full rounded-full bg-primary"
-                          style={{ width: `${(c.count / maxCollection) * 100}%` }}
+                          className="animate-bar-grow h-full rounded-full"
+                          style={{
+                            width: `${(c.count / maxCollection) * 100}%`,
+                            backgroundColor: ACCENTS[i % ACCENTS.length],
+                          }}
                         />
                       </div>
                     </Link>
@@ -475,7 +492,7 @@ export default function DashboardPage() {
                   <h2 className="font-display text-sm font-semibold tracking-tight">
                     Favorites
                   </h2>
-                  <Heart className="size-4 fill-foreground text-foreground" />
+                  <Heart className="size-4 fill-[#D99A2B] text-[#D99A2B]" />
                 </div>
                 <div className="mt-3 space-y-0.5">
                   {favorites.length === 0 ? (
@@ -512,10 +529,10 @@ export default function DashboardPage() {
                       <Link
                         key={t.name}
                         href={`/ask?q=${encodeURIComponent(t.name)}`}
-                        className="inline-flex items-center gap-1 rounded-full border border-border/50 bg-card/70 px-2.5 py-1 text-[11px] text-muted-foreground transition-colors hover:border-border hover:text-foreground"
+                        className="inline-flex items-center gap-1 rounded-full bg-[#EEECFF] px-2.5 py-1 text-[11px] font-medium text-[#4941A0] transition-colors hover:bg-[#E4E1FF]"
                       >
                         {t.name}
-                        <span className="text-muted-foreground">{t.count}</span>
+                        <span className="text-[#7C74C9]">{t.count}</span>
                       </Link>
                     ))}
                   </div>

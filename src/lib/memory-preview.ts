@@ -1,14 +1,14 @@
 import type { Memory, MemoryType } from "./types";
 
 const coverPalettes: Record<MemoryType, readonly [string, string]> = {
-  screenshot: ["#eeecff", "#eaf0ff"],
-  note: ["#eaf0ff", "#eeecff"],
-  document: ["#eeecff", "#e6e4ff"],
-  link: ["#eaf0ff", "#e4ecff"],
-  image: ["#eeecff", "#eaf0ff"],
-  discussion: ["#e9e9ff", "#eeecff"],
-  email: ["#e6e7ff", "#eeecff"],
-  archive: ["#f1f2f8", "#eeecff"],
+  screenshot: ["#6d5ce7", "#5677e8"],
+  note: ["#8b5cf6", "#6d5ce7"],
+  document: ["#3b6fe0", "#5677e8"],
+  link: ["#5677e8", "#6d5ce7"],
+  image: ["#a855f7", "#7c5cf5"],
+  discussion: ["#0e9e96", "#2fc0b4"],
+  email: ["#0e93d6", "#3b6fe0"],
+  archive: ["#6b7280", "#9aa0b4"],
 };
 
 const coverEmoji: Record<MemoryType, string> = {
@@ -58,13 +58,13 @@ export function generatedMemoryPreview(
     `</linearGradient>`,
     `</defs>`,
     `<rect width="1200" height="630" fill="url(#g)"/>`,
-    `<circle cx="1050" cy="60" r="270" fill="#6258cc" opacity="0.08"/>`,
-    `<circle cx="120" cy="570" r="200" fill="#4968d9" opacity="0.07"/>`,
-    `<rect x="64" y="52" width="212" height="54" rx="27" fill="#ffffff" opacity="0.7"/>`,
-    `<text x="170" y="87" font-size="26" font-family="system-ui, sans-serif" font-weight="600" fill="#4941a0" text-anchor="middle">${esc(label)}</text>`,
+    `<circle cx="1050" cy="60" r="270" fill="#ffffff" opacity="0.14"/>`,
+    `<circle cx="120" cy="570" r="200" fill="#ffffff" opacity="0.10"/>`,
+    `<rect x="64" y="52" width="212" height="54" rx="27" fill="#ffffff" opacity="0.22"/>`,
+    `<text x="170" y="87" font-size="26" font-family="system-ui, sans-serif" font-weight="600" fill="#ffffff" text-anchor="middle">${esc(label)}</text>`,
     `<text x="600" y="330" font-size="156" text-anchor="middle">${emoji}</text>`,
-    `<text x="80" y="522" font-size="48" font-family="system-ui, sans-serif" font-weight="700" fill="#383a83">${esc(title)}</text>`,
-    `<text x="80" y="568" font-size="27" font-family="system-ui, sans-serif" fill="#4941a0" opacity="0.8">${esc(subtitle)}</text>`,
+    `<text x="80" y="522" font-size="48" font-family="system-ui, sans-serif" font-weight="700" fill="#ffffff">${esc(title)}</text>`,
+    `<text x="80" y="568" font-size="27" font-family="system-ui, sans-serif" fill="#ffffff" opacity="0.85">${esc(subtitle)}</text>`,
     `</svg>`,
   ].join("");
 

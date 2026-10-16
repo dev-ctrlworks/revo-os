@@ -1011,7 +1011,7 @@ export default function MemoryDetailPage() {
                 <TypePill type={memory.type} />
                 {favorite && (
                   <span className="inline-flex items-center gap-1 rounded-full bg-secondary px-2 py-0.5 text-[11px] font-medium text-foreground">
-                    <Star className="size-3 fill-foreground text-foreground" />
+                    <Star className="size-3 fill-[#D99A2B] text-[#D99A2B]" />
                     Saved
                   </span>
                 )}
@@ -1044,7 +1044,7 @@ export default function MemoryDetailPage() {
                 <Star
                   className={cn(
                     "mr-1.5 size-3.5",
-                    favorite && "fill-foreground text-foreground"
+                    favorite && "fill-[#D99A2B] text-[#D99A2B]"
                   )}
                 />
                 {favorite ? "Saved" : "Save"}

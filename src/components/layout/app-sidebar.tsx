@@ -118,7 +118,7 @@ function CaptureButton({
       onClick={onNavigate}
       aria-label="Capture a memory"
       className={cn(
-        "mb-4 flex items-center gap-2 rounded-xl bg-primary text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-hover",
+        "mb-4 flex items-center gap-2 rounded-xl bg-gradient-to-b from-[#6d5ce7] to-[#5a4ac0] text-sm font-medium text-primary-foreground hover:from-[#6353dc] hover:to-[#4f42ad] transition-colors",
         expanded ? "px-3 py-2.5" : "justify-center px-0 py-2.5"
       )}
     >

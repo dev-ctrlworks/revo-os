@@ -34,6 +34,7 @@ export function CollectionCard({
   name,
   emoji,
   description,
+  color,
   generated,
   memoryCount,
 }: CollectionCardProps) {  return (
@@ -42,9 +43,10 @@ export function CollectionCard({
       className="group block h-full"
     >
       <Card className="relative flex h-full flex-col gap-0 overflow-hidden p-0 transition-colors duration-200 hover:border-border">
+        <div className={cn("h-1 w-full bg-gradient-to-r", color)} />
         <div className="relative flex h-full flex-col p-4">
           <div className="mb-2.5 flex items-center justify-between gap-2">
-            <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-secondary text-base">
+            <span className={cn("flex size-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br text-base", color)}>
               {emoji}
             </span>
             {generated ? (
@@ -80,6 +82,7 @@ function AISuggestionCard({
   name,
   emoji,
   description,
+  color,
   memoryCount,
   busy,
   onCreate,
@@ -91,7 +94,7 @@ function AISuggestionCard({
     <Card className="relative flex h-full flex-col gap-0 overflow-hidden border-dashed p-0 transition-colors duration-200">
       <div className="relative flex h-full flex-col p-4">
         <div className="mb-2.5 flex items-center justify-between gap-2">
-          <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-secondary text-base">
+          <span className={cn("flex size-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br text-base", color)}>
             {emoji}
           </span>
           <Badge className="rounded-full bg-secondary px-2 py-0.5 text-[10px] font-medium text-muted-foreground">

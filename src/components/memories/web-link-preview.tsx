@@ -45,7 +45,7 @@ export function WebLinkPreview({ memory }: { memory: Memory }) {
             href={url ?? undefined}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground transition-colors hover:bg-primary-hover"
+            className="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-gradient-to-b from-[#6d5ce7] to-[#5a4ac0] px-3 py-1.5 text-xs font-semibold text-primary-foreground hover:from-[#6353dc] hover:to-[#4f42ad] transition-colors"
           >
             <LinkIcon className="size-3.5" />
             Open

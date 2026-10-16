@@ -445,7 +445,7 @@ export const collections: Collection[] = [
     emoji: "📸",
     description: "Specs, reviews, and shortlist for the next camera",
     memoryCount: 6,
-    color: "from-indigo-500/15 to-violet-500/5",
+    color: "from-indigo-500/25 to-violet-500/10",
   },
   {
     id: "c2",
@@ -453,7 +453,7 @@ export const collections: Collection[] = [
     emoji: "🏠",
     description: "Summit listings, comparisons, and deal-breakers",
     memoryCount: 8,
-    color: "from-blue-500/15 to-indigo-500/5",
+    color: "from-blue-500/25 to-indigo-500/10",
   },
   {
     id: "c3",
@@ -461,7 +461,7 @@ export const collections: Collection[] = [
     emoji: "🗾",
     description: "Itinerary, flights, ryokan, and trains for October",
     memoryCount: 7,
-    color: "from-violet-500/15 to-blue-500/5",
+    color: "from-violet-500/25 to-blue-500/10",
   },
   {
     id: "c4",
@@ -469,7 +469,7 @@ export const collections: Collection[] = [
     emoji: "💼",
     description: "Résumé, projects, and speaking opportunities",
     memoryCount: 4,
-    color: "from-indigo-500/15 to-blue-500/5",
+    color: "from-indigo-500/25 to-blue-500/10",
   },
   {
     id: "c5",
@@ -477,7 +477,7 @@ export const collections: Collection[] = [
     emoji: "💡",
     description: "Concepts, gifts, and sketches worth keeping",
     memoryCount: 3,
-    color: "from-blue-500/15 to-violet-500/5",
+    color: "from-blue-500/25 to-violet-500/10",
   },
   {
     id: "c6",
@@ -485,7 +485,7 @@ export const collections: Collection[] = [
     emoji: "🍳",
     description: "Recipes and gear to try",
     memoryCount: 1,
-    color: "from-indigo-500/15 to-violet-500/5",
+    color: "from-indigo-500/25 to-violet-500/10",
   },
   {
     id: "c7",
@@ -493,7 +493,7 @@ export const collections: Collection[] = [
     emoji: "🐕",
     description: "Everything about the golden retriever",
     memoryCount: 2,
-    color: "from-violet-500/15 to-indigo-500/5",
+    color: "from-violet-500/25 to-indigo-500/10",
   },
   {
     id: "c8",
@@ -501,7 +501,7 @@ export const collections: Collection[] = [
     emoji: "🥾",
     description: "Bay Area trails and day hikes",
     memoryCount: 1,
-    color: "from-blue-500/15 to-indigo-500/5",
+    color: "from-blue-500/25 to-indigo-500/10",
   },
   {
     id: "c9",
@@ -509,7 +509,7 @@ export const collections: Collection[] = [
     emoji: "💪",
     description: "Fitness, habits, and wellbeing",
     memoryCount: 1,
-    color: "from-violet-500/15 to-blue-500/5",
+    color: "from-violet-500/25 to-blue-500/10",
   },
 ];
 

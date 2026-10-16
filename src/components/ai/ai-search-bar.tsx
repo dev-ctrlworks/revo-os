@@ -128,7 +128,7 @@ export function AISearchBar({
             disabled={!query.trim()}
             aria-label={big ? "Ask" : "Search memories"}
             className={cn(
-              "flex shrink-0 items-center justify-center gap-1 rounded-lg bg-primary text-primary-foreground transition-colors hover:bg-primary-hover disabled:opacity-50",
+              "flex shrink-0 items-center justify-center gap-1 rounded-lg bg-gradient-to-b from-[#6d5ce7] to-[#5a4ac0] text-primary-foreground hover:from-[#6353dc] hover:to-[#4f42ad] transition-colors disabled:opacity-50",
               big ? "h-8 px-3 text-xs font-medium" : "size-8"
             )}
           >

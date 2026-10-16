@@ -17,7 +17,7 @@ const known: Record<string, CollectionMeta> = Object.fromEntries(
 export const defaultCollectionMeta: CollectionMeta = {
   emoji: "📁",
   description: "Captured memories",
-  color: "from-indigo-500/15 to-blue-500/5",
+  color: "from-indigo-500/25 to-blue-500/10",
 };
 
 export function getCollectionMeta(name: string): CollectionMeta {

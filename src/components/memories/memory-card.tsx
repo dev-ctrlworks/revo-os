@@ -60,7 +60,7 @@ export function MemoryCard({
           </span>
           <div className="flex items-center gap-1">
             {memory.favorite && (
-              <Heart className="size-3.5 shrink-0 fill-foreground text-foreground" aria-label="Favorite" />
+              <Heart className="size-3.5 shrink-0 fill-[#D99A2B] text-[#D99A2B]" aria-label="Favorite" />
             )}
             {onFavoriteToggle && (
               <button

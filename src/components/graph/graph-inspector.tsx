@@ -199,7 +199,7 @@ function NodeDetail({
 
         {node.kind === "memory" ? (
           <Button
-            className="w-full rounded-lg bg-primary text-primary-foreground shadow-sm"
+            className="w-full rounded-lg bg-gradient-to-b from-[#6d5ce7] to-[#5a4ac0] text-primary-foreground shadow-sm hover:from-[#6353dc] hover:to-[#4f42ad]"
             onClick={() => onOpenMemory(node.id)}
           >
             <ExternalLink className="size-3.5" />
