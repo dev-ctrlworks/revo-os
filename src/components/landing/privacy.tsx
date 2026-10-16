@@ -31,7 +31,7 @@ export function Privacy() {
     <section id="privacy" className="container mx-auto max-w-7xl px-5 py-20 sm:py-24">
       <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.1fr]">
         <div>
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-3 py-1 text-[11px] font-medium text-emerald-700 dark:text-emerald-400">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-3 py-1 text-[11px] font-medium text-foreground">
             <Lock className="size-3" />
             Privacy & trust
           </div>
@@ -46,7 +46,7 @@ export function Privacy() {
         </div>
 
         <div className="relative">
-          <span className="absolute -right-3 -top-3 z-10 flex items-center gap-1.5 rounded-full border border-border/50 bg-card/75 px-3 py-1 text-[11px] font-semibold text-emerald-700 shadow-sm backdrop-blur-xl dark:text-emerald-400">
+          <span className="absolute -right-3 -top-3 z-10 flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-1 text-[11px] font-semibold text-foreground shadow-sm">
             <ShieldCheck className="size-3.5" />
             What actually happens
           </span>
@@ -75,7 +75,7 @@ export function Privacy() {
                     className={
                       stored
                         ? "shrink-0 rounded-full bg-aurora-2/10 px-2.5 py-1 text-[10px] font-medium text-aurora-ink"
-                        : "shrink-0 rounded-full bg-emerald-500/10 px-2.5 py-1 text-[10px] font-medium text-emerald-700 dark:text-emerald-400"
+                        : "shrink-0 rounded-full bg-secondary px-2.5 py-1 text-[10px] font-medium text-foreground"
                     }
                   >
                     {where}
@@ -88,9 +88,9 @@ export function Privacy() {
               {guarantees.map(({ icon: Icon, title, text }) => (
                 <div
                   key={title}
-                  className="rounded-xl border border-border/50 bg-card/55 p-3.5 shadow-[0_10px_30px_-24px_rgba(30,27,46,0.3)] backdrop-blur-xl"
+                  className="rounded-xl border border-border bg-card p-3.5 shadow-sm"
                 >
-                  <Icon className="size-4 text-emerald-500" />
+                  <Icon className="size-4 text-foreground" />
                   <p className="mt-2 text-[13px] font-medium">{title}</p>
                   <p className="mt-1 text-[11px] leading-snug text-muted-foreground">{text}</p>
                 </div>

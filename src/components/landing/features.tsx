@@ -47,11 +47,11 @@ function FeatureBlock({
 }
 
 const captureMethods: { icon: LucideIcon; label: string; hint: string; tone: string }[] = [
-  { icon: ClipboardPaste, label: "Paste", hint: "Clipboard → memory", tone: "text-sky-500" },
-  { icon: StickyNote, label: "Note", hint: "Type it in", tone: "text-violet-500" },
-  { icon: LinkIcon, label: "Link", hint: "Save a page", tone: "text-emerald-500" },
-  { icon: Upload, label: "Upload", hint: "Files & PDFs", tone: "text-rose-500" },
-  { icon: MousePointerClick, label: "Drag & drop", hint: "Drop it anywhere", tone: "text-amber-500" },
+  { icon: ClipboardPaste, label: "Paste", hint: "Clipboard → memory", tone: "text-muted-foreground" },
+  { icon: StickyNote, label: "Note", hint: "Type it in", tone: "text-muted-foreground" },
+  { icon: LinkIcon, label: "Link", hint: "Save a page", tone: "text-muted-foreground" },
+  { icon: Upload, label: "Upload", hint: "Files & PDFs", tone: "text-muted-foreground" },
+  { icon: MousePointerClick, label: "Drag & drop", hint: "Drop it anywhere", tone: "text-muted-foreground" },
 ];
 
 function CaptureVisual() {
@@ -81,7 +81,7 @@ function CaptureVisual() {
         ))}
       </div>
       <p className="mt-4 flex items-center gap-1.5 text-[11px] text-muted-foreground">
-        <Check className="size-3.5 text-emerald-500" />
+        <Check className="size-3.5 text-foreground" />
         Save first, organize never.
       </p>
     </div>

@@ -15,19 +15,19 @@ const problems: { icon: LucideIcon; title: string; text: string; tone: string }[
     icon: FolderTree,
     title: "Lost in the pile",
     text: "You saved something useful but can't find it again.",
-    tone: "text-amber-500",
+    tone: "text-muted-foreground",
   },
   {
     icon: HelpCircle,
     title: "Missing context",
     text: "You find the link but forget why it mattered.",
-    tone: "text-sky-500",
+    tone: "text-muted-foreground",
   },
   {
     icon: Unlink,
     title: "Scattered",
     text: "Notes, links, and files live in different apps.",
-    tone: "text-rose-500",
+    tone: "text-muted-foreground",
   },
 ];
 

@@ -15,12 +15,12 @@ import { cn } from "@/lib/utils";
 import { memories } from "@/lib/mock-data";
 
 const inputs: { label: string; icon: LucideIcon; tone: string; chip: string }[] = [
-  { label: "Screenshot", icon: Monitor, tone: "text-cyan-500", chip: "border-cyan-400/25 bg-cyan-400/10" },
-  { label: "Link", icon: LinkIcon, tone: "text-sky-500", chip: "border-sky-400/25 bg-sky-400/10" },
-  { label: "Note", icon: StickyNote, tone: "text-violet-500", chip: "border-violet-400/25 bg-violet-400/10" },
-  { label: "PDF", icon: FileText, tone: "text-rose-500", chip: "border-rose-400/25 bg-rose-400/10" },
-  { label: "Trip plan", icon: Plane, tone: "text-emerald-500", chip: "border-emerald-400/25 bg-emerald-400/10" },
-  { label: "Idea", icon: Lightbulb, tone: "text-amber-500", chip: "border-amber-400/25 bg-amber-400/10" },
+  { label: "Screenshot", icon: Monitor, tone: "text-muted-foreground", chip: "border-border bg-secondary" },
+  { label: "Link", icon: LinkIcon, tone: "text-muted-foreground", chip: "border-border bg-secondary" },
+  { label: "Note", icon: StickyNote, tone: "text-muted-foreground", chip: "border-border bg-secondary" },
+  { label: "PDF", icon: FileText, tone: "text-muted-foreground", chip: "border-border bg-secondary" },
+  { label: "Trip plan", icon: Plane, tone: "text-muted-foreground", chip: "border-border bg-secondary" },
+  { label: "Idea", icon: Lightbulb, tone: "text-muted-foreground", chip: "border-border bg-secondary" },
 ];
 
 const sources = [
@@ -41,7 +41,7 @@ export function HeroVisual() {
 
   return (
     <div className="relative mx-auto w-full max-w-xl">
-      <div className="absolute -inset-8 -z-10 bg-gradient-to-br from-aurora-1/25 via-aurora-2/10 to-aurora-4/20 blur-3xl" />
+      <div className="absolute -inset-8 -z-10 bg-gradient-to-br from-aurora-1/10 to-aurora-4/10 blur-3xl" />
       <div
         className="aurora-orb left-[-10%] top-[30%] -z-10 size-56 opacity-50"
         style={{ "--color": "var(--aurora-2)" } as CSSProperties}
