@@ -221,7 +221,7 @@ export function GraphCanvas({
                 y1={from.y}
                 x2={to.x}
                 y2={to.y}
-                stroke={isSelected ? "#ec4899" : meta.color}
+                stroke={isSelected ? "#6558c8" : meta.color}
                 strokeWidth={isSelected ? meta.width + 1.4 : meta.width}
                 strokeOpacity={active ? (isSelected ? 0.95 : 0.5) : 0.08}
                 strokeDasharray={meta.dashed ? "4 5" : undefined}

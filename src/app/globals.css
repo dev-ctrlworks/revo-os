@@ -194,10 +194,10 @@
     background-color: var(--primary);
   }
   .icon-chip {
-    background-color: color-mix(in oklab, var(--primary) 10%, transparent);
+    background-color: var(--secondary);
   }
   .color-copy-primary {
-    color: color-mix(in oklab, var(--primary) 88%, var(--foreground));
+    color: var(--foreground);
   }
   .glass {
     background-color: color-mix(in oklab, var(--card) 55%, transparent);

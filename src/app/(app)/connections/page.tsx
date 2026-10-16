@@ -1,6 +1,5 @@
 "use client";
 
-import { Network } from "lucide-react";
 import { useMemoryStore } from "@/lib/use-memory-store";
 import { MemoryGraph } from "@/components/graph/memory-graph";
 import { RelationshipsPanel } from "./relationships";
@@ -13,13 +12,10 @@ export default function ConnectionsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="flex items-center gap-2.5 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-          <span className="flex size-9 items-center justify-center rounded-lg bg-secondary">
-            <Network className="size-4 text-primary" />
-          </span>
-          <span>Connections</span>
+        <h1 className="font-display text-2xl font-semibold tracking-tight">
+          Connections
         </h1>
-        <p className="mt-3 max-w-2xl text-sm text-muted-foreground">
+        <p className="mt-1.5 max-w-2xl text-sm text-muted-foreground">
           {count} memories wired to the people, places, products, and topics
           they mention. Search to find a thread, then explore the relationship
           list or the interactive graph.

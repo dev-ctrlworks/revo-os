@@ -301,7 +301,7 @@ export default function DashboardPage() {
                     </span>
                   )}
                 </div>
-                <p className="mt-4 text-2xl font-bold leading-none tracking-tight sm:text-3xl">
+                <p className="mt-4 font-display text-2xl font-semibold leading-none tracking-tight">
                   {kpi.value}
                 </p>
                 <p className="mt-1.5 text-xs font-medium text-foreground">{kpi.label}</p>

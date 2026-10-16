@@ -1016,7 +1016,7 @@ export default function MemoryDetailPage() {
                   </span>
                 )}
               </div>
-              <h1 className="mt-3.5 max-w-3xl font-display text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
+              <h1 className="mt-3 max-w-3xl font-display text-2xl font-semibold leading-tight tracking-tight sm:text-3xl">
                 {memory.title}
               </h1>
               <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-muted-foreground">
