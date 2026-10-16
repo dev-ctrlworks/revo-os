@@ -15,7 +15,7 @@ export function StorageWarningBanner() {
   if (!error) return null;
 
   return (
-    <div className="flex items-start justify-between gap-3 rounded-xl border border-border border-l-2 border-l-foreground bg-secondary px-4 py-3 text-sm text-foreground">
+    <div className="flex items-start justify-between gap-3 rounded-xl border border-warning/25 border-l-2 border-l-warning bg-warning/10 px-4 py-3 text-sm text-warning">
       <p className="flex items-start gap-2">
         <AlertTriangle className="mt-0.5 size-4 shrink-0" />
         {error}{" "}

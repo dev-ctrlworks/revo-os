@@ -72,7 +72,7 @@ export function LegalSection({
       <h2 className="font-display text-xl font-semibold tracking-tight text-foreground">
         {heading}
       </h2>
-      <div className="space-y-3 text-sm leading-relaxed text-muted-foreground [&_a]:text-aurora-2 [&_a]:underline [&_strong]:font-semibold [&_strong]:text-foreground [&_li]:ml-4 [&_ul]:list-disc [&_ul]:space-y-1.5">
+      <div className="space-y-3 text-sm leading-relaxed text-muted-foreground [&_a]:text-accent-blue [&_a]:underline [&_strong]:font-semibold [&_strong]:text-foreground [&_li]:ml-4 [&_ul]:list-disc [&_ul]:space-y-1.5">
         {children}
       </div>
     </section>

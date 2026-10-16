@@ -796,7 +796,7 @@ function TimelineSection({
                   className={cn(
                     "absolute left-0 top-1 flex size-[27px] items-center justify-center rounded-full border",
                     self
-                      ? "border-primary bg-secondary"
+                      ? "border-primary bg-lavender"
                       : "border-border/60 bg-card"
                   )}
                 >

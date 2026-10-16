@@ -5,7 +5,7 @@ export const cardSurfaceClass = "rounded-2xl border border-border bg-card";
 export const cardClass = "rounded-2xl border border-border bg-card";
 
 export const primaryCtaClass =
-  "bg-primary text-primary-foreground hover:bg-primary/90";
+  "bg-primary text-primary-foreground hover:bg-primary-hover";
 
 export const savePrimaryButtonClass = `${primaryCtaClass} rounded-lg`;
 

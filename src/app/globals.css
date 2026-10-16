@@ -40,11 +40,18 @@
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
   --color-success: var(--success);
-  --color-aurora-1: var(--primary);
-  --color-aurora-2: var(--primary);
-  --color-aurora-3: var(--primary);
-  --color-aurora-4: var(--primary);
-  --color-aurora-ink: var(--primary);
+  --color-warning: var(--warning);
+  --color-primary-hover: var(--primary-hover);
+  --color-lavender: var(--lavender);
+  --color-lavender-foreground: var(--lavender-foreground);
+  --color-accent-blue: var(--accent-blue);
+  --color-soft-blue: var(--soft-blue);
+  --color-deep-indigo: var(--deep-indigo);
+  --color-aurora-1: var(--aurora-1);
+  --color-aurora-2: var(--aurora-2);
+  --color-aurora-3: var(--aurora-3);
+  --color-aurora-4: var(--aurora-4);
+  --color-aurora-ink: var(--aurora-ink);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -55,55 +62,62 @@
 }
 
 :root {
-  /* RevoOS palette — aurora accent on calm, premium neutral surfaces. */
-  --background: #fafaf9;
-  --foreground: #0c0a09;
+  /* RevoOS — "Aurora Indigo" design system. Light-only, premium-minimal. */
+  --background: #f8f9fc;
+  --foreground: #191b2a;
   --card: #ffffff;
-  --card-foreground: #0c0a09;
+  --card-foreground: #191b2a;
   --popover: #ffffff;
-  --popover-foreground: #0c0a09;
-  --primary: #7c3aed;
+  --popover-foreground: #191b2a;
+  --primary: #6258cc;
   --primary-foreground: #ffffff;
-  --secondary: #f5f5f4;
-  --secondary-foreground: #1c1917;
-  --muted: #f5f5f4;
-  --muted-foreground: #78716c;
-  --accent: #f0efed;
-  --accent-foreground: #1c1917;
-  --destructive: #b42318;
-  --success: #15803d;
-  --border: #e7e5e4;
-  --input: #e7e5e4;
-  --ring: #7c3aed;
-  --chart-1: #7c3aed;
-  --chart-2: #78716c;
-  --chart-3: #a8a29e;
-  --chart-4: #d6d3d1;
-  --chart-5: #57534e;
+  --primary-hover: #554bb9;
+  --secondary: #f1f2f8;
+  --secondary-foreground: #191b2a;
+  --muted: #f1f2f8;
+  --muted-foreground: #717487;
+  --accent: #f1f2f8;
+  --accent-foreground: #191b2a;
+  --lavender: #eeecff;
+  --lavender-foreground: #4941a0;
+  --accent-blue: #4968d9;
+  --soft-blue: #eaf0ff;
+  --deep-indigo: #383a83;
+  --success: #27845b;
+  --warning: #9a6700;
+  --destructive: #c43d4b;
+  --border: #e4e6ef;
+  --input: #e4e6ef;
+  --ring: #8179e2;
+  --chart-1: #6258cc;
+  --chart-2: #4968d9;
+  --chart-3: #8179e2;
+  --chart-4: #717487;
+  --chart-5: #383a83;
   --radius: 0.625rem;
   --sidebar: #ffffff;
-  --sidebar-foreground: #0c0a09;
-  --sidebar-primary: #7c3aed;
+  --sidebar-foreground: #191b2a;
+  --sidebar-primary: #6258cc;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #f5f5f4;
-  --sidebar-accent-foreground: #1c1917;
-  --sidebar-border: #e7e5e4;
-  --sidebar-ring: #7c3aed;
+  --sidebar-accent: #eeecff;
+  --sidebar-accent-foreground: #4941a0;
+  --sidebar-border: #e4e6ef;
+  --sidebar-ring: #8179e2;
 
   /* Legacy brand aliases, retained so existing utility classes keep resolving.
-     Repointed to the aurora violet ramp. */
-  --aurora-1: #a78bfa;
-  --aurora-2: #7c3aed;
-  --aurora-3: #6d28d9;
-  --aurora-4: #c4b5fd;
-  --aurora-ink: #6d28d9;
+     Repointed to the indigo/periwinkle Aurora ramp. */
+  --aurora-1: #8179e2;
+  --aurora-2: #6258cc;
+  --aurora-3: #554bb9;
+  --aurora-4: #4968d9;
+  --aurora-ink: #383a83;
 }
 
-/* Keep the aurora violet legible on dark surfaces (landing). */
+/* Keep the aurora ramp legible on dark surfaces (landing). */
 .dark {
-  --aurora-1: oklch(0.75 0.19 295);
-  --aurora-2: oklch(0.7 0.22 295);
-  --aurora-ink: oklch(0.85 0.15 292);
+  --aurora-1: oklch(0.78 0.12 285);
+  --aurora-2: oklch(0.7 0.14 285);
+  --aurora-ink: oklch(0.85 0.1 285);
 }
 
 @layer base {
@@ -192,10 +206,18 @@
     background-color: var(--primary);
   }
   .icon-chip {
-    background-color: var(--secondary);
+    background-color: var(--lavender);
+  }
+  .chip-lavender {
+    background-color: var(--lavender);
+    color: var(--lavender-foreground);
+  }
+  .chip-blue {
+    background-color: var(--soft-blue);
+    color: var(--accent-blue);
   }
   .color-copy-primary {
-    color: var(--foreground);
+    color: var(--primary);
   }
   .glass {
     background-color: color-mix(in oklab, var(--card) 55%, transparent);

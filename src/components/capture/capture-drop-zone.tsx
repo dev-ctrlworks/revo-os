@@ -37,7 +37,7 @@ export function CaptureDropZone({
       className={cn(
         "group/drop relative flex min-h-60 flex-col items-center justify-center overflow-hidden rounded-2xl border-2 border-dashed px-6 py-12 text-center transition-all duration-300",
         dragging
-          ? "border-primary/50 bg-secondary"
+          ? "border-primary/50 bg-lavender"
           : "border-border hover:border-ring hover:bg-secondary"
       )}
     >

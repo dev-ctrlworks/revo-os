@@ -74,7 +74,7 @@ export function Faq() {
         Still have a question?{" "}
         <a
           href="mailto:hello@revoos.app"
-          className="font-medium text-aurora-2 underline-offset-4 hover:underline"
+          className="font-medium text-accent-blue underline-offset-4 hover:underline"
         >
           hello@revoos.app
         </a>

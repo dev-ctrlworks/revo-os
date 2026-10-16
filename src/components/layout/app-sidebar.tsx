@@ -82,7 +82,7 @@ function NavItem({
         "group relative flex items-center rounded-xl px-3 py-2.5 text-[13px] font-medium transition-colors",
         !expanded && "justify-center",
         active
-          ? "bg-secondary text-foreground"
+          ? "bg-lavender text-lavender-foreground"
           : "text-muted-foreground hover:bg-secondary/60 hover:text-foreground"
       )}
     >
@@ -95,7 +95,7 @@ function NavItem({
       <span
         className={cn(
           "flex size-7 shrink-0 items-center justify-center rounded-lg",
-          active ? "text-primary" : "text-muted-foreground group-hover:text-foreground"
+          active ? "text-lavender-foreground" : "text-muted-foreground group-hover:text-foreground"
         )}
       >
         <Icon className="size-[17px]" />
@@ -118,7 +118,7 @@ function CaptureButton({
       onClick={onNavigate}
       aria-label="Capture a memory"
       className={cn(
-        "mb-4 flex items-center gap-2 rounded-xl bg-primary text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90",
+        "mb-4 flex items-center gap-2 rounded-xl bg-primary text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-hover",
         expanded ? "px-3 py-2.5" : "justify-center px-0 py-2.5"
       )}
     >

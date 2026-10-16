@@ -206,7 +206,7 @@ function MemoryRow({
       className={cn(
         "flex w-full items-center gap-3 rounded-lg border px-3 py-2.5 text-left text-sm transition-colors",
         selected
-          ? "border-primary/50 bg-secondary"
+          ? "border-primary/50 bg-lavender"
           : "border-border/50 bg-card/60 hover:border-border hover:bg-card"
       )}
     >

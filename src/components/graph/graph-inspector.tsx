@@ -370,7 +370,7 @@ function EdgeDetail({
 
 function EntityIcon({ kind, color }: { kind?: EntityKind; color: string }) {
   const Icon = kind ? KIND_ICONS[kind] : Hash;
-  const tint = kind ? ENTITY_KIND_META[kind].tint : "text-slate-500";
+  const tint = kind ? ENTITY_KIND_META[kind].tint : "text-muted-foreground";
   return (
     <span
       className={cn("flex size-9 shrink-0 items-center justify-center rounded-xl", tint)}

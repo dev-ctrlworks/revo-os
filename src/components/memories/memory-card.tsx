@@ -170,7 +170,7 @@ export function MemoryCard({
         className={cn(
           "group relative overflow-hidden transition-colors duration-150",
           cardSurfaceClass,
-          selected && "border-primary/40 bg-secondary ring-1 ring-primary/40",
+          selected && "border-primary/40 bg-lavender ring-1 ring-primary/40",
           "hover:border-border"
         )}
         onClick={onSelect ? handleClick : undefined}
