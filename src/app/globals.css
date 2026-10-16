@@ -55,57 +55,55 @@
 }
 
 :root {
-  /* RevoOS semantic palette — calm, minimal, light-only, mostly monochrome. */
-  --background: #fafafa;
-  --foreground: #18181b;
+  /* RevoOS palette — warm "ink" monochrome, light-only, premium-minimal. */
+  --background: #fafaf9;
+  --foreground: #0c0a09;
   --card: #ffffff;
-  --card-foreground: #18181b;
+  --card-foreground: #0c0a09;
   --popover: #ffffff;
-  --popover-foreground: #18181b;
-  --primary: #6558c8;
-  --primary-foreground: #ffffff;
-  --secondary: #f4f4f5;
-  --secondary-foreground: #18181b;
-  --muted: #f4f4f5;
-  --muted-foreground: #71717a;
-  --accent: #f4f4f5;
-  --accent-foreground: #18181b;
-  --destructive: #c43d4b;
-  --success: #16845b;
-  --border: #e4e4e7;
-  --input: #e4e4e7;
-  --ring: #6558c8;
-  --chart-1: #6558c8;
-  --chart-2: #71717a;
-  --chart-3: #a1a1aa;
-  --chart-4: #d4d4d8;
-  --chart-5: #52525b;
+  --popover-foreground: #0c0a09;
+  --primary: #171717;
+  --primary-foreground: #fafaf9;
+  --secondary: #f5f5f4;
+  --secondary-foreground: #1c1917;
+  --muted: #f5f5f4;
+  --muted-foreground: #78716c;
+  --accent: #f0efed;
+  --accent-foreground: #1c1917;
+  --destructive: #b42318;
+  --success: #15803d;
+  --border: #e7e5e4;
+  --input: #e7e5e4;
+  --ring: #a8a29e;
+  --chart-1: #171717;
+  --chart-2: #57534e;
+  --chart-3: #a8a29e;
+  --chart-4: #d6d3d1;
+  --chart-5: #78716c;
   --radius: 0.75rem;
   --sidebar: #ffffff;
-  --sidebar-foreground: #18181b;
-  --sidebar-primary: #6558c8;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #f4f4f5;
-  --sidebar-accent-foreground: #18181b;
-  --sidebar-border: #e4e4e7;
-  --sidebar-ring: #6558c8;
+  --sidebar-foreground: #0c0a09;
+  --sidebar-primary: #171717;
+  --sidebar-primary-foreground: #fafaf9;
+  --sidebar-accent: #f5f5f4;
+  --sidebar-accent-foreground: #1c1917;
+  --sidebar-border: #e7e5e4;
+  --sidebar-ring: #a8a29e;
 
   /* Legacy brand aliases, retained so existing utility classes keep resolving.
-     Repointed to the monochrome + restrained accent palette. */
-  --aurora-1: #6558c8;
-  --aurora-2: #6558c8;
-  --aurora-3: #71717a;
-  --aurora-4: #a1a1aa;
-  /* Brand purple for small text on a tinted surface (WCAG AA ≥ 4.5:1). */
-  --aurora-ink: #5548b0;
+     Repointed to the monochrome ink ramp. */
+  --aurora-1: #171717;
+  --aurora-2: #171717;
+  --aurora-3: #78716c;
+  --aurora-4: #a8a29e;
+  --aurora-ink: #0c0a09;
 }
 
-/* Keep the brand purple brighter on dark surfaces, where the light-theme
-   value would fall below 4.5:1. */
+/* Keep the brand ink legible on dark surfaces (landing). */
 .dark {
-  --aurora-1: oklch(0.7 0.19 292);
-  --aurora-2: oklch(0.72 0.19 292);
-  --aurora-ink: oklch(0.8 0.16 292);
+  --aurora-1: #fafaf9;
+  --aurora-2: #fafaf9;
+  --aurora-ink: #fafaf9;
 }
 
 @layer base {

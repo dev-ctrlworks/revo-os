@@ -49,12 +49,12 @@ const EMOJI_LEXICON: Array<[RegExp, string]> = [
 ];
 
 const AI_COLORS = [
-  "from-indigo-500/20 to-cyan-500/5",
-  "from-sky-500/20 to-indigo-500/5",
-  "from-amber-500/20 to-orange-500/5",
-  "from-rose-500/20 to-pink-500/5",
-  "from-emerald-500/20 to-teal-500/5",
-  "from-violet-500/20 to-purple-500/5",
+  "from-stone-500/20 to-stone-500/5",
+  "from-stone-500/20 to-stone-500/5",
+  "from-stone-500/20 to-stone-500/5",
+  "from-stone-500/20 to-stone-500/5",
+  "from-stone-500/20 to-stone-500/5",
+  "from-stone-500/20 to-stone-500/5",
 ];
 
 function slug(value: string): string {

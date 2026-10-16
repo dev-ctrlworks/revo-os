@@ -1,14 +1,14 @@
 import type { Memory, MemoryType } from "./types";
 
 const coverPalettes: Record<MemoryType, readonly [string, string]> = {
-  screenshot: ["#8b5cf6", "#d946ef"],
-  note: ["#f59e0b", "#f97316"],
-  document: ["#0ea5e9", "#3b82f6"],
-  link: ["#10b981", "#14b8a6"],
-  image: ["#f43f5e", "#ec4899"],
-  discussion: ["#14b8a6", "#06b6d4"],
-  email: ["#6366f1", "#8b5cf6"],
-  archive: ["#64748b", "#475569"],
+  screenshot: ["#292524", "#44403c"],
+  note: ["#44403c", "#57534e"],
+  document: ["#1c1917", "#292524"],
+  link: ["#57534e", "#78716c"],
+  image: ["#3f3a37", "#6b6560"],
+  discussion: ["#33302d", "#57534e"],
+  email: ["#211f1d", "#3f3a37"],
+  archive: ["#44403c", "#6b6560"],
 };
 
 const coverEmoji: Record<MemoryType, string> = {

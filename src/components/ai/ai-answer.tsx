@@ -33,7 +33,7 @@ export function AIAnswerView({
   return (
     <div className="space-y-4">
       {answer.degraded && (
-        <div className="flex items-start gap-2 rounded-xl border border-amber-500/30 bg-amber-500/10 px-3.5 py-2.5 text-xs text-amber-700">
+        <div className="flex items-start gap-2 rounded-xl border border-border border-l-2 border-l-foreground bg-secondary px-3.5 py-2.5 text-xs text-foreground">
           <AlertCircle className="mt-0.5 size-3.5 shrink-0" />
           <span>
             Showing a local summary built from your matches — the AI service is

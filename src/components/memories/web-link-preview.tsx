@@ -12,12 +12,12 @@ export function WebLinkPreview({ memory }: { memory: Memory }) {
     <div>
       <div className="flex items-center gap-2 border-b border-border/40 bg-muted/40 px-5 py-3 sm:px-6">
         <span className="flex gap-1.5">
-          <span className="size-2.5 rounded-full bg-red-400/70" />
-          <span className="size-2.5 rounded-full bg-amber-400/70" />
-          <span className="size-2.5 rounded-full bg-emerald-400/70" />
+          <span className="size-2.5 rounded-full bg-foreground/15" />
+          <span className="size-2.5 rounded-full bg-foreground/25" />
+          <span className="size-2.5 rounded-full bg-foreground/35" />
         </span>
         <span className="flex h-6 min-w-0 flex-1 items-center gap-1.5 rounded-md bg-background px-2 font-mono text-[11px] text-muted-foreground">
-          <span className="size-1.5 shrink-0 rounded-full bg-emerald-500" />
+          <span className="size-1.5 shrink-0 rounded-full bg-foreground/45" />
           <span className="truncate">{url}</span>
         </span>
       </div>

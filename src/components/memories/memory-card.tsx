@@ -60,7 +60,7 @@ export function MemoryCard({
           </span>
           <div className="flex items-center gap-1">
             {memory.favorite && (
-              <Heart className="size-3.5 shrink-0 fill-amber-400 text-amber-400" aria-label="Favorite" />
+              <Heart className="size-3.5 shrink-0 fill-foreground text-foreground" aria-label="Favorite" />
             )}
             {onFavoriteToggle && (
               <button
@@ -68,7 +68,7 @@ export function MemoryCard({
                 onClick={handleFavoriteToggle}
                 className={cn(
                   "p-1 rounded-lg transition-colors hover:bg-secondary",
-                  memory.favorite && "text-amber-500"
+                  memory.favorite && "text-foreground"
                 )}
                 aria-label={memory.favorite ? "Remove from favorites" : "Add to favorites"}
               >

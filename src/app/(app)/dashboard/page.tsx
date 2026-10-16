@@ -287,8 +287,8 @@ export default function DashboardPage() {
                     <span
                       className={`inline-flex items-center gap-0.5 rounded-full px-2 py-0.5 text-[11px] font-semibold ${
                         kpi.delta >= 0
-                          ? "bg-emerald-500/12 text-emerald-600"
-                          : "bg-rose-500/12 text-rose-600"
+                          ? "bg-success/12 text-success"
+                          : "bg-destructive/12 text-destructive"
                       }`}
                     >
                       {kpi.delta >= 0 ? (
@@ -475,7 +475,7 @@ export default function DashboardPage() {
                   <h2 className="font-display text-sm font-semibold tracking-tight">
                     Favorites
                   </h2>
-                  <Heart className="size-4 fill-amber-400 text-amber-400" />
+                  <Heart className="size-4 fill-foreground text-foreground" />
                 </div>
                 <div className="mt-3 space-y-0.5">
                   {favorites.length === 0 ? (

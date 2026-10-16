@@ -20,9 +20,9 @@ export function UploadedItem({
         className={cn(
           "flex size-6 shrink-0 items-center justify-center rounded-md",
           indexed
-            ? "bg-emerald-500/10 text-emerald-500"
+            ? "bg-success/10 text-success"
             : failed
-              ? "bg-red-500/10 text-red-500"
+              ? "bg-destructive/10 text-destructive"
               : "bg-secondary text-foreground"
         )}
       >
@@ -37,7 +37,7 @@ export function UploadedItem({
       <span className="min-w-0 flex-1">
         <span className="block truncate font-medium">{file.name}</span>
         {failed ? (
-          <span className="mt-0.5 block text-[10px] leading-snug text-red-500/80">
+          <span className="mt-0.5 block text-[10px] leading-snug text-destructive/80">
             Not saved — demo storage is full. Clear captured memories in
             Settings first.
           </span>

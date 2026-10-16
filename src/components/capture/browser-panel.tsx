@@ -106,12 +106,12 @@ export function BrowserPanel({ onToast }: { onToast: (message: string) => void }
       <div className="overflow-hidden rounded-2xl border border-border/60 bg-background shadow-sm">
         <div className="flex items-center gap-2 border-b border-border/40 bg-muted/40 px-3 py-2">
           <span className="flex gap-1.5">
-            <span className="size-2.5 rounded-full bg-red-400/70" />
-            <span className="size-2.5 rounded-full bg-amber-400/70" />
-            <span className="size-2.5 rounded-full bg-emerald-400/70" />
+            <span className="size-2.5 rounded-full bg-foreground/15" />
+            <span className="size-2.5 rounded-full bg-foreground/25" />
+            <span className="size-2.5 rounded-full bg-foreground/35" />
           </span>
           <span className="flex h-6 min-w-0 flex-1 items-center gap-1.5 rounded-md bg-background px-2 text-[11px] text-muted-foreground">
-            <LockKeyhole className="size-2.5 shrink-0 text-emerald-500" />
+            <LockKeyhole className="size-2.5 shrink-0 text-muted-foreground" />
             <span className="truncate">{normalizeUrl(url)}</span>
           </span>
         </div>

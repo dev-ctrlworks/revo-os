@@ -245,9 +245,9 @@ function MediaHero({
     <figure className="bg-muted/20">
       {memory.type === "screenshot" && (
         <div className="flex items-center gap-1.5 border-b border-border/40 bg-card px-5 py-2.5 sm:px-6">
-          <span className="size-2.5 rounded-full bg-rose-400/80" />
-          <span className="size-2.5 rounded-full bg-amber-400/80" />
-          <span className="size-2.5 rounded-full bg-emerald-400/80" />
+          <span className="size-2.5 rounded-full bg-foreground/15" />
+          <span className="size-2.5 rounded-full bg-foreground/25" />
+          <span className="size-2.5 rounded-full bg-foreground/35" />
           <span className="ml-2 h-5 w-full truncate rounded-full bg-muted px-3 text-[10px] leading-5 text-muted-foreground">
             {memory.domain ?? (memory.source && memory.source !== "screenshot")
               ? memory.source.replace(/^Upload · /, "") || memory.domain
@@ -731,7 +731,7 @@ function MetadataCard({ memory }: { memory: Memory }) {
                 className="inline-flex size-6 shrink-0 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
               >
                 {copied ? (
-                  <Check className="size-3.5 text-emerald-500" />
+                  <Check className="size-3.5 text-success" />
                 ) : (
                   <Copy className="size-3.5" />
                 )}
@@ -1010,8 +1010,8 @@ export default function MemoryDetailPage() {
               <div className="flex flex-wrap items-center gap-2.5">
                 <TypePill type={memory.type} />
                 {favorite && (
-                  <span className="inline-flex items-center gap-1 rounded-full bg-amber-500/10 px-2 py-0.5 text-[11px] font-medium text-amber-500">
-                    <Star className="size-3 fill-amber-400 text-amber-400" />
+                  <span className="inline-flex items-center gap-1 rounded-full bg-secondary px-2 py-0.5 text-[11px] font-medium text-foreground">
+                    <Star className="size-3 fill-foreground text-foreground" />
                     Saved
                   </span>
                 )}
@@ -1044,7 +1044,7 @@ export default function MemoryDetailPage() {
                 <Star
                   className={cn(
                     "mr-1.5 size-3.5",
-                    favorite && "fill-amber-400 text-amber-400"
+                    favorite && "fill-foreground text-foreground"
                   )}
                 />
                 {favorite ? "Saved" : "Save"}
@@ -1145,7 +1145,7 @@ export default function MemoryDetailPage() {
                     onClick={() => copyContent()}
                   >
                     {copied ? (
-                      <Check className="mr-1.5 size-3.5 text-emerald-500" />
+                      <Check className="mr-1.5 size-3.5 text-success" />
                     ) : (
                       <Copy className="mr-1.5 size-3.5" />
                     )}

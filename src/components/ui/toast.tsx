@@ -32,7 +32,7 @@ export function Toast({
             ? "border-destructive/30 text-destructive"
             : variant === "info"
               ? "border-primary/30 text-primary"
-              : "border-emerald-500/30 text-foreground"
+              : "border-border text-foreground"
         )}
       >
         {variant === "error" ? (
@@ -40,7 +40,7 @@ export function Toast({
         ) : variant === "info" ? (
           <Info className="size-4 shrink-0" />
         ) : (
-          <CheckCircle2 className="size-4 shrink-0 text-emerald-500" />
+          <CheckCircle2 className="size-4 shrink-0 text-success" />
         )}
         <span className="min-w-0">{message}</span>
       </div>
