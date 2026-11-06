@@ -1,19 +1,39 @@
-import React from "react";
 import { AppShell } from "@/components/layout/app-shell";
-import { DashboardHeader } from "@/components/layout/dashboard-header";
-import { PaletteProvider } from "@/components/command/command-palette";
-import { FeedbackButton } from "@/components/feedback/feedback-button";
+import { BackendSetupNotice } from "@/components/setup/backend-setup-notice";
+import { requireUser, accountFromUser } from "@/features/auth/session";
+import { isSupabaseConfigured } from "@/lib/env";
+import { listRecentMemories } from "@/features/memories/queries";
+import { listCollections } from "@/features/collections/queries";
+import { listRelationships } from "@/features/relationships/queries";
+import { MemoriesProvider } from "@/features/memories/client";
 
-export default function AppLayout({ children }: LayoutProps<"/">) {
+export const dynamic = "force-dynamic";
+
+export default async function AppLayout({ children }: LayoutProps<"/">) {
+  if (!isSupabaseConfigured()) {
+    return (
+      <div className="flex min-h-screen items-center justify-center p-6">
+        <BackendSetupNotice />
+      </div>
+    );
+  }
+
+  const user = await requireUser();
+  const account = accountFromUser(user);
+
+  const [memories, collections, relationships] = await Promise.all([
+    listRecentMemories(200),
+    listCollections(),
+    listRelationships(),
+  ]);
+
   return (
-    <PaletteProvider>
-      <AppShell>
-        <DashboardHeader />
-        <div className="mx-auto max-w-7xl px-4 pb-28 pt-8 sm:px-6 lg:px-8">
-          {children}
-        </div>
-      </AppShell>
-      <FeedbackButton />
-    </PaletteProvider>
+    <MemoriesProvider
+      memories={memories}
+      collections={collections}
+      relationships={relationships}
+    >
+      <AppShell account={account}>{children}</AppShell>
+    </MemoriesProvider>
   );
 }

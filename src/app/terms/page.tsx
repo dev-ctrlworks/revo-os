@@ -5,7 +5,7 @@ import { LegalPage, LegalSection } from "@/components/legal/legal-page";
 export const metadata: Metadata = {
   title: "Terms of Service",
   description:
-    "The terms that govern your use of Revo OS, a Ctrl Works prototype.",
+    "The terms that govern your use of Revo OS, a Ctrl Works product.",
   alternates: { canonical: "/terms" },
 };
 
@@ -17,7 +17,7 @@ export default function TermsOfServicePage() {
       <LegalSection heading="Agreement to these terms">
         <p>
           These Terms of Service (&ldquo;Terms&rdquo;) govern your use of Revo OS
-          (the &ldquo;Service&rdquo;), a prototype operated by{" "}
+          (the &ldquo;Service&rdquo;), operated by{" "}
           <strong>Ctrl Works</strong> (&ldquo;we&rdquo;, &ldquo;us&rdquo;) and
           available at{" "}
           <a href="https://revoos.app">revoos.app</a>. By using
@@ -29,10 +29,11 @@ export default function TermsOfServicePage() {
 
       <LegalSection heading="What the Service is">
         <p>
-          Revo OS is an early <strong>demonstration prototype</strong> intended
-          for testing and feedback. It is pre-loaded with demo content and is
-          offered free of charge. Features, data, and availability may change or
-          be removed at any time, and data stored locally may be lost.
+          Revo OS is a memory layer for your digital life. You can create an
+          account, capture notes, links, screenshots, and files, and ask
+          questions grounded in what you have saved. The Service is offered free
+          of charge to start. Features and availability may change or be removed
+          at any time.
         </p>
       </LegalSection>
 
@@ -66,7 +67,7 @@ export default function TermsOfServicePage() {
         <p>
           You retain ownership of the content you capture or submit. You grant
           us only the limited rights needed to operate the Service — for
-          example, to store feedback you send us and to send an AI request to
+          example, to store the memories you save and to send an AI request to
           our provider when you ask a question. You are responsible for the
           content you capture and for complying with any rights that apply to
           it.
@@ -105,8 +106,8 @@ export default function TermsOfServicePage() {
           for any indirect, incidental, special, consequential, or punitive
           damages, or for any loss of data, profits, or goodwill, arising from or
           related to your use of the Service. Because the Service is provided
-          free of charge as a prototype, our total liability to you is limited to
-          the greater of the amount you paid us (which is zero) and the minimum
+          free of charge to start, our total liability to you is limited to the
+          greater of the amount you paid us (which is zero) and the minimum
           permitted by applicable law. Nothing in these Terms excludes liability
           that cannot be excluded by law.
         </p>

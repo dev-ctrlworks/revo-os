@@ -13,7 +13,7 @@ const contentSecurityPolicy = [
   "font-src 'self' data:",
   "style-src 'self' 'unsafe-inline'",
   `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""} https://static.cloudflareinsights.com https://*.posthog.com`,
-  `connect-src 'self' https://cloudflareinsights.com https://*.posthog.com${isDev ? " ws: wss:" : ""}`,
+  `connect-src 'self' https://cloudflareinsights.com https://*.posthog.com https://*.supabase.co wss://*.supabase.co${isDev ? " ws: wss:" : ""}`,
   "worker-src 'self' blob: data:",
   "upgrade-insecure-requests",
 ].join("; ");

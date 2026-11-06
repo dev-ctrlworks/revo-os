@@ -43,32 +43,8 @@ export interface Memory {
   description?: string;
   keyPoints?: string[];
   previewUrl?: string;
-}
-
-export interface Entity {
-  id: string;
-  type: "project" | "person" | "place" | "topic" | "idea";
-  name: string;
-  aliases: string[];
-}
-
-export type RelationshipType =
-  | "related-topic"
-  | "in-project"
-  | "same-entity"
-  | "supports"
-  | "user";
-
-export type RelationshipOrigin = "derived" | "user" | "ai";
-
-export interface Relationship {
-  id: string;
-  fromId: string;
-  toId: string;
-  type: RelationshipType;
-  origin: RelationshipOrigin;
-  evidence?: string;
-  reviewStatus?: "suggested" | "accepted" | "dismissed";
+  /** MIME type of the attached original file, when one exists. */
+  previewMime?: string;
 }
 
 export interface Collection {
@@ -98,6 +74,16 @@ export interface AIAnswer {
 export interface TimelineGroup {
   label: string;
   memories: Memory[];
+}
+
+export type RelationshipType = "related_to" | "references" | "derived_from" | "contradicts";
+
+export interface Relationship {
+  id: string;
+  sourceMemoryId: string;
+  targetMemoryId: string;
+  relationshipType: RelationshipType;
+  createdBy: "user" | "ai";
 }
 
 export type ViewMode = "grid" | "list";

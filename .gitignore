@@ -12,6 +12,9 @@
 
 # testing
 /coverage
+/test-results/
+/playwright-report/
+/playwright/.cache/
 
 # next.js
 /.next/
@@ -50,3 +53,11 @@ next-env.d.ts
 cloudflare-env.d.ts
 .wrangler/
 .cf-env-backup/
+
+# browser extension (wxt) build artifacts
+apps/extension/.output/
+apps/extension/.wxt/
+apps/extension/wxt.config.ts.bak
+
+# supabase cli cache
+supabase/.temp/

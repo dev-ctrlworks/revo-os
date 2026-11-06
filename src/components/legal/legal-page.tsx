@@ -47,9 +47,6 @@ export function LegalPage({
           <Link href="/terms" className="transition-colors hover:text-foreground">
             Terms
           </Link>
-          <Link href="/privacy/request" className="transition-colors hover:text-foreground">
-            Your data
-          </Link>
           <CookieSettingsButton className="transition-colors hover:text-foreground" />
           <a href="mailto:hello@revoos.app" className="transition-colors hover:text-foreground">
             Contact

@@ -5,7 +5,7 @@ import { LegalPage, LegalSection } from "@/components/legal/legal-page";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How Revo OS, a Ctrl Works prototype, collects, uses, and protects your information.",
+    "How Revo OS, a Ctrl Works product, collects, uses, and protects your information.",
   alternates: { canonical: "/privacy" },
 };
 
@@ -16,34 +16,33 @@ export default function PrivacyPolicyPage() {
     <LegalPage title="Privacy Policy" updated={UPDATED}>
       <LegalSection heading="Who we are">
         <p>
-          Revo OS is a working prototype operated by <strong>Ctrl Works</strong>{" "}
+          Revo OS is a product operated by <strong>Ctrl Works</strong>{" "}
           (&ldquo;we&rdquo;, &ldquo;us&rdquo;). This policy explains what we
-          collect when you use the prototype at{" "}
+          collect when you use Revo OS at{" "}
           <a href="https://revoos.app">revoos.app</a>, why we
           collect it, and the choices you have. For any privacy question or
           request, contact{" "}
           <a href="mailto:hello@revoos.app">hello@revoos.app</a>.
         </p>
         <p>
-          Revo OS is a demo, not a finished product. It is intended for people
-          aged 16 and over and is not directed at children.
+          Revo OS is intended for people aged 16 and over and is not directed at
+          children.
         </p>
       </LegalSection>
 
       <LegalSection heading="The short version">
         <ul>
           <li>
-            Your captured memories, notes, links, and edits are stored{" "}
-            <strong>in your browser only</strong> (localStorage). They are not
-            uploaded to us by default.
+            Your captured memories, notes, links, and uploads are stored on your
+            behalf in our database (Supabase), scoped to your account with
+            row-level security. Only you can access what you save.
           </li>
           <li>
             When you use an AI feature, your question and the relevant memory
             snippets are sent to our AI provider (OpenAI) to generate an answer.
           </li>
           <li>
-            We only receive your email if you join the waitlist, and your
-            feedback (plus an optional email) if you submit the feedback form.
+            We receive your email when you create an account.
           </li>
           <li>
             We use privacy-friendly analytics. Cloudflare Web Analytics runs
@@ -57,14 +56,16 @@ export default function PrivacyPolicyPage() {
       <LegalSection heading="Information we collect">
         <ul>
           <li>
-            <strong>Waitlist email.</strong> If you join the waitlist, we store
-            the email address you provide so we can let you know when access
-            opens. Stored in our database (Supabase).
+            <strong>Account details.</strong> When you create an account, we
+            store your email address and authentication details, and any profile
+            information you provide, so we can operate your account. Stored in
+            our database (Supabase).
           </li>
           <li>
-            <strong>Feedback.</strong> If you send feedback, we store your
-            message, an optional email address, and the page you were on, so we
-            can improve the product. Stored in our database (Supabase).
+            <strong>Your memories and uploads.</strong> The notes, links,
+            screenshots, files, collections, and other content you save are
+            stored in our database and file storage (Supabase), scoped to your
+            account so only you can access them.
           </li>
           <li>
             <strong>AI requests.</strong> When you ask a question, the text of
@@ -75,12 +76,6 @@ export default function PrivacyPolicyPage() {
             models.
           </li>
           <li>
-            <strong>Local data.</strong> Your captures, edits, collections, and
-            preferences live in your browser&rsquo;s localStorage and are not
-            transmitted to us unless you use an AI feature or otherwise submit
-            them.
-          </li>
-          <li>
             <strong>Usage analytics.</strong> We use Cloudflare Web Analytics,
             which is cookieless and does not fingerprint or track you across
             sites, and it reports aggregate page views and performance. If you
@@ -88,9 +83,9 @@ export default function PrivacyPolicyPage() {
             and a pseudonymous identifier to measure how the product is used
             (pages viewed, clicks, sessions). Rejecting analytics leaves
             PostHog disabled. We also record product events such as
-            &ldquo;waitlist joined&rdquo; or &ldquo;question asked&rdquo;
-            server-side; these never include the content of your questions,
-            feedback, or emails.
+            &ldquo;memories created&rdquo; or &ldquo;question asked&rdquo;
+            server-side; these never include the content of your questions or
+            emails.
           </li>
           <li>
             <strong>Technical and log data.</strong> Our hosting provider
@@ -103,8 +98,8 @@ export default function PrivacyPolicyPage() {
 
       <LegalSection heading="How we use information">
         <ul>
-          <li>To operate, secure, and rate-limit the prototype.</li>
-          <li>To reply to waitlist and feedback submissions.</li>
+          <li>To operate, secure, and rate-limit Revo OS.</li>
+          <li>To store and retrieve the content you save.</li>
           <li>To generate AI answers you ask for.</li>
           <li>To understand aggregate usage and improve the product.</li>
           <li>To comply with legal obligations.</li>
@@ -119,17 +114,17 @@ export default function PrivacyPolicyPage() {
         <p>
           Where GDPR applies, we process personal data on these bases:
           our <strong>legitimate interests</strong> in operating and securing
-          the prototype and improving the product; your <strong>consent</strong>{" "}
-          when you submit the waitlist or feedback forms, use AI features, or
-          accept analytics cookies; and our{" "}
+          Revo OS and improving the product; your <strong>consent</strong> when
+          you use AI features or
+          accept analytics cookies; performance of our <strong>contract</strong>{" "}
+          with you for storing your account and its content; and our{" "}
           <strong>legal obligations</strong> where they apply.
         </p>
       </LegalSection>
 
       <LegalSection heading="Service providers we share with">
         <p>
-          We share data with the following processors strictly to run the
-          prototype:
+          We share data with the following processors strictly to run Revo OS:
         </p>
         <ul>
           <li>
@@ -137,8 +132,8 @@ export default function PrivacyPolicyPage() {
             and analytics.
           </li>
           <li>
-            <strong>Supabase</strong> — database storage for waitlist and
-            feedback data.
+            <strong>Supabase</strong> — account, database, and file storage for
+            your memories.
           </li>
           <li>
             <strong>OpenAI</strong> — processing AI requests you make.
@@ -177,12 +172,9 @@ export default function PrivacyPolicyPage() {
       <LegalSection heading="Retention">
         <ul>
           <li>
-            <strong>Waitlist emails:</strong> kept until launch communication is
-            complete or you ask us to delete them.
-          </li>
-          <li>
-            <strong>Feedback:</strong> kept while we improve the prototype, then
-            deleted on request or when no longer needed.
+            <strong>Account and memories:</strong> kept while your account is
+            active. Delete individual memories in the product, or ask us to
+            delete your account and its data.
           </li>
           <li>
             <strong>Logs:</strong> retained briefly by our providers for
@@ -206,27 +198,25 @@ export default function PrivacyPolicyPage() {
           processing, and to withdraw consent at any time.
         </p>
         <p>
-          You can exercise access and deletion for waitlist and feedback data
-          yourself on the <Link href="/privacy/request">Your data</Link> page, or
-          email <a href="mailto:hello@revoos.app">hello@revoos.app</a>. You
-          can also clear everything Revo OS stores locally at any time from{" "}
-          <Link href="/settings">Settings</Link> or by clearing your browser
-          storage. If you are in the UK/EU, you have the right to complain to
-          your local data protection authority.
+          You can manage your account and saved memories at any time from{" "}
+          <Link href="/settings">Settings</Link>, or email{" "}
+          <a href="mailto:hello@revoos.app">hello@revoos.app</a> to access or
+          delete your data. If you are in the UK/EU, you have the right to
+          complain to your local data protection authority.
         </p>
       </LegalSection>
 
       <LegalSection heading="Security">
         <p>
-          We use HTTPS, security headers, origin checks, and rate limiting to
-          protect the prototype. No method of transmission or storage is
-          completely secure, and the prototype is provided without warranty.
+          We use HTTPS, security headers, origin checks, row-level security, and
+          rate limiting to protect Revo OS. No method of transmission or storage
+          is completely secure, and Revo OS is provided without warranty.
         </p>
       </LegalSection>
 
       <LegalSection heading="Changes to this policy">
         <p>
-          We may update this policy as the prototype evolves. Material changes
+          We may update this policy as Revo OS evolves. Material changes
           will be reflected by a new &ldquo;last updated&rdquo; date on this
           page.
         </p>

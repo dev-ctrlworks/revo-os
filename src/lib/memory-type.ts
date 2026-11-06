@@ -1,83 +1,86 @@
+import type { MemoryType } from "@/lib/types";
 import {
-  Monitor,
-  StickyNote,
   FileText,
-  LinkIcon,
-  ImageIcon,
-  MessageSquare,
+  Image as ImageIcon,
+  Link2,
   Mail,
+  MessageSquare,
+  StickyNote,
+  Camera,
   Archive,
   type LucideIcon,
 } from "lucide-react";
-import type { MemoryType } from "@/lib/types";
 
-export interface MemoryTypeMeta {
+interface MemoryTypeMeta {
   label: string;
   icon: LucideIcon;
-  color: string;
-  bg: string;
-  accent: string;
+  /** Semantic accent classes (design system §12). Token-based, not raw palette. */
+  accent: {
+    /** Solid tint block behind the type icon. */
+    tint: string;
+    /** Text/icon color with sufficient contrast on the tint. */
+    text: string;
+    /** Soft background for badges/filters. */
+    soft: string;
+  };
+}
+
+/* One fixed mix for every type so tints read as a single family. Tint is a
+   touch stronger than soft; contrast comes from the matching *-deep token. */
+const TINT = 52;
+const SOFT = 42;
+
+function accent(base: string, deep: string): MemoryTypeMeta["accent"] {
+  return {
+    tint: `bg-[color-mix(in_oklab,var(--${base})_${TINT}%,white)]`,
+    text: `text-${deep}-deep`,
+    soft: `bg-[color-mix(in_oklab,var(--${base})_${SOFT}%,white)] text-${deep}-deep`,
+  };
 }
 
 export const memoryTypeMeta: Record<MemoryType, MemoryTypeMeta> = {
   screenshot: {
     label: "Screenshot",
-    icon: Monitor,
-    color: "text-[#6258CC]",
-    bg: "bg-[#EEECFF]",
-    accent: "#6258CC",
+    icon: Camera,
+    accent: accent("cyan", "cyan"),
   },
   note: {
     label: "Note",
     icon: StickyNote,
-    color: "text-[#7C3AED]",
-    bg: "bg-[#F3EDFF]",
-    accent: "#7C3AED",
+    accent: accent("lime", "lime"),
   },
   document: {
     label: "Document",
     icon: FileText,
-    color: "text-[#3B6FE0]",
-    bg: "bg-[#E9F0FF]",
-    accent: "#3B6FE0",
+    accent: accent("periwinkle", "periwinkle"),
   },
   link: {
     label: "Link",
-    icon: LinkIcon,
-    color: "text-[#5677E8]",
-    bg: "bg-[#EDF1FF]",
-    accent: "#5677E8",
+    icon: Link2,
+    accent: accent("sky", "sky"),
   },
   image: {
     label: "Image",
     icon: ImageIcon,
-    color: "text-[#A855F7]",
-    bg: "bg-[#F6EDFF]",
-    accent: "#A855F7",
+    accent: accent("pink", "pink"),
   },
   discussion: {
-    label: "Conversation",
+    label: "Discussion",
     icon: MessageSquare,
-    color: "text-[#0E9E96]",
-    bg: "bg-[#E4F7F5]",
-    accent: "#0E9E96",
+    accent: accent("teal", "teal"),
   },
   email: {
     label: "Email",
     icon: Mail,
-    color: "text-[#0E93D6]",
-    bg: "bg-[#E6F4FD]",
-    accent: "#0E93D6",
+    accent: accent("amber", "amber"),
   },
   archive: {
     label: "Archive",
     icon: Archive,
-    color: "text-[#717487]",
-    bg: "bg-[#F1F2F8]",
-    accent: "#717487",
+    accent: accent("rose", "rose"),
   },
 };
 
 export function memoryTypeLabel(type: MemoryType): string {
-  return memoryTypeMeta[type].label;
+  return memoryTypeMeta[type]?.label ?? "Memory";
 }

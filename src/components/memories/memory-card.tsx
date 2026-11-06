@@ -1,308 +1,132 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { Calendar, Heart, Check, ChevronRight } from "lucide-react";
-import type { Memory, MemoryType } from "@/lib/types";
+import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { timeAgo } from "@/lib/utils-format";
-import { cardSurfaceClass } from "@/lib/ui";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Skeleton } from "@/components/ui/skeleton";
-import { MemoryTypeIcon, memoryTypeLabel } from "./memory-type-icon";
-
-export type MemoryCardVariant = "default" | "compact" | "grid" | "feed";
+import type { Memory } from "@/lib/types";
+import { memoryTypeMeta } from "@/lib/memory-type";
 
 interface MemoryCardProps {
   memory: Memory;
-  variant?: MemoryCardVariant;
-  selected?: boolean;
-  onSelect?: (id: string, selected: boolean) => void;
-  onFavoriteToggle?: (id: string, favorite: boolean) => void;
-  onCollectionChange?: (id: string, collection: string) => void;
+  onToggleFavorite?: (memory: Memory) => void;
 }
 
-export function MemoryCard({
-  memory,
-  variant = "default",
-  selected = false,
-  onSelect,
-  onFavoriteToggle,
-  onCollectionChange,
-}: MemoryCardProps) {
-  const isInteractive = Boolean(onSelect || onFavoriteToggle || onCollectionChange);
-  const isOuterLink = !isInteractive;
+function formatDate(value: string): string {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "";
+  return date.toLocaleDateString(undefined, {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}
 
-  const handleClick = (e: React.SyntheticEvent) => {
-    if (isInteractive) {
-      e.preventDefault();
-      e.stopPropagation();
-      if (onSelect) {
-        onSelect(memory.id, !selected);
-      }
-    }
-  };
+function isImagePreview(memory: Memory): boolean {
+  if (!memory.previewUrl) return false;
+  if (memory.previewMime) return memory.previewMime.startsWith("image/");
+  return memory.type === "image" || memory.type === "screenshot";
+}
 
-  const handleFavoriteToggle = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    onFavoriteToggle?.(memory.id, !memory.favorite);
-  };
+/**
+ * Preview zone. Shows the memory's real attached image when one exists; other
+ * types show a semantic type tint with the type icon (no fabricated imagery).
+ */
+function MediaPreview({ memory }: { memory: Memory }) {
+  const meta = memoryTypeMeta[memory.type];
+  const Icon = meta.icon;
 
-  const renderContent = () => (
-    <>
-      <div className="h-px shrink-0 bg-border/70" />
-      <div className={cn("flex flex-1 flex-col", variant === "grid" ? "p-4" : "p-5")}>
-        <div className="mb-2 flex items-center justify-between gap-2">
-          <span className="flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
-            <MemoryTypeIcon type={memory.type} size={variant === "compact" ? "sm" : "md"} />
-            {memoryTypeLabel(memory.type)}
-          </span>
-          <div className="flex items-center gap-1">
-            {memory.favorite && (
-              <Heart className="size-3.5 shrink-0 fill-[#D99A2B] text-[#D99A2B]" aria-label="Favorite" />
-            )}
-            {onFavoriteToggle && (
-              <button
-                type="button"
-                onClick={handleFavoriteToggle}
-                className={cn(
-                  "p-1 rounded-lg transition-colors hover:bg-secondary",
-                  memory.favorite && "text-foreground"
-                )}
-                aria-label={memory.favorite ? "Remove from favorites" : "Add to favorites"}
-              >
-                <Heart className="size-3.5" />
-              </button>
-            )}
-            {onSelect && (
-              <button
-                type="button"
-                onClick={handleClick}
-                className={cn(
-                  "p-1 rounded-lg transition-colors",
-                  selected ? "bg-primary/15 text-primary" : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                )}
-                aria-label={selected ? "Deselect" : "Select"}
-                aria-pressed={selected}
-              >
-                <Check className="size-3.5" />
-              </button>
-            )}
-          </div>
-        </div>
-
-        {memory.collection && (
-          <p className="truncate text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
-            {memory.collection}
-          </p>
-        )}
-
-        <h3
-          className={cn(
-            "line-clamp-1 font-display font-semibold leading-snug tracking-tight",
-            variant === "compact" ? "text-[13px]" : variant === "grid" ? "text-base" : "text-sm"
-          )}
-        >
-          {memory.title}
-        </h3>
-
-        {variant !== "compact" && (
-          <p
-            className={cn(
-              "mt-1.5 line-clamp-2 flex-1 text-[13px] leading-relaxed text-muted-foreground",
-              variant === "grid" && "line-clamp-3"
-            )}
-          >
-            {memory.content}
-          </p>
-        )}
-
-        {variant === "feed" && (
-          <div className="mt-2 flex flex-wrap gap-1">
-            {memory.tags.slice(0, 3).map((tag) => (
-              <span key={tag} className="text-[10px] px-2 py-0.5 rounded-full bg-muted/50 text-muted-foreground">
-                {tag}
-              </span>
-            ))}
-            {memory.tags.length > 3 && (
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-muted/50 text-muted-foreground">
-                +{memory.tags.length - 3}
-              </span>
-            )}
-          </div>
-        )}
-
-        <div className={cn(
-          "mt-3 flex items-center justify-between gap-2 border-t border-border/40 pt-3",
-          variant === "compact" && "mt-2 pt-2"
-        )}>
-          <span className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
-            <Calendar className="size-3" />
-            {timeAgo(memory.createdAt)}
-          </span>
-          {onSelect ? (
-            <span className="flex items-center gap-1 text-[11px] font-medium text-muted-foreground">
-              {selected ? "Selected" : "Click to select"}
-            </span>
-          ) : isOuterLink ? (
-            <span className="flex items-center gap-1 text-[11px] font-medium text-muted-foreground transition-colors group-hover:text-foreground">
-              Open
-              <ChevronRight className="size-3 transition-transform duration-300 group-hover:translate-x-0.5" />
-            </span>
-          ) : (
-            <Link
-              href={`/memory/${memory.id}`}
-              className="flex items-center gap-1 text-[11px] font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Open
-              <ChevronRight className="size-3 transition-transform duration-300 group-hover:translate-x-0.5" />
-            </Link>
-          )}
-        </div>
-      </div>
-    </>
-  );
-
-  if (!isOuterLink) {
+  if (isImagePreview(memory)) {
     return (
-      <div
-        className={cn(
-          "group relative overflow-hidden transition-colors duration-150",
-          cardSurfaceClass,
-          selected && "border-primary/40 bg-lavender ring-1 ring-primary/40",
-          "hover:border-border"
-        )}
-        onClick={onSelect ? handleClick : undefined}
-        role={onSelect ? "checkbox" : undefined}
-        aria-checked={onSelect ? selected : undefined}
-        tabIndex={onSelect ? 0 : undefined}
-        onKeyDown={
-          onSelect
-            ? (e) => e.key === " " && (e.preventDefault(), handleClick(e))
-            : undefined
-        }
-      >
-        {renderContent()}
+      <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-secondary">
+        <Image
+          src={memory.previewUrl as string}
+          alt=""
+          fill
+          unoptimized
+          sizes="(max-width: 640px) 100vw, 320px"
+          className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+        />
       </div>
     );
   }
 
   return (
-    <Link
-      href={`/memory/${memory.id}`}
+    <div
+      aria-hidden
       className={cn(
-        "group block h-full overflow-hidden transition-colors duration-200",
-        cardSurfaceClass,
-        "hover:border-border",
-        variant === "grid" && "flex flex-col"
+        "flex aspect-[16/10] w-full items-center justify-center rounded-xl",
+        meta.accent.tint
       )}
     >
-      {renderContent()}
-    </Link>
-  );
-}
-
-export function MemoryCardSkeleton({ variant = "default" }: { variant?: MemoryCardVariant }) {
-  return (
-    <Card className={cn("gap-0 overflow-hidden border-border/50 p-0", variant === "grid" && "flex flex-col")}>
-      <Skeleton className="h-1 rounded-none" />
-      <div className={cn("flex flex-1 flex-col", variant === "grid" ? "p-4" : "p-5")}>
-        <div className="mb-2 flex items-center justify-between">
-          <div className="flex items-center gap-1.5">
-            <Skeleton className="size-1.5 rounded-full" />
-            <Skeleton className="h-3 w-16" />
-          </div>
-          <Skeleton className="size-3.5" />
-        </div>
-        <Skeleton className="h-3 w-20" />
-        <Skeleton className="mt-2 h-4 w-3/4" />
-        {variant !== "compact" && (
-          <>
-            <Skeleton className="mt-2.5 h-3 w-full" />
-            <Skeleton className="mt-1.5 h-3 w-5/6" />
-          </>
-        )}
-        <Skeleton className="mt-4 h-px w-full" />
-        <div className="mt-3 flex items-center justify-between">
-          <Skeleton className="h-3 w-12" />
-          <Skeleton className="h-3 w-8" />
-        </div>
-      </div>
-    </Card>
-  );
-}
-
-export function EmptyState({
-  title,
-  description,
-  actionLabel,
-  onAction,
-  icon = "document",
-}: {
-  title: string;
-  description: string;
-  actionLabel?: string;
-  onAction?: () => void;
-  icon?: MemoryType;
-}) {
-  return (
-    <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-border/70 px-6 py-16 text-center">
-      <div className="mb-4 flex size-14 items-center justify-center rounded-2xl icon-chip text-muted-foreground">
-        <MemoryTypeIcon type={icon} size="md" />
-      </div>
-      <h3 className="text-base font-semibold">{title}</h3>
-      <p className="mt-1.5 max-w-sm text-sm text-muted-foreground">
-        {description}
-      </p>
-      {actionLabel && onAction && (
-        <Button className="mt-5" size="sm" onClick={onAction}>
-          {actionLabel}
-        </Button>
-      )}
+      <Icon className={cn("size-7", meta.accent.text)} />
     </div>
   );
 }
 
-export function MemoryCardFeedRow({
-  memory,
-  last = false,
-  onClick,
-}: {
-  memory: Memory;
-  last?: boolean;
-  onClick?: () => void;
-}) {
+export function MemoryCard({ memory, onToggleFavorite }: MemoryCardProps) {
+  const meta = memoryTypeMeta[memory.type];
+  const Icon = meta.icon;
+
   return (
-    <div
-      className={cn(
-        "group flex items-center gap-3 bg-transparent px-4 py-3 transition-colors hover:bg-card/50",
-        !last && "border-b border-border/40"
-      )}
-      onClick={onClick}
-      role={onClick ? "button" : undefined}
-      aria-label={onClick ? `Open ${memory.title}` : undefined}
-      tabIndex={onClick ? 0 : undefined}
-      onKeyDown={(e) => {
-        if (!onClick) return;
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          onClick();
-        }
-      }}
-    >
-      <MemoryTypeIcon type={memory.type} />
-      <div className="min-w-0 flex-1">
-        <p className="truncate text-[13px] font-medium">{memory.title}</p>
-        <p className="truncate text-[11px] text-muted-foreground">
-          {memoryTypeLabel(memory.type)}
-          {memory.collection ? ` · ${memory.collection}` : ""}
-        </p>
+    <div className="app-lift app-card group relative flex flex-col gap-3 overflow-hidden p-4 hover:border-primary/25">
+      <MediaPreview memory={memory} />
+
+      <div className="flex items-center justify-between gap-2">
+        <span
+          className={cn(
+            "inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium",
+            meta.accent.soft
+          )}
+        >
+          <Icon className="size-3" />
+          {meta.label}
+        </span>
+        {onToggleFavorite && (
+          <button
+            type="button"
+            aria-label={memory.favorite ? "Unfavorite" : "Favorite"}
+            aria-pressed={memory.favorite}
+            onClick={() => onToggleFavorite(memory)}
+            className="rounded-md p-1 text-muted-foreground opacity-0 transition-opacity hover:text-favorite focus-visible:opacity-100 group-hover:opacity-100 aria-pressed:text-favorite aria-pressed:opacity-100"
+          >
+            <Star
+              className={cn("size-4", memory.favorite && "fill-favorite")}
+            />
+          </button>
+        )}
       </div>
-      <span className="shrink-0 text-[11px] text-muted-foreground">
-        {timeAgo(memory.createdAt)}
-      </span>
-      <ChevronRight className="size-3.5 shrink-0 text-muted-foreground opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100" />
+
+      <Link href={`/memory/${memory.id}`} className="flex flex-1 flex-col gap-1.5">
+        <h3 className="line-clamp-2 text-sm font-semibold text-heading">
+          {memory.title}
+        </h3>
+        {(memory.description || memory.content) && (
+          <p className="line-clamp-2 text-xs text-muted-foreground">
+            {memory.description || memory.content}
+          </p>
+        )}
+      </Link>
+
+      <div className="flex items-center justify-between gap-2 text-xs text-muted-foreground">
+        <span className="truncate">
+          {memory.domain ?? formatDate(memory.createdAt)}
+        </span>
+        {memory.domain && <span className="shrink-0">{formatDate(memory.createdAt)}</span>}
+      </div>
+
+      {memory.tags.length > 0 && (
+        <div className="flex flex-wrap gap-1">
+          {memory.tags.slice(0, 3).map((tag) => (
+            <span
+              key={tag}
+              className="rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

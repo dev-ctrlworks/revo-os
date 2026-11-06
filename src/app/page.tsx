@@ -1,19 +1,23 @@
-import { AuroraBackground } from "@/components/motion/aurora-background";
-import { SectionHeader } from "@/components/landing/section-header";
-import { Reveal } from "@/components/motion/reveal";
-import { SiteHeader } from "@/components/landing/site-header";
-import { Hero } from "@/components/landing/hero";
-import { Problem } from "@/components/landing/problem";
-import { Features } from "@/components/landing/features";
-import { UseCases } from "@/components/landing/use-cases";
-import { Demo } from "@/components/landing/demo";
-import { Privacy } from "@/components/landing/privacy";
-import { WaitlistSection } from "@/components/landing/waitlist-section";
-import { Faq, faqs } from "@/components/landing/faq";
-import { FinalCta } from "@/components/landing/final-cta";
-import { SiteFooter } from "@/components/landing/site-footer";
-import { FeedbackButton } from "@/components/feedback/feedback-button";
+import type { Metadata } from "next";
+import { MarketingNavigation } from "@/components/marketing/navigation";
+import { HeroSection } from "@/components/marketing/hero";
+import { ProblemSection } from "@/components/marketing/problem";
+import { FeatureCarousel } from "@/components/marketing/feature-carousel";
+import { HowItWorksSection } from "@/components/marketing/how-it-works";
+import { LibraryShowcase } from "@/components/marketing/library-showcase";
+import { CollectionSummarySection } from "@/components/marketing/collection-summary";
+import { SourceMarquee } from "@/components/marketing/marquee";
+import { DifferentiationSection } from "@/components/marketing/differentiation";
+import { FaqSection } from "@/components/marketing/faq";
+import { FinalCTA } from "@/components/marketing/final-cta";
+import { MarketingFooter } from "@/components/marketing/footer";
+import { ScrollProgress } from "@/components/marketing/motion";
+import { faqs } from "@/components/marketing/content";
 import { jsonLdScript } from "@/lib/safe-url";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function LandingPage() {
   const jsonLd = {
@@ -43,7 +47,7 @@ export default function LandingPage() {
         operatingSystem: "Web",
         image: "https://revoos.app/logo.png",
         description:
-          "A personal AI memory layer: save notes, links, and files, then ask questions and get answers with sources. Local-first.",
+          "A personal AI memory layer: save notes, links, and files, then ask questions and get answers with sources.",
       },
       {
         "@type": "Organization",
@@ -72,40 +76,38 @@ export default function LandingPage() {
   };
 
   return (
-    <div className="min-h-screen overflow-hidden">
+    <div className="flex min-h-screen flex-col overflow-x-clip bg-white">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-primary-foreground"
+      >
+        Skip to content
+      </a>
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: jsonLdScript(jsonLd) }}
       />
-      <AuroraBackground />
-      <SiteHeader />
 
-      <main>
-        <Hero />
-        <Problem />
-        <Features />
+      <div className="relative isolate flex min-h-screen flex-col">
+        <MarketingNavigation />
+        <ScrollProgress />
 
-        <section id="use-cases" className="container mx-auto max-w-7xl px-5 py-20 sm:py-24">
-          <SectionHeader
-            kicker="Use cases"
-            align="center"
-            title="Ask across your life."
-            lead="One memory layer answers work, study, travel, shopping, and everyday questions. Here are a few examples."
-          />
-          <Reveal className="mt-12" y={32}>
-            <UseCases />
-          </Reveal>
-        </section>
+        <main id="main" className="relative z-0 flex-1">
+          <HeroSection />
+          <ProblemSection />
+          <FeatureCarousel />
+          <HowItWorksSection />
+          <LibraryShowcase />
+          <CollectionSummarySection />
+          <SourceMarquee />
+          <DifferentiationSection />
+          <FaqSection />
+          <FinalCTA />
+        </main>
 
-        <Demo />
-        <Privacy />
-        <WaitlistSection />
-        <Faq />
-        <FinalCta />
-      </main>
-
-      <SiteFooter />
-      <FeedbackButton />
+        <MarketingFooter />
+      </div>
     </div>
   );
 }

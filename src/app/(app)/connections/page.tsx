@@ -1,39 +1,24 @@
-"use client";
+import type { Metadata } from "next";
+import { requireUser } from "@/features/auth/session";
+import { ConnectionsClient } from "@/components/connections/connections-client";
+import { getCurrentUserPlan } from "@/features/billing/plan";
+import { listRelationships } from "@/features/relationships/queries";
+import { listRecentMemories } from "@/features/memories/queries";
 
-import { useMemoryStore } from "@/lib/use-memory-store";
-import { MemoryGraph } from "@/components/graph/memory-graph";
-import { RelationshipsPanel } from "./relationships";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+export const metadata: Metadata = { title: "Connections" };
 
-export default function ConnectionsPage() {
-  const memories = useMemoryStore();
-  const count = memories.length;
-
+export default async function ConnectionsPage() {
+  await requireUser("/connections");
+  const [planId, relationships, memories] = await Promise.all([
+    getCurrentUserPlan(),
+    listRelationships(),
+    listRecentMemories(200),
+  ]);
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="font-display text-2xl font-semibold tracking-tight">
-          Connections
-        </h1>
-        <p className="mt-1.5 max-w-2xl text-sm text-muted-foreground">
-          {count} memories wired to the people, places, products, and topics
-          they mention. Search to find a thread, then explore the relationship
-          list or the interactive graph.
-        </p>
-      </div>
-
-      <Tabs defaultValue="list">
-        <TabsList className="grid w-full max-w-xs grid-cols-2">
-          <TabsTrigger value="list">Relationships</TabsTrigger>
-          <TabsTrigger value="graph">Graph</TabsTrigger>
-        </TabsList>
-        <TabsContent value="list" className="mt-4">
-          <RelationshipsPanel />
-        </TabsContent>
-        <TabsContent value="graph" className="mt-4">
-          <MemoryGraph />
-        </TabsContent>
-      </Tabs>
-    </div>
+    <ConnectionsClient
+      planId={planId}
+      relationships={relationships}
+      memories={memories}
+    />
   );
 }

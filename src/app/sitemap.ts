@@ -12,6 +12,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/settings",
     "/collections",
     "/capture",
+    "/download",
+    "/pricing",
+    "/product/overview",
     "/privacy",
     "/terms",
   ];

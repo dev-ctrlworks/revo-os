@@ -7,8 +7,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
-  --font-display: var(--font-space-grotesk);
+  --font-sans: var(--font-plus-jakarta);
+  --font-display: var(--font-general-sans);
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -41,12 +41,51 @@
   --color-card: var(--card);
   --color-success: var(--success);
   --color-warning: var(--warning);
+  --color-favorite: var(--favorite);
+  --color-favorite-deep: var(--favorite-deep);
   --color-primary-hover: var(--primary-hover);
   --color-lavender: var(--lavender);
   --color-lavender-foreground: var(--lavender-foreground);
   --color-accent-blue: var(--accent-blue);
   --color-soft-blue: var(--soft-blue);
   --color-deep-indigo: var(--deep-indigo);
+  --color-heading: var(--heading);
+  --color-text: var(--text);
+  --color-surface-muted: var(--surface-muted);
+  --color-sky: var(--sky);
+  --color-lime: var(--lime);
+  --color-pink: var(--pink);
+  --color-cyan: var(--cyan);
+  --color-lime-bright: var(--lime-bright);
+  --color-magenta: var(--magenta);
+  --color-teal: var(--teal);
+  --color-coral: var(--coral);
+  --color-amber: var(--amber);
+  --color-periwinkle: var(--periwinkle);
+  --color-rose: var(--rose);
+  --color-violet: var(--violet);
+  --color-sky-deep: var(--sky-deep);
+  --color-cyan-deep: var(--cyan-deep);
+  --color-lavender-deep: var(--lavender-deep);
+  --color-lime-deep: var(--lime-deep);
+  --color-pink-deep: var(--pink-deep);
+  --color-magenta-deep: var(--magenta-deep);
+  --color-teal-deep: var(--teal-deep);
+  --color-coral-deep: var(--coral-deep);
+  --color-amber-deep: var(--amber-deep);
+  --color-periwinkle-deep: var(--periwinkle-deep);
+  --color-rose-deep: var(--rose-deep);
+  --color-violet-deep: var(--violet-deep);
+  --radius-button: 12px;
+  --radius-input: 12px;
+  --radius-card: 32px;
+  --radius-feature-card: 40px;
+  --radius-app-control: 12px;
+  --radius-app-card: 20px;
+  --radius-app-panel: 24px;
+  --radius-nav-pill: 40px;
+  --radius-showcase: 64px;
+  --radius-badge: 200px;
   --color-aurora-1: var(--aurora-1);
   --color-aurora-2: var(--aurora-2);
   --color-aurora-3: var(--aurora-3);
@@ -62,55 +101,103 @@
 }
 
 :root {
-  /* RevoOS — "Aurora Indigo" design system. Light-only, premium-minimal. */
-  --background: #f8f9fc;
-  --foreground: #191b2a;
-  --card: #ffffff;
-  --card-foreground: #191b2a;
-  --popover: #ffffff;
-  --popover-foreground: #191b2a;
-  --primary: #6258cc;
+  /* RevoOS — "Adora" design system (docs/DESIGN_SYSTEM.md). Light-only. */
+  /* Core colors */
+  --primary: #592eff; /* Electric Violet */
   --primary-foreground: #ffffff;
-  --primary-hover: #554bb9;
-  --secondary: #f1f2f8;
-  --secondary-foreground: #191b2a;
-  --muted: #f1f2f8;
-  --muted-foreground: #717487;
-  --accent: #f1f2f8;
-  --accent-foreground: #191b2a;
-  --lavender: #eeecff;
-  --lavender-foreground: #4941a0;
-  --accent-blue: #4968d9;
-  --soft-blue: #eaf0ff;
-  --deep-indigo: #383a83;
-  --success: #27845b;
+  --primary-hover: #4a24d9;
+  --heading: #21164c; /* Midnight Plum */
+  --text: #353241; /* Obsidian Charcoal */
+
+  /* Surfaces — predominantly white per the design system */
+  --background: #ffffff;
+  --foreground: #353241;
+  --card: #ffffff;
+  --card-foreground: #353241;
+  --popover: #ffffff;
+  --popover-foreground: #353241;
+  --surface-muted: #eeeeee; /* Soft Concrete */
+
+  /* Secondary / muted / accent surfaces */
+  --secondary: #eeeeee;
+  --secondary-foreground: #353241;
+  --muted: #eeeeee;
+  --muted-foreground: #5f5f69; /* Slate Smoke */
+  --accent: #eeeeee;
+  --accent-foreground: #353241;
+  --border: #e0e0db; /* Pearl Mist */
+  --input: #e0e0db;
+  --ring: #8a6bff;
+
+  /* Brand tints */
+  --lavender: #ece9ff;
+  --lavender-foreground: #3a1a99;
+  --accent-blue: #0a6a86;
+  --soft-blue: #bcf2ff; /* Sky Tint */
+  --deep-indigo: #21164c;
+
+  /* Semantic */
+  --success: #1f7a4d;
   --warning: #9a6700;
   --destructive: #c43d4b;
-  --border: #e4e6ef;
-  --input: #e4e6ef;
-  --ring: #8179e2;
-  --chart-1: #6258cc;
-  --chart-2: #4968d9;
-  --chart-3: #8179e2;
-  --chart-4: #717487;
-  --chart-5: #383a83;
-  --radius: 0.625rem;
+  --favorite: #f0a020;
+  --favorite-deep: #b26a00;
+
+  /* Pastel and bright accents */
+  --sky: #bcf2ff;
+  --lime: #dfff9d;
+  --pink: #ffaae6;
+  --cyan: #2ed6ff;
+  --lime-bright: #a2ea13;
+  --magenta: #f843c2;
+  --mint: #c3f7dd;
+  --coral: #ffd1c4;
+  --amber: #ffe7a3;
+  --periwinkle: #d7dbff;
+  --rose: #ffc7d8;
+  --teal: #bff0e8;
+  --violet: #c9b6ff; /* Vibrant pastel purple */
+
+  /* Deeper shades of the pastel accents, for text and icons that need
+     contrast on light pastel surfaces. */
+  --sky-deep: #0a6280;
+  --lime-deep: #3f6f00;
+  --pink-deep: #a30d77;
+  --cyan-deep: #065f79;
+  --lime-bright-deep: #4f7800;
+  --magenta-deep: #a50d74;
+  --lavender-deep: #3a1a99;
+  --mint-deep: #0a6b4a;
+  --coral-deep: #a63c22;
+  --amber-deep: #855c00;
+  --periwinkle-deep: #2b2f9e;
+  --rose-deep: #a3123f;
+  --teal-deep: #08655c;
+  --violet-deep: #5b2ecc;
+
+  --chart-1: #592eff;
+  --chart-2: #2ed6ff;
+  --chart-3: #f843c2;
+  --chart-4: #a2ea13;
+  --chart-5: #21164c;
+
+  --radius: 0.75rem;
   --sidebar: #ffffff;
-  --sidebar-foreground: #191b2a;
-  --sidebar-primary: #6258cc;
+  --sidebar-foreground: #353241;
+  --sidebar-primary: #592eff;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #eeecff;
-  --sidebar-accent-foreground: #4941a0;
-  --sidebar-border: #e4e6ef;
-  --sidebar-ring: #8179e2;
+  --sidebar-accent: #ece9ff;
+  --sidebar-accent-foreground: #3a1a99;
+  --sidebar-border: #e0e0db;
+  --sidebar-ring: #8a6bff;
 
   /* Legacy brand aliases, retained so existing utility classes keep resolving.
-     Repointed to the indigo/periwinkle Aurora ramp. */
-  --aurora-1: #8179e2;
-  --aurora-2: #6258cc;
-  --aurora-3: #554bb9;
-  --aurora-4: #4968d9;
-  --aurora-ink: #383a83;
+     Repointed to the Electric Violet ramp. */
+  --aurora-1: #8a6bff;
+  --aurora-2: #592eff;
+  --aurora-3: #4a24d9;
+  --aurora-4: #2ed6ff;
+  --aurora-ink: #21164c;
 }
 
 /* Keep the aurora ramp legible on dark surfaces (landing). */
@@ -295,6 +382,370 @@
   }
 }
 
+/* Application (product) surfaces.
+   Restrained Adora expression for the signed-in app: white panels, soft pastel
+   washes, and gentle hover. Kept separate from marketing utilities so the two
+   never interfere. */
+@layer utilities {
+  /* White card surface with the design-system card radius and hairline border.
+     Shared by every card/panel-like surface in the app so they read as one
+     family. Compose with layout utilities (padding, grid, etc.) at call sites. */
+  .app-card {
+    border-radius: var(--radius-app-card);
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    box-shadow:
+      0 1px 2px rgba(16, 24, 40, 0.04),
+      0 1px 3px rgba(16, 24, 40, 0.03);
+  }
+  /* Larger white panel surface (hero, answer, toolbar, empty state). Slightly
+     larger radius than a dense card so prominent panels feel more generous. */
+  .app-panel {
+    border-radius: var(--radius-app-panel);
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    box-shadow:
+      0 1px 2px rgba(16, 24, 40, 0.04),
+      0 1px 3px rgba(16, 24, 40, 0.03);
+  }
+  /* Controls (inputs, selects, buttons) share one radius in the app. */
+  .app-control {
+    border-radius: var(--radius-app-control);
+  }
+  /* Section heading recipe: consistent display family, weight, and color. */
+  .app-h2 {
+    font-family: var(--font-display);
+    font-size: 1rem; /* 16px */
+    line-height: 1.3;
+    font-weight: 600;
+    color: var(--heading);
+  }
+  .app-h3 {
+    font-family: var(--font-display);
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.35;
+    font-weight: 600;
+    color: var(--heading);
+  }
+  /* Consistent hover for list rows and interactive rows. */
+  .app-row-hover {
+    transition: background-color var(--duration-normal, 180ms) ease;
+  }
+  .app-row-hover:hover {
+    background-color: color-mix(in oklab, var(--muted) 60%, transparent);
+  }
+  /* Soft multi-pastel wash for hero panels and empty states. Apply to an
+     absolutely-positioned full-bleed layer behind content. */
+  .app-wash {
+    background:
+      radial-gradient(
+        42% 58% at 12% 8%,
+        color-mix(in oklab, var(--sky) 70%, white) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        36% 52% at 88% 4%,
+        color-mix(in oklab, var(--pink) 62%, white) 0%,
+        transparent 58%
+      ),
+      radial-gradient(
+        44% 60% at 78% 96%,
+        color-mix(in oklab, var(--lime) 66%, white) 0%,
+        transparent 62%
+      ),
+      radial-gradient(
+        40% 56% at 16% 100%,
+        color-mix(in oklab, var(--lavender) 74%, white) 0%,
+        transparent 60%
+      );
+  }
+  /* Restrained hover lift for interactive cards. */
+  .app-lift {
+    transition:
+      transform var(--duration-normal, 180ms) cubic-bezier(0.22, 1, 0.36, 1),
+      border-color var(--duration-normal, 180ms) ease,
+      box-shadow var(--duration-normal, 180ms) ease;
+  }
+  .app-lift:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in oklab, var(--primary) 25%, var(--border));
+    box-shadow: 0 16px 32px -26px rgba(33, 22, 76, 0.45);
+  }
+}
+
+/* Marketing (landing) decorative utilities.
+   Adora-inspired painterly washes and slow ambient motion. Kept separate from
+   application utilities so the product UI stays restrained. */
+@layer utilities {
+  .mkt-blob {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(84px);
+    opacity: 0.55;
+    background: radial-gradient(
+      circle at 34% 34%,
+      var(--mkt-color, var(--sky)),
+      transparent 62%
+    );
+    pointer-events: none;
+    will-change: transform;
+  }
+  .mkt-float {
+    animation: mktFloat 7s ease-in-out infinite;
+  }
+  .mkt-float-slow {
+    animation: mktFloat 11s ease-in-out infinite;
+  }
+  .mkt-drift {
+    animation: mktDrift 15s ease-in-out infinite;
+  }
+  .mkt-orbit {
+    animation: mktOrbit 32s linear infinite;
+  }
+  .mkt-orbit-reverse {
+    animation: mktOrbit 40s linear infinite reverse;
+  }
+  .mkt-marquee {
+    animation: mktMarquee 42s linear infinite;
+  }
+  .mkt-marquee-reverse {
+    animation: mktMarquee 52s linear infinite reverse;
+  }
+  .mkt-fade-x {
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent,
+      #000 8%,
+      #000 92%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      90deg,
+      transparent,
+      #000 8%,
+      #000 92%,
+      transparent
+    );
+  }
+  /* Fade a decorative layer out along its bottom edge so it blends into the
+     white page background instead of ending at a hard clip line. */
+  .mkt-fade-bottom {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 62%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 62%,
+      transparent 100%
+    );
+  }
+  .mkt-pulse {
+    animation: mktPulse 2.4s ease-in-out infinite;
+  }
+  .mkt-draw {
+    stroke-dasharray: var(--mkt-dash, 1400);
+    stroke-dashoffset: var(--mkt-dash, 1400);
+    animation: mktDraw 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  .mkt-paper {
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      color-mix(in oklab, var(--muted-foreground) 14%, transparent) 1px,
+      transparent 0
+    );
+    background-size: 22px 22px;
+  }
+  /* Travelling dashes along a stroke, for connection edges. */
+  .mkt-path-flow {
+    stroke-dasharray: 5 7;
+    animation: pathFlow 1.2s linear infinite;
+  }
+  /* Soft multi-pastel wash used behind whole sections. Apply to an absolutely
+     positioned full-bleed layer with a low opacity. */
+  .mkt-aurora {
+    background:
+      radial-gradient(
+        48% 44% at 8% 6%,
+        color-mix(in oklab, var(--sky) 84%, white) 0%,
+        transparent 62%
+      ),
+      radial-gradient(
+        44% 40% at 92% 0%,
+        color-mix(in oklab, var(--pink) 80%, white) 0%,
+        transparent 58%
+      ),
+      radial-gradient(
+        52% 46% at 76% 96%,
+        color-mix(in oklab, var(--lime) 84%, white) 0%,
+        transparent 62%
+      ),
+      radial-gradient(
+        46% 42% at 16% 100%,
+        color-mix(in oklab, var(--lavender) 86%, white) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        40% 36% at 50% 46%,
+        color-mix(in oklab, var(--cyan) 60%, white) 0%,
+        transparent 62%
+      );
+  }
+  /* Slow positional drift for aurora washes (pair with .mkt-aurora). */
+  .mkt-aurora-drift {
+    background-size: 165% 165%;
+    animation: gradientX 28s ease-in-out infinite alternate;
+  }
+  /* Lightweight hover lift for marketing cards. */
+  .mkt-lift {
+    transition:
+      transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.32s ease,
+      border-color 0.32s ease;
+  }
+  .mkt-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 34px 64px -42px rgba(33, 22, 76, 0.5);
+  }
+  .mkt-ring-hover {
+    transition:
+      box-shadow 0.3s ease,
+      transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .mkt-ring-hover:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--ring-accent, var(--primary)) 30%, transparent),
+      0 30px 60px -40px color-mix(in oklab, var(--ring-accent, var(--primary)) 55%, transparent);
+  }
+  /* Feature-UI mockup micro-animations. */
+  .mkt-caret {
+    display: inline-block;
+    width: 1.5px;
+    height: 0.92em;
+    margin-left: 1px;
+    vertical-align: -0.14em;
+    background: currentColor;
+    animation: mktCaret 0.8s steps(1, end) infinite;
+  }
+  .mkt-rise {
+    animation: mktRise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .mkt-blink {
+    animation: mktBlink 1.5s ease-in-out infinite;
+  }
+  /* Highlight that sweeps across a row; stagger via animation-delay. */
+  .mkt-cycle-row {
+    background-image: linear-gradient(
+      100deg,
+      transparent 26%,
+      color-mix(in oklab, var(--primary) 30%, transparent) 50%,
+      transparent 74%
+    );
+    background-size: 240% 100%;
+    background-repeat: no-repeat;
+    animation: mktSweep 2.4s ease-in-out infinite;
+  }
+  /* Broad beam that scans across a whole container once per loop. */
+  .mkt-scan {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 45%;
+    background: linear-gradient(
+      100deg,
+      transparent,
+      color-mix(in oklab, var(--primary) 22%, transparent),
+      transparent
+    );
+    pointer-events: none;
+    animation: mktScan 3s ease-in-out infinite;
+  }
+  /* Confident opacity pulse for blocks and accents. */
+  .mkt-glow {
+    animation: mktGlow 2.6s ease-in-out infinite;
+  }
+  /* Idle bob for cards. */
+  .mkt-sway {
+    animation: mktSway 4.5s ease-in-out infinite;
+  }
+  /* A single reveal beam that sweeps down a document once, then stops. */
+  .mkt-brief-sweep {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 4.5rem;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      color-mix(in oklab, var(--primary) 10%, transparent),
+      transparent
+    );
+    pointer-events: none;
+    animation: mktBriefSweep 1.5s cubic-bezier(0.22, 1, 0.36, 1) 0.35s 1
+      forwards;
+    opacity: 0;
+  }
+
+  /* PDF document unfold animation */
+  .mkt-pdf-unfold {
+    transform-origin: top center;
+    animation: mktPdfUnfold 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+  }
+
+  /* Shimmer effect for generating state */
+  .mkt-pdf-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mkt-pdf-shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      color-mix(in oklab, var(--primary) 8%, transparent) 50%,
+      transparent 100%
+    );
+    transform: translateX(-100%);
+    animation: mktPdfShimmer 1.8s ease-in-out 0.6s both;
+    pointer-events: none;
+  }
+
+  /* Citation pop animation */
+  .mkt-cite-pop {
+    display: inline-block;
+    animation: mktCitePop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+  /* Expanding ring for graph nodes and accents. */
+  .mkt-ping {
+    animation: mktPing 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+  .mkt-track {
+    position: absolute;
+    animation: mktTrack 2s ease-in-out infinite;
+  }
+  /* Looping pop for tiles; stagger via animation-delay. */
+  .mkt-tile {
+    animation: mktTile 2.6s ease-in-out infinite;
+  }
+  /* Periodic "verified" pop for status badges. */
+  .mkt-verify {
+    animation: mktVerify 3.4s ease-in-out infinite;
+  }
+  /* Auto-advance progress fill for the hero step rail. */
+  .mkt-progress {
+    transform-origin: left center;
+    animation: mktProgress 4.8s linear forwards;
+  }
+}
+
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -434,6 +885,256 @@
   }
   50% {
     top: 78%;
+  }
+}
+
+@keyframes mktFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes mktDrift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(16px, -18px) scale(1.06);
+  }
+}
+
+@keyframes mktOrbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes mktMarquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes mktPulse {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.28);
+  }
+}
+
+@keyframes mktDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes mktCaret {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes mktRise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mktBlink {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes mktSweep {
+  0% {
+    background-position: 200% 0;
+  }
+  65%,
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+@keyframes mktScan {
+  0% {
+    transform: translateX(-130%);
+    opacity: 0;
+  }
+  14% {
+    opacity: 1;
+  }
+  72% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(320%);
+    opacity: 0;
+  }
+}
+
+@keyframes mktPing {
+  0% {
+    transform: scale(0.55);
+    opacity: 0.8;
+  }
+  75%,
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+@keyframes mktTrack {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  18% {
+    opacity: 1;
+  }
+  82% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes mktTile {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.09);
+    opacity: 1;
+  }
+}
+
+@keyframes mktGlow {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes mktSway {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-5px) scale(1.03);
+  }
+}
+
+@keyframes mktBriefSweep {
+  0% {
+    top: -4.5rem;
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.9;
+  }
+  85% {
+    opacity: 0.9;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes mktPdfUnfold {
+  0% {
+    opacity: 0;
+    transform: rotateX(-8deg) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateX(0deg) scale(1);
+  }
+}
+
+@keyframes mktPdfShimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes mktCitePop {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes mktVerify {
+  0%,
+  54%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  18%,
+  30% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+@keyframes mktProgress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
   }
 }
 

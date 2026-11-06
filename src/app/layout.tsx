@@ -1,22 +1,30 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import { CookieNotice } from "@/components/layout/cookie-notice";
 import { PostHogAnalytics } from "@/components/analytics/posthog-analytics";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta",
   subsets: ["latin"],
 });
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
+const generalSans = localFont({
+  variable: "--font-general-sans",
+  display: "swap",
+  fallback: ["system-ui", "sans-serif"],
+  src: [
+    { path: "./fonts/GeneralSans-Regular.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/GeneralSans-Medium.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/GeneralSans-Semibold.woff2", weight: "600", style: "normal" },
+    { path: "./fonts/GeneralSans-Bold.woff2", weight: "700", style: "normal" },
+  ],
 });
 
 export const viewport: Viewport = {
-  themeColor: "#f8f9fc",
+  themeColor: "#ffffff",
   viewportFit: "cover",
 };
 
@@ -97,7 +105,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${spaceGrotesk.variable} h-full antialiased`}
+      data-scroll-behavior="smooth"
+      className={`${plusJakarta.variable} ${generalSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         {children}
